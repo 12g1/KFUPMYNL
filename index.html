@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#030712">
-<meta name="description" content="KFUPMYNL — المنصة التعليمية النخبوية للاختبارات والقوانين والربط والملخصات والمهارات.">
-<title>KFUPMYNL | منصتك التعليمية الشاملة</title>
+<meta name="description" content="KFUPMYNL — مرجعك الأكاديمي المتكامل للاختبارات والقوانين والربط والملخصات والمهارات.">
+<title>KFUPMYNL | مرجعك الأكاديمي المتكامل</title>
 <style>
 :root {
   --bg-dark: #030712;
@@ -182,9 +182,9 @@ button { cursor: pointer; }
   box-shadow: 0 0 12px var(--cyan);
 }
 h1 {
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  line-height: 1.15;
-  letter-spacing: -2px;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
   margin: 22px 0;
   font-weight: 900;
 }
@@ -220,6 +220,18 @@ h1 span {
   color: #fff;
   border: 0;
   box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
+}
+.btn.telegram-btn {
+  background: #24A1DE;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 8px 25px rgba(36, 161, 222, 0.35);
+  font-size: 1.05rem;
+  padding: 14px 28px;
+}
+.btn.telegram-btn:hover {
+  background: #1d8bc3;
+  box-shadow: 0 10px 30px rgba(36, 161, 222, 0.5);
 }
 
 .heroart { position: relative; min-height: 320px; display: grid; place-items: center; }
@@ -409,8 +421,15 @@ h1 span {
   line-height: 1.9;
 }
 
-.footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; font-weight: 800; font-size: 1.15rem; }
-.footer small { display: block; color: var(--muted); font-size: 0.88rem; font-weight: 400; margin-top: 10px; }
+.footer { border-top: 1px solid var(--line); padding: 40px 0; text-align: center; font-weight: 800; font-size: 1.2rem; }
+.footer small { display: block; color: var(--muted); font-size: 0.88rem; font-weight: 400; margin-top: 8px; }
+.telegram-footer-card {
+  margin-top: 22px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 @media (max-width: 900px) {
@@ -453,9 +472,9 @@ h1 span {
 <main id="app" class="shell">
   <section class="hero">
     <div>
-      <div class="eyebrow"><i></i> المنصة التعليمية النخبوية الفريدة</div>
-      <h1><span>KFUPMYNL</span><br>طريقك للتفوق</h1>
-      <p class="lead">مرجعك الأكاديمي الشامل المجهز بأحدث الاختبارات التفاعلية، القوانين الفيزيائية، والملخصات المعتمدة.</p>
+      <div class="eyebrow"><i></i> مرحباً بك في منصتك الأكاديمية</div>
+      <h1>مرحباً بك في <span>KFUPMYNL</span><br>مرجعك الأكاديمي المتكامل</h1>
+      <p class="lead">تجد هنا كافة الاختبارات، القوانين الفيزيائية، والملخصات المعتمدة لمساعدتك في تحقيق أعلى الدرجات.</p>
       <div class="actions">
         <a class="btn primary" href="#tests">ابدأ الاختبارات الأن ←</a>
         <a class="btn" href="#linking">استكشف قسم الربط</a>
@@ -463,7 +482,7 @@ h1 span {
     </div>
     <div class="heroart">
       <div class="orb"><div class="orbinner"><span>💎</span></div></div>
-      <div class="floatcard fc1">✨ محتوى نخبوي شمولية 100%</div>
+      <div class="floatcard fc1">✨ محتوى شامل 100%</div>
       <div class="floatcard fc2">⚡ اختبارات تفاعلية فورية</div>
     </div>
   </section>
@@ -472,9 +491,9 @@ h1 span {
     <div class="sectionhead">
       <div>
         <div class="kicker">مسارك التعليمي</div>
-        <h2>أقسام المنصة النخبوية</h2>
+        <h2>أقسام المنصة</h2>
       </div>
-      <p>تصميم مميز يعرض لك المادة التعليمية بسلاسة على كافة الأجهزة.</p>
+      <p>تصفح المواد والأقسام بسهولة ووضوح على جميع الأجهزة.</p>
     </div>
     <div class="grid">
       <article class="tile" data-page="tests">
@@ -513,8 +532,13 @@ h1 span {
 
 <footer class="footer">
   <div class="shell">
-    دعواتكم لـ ينال و نواف ❤️
-    <small>KFUPMYNL · المنصة التعليمية المجانية النخبوية</small>
+    <div>دعواتكم لـ ينال و نواف ❤️</div>
+    <div class="telegram-footer-card">
+      <a class="btn telegram-btn" href="https://t.me/KFUPMYNL" target="_blank" rel="noopener">
+        ✈️ انضم لقناتنا على التليجرام (KFUPMYNL)
+      </a>
+    </div>
+    <small>KFUPMYNL · المنصة التعليمية المجانية</small>
   </div>
 </footer>
 
@@ -638,7 +662,7 @@ const skillQuests = [
 ];
 
 function home(){
-  return `<section class="hero"><div><div class="eyebrow"><i></i> المنصة التعليمية النخبوية الفريدة</div><h1><span>KFUPMYNL</span><br>طريقك للتفوق</h1><p class="lead">مرجعك الأكاديمي الشامل المجهز بأحدث الاختبارات التفاعلية، القوانين الفيزيائية، والملخصات المعتمدة.</p><div class="actions"><button class="btn primary" data-page="tests">ابدأ الاختبارات الأن ←</button><button class="btn" data-page="linking">استكشف قسم الربط</button></div></div><div class="heroart"><div class="orb"><div class="orbinner"><span>💎</span></div></div><div class="floatcard fc1">✨ محتوى نخبوي شمولية 100%</div><div class="floatcard fc2">⚡ اختبارات تفاعلية فورية</div></div></section><section class="section"><div class="sectionhead"><div><div class="kicker">مسارك التعليمي</div><h2>أقسام المنصة النخبوية</h2></div><p>تصميم مميز يعرض لك المادة التعليمية بسلاسة على كافة الأجهزة.</p></div><div class="grid"><article class="tile" data-page="tests"><div class="tiletop"><div class="tileicon">✎</div><span class="count">3 اختبارات + مجمع</span></div><h3>الاختبارات</h3><p>تدرّب على ملفات الاختبارات المرفقة وراجع إجاباتها.</p><span class="go">فتح القسم ←</span></article><article class="tile" data-page="laws"><div class="tiletop"><div class="tileicon">∑</div><span class="count">شرح وقوانين</span></div><h3>القوانين</h3><p>ميكانيكا البكرات مع القوانين والأمثلة المحلولة.</p><span class="go">تصفح القوانين ←</span></article><article class="tile" data-page="linking"><div class="tiletop"><div class="tileicon">⌘</div><span class="count">صور ظاهرة</span></div><h3>الربط</h3><p>الجدول الدوري والهيكل العظمي للمراجعة البصرية.</p><span class="go">افتح الربط ←</span></article><article class="tile" data-page="summaries"><div class="tiletop"><div class="tileicon">▤</div><span class="count">ملفات PDF</span></div><h3>الملخصات</h3><p>ملخص الرياضيات ومواد المراجعة الشاملة.</p><span class="go">افتح الملخصات ←</span></article><article class="tile" data-page="skills"><div class="tiletop"><div class="tileicon">◎</div><span class="count">85 سؤالاً</span></div><h3>المهارات</h3><p>ملف التأسيس و5 اختبارات تفاعلية شاملة للتجميعات.</p><span class="go">ابدأ المهارات ←</span></article></div></section>`;
+  return `<section class="hero"><div><div class="eyebrow"><i></i> مرحباً بك في منصتك الأكاديمية</div><h1>مرحباً بك في <span>KFUPMYNL</span><br>مرجعك الأكاديمي المتكامل</h1><p class="lead">تجد هنا كافة الاختبارات، القوانين الفيزيائية، والملخصات المعتمدة لمساعدتك في تحقيق أعلى الدرجات.</p><div class="actions"><button class="btn primary" data-page="tests">ابدأ الاختبارات الأن ←</button><button class="btn" data-page="linking">استكشف قسم الربط</button></div></div><div class="heroart"><div class="orb"><div class="orbinner"><span>💎</span></div></div><div class="floatcard fc1">✨ محتوى شامل 100%</div><div class="floatcard fc2">⚡ اختبارات تفاعلية فورية</div></div></section><section class="section"><div class="sectionhead"><div><div class="kicker">مسارك التعليمي</div><h2>أقسام المنصة</h2></div><p>تصفح المواد والأقسام بسهولة ووضوح على جميع الأجهزة.</p></div><div class="grid"><article class="tile" data-page="tests"><div class="tiletop"><div class="tileicon">✎</div><span class="count">3 اختبارات + مجمع</span></div><h3>الاختبارات</h3><p>تدرّب على ملفات الاختبارات المرفقة وراجع إجاباتها.</p><span class="go">فتح القسم ←</span></article><article class="tile" data-page="laws"><div class="tiletop"><div class="tileicon">∑</div><span class="count">شرح وقوانين</span></div><h3>القوانين</h3><p>ميكانيكا البكرات مع القوانين والأمثلة المحلولة.</p><span class="go">تصفح القوانين ←</span></article><article class="tile" data-page="linking"><div class="tiletop"><div class="tileicon">⌘</div><span class="count">صور ظاهرة</span></div><h3>الربط</h3><p>الجدول الدوري والهيكل العظمي للمراجعة البصرية.</p><span class="go">افتح الربط ←</span></article><article class="tile" data-page="summaries"><div class="tiletop"><div class="tileicon">▤</div><span class="count">ملفات PDF</span></div><h3>الملخصات</h3><p>ملخص الرياضيات ومواد المراجعة الشاملة.</p><span class="go">افتح الملخصات ←</span></article><article class="tile" data-page="skills"><div class="tiletop"><div class="tileicon">◎</div><span class="count">85 سؤالاً</span></div><h3>المهارات</h3><p>ملف التأسيس و5 اختبارات تفاعلية شاملة للتجميعات.</p><span class="go">ابدأ المهارات ←</span></article></div></section>`;
 }
 
 function back(){return `<button class="back" data-page="home">← العودة للرئيسية</button>`}
