@@ -221,17 +221,28 @@ h1 span {
   border: 0;
   box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
 }
-.btn.telegram-btn {
-  background: #24A1DE;
-  color: #fff;
-  border: 0;
-  box-shadow: 0 8px 25px rgba(36, 161, 222, 0.35);
-  font-size: 1.05rem;
-  padding: 14px 28px;
+
+/* Telegram Button Style */
+.telegram-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #24A1DE !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  font-size: 1.15rem !important;
+  padding: 16px 32px !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(36, 161, 222, 0.4) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  margin-top: 15px;
 }
-.btn.telegram-btn:hover {
-  background: #1d8bc3;
-  box-shadow: 0 10px 30px rgba(36, 161, 222, 0.5);
+.telegram-link-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(36, 161, 222, 0.6) !important;
+  background: #1c8cc3 !important;
 }
 
 .heroart { position: relative; min-height: 320px; display: grid; place-items: center; }
@@ -421,15 +432,17 @@ h1 span {
   line-height: 1.9;
 }
 
-.footer { border-top: 1px solid var(--line); padding: 40px 0; text-align: center; font-weight: 800; font-size: 1.2rem; }
-.footer small { display: block; color: var(--muted); font-size: 0.88rem; font-weight: 400; margin-top: 8px; }
-.telegram-footer-card {
-  margin-top: 22px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+/* Footer Section */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 45px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.3rem;
+  background: var(--panel2);
+  margin-top: 40px;
 }
+.footer small { display: block; color: var(--muted); font-size: 0.9rem; font-weight: 400; margin-top: 15px; }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 @media (max-width: 900px) {
@@ -530,14 +543,18 @@ h1 span {
   </section>
 </main>
 
+<!-- Footer Section مع رابط التليجرام الصريح -->
 <footer class="footer">
   <div class="shell">
-    <div>دعواتكم لـ ينال و نواف ❤️</div>
-    <div class="telegram-footer-card">
-      <a class="btn telegram-btn" href="https://t.me/KFUPMYNL" target="_blank" rel="noopener">
-        ✈️ انضم لقناتنا على التليجرام (KFUPMYNL)
+    <div style="color:var(--text); font-size:1.35rem; margin-bottom:12px;">دعواتكم لـ ينال و نواف ❤️</div>
+    
+    <!-- رابط التليجرام الواضح جداً والمباشر -->
+    <div style="margin:20px 0;">
+      <a class="telegram-link-btn" href="https://t.me/KFUPMYNL" target="_blank" rel="noopener">
+        ✈️ انضم الآن لقناة التليجرام الرسمية (https://t.me/KFUPMYNL)
       </a>
     </div>
+
     <small>KFUPMYNL · المنصة التعليمية المجانية</small>
   </div>
 </footer>
@@ -571,7 +588,7 @@ const skillQuests = [
     {q: "8- في العصر الحالي اصبح الأنترنت مصدر ثري وغني بالمعلومات، فنحن لحاجة حقيقية إلى:", opts: ["استخدام الكتب الورقية", "توفير مصادر أخرى لجمع المعلومات", "إضافة معايير لتقويم المعلومات وتصفيتها", "الابتعاد عن التقنية"], ans: 2},
     {q: "9- قام باحث بجمع عدد كبير من المصادر العلمية، وترتيبها داخل أقسام ومجلدات لتسهيل الرجوع إليها، هذا يسمى:", opts: ["تصنيف", "استنباط", "مقارنة", "استقراء"], ans: 0},
     {q: "10- الروابط التي تنتهي بـ gov تتبع لجهة ...", opts: ["حكومية", "تعليمية", "تجارية", "غير ربحية"], ans: 0},
-    {q: "11- يعمل فهد في شركة داخل المملكة وأراد إجراء بحث يتوقع فيه فترة انتهاء جائحة كورونا في دول العالم، فما هو المصدر الأنسب للاعتماد عليه ؟", opts: ["معدلات الوفيات والعلاجات من وزارة الصحة السعودية", "مجلة علمية مهتمة بتأثير فيروس كورونا على الاقتصاد العالمي", "تقارير رسمية من الدول العالمية عن عدد الإصابات ودورة حياة الفيروس", "استبيانات من اشخاص معنيين"], ans: 2},
+    {q: "11- يعمل فهد في شركة داخل المملكة وأراد إجراء بحث يتوقع فيه فترة انتهاء جائحة كورونا في دول العالم، فما هو المصدر الأنسب للاتماد عليه ؟", opts: ["معدلات الوفيات والعلاجات من وزارة الصحة السعودية", "مجلة علمية مهتمة بتأثير فيروس كورونا على الاقتصاد العالمي", "تقارير رسمية من الدول العالمية عن عدد الإصابات ودورة حياة الفيروس", "استبيانات من اشخاص معنيين"], ans: 2},
     {q: "12- إذا أردت الاستشهاد بورقة بحثية وتبين أن نتائج الورقة لا تتطابق مع نتائجك، فما هو أنسب تصرف في هذه الحالة ؟", opts: ["الاستشهاد بها على كل حال", "تجاهلها والبحث عن مصدر آخر", "الاستشهاد بها بدون ذكر المصدر", "البحث عن ورقة أخرى"], ans: 1},
     {q: "13- إذا كان على بضاعة هذه العلامة C فإنها تعني:", opts: ["شعار شركة", "حقوق نشر", "ترخيص", "علامة تجارية"], ans: 1},
     {q: "14- انتشرت أخبار عبر الإنترنت تشير إلى أن التوقعات تقول بأن النفط سيقل وسيتلاشى عبر الزمن وسيزداد الطلب على الوقود، تُعتبر هذه العبارة ...", opts: ["إشاعة", "خبر كاذب", "حقيقة", "رأي"], ans: 3},
