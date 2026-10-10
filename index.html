@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 10:08 - Clean LaTeX & Layout Fix -->
+<!-- Update Timestamp: 2026-10-10 10:25 - Smooth Navigation & Bugfix & Full Pulley/Names -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -256,7 +256,7 @@ button { font: inherit; cursor: pointer; }
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--cyan);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   padding: 16px 20px;
   border-radius: 12px;
   text-align: center;
@@ -304,17 +304,17 @@ button { font: inherit; cursor: pointer; }
 
 <div class="header-container">
   <div class="shell navbar">
-    <a class="brand-box" href="#home" onclick="showPage('home')">
+    <a class="brand-box" href="#home" onclick="showPage('home'); return false;">
       <div class="brand-icon">K</div>
       <span>KFUPMYNL</span>
     </a>
     <nav class="nav-links">
-      <a href="#home" id="nav-home" class="active" onclick="showPage('home')">الرئيسية</a>
-      <a href="#tests" id="nav-tests" onclick="showPage('tests')">الاختبارات</a>
-      <a href="#laws" id="nav-laws" onclick="showPage('laws')">القوانين</a>
-      <a href="#linking" id="nav-linking" onclick="showPage('linking')">الربط</a>
-      <a href="#summaries" id="nav-summaries" onclick="showPage('summaries')">الملخصات</a>
-      <a href="#skills" id="nav-skills" onclick="showPage('skills')">المهارات</a>
+      <a href="#home" id="nav-home" class="active" onclick="showPage('home'); return false;">الرئيسية</a>
+      <a href="#tests" id="nav-tests" onclick="showPage('tests'); return false;">الاختبارات</a>
+      <a href="#laws" id="nav-laws" onclick="showPage('laws'); return false;">القوانين</a>
+      <a href="#linking" id="nav-linking" onclick="showPage('linking'); return false;">الربط</a>
+      <a href="#summaries" id="nav-summaries" onclick="showPage('summaries'); return false;">الملخصات</a>
+      <a href="#skills" id="nav-skills" onclick="showPage('skills'); return false;">المهارات</a>
     </nav>
     <div class="nav-controls">
       <button class="ctrl-btn" id="themeToggle">☀️ نهاري</button>
@@ -408,18 +408,29 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="pulley-mechanics.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات:</div>
+      <div class="concepts-section-title">📌 بطاقات وقوانين ميكانيكا البكرات الشاملة:</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك<span>W = mg , F_k = \mu_k F_N</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك الحركي<span>W = mg , F_k = \mu_k F_N</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>\sum F = ma</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود والبكرات<span>a = \frac{(m_1 - m_2)g}{m_1 + m_2}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل المنحدر<span>W_x = mg \sin(\theta)</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. قوة الشد بالحبال<span>T = m(g \pm a)</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود (التسارع)<span>a = \frac{(m_1 - m_2)g}{m_1 + m_2}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. قوة الشد في أتوود<span>T = \frac{2 m_1 m_2 g}{m_1 + m_2}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. تحليل القوى على المنحدر<span>W_x = mg \sin(\theta)</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 5, this)">6. بكرة على سطح مائل<span>a = \frac{m_1 g - m_2 g \sin\theta}{m_1 + m_2}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 6, this)">7. الشد في حبل مصعد / صعود<span>T = m(g \pm a)</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 7, this)">8. القوة العمودية السطحية<span>F_N = mg \cos(\theta)</span></button>
       </div>
       <div class="concept-display-box" id="pulleyDisplay">
         <h4>1. قوى الوزن والاحتكاك الحركي</h4>
-        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> قوة مقاومة تعيق حركة الأجسام.</p>
+        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> قوة مقاومة تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.</p>
         <div class="math-block">$$W = m \cdot g \quad , \quad F_k = \mu_k \cdot F_N$$</div>
+      </div>
+
+      <!-- اختبار مسائل ملف البكرات -->
+      <div style="margin-top: 40px;">
+        <h3>✍️ اختبار مسائل ميكانيكا البكرات (تفاعلي شامل)</h3>
+        <p style="color: var(--muted);">اختبر فهمك لمسائل وحالات البكرات المذكورة في الملف:</p>
+        <button class="ctrl-btn" onclick="loadPulleyTest()" style="margin: 10px 0; background: var(--accent); color: #fff;">ابدأ اختبار مسائل البكرات الآن</button>
+        <div id="pulleyTestHost"></div>
       </div>
     </div>
   </section>
@@ -436,7 +447,7 @@ button { font: inherit; cursor: pointer; }
   <!-- 5. الملخصات -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية الشاملة (الأسماء الشائعة ومشتقات الهيدروكربونات)</h2>
+      <h2>▤ الملخصات الأكاديمية الشاملة (أكثر من 20 اسماً شائعاً ومشتقات الهيدروكربونات)</h2>
       
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar">
@@ -445,17 +456,32 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الشاملة:</div>
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (أكثر من 20 مركباً):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الألكينات والألكانات<span>C_2H_2 , C_3H_8O_3</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الكيتونات والألدهيدات<span>CH_3COCH_3 , HCHO</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. الأحماض واليوريا<span>HCOOH , CO(NH_2)_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. المركبات العطرية<span>C_6H_5CH_3 , C_6H_5OH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. المشتقات الخاصة<span>CHCl_3 , CCl_4</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الأسيتيلين والجليسرول<span>C_2H_2 , C_3H_8O_3</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الأسيتون والفورمالديهايد<span>CH_3COCH_3 , HCHO</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. حمض الفورميك واليوريا<span>HCOOH , CO(NH_2)_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. التولوين والفينول<span>C_6H_5CH_3 , C_6H_5OH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. الكلوروفورم ورباعي كلوريد الكربون<span>CHCl_3 , CCl_4</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 5, this)">6. الميثان والإيثان<span>CH_4 , C_2H_6</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 6, this)">7. البروبان والبيوتان<span>C_3H_8 , C_4H_{10}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 7, this)">8. الإيثيلين والأستلين<span>C_2H_4 , C_2H_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 8, this)">9. حمض الخليك (الأسيتيك)<span>CH_3COOH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 9, this)">10. إيثانول (كحول إيثيلي)<span>C_2H_5OH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 10, this)">11. الميثانول (كحول ميثيلي)<span>CH_3OH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 11, this)">12. ثنائي إيثيل الإيثر<span>C_2H_5OC_2H_5</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 12, this)">13. أنيلين (فينيل أمين)<span>C_6H_5NH_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 13, this)">14. بنزالدهايد<span>C_6H_5CHO</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 14, this)">15. حمض البنزويك<span>C_6H_5COOH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 15, this)">16. أسيتات الإيثيل<span>CH_3COOC_2H_5</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 16, this)">17. أسيتاميد<span>CH_3CONH_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 17, this)">18. ثنائي كلورو ميثان<span>CH_2Cl_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 18, this)">19. سيكلوهكسان<span>C_6H_{12}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 19, this)">20. إيثيلين جلايكول<span>C_2H_4(OH)_2</span></button>
       </div>
       <div class="concept-display-box" id="namesDisplay">
-        <h4>1. الألكينات والألكانات الشائعة</h4>
-        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود.</p>
+        <h4>1. الأسيتيلين والجليسرول</h4>
+        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات لشدة حرارته.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود في الطائرات وفي المستحضرات الصيدلانية.</p>
         <div class="math-block">$$\text{الأسيتيلين:} \quad C_2H_2 \quad | \quad \text{الجليسرول:} \quad C_3H_8O_3$$</div>
       </div>
 
@@ -538,21 +564,23 @@ themeToggle.addEventListener('click', () => {
 });
 
 function showPage(pageId) {
-  document.querySelectorAll('.page-section').forEach(section => {
-    section.classList.remove('active');
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.page-section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.remove('active');
+    });
+    
+    const targetSection = document.getElementById(pageId);
+    if (targetSection) targetSection.classList.add('active');
+    
+    const targetLink = document.getElementById('nav-' + pageId);
+    if (targetLink) targetLink.classList.add('active');
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    renderMath();
   });
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  const targetSection = document.getElementById(pageId);
-  if (targetSection) targetSection.classList.add('active');
-  
-  const targetLink = document.getElementById('nav-' + pageId);
-  if (targetLink) targetLink.classList.add('active');
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  renderMath();
 }
 
 function renderMath() {
@@ -577,22 +605,40 @@ const chemData = [
 const pulleyData = [
   {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة ضرب تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.", math: "$$W = mg \\quad | \\quad F_k = \\mu_k F_N$$"},
   {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "$$\\sum F = ma \\quad | \\quad a = \\frac{F_{\\text{net}}}{m}$$"},
-  {title: "3. آلة أتوود والبكرات", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط مهمل الكتلة على بكرة ملساء.", math: "$$a = \\frac{(m_1 - m_2)g}{m_1 + m_2}$$"},
-  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم صعوداً أو نزولاً على السطح المائل.", math: "$$W_x = mg \\sin(\\theta) \\quad | \\quad W_y = mg \\cos(\\theta)$$"},
-  {title: "5. قوة الشد في الحبال المتصلة", desc: "• <b>الشد (T):</b> القوة الناشئة في الخيط وتتأثر باتجاه حركة النظام.", math: "$$T = m(g + a) \\text{ (للصعود)} \\quad | \\quad T = m(g - a) \\text{ (للنزول)}$$"}
+  {title: "3. آلة أتوود (التسارع)", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "$$a = \\frac{(m_1 - m_2)g}{m_1 + m_2}$$"},
+  {title: "4. قوة الشد في أتوود", desc: "• <b>قوة الشد (T):</b> القوة الناشئة في خيط أتوود.", math: "$$T = \\frac{2 m_1 m_2 g}{m_1 + m_2}$$"},
+  {title: "5. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم على السطح المائل.", math: "$$W_x = mg \\sin(\\theta) \\quad | \\quad W_y = mg \\cos(\\theta)$$"},
+  {title: "6. بكرة على سطح مائل", desc: "• <b>حركة كتلة معلقة مع سطح مائل:</b>", math: "$$a = \\frac{m_1 g - m_2 g \\sin\\theta}{m_1 + m_2}$$"},
+  {title: "7. الشد في حبل مصعد / صعود ونزول", desc: "• <b>قوة الشد المتغيرة:</b>", math: "$$T = m(g \\pm a)$$"},
+  {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
 
 const namesData = [
-  {title: "1. الألكينات والألكانات الشائعة", desc: "• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود في الطائرات.", math: "$$\\text{الأسيتيلين:} \\quad C_2H_2 \\quad | \\quad \\text{الجليسرول:} \\quad C_3H_8O_3$$"},
-  {title: "2. الكيتونات والألدهيدات الشائعة", desc: "• <b>الأسيتون (البروبانون):</b> مذيب عضوي شهير لإزالة طلاء الأظافر بالمختبرات.<br>• <b>الفورمالديهايد:</b> ألدهيد بسيط يُستخدم في حفظ وتثبيت العينات البيولوجية والأنسجة.", math: "$$\\text{الأسيتون:} \\quad CH_3COCH_3 \\quad | \\quad \\text{الفورمالديهايد:} \\quad HCHO$$"},
-  {title: "3. الأحماض واليوريا الشائعة", desc: "• <b>حمض الفورميك (الميثانويك):</b> حمض عضوي تفرزه النملة للدفاع عن نفسها.<br>• <b>اليوريا (كارباميد):</b> مركب عضوي غني بالنيتروجين لصناعة الأسمدة الزراعية.", math: "$$\\text{حمض الفورميك:} \\quad HCOOH \\quad | \\quad \\text{اليوريا:} \\quad CO(NH_2)_2$$"},
-  {title: "4. المركبات العطرية المشهورة", desc: "• <b>التولوين:</b> هيدروكربون أروماتي مذيب ومواد متفجرة وبلاستيك.<br>• <b>الفينول:</b> مركب أروماتي يحتوي على مجموعة هيدروكسيل كمطهر ومعقم.", math: "$$\\text{التولوين:} \\quad C_6H_5CH_3 \\quad | \\quad \\text{الفينول:} \\quad C_6H_5OH$$"},
-  {title: "5. المشتقات الخاصة والكلوروفورم", desc: "• <b>الكلوروفورم:</b> مذيب عضوي ومخدر تاريخي شهير.<br>• <b>رباعي كلوريد الكربون:</b> مذيب كيميائي غير قطبي.", math: "$$\\text{الكلوروفورم:} \\quad CHCl_3 \\quad | \\quad \\text{رباعي كلوريد الكربون:} \\quad CCl_4$$"}
+  {title: "1. الأسيتيلين والجليسرول", desc: "• <b>الأسيتيلين:</b> C2H2 للحام الفلزات.<br>• <b>الجليسرول:</b> C3H8O3 مانع لتجمد الوقود.", math: "$$\\text{الأسيتيلين:} \\quad C_2H_2 \\quad | \\quad \\text{الجليسرول:} \\quad C_3H_8O_3$$"},
+  {title: "2. الأسيتون والفورمالديهايد", desc: "• <b>الأسيتون:</b> مذيب طلاء الأظافر.<br>• <b>الفورمالديهايد:</b> حفظ الأنسجة البيولوجية.", math: "$$\\text{الأسيتون:} \\quad CH_3COCH_3 \\quad | \\quad \\text{الفورمالديهايد:} \\quad HCHO$$"},
+  {title: "3. حمض الفورميك واليوريا", desc: "• <b>ح. الفورميك:</b> HCOOH (يفرزه النمل).<br>• <b>اليوريا:</b> CO(NH2)2 للأسمدة.", math: "$$\\text{حمض الفورميك:} \\quad HCOOH \\quad | \\quad \\text{اليوريا:} \\quad CO(NH_2)_2$$"},
+  {title: "4. التولوين والفينول", desc: "• <b>التولوين:</b> C6H5CH3 مذيب ومتفجرات.<br>• <b>الفينول:</b> C6H5OH مطهر ومعقم.", math: "$$\\text{التولوين:} \\quad C_6H_5CH_3 \\quad | \\quad \\text{الفينول:} \\quad C_6H_5OH$$"},
+  {title: "5. الكلوروفورم ورباعي كلوريد الكربون", desc: "• <b>الكلوروفورم:</b> CHCl3 مخدر تاريخي.<br>• <b>رباعي الكلور:</b> CCl4 مذيب غير قطبي.", math: "$$\\text{الكلوروفورم:} \\quad CHCl_3 \\quad | \\quad \\text{رباعي الكلوريد:} \\quad CCl_4$$"},
+  {title: "6. الميثان والإيثان", desc: "• <b>الميثان:</b> CH4 الغاز الطبيعي.<br>• <b>الإيثان:</b> C2H6 ألكان بسيط.", math: "$$\\text{الميثان:} \\quad CH_4 \\quad | \\quad \\text{الإيثان:} \\quad C_2H_6$$"},
+  {title: "7. البروبان والبيوتان", desc: "• <b>البروبان:</b> C3H8 وقود الشواء.<br>• <b>البيوتان:</b> C4H10 وقود الولاعات.", math: "$$\\text{البروبان:} \\quad C_3H_8 \\quad | \\quad \\text{البيوتان:} \\quad C_4H_{10}$$"},
+  {title: "8. الإيثيلين والأستلين", desc: "• <b>الإيثيلين:</b> C2H4 إنضاج الفواكه.<br>• <b>الأسيتيلين:</b> C2H2 لحام.", math: "$$\\text{الإيثيلين:} \\quad C_2H_4 \\quad | \\quad \\text{الأسيتيلين:} \\quad C_2H_2$$"},
+  {title: "9. حمض الخليك (الأسيتيك)", desc: "• <b>حمض الأسيتيك:</b> CH3COOH المكون الرئيسي للخل.", math: "$$\\text{حمض الأسيتيك:} \\quad CH_3COOH$$"},
+  {title: "10. إيثانول (كحول إيثيلي)", desc: "• <b>الإيثانول:</b> C2H5OH كحول مطهر ومذيب.", math: "$$\\text{الإيثانول:} \\quad C_2H_5OH$$"},
+  {title: "11. الميثانول (كحول ميثيلي)", desc: "• <b>الميثانول:</b> CH3OH أبسط الكحولات سام.", math: "$$\\text{الميثانول:} \\quad CH_3OH$$"},
+  {title: "12. ثنائي إيثيل الإيثر", desc: "• <b>الإيثر الثنائي:</b> C2H5OC2H5 مخدر طبي شهير.", math: "$$\\text{ثنائي إيثيل الإيثر:} \\quad C_2H_5OC_2H_5$$"},
+  {title: "13. أنيلين (فينيل أمين)", desc: "• <b>الأنيلين:</b> C6H5NH2 لصناعة الأصباغ.", math: "$$\\text{الأنيلين:} \\quad C_6H_5NH_2$$"},
+  {title: "14. بنزالدهايد", desc: "• <b>بنزالدهايد:</b> C6H5CHO زيت اللوز المر.", math: "$$\\text{بنزالدهايد:} \\quad C_6H_5CHO$$"},
+  {title: "15. حمض البنزويك", desc: "• <b>ح. البنزويك:</b> C6H5COOH حافظ للأغذية.", math: "$$\\text{حمض البنزويك:} \\quad C_6H_5COOH$$"},
+  {title: "16. أسيتات الإيثيل", desc: "• <b>أسيتات الإيثيل:</b> CH3COOC2H5 إستر ذو رائحة مميزة.", math: "$$\\text{أسيتات الإيثيل:} \\quad CH_3COOC_2H_5$$"},
+  {title: "17. أسيتاميد", desc: "• <b>الأسيتاميد:</b> CH3CONH2 أميد عضوي.", math: "$$\\text{الأسيتاميد:} \\quad CH_3CONH_2$$"},
+  {title: "18. ثنائي كلورو ميثان", desc: "• <b>ثنائي كلورو ميثان:</b> CH2Cl2 مذيب عضوي هالوجيني.", math: "$$\\text{ثنائي كلورو ميثان:} \\quad CH_2Cl_2$$"},
+  {title: "19. سيكلوهكسان", desc: "• <b>سيكلوهكسان:</b> C6H12 ألكان حلقي مذيب.", math: "$$\\text{سيكلوهكسان:} \\quad C_6H_{12}$$"},
+  {title: "20. إيثيلين جلايكول", desc: "• <b>إيثيلين جلايكول:</b> C2H4(OH)2 مانع تجمد الرديتر.", math: "$$\\text{إيثيلين جلايكول:} \\quad C_2H_4(OH)_2$$"}
 ];
 
 const hydroData = [
-  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) بسلسلة كربونية أليفاتية أو أروماتية.", math: "$$R - X \\quad (X = F, Cl, Br, I)$$"},
-  {title: "2. الكحولات", desc: "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية وتتميز بغليان مرتفع.", math: "$$R - OH$$"},
+  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) مباشرة بسلسلة كربونية.", math: "$$R - X \\quad (X = F, Cl, Br, I)$$"},
+  {title: "2. الكحولات", desc: "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية.", math: "$$R - OH$$"},
   {title: "3. الإيثرات", desc: "• <b>المجموعة الوظيفية:</b> ذرة أكسجين تقع وسط سلسلتين كربونيتين.", math: "$$R - O - R'$$"},
   {title: "4. الأمينات", desc: "• <b>المجموعة الوظيفية:</b> مشتقات عضوية للأمونيا بروائح نفاذة.", math: "$$R - NH_2$$"},
   {title: "5. الألدهيدات", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل طرفية متصلة بذرة هيدروجين.", math: "$$R - CHO$$"},
@@ -616,6 +662,60 @@ function switchCard(type, index, btn) {
   let data = dataObj[index];
   displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
   renderMath();
+}
+
+// اختبار مسائل البكرات الجديد
+const pulleyQuests = [
+  {q: "1- في آلة أتوود، كتلتان m1 = 5 kg و m2 = 3 kg معلقتان بخيط مهمل الكتلة على بكرة ملساء، احسب التسارع (a) باعتراض g = 10 m/s^2:", opts: ["2.5 m/s^2", "1.25 m/s^2", "5.0 m/s^2", "10 m/s^2"], ans: 0},
+  {q: "2- في نفس آلة أتوود السابقة، احسب قوة الشد (T) في الخيط:", opts: ["37.5 N", "45.0 N", "25.0 N", "60.0 N"], ans: 0},
+  {q: "3- جسم كتلته 10 kg يتحرك على سطح أفقي أملس ب تأثير قوة محصلة 20 N، يكون تسارعه:", opts: ["0.5 m/s^2", "2.0 m/s^2", "5.0 m/s^2", "200 m/s^2"], ans: 1},
+  {q: "4- إذا وضع جسم على مستوى مائل يميل بزاوية 30 درجة، فإن المركبة الموازية لوزنه ($W_x$) تساوي:", opts: ["0.5 mg", "0.86 mg", "mg", "صفر"], ans: 0},
+  {q: "5- معامل الاحتكاك الحركي يعتمد بشكل أساسي على:", opts: ["طبيعة السطحين المتلامسين فقط", "سرعة الحركة للجسم", "مساحة سطح التلامس", "كتلة الجسم المتحرك"], ans: 0},
+  {q: "6- في حالة صعود مصعد بتسارع (a)، فإن قوة الشد في حبل التعليق مقارنة بالوزن العقيقي تكون:", opts: ["أكبر من الوزن الحقيقي T = m(g+a)", "أقل من الوزن الحقيقي", "تساوي الوزن الحقيقي تماماً", "تساوي الصفر"], ans: 0}
+];
+
+let userPulleyAnswers = {};
+function loadPulleyTest() {
+  userPulleyAnswers = {};
+  let html = `<div class="q-card" style="border: 2px solid var(--cyan); margin-top:15px;">`;
+  html += `<h3>اختبار مسائل ميكانيكا البكرات (${pulleyQuests.length} أسئلة)</h3><div id="pulleyScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
+  
+  pulleyQuests.forEach((item, qIndex) => {
+    html += `<div style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;" id="pq-${qIndex}">`;
+    html += `<div style="font-weight:bold; margin-bottom:8px;">${item.q}</div><div class="opts-grid">`;
+    item.opts.forEach((opt, oIndex) => {
+      html += `<button class="opt-btn" onclick="selectPulleyOpt(${qIndex}, ${oIndex}, this)">${opt}</button>`;
+    });
+    html += `</div></div>`;
+  });
+  html += `<button class="submit-quiz-btn" onclick="submitPulleyTest()">تصحيح اختبار البكرات</button></div>`;
+  document.getElementById('pulleyTestHost').innerHTML = html;
+  window.scrollTo({ top: document.getElementById('pulleyTestHost').offsetTop - 100, behavior: 'smooth' });
+}
+
+function selectPulleyOpt(qIndex, oIndex, btn) {
+  userPulleyAnswers[qIndex] = oIndex;
+  let parent = btn.parentElement;
+  parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function submitPulleyTest() {
+  let score = 0;
+  pulleyQuests.forEach((item, qIndex) => {
+    let qDiv = document.getElementById(`pq-${qIndex}`);
+    let buttons = qDiv.querySelectorAll('.opt-btn');
+    let userChoice = userPulleyAnswers[qIndex];
+    buttons.forEach((b, oIdx) => {
+      b.onclick = null;
+      if (oIdx === item.ans) b.classList.add('correct');
+      else if (oIdx === userChoice) b.classList.add('wrong');
+    });
+    if (userChoice === item.ans) score++;
+  });
+  let scoreBox = document.getElementById('pulleyScore');
+  scoreBox.textContent = `نتيجة اختبار البكرات: ${score} من ${pulleyQuests.length} (${Math.round((score/pulleyQuests.length)*100)}%)`;
+  window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 
 // أسئلة المهارات الكاملة
