@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 10:30 - Exact Match for Common Names File Only -->
+<!-- Update Timestamp: 2026-10-10 11:00 - Fixed Navigation & Math Summary Placement -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -116,15 +116,18 @@ button { font: inherit; cursor: pointer; }
   color: var(--accent);
 }
 
+/* زر الثلاث خطوط للقائمة المنسدلة */
 .menu-toggle {
   display: none;
   background: var(--panel2);
   border: 1px solid var(--border);
   color: var(--text);
-  font-size: 1.4rem;
-  padding: 8px 12px;
+  font-size: 1.5rem;
+  padding: 8px 14px;
   border-radius: 12px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-controls {
@@ -308,7 +311,7 @@ button { font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 950px) {
-  .menu-toggle { display: block; }
+  .menu-toggle { display: flex; }
   .nav-links {
     display: none;
     position: absolute;
@@ -339,7 +342,6 @@ button { font: inherit; cursor: pointer; }
       <a href="#home" id="nav-home" class="active" onclick="showPage('home'); return false;">الرئيسية</a>
       <a href="#tests" id="nav-tests" onclick="showPage('tests'); return false;">الاختبارات</a>
       <a href="#laws" id="nav-laws" onclick="showPage('laws'); return false;">القوانين</a>
-      <a href="#math" id="nav-math" onclick="showPage('math'); return false;">ملخص الرياضيات</a>
       <a href="#linking" id="nav-linking" onclick="showPage('linking'); return false;">الربط</a>
       <a href="#summaries" id="nav-summaries" onclick="showPage('summaries'); return false;">الملخصات</a>
       <a href="#skills" id="nav-skills" onclick="showPage('skills'); return false;">المهارات</a>
@@ -355,7 +357,7 @@ button { font: inherit; cursor: pointer; }
   <section id="home" class="page-section active hero-wrapper">
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، ملخص الرياضيات، والملخصات الشاملة (بما فيها صور أحمد الحوت والأسماء الشائعة).</p>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات الشاملة.</p>
     
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
@@ -371,12 +373,6 @@ button { font: inherit; cursor: pointer; }
         <span class="card-action-link" onclick="showPage('laws')">تصفح القوانين والشرح ←</span>
       </div>
       <div class="card-item">
-        <div class="card-icon-box">📐</div>
-        <h3>ملخص الرياضيات</h3>
-        <p>أهم القواعد، التفاضل، التكامل، النهايات، وحساب المثلثات (math-summary.pdf).</p>
-        <span class="card-action-link" onclick="showPage('math')">افتح ملخص الرياضيات ←</span>
-      </div>
-      <div class="card-item">
         <div class="card-icon-box">⌘</div>
         <h3>الربط</h3>
         <p>الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية.</p>
@@ -385,7 +381,7 @@ button { font: inherit; cursor: pointer; }
       <div class="card-item">
         <div class="card-icon-box">▤</div>
         <h3>الملخصات</h3>
-        <p>الأسماء الشائعة، ملخص الأحياء (صور أحمد الحوت)، ومشتقات الهيدروكربونات.</p>
+        <p>ملخص الرياضيات، الأسماء الشائعة، وملخص الأحياء (صور أحمد الحوت).</p>
         <span class="card-action-link" onclick="showPage('summaries')">استعراض الملخصات ←</span>
       </div>
       <div class="card-item">
@@ -469,35 +465,6 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
-  <!-- ملخص الرياضيات -->
-  <section id="math" class="page-section">
-    <div class="main-panel">
-      <h2>📐 ملخص الرياضيات الشامل (math-summary.pdf)</h2>
-      <div class="pdf-download-bar">
-        <div><h4>ملف ملخص الرياضيات (PDF)</h4></div>
-        <a class="card-action-link" href="math-summary.pdf" target="_blank">فتح الملف ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="math-summary.pdf#view=FitH" loading="lazy"></iframe>
-
-      <p style="color: var(--muted); margin-top: 20px;">أهم القواعد الرياضية، التفاضل، التكامل، حساب المثلثات، والمتطابقات الأساسية.</p>
-      
-      <div class="concepts-section-title">📌 بطاقات ملخص الرياضيات:</div>
-      <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('mathSum', 0, this)">1. قواعد المشتقات<span>\frac{d}{dx}(x^n) = nx^{n-1}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('mathSum', 1, this)">2. قواعد التكامل غير المحدد<span>\int x^n dx = \frac{x^{n+1}}{n+1}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('mathSum', 2, this)">3. المتطابقات المثلثية الأساسية<span>\sin^2\theta + \cos^2\theta = 1</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('mathSum', 3, this)">4. مشتقات الدوال المثلثية<span>\frac{d}{dx}(\sin x) = \cos x</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('mathSum', 4, this)">5. قانون القوانين التربيعية (المميز)<span>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('mathSum', 5, this)">6. قوانين الأسس واللوغاريتمات<span>\ln(ab) = \ln a + \ln b</span></button>
-      </div>
-      <div class="concept-display-box" id="mathSumDisplay">
-        <h4>1. قواعد المشتقات الأساسية</h4>
-        <p>• <b>مشتقة القوة:</b> نزل الأس واطرح منه واحد.<br>• <b>مشتقة الثابت:</b> تساوي صفراً دائماً.</p>
-        <div class="math-block">$$\frac{d}{dx}(x^n) = n \cdot x^{n-1} \quad | \quad \frac{d}{dx}(c) = 0$$</div>
-      </div>
-    </div>
-  </section>
-
   <!-- 4. الربط -->
   <section id="linking" class="page-section">
     <div class="main-panel">
@@ -507,13 +474,20 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
-  <!-- 5. الملخصات -->
+  <!-- 5. الملخصات (شاملة ملخص الرياضيات، صور أحمد الحوت، والأسماء الشائعة ومشتقات الهيدروكربونات) -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية (الأسماء الشائعة، ملخص أحياء صور أحمد الحوت، ومشتقات الهيدروكربونات)</h2>
+      <h2>▤ الملخصات الأكاديمية الشاملة</h2>
       
+      <!-- ملخص الرياضيات -->
+      <div class="pdf-download-bar">
+        <div><h4>ملف ملخص الرياضيات (PDF)</h4></div>
+        <a class="card-action-link" href="math-summary.pdf" target="_blank">فتح ملخص الرياضيات ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="math-summary.pdf#view=FitH" loading="lazy"></iframe>
+
       <!-- ملخص أحياء (صور أحمد الحوت) -->
-      <div class="pdf-download-bar" style="margin-bottom: 30px;">
+      <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملخص أحياء (صور احمد الحوت) (PDF)</h4></div>
         <a class="card-action-link" href="صور احمد الحوت (2).pdf" target="_blank">فتح ملف صور أحمد الحوت ↗</a>
       </div>
@@ -522,7 +496,7 @@ button { font: inherit; cursor: pointer; }
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
-        <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح الملف ↗</a>
+        <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح ملف الأسماء الشائعة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
@@ -679,15 +653,6 @@ const pulleyData = [
   {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
 
-const mathSumData = [
-  {title: "1. قواعد المشتقات الأساسية", desc: "• <b>مشتقة القوة:</b> نزل الأس واطرح منه واحد.<br>• <b>مشتقة الثابت:</b> تساوي صفراً دائماً.", math: "$$\\frac{d}{dx}(x^n) = n \\cdot x^{n-1} \\quad | \\quad \\frac{d}{dx}(c) = 0$$"},
-  {title: "2. قواعد التكامل غير المحدد", desc: "• <b>تكامل القوة:</b> أضف للأس واحد واقسم على الأس الجديد.", math: "$$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)$$"},
-  {title: "3. المتطابقات المثلثية الأساسية", desc: "• <b>المتطابقة الأم:</b> مجموع مربعي الجيب وجيب التمام يساوي واحد.", math: "$$\\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\quad | \\quad 1 + \\tan^2(\\theta) = \\sec^2(\\theta)$$"},
-  {title: "4. مشتقات الدوال المثلثية", desc: "• <b>مشتقة الجيب والجتا:</b>", math: "$$\\frac{d}{dx}(\\sin x) = \\cos x \\quad | \\quad \\frac{d}{dx}(\\cos x) = -\\sin x$$"},
-  {title: "5. القانون العام للمعادلات التربيعية", desc: "• لحساب جذور المعادلة من الدرجة الثانية $ax^2 + bx + c = 0$:", math: "$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$"},
-  {title: "6. قوانين اللوغاريتمات والأسس", desc: "• <b>خواص اللوغاريتم الطبيعي:</b>", math: "$$\\ln(ab) = \\ln a + \\ln b \\quad | \\quad \\ln(a^b) = b \\cdot \\ln a$$"}
-];
-
 // الأسماء الشائعة المطابقة تماماً لملف الأسماء الشائعة الأصلي فقط
 const namesData = [
   {title: "1. الأسيتيلين (الإيثاين)", desc: "• غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات لشدة حرارته.", math: "$$C_2H_2$$"},
@@ -716,7 +681,6 @@ function switchCard(type, index, btn) {
   let displayBox, dataObj;
   if(type === 'chem') { displayBox = document.getElementById('chemDisplay'); dataObj = chemData; }
   else if(type === 'pulley') { displayBox = document.getElementById('pulleyDisplay'); dataObj = pulleyData; }
-  else if(type === 'mathSum') { displayBox = document.getElementById('mathSumDisplay'); dataObj = mathSumData; }
   else if(type === 'names') { displayBox = document.getElementById('namesDisplay'); dataObj = namesData; }
   else if(type === 'hydro') { displayBox = document.getElementById('hydroDisplay'); dataObj = hydroData; }
 
