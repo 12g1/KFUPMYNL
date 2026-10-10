@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 12:10 - Flexbox Horizontal Cards Layout Fix -->
+<!-- Update Timestamp: 2026-10-10 12:15 - Perfect Flex Cards Layout & Math Fix -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -241,7 +241,7 @@ button { font: inherit; cursor: pointer; }
   margin: 30px 0 15px;
 }
 
-/* تنسيق الفليكس الأفقية المتجاوبة لبطاقات الاختيار والأزرار */
+/* تعديل شبكة الأزرار لتكون مرتبة وعرضية بأحجام متساوية ومستقرة بدون أي تكسير طولي */
 .concept-cards-grid {
   display: flex;
   flex-direction: row;
@@ -253,15 +253,27 @@ button { font: inherit; cursor: pointer; }
   background: var(--panel2);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 14px 18px;
+  padding: 14px 16px;
   border-radius: 14px;
   font-weight: 700;
   text-align: center;
-  flex: 1 1 calc(25% - 12px);
-  min-width: 150px;
+  flex: 1 1 calc(22% - 12px);
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transition: all 0.25s;
 }
-.concept-tab-btn span { font-size: 0.85rem; color: var(--cyan); display: block; font-weight: 600; direction: ltr; margin-top: 6px; unicode-bidi: embed; }
+.concept-tab-btn span { 
+  font-size: 0.9rem; 
+  color: var(--cyan); 
+  display: inline-block; 
+  font-weight: 600; 
+  direction: ltr; 
+  margin-top: 6px; 
+  white-space: nowrap;
+}
 .concept-tab-btn:hover, .concept-tab-btn.active {
   border-color: var(--accent);
   background: rgba(99, 102, 241, 0.12);
@@ -286,6 +298,7 @@ button { font: inherit; cursor: pointer; }
   margin: 15px 0;
   font-weight: bold;
   direction: ltr;
+  overflow-x: auto;
 }
 
 .q-card { background: var(--panel2); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; }
@@ -333,7 +346,7 @@ button { font: inherit; cursor: pointer; }
   }
   .nav-links.show { display: flex; }
   .grid-cards { grid-template-columns: 1fr; }
-  .concept-tab-btn { flex: 1 1 100%; }
+  .concept-tab-btn { flex: 1 1 100%; min-width: 100%; }
 }
 </style>
 </head>
@@ -450,10 +463,10 @@ button { font: inherit; cursor: pointer; }
       <div class="concept-cards-grid">
         <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك<span>$W = mg , F_k = \mu_k F_N$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>$\sum F = ma$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود (التسارع)<span>$a = \frac{(m_1 - m_2)g}{m_1 + m_2}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. قوة الشد في أتوود<span>$T = \frac{2 m_1 m_2 g}{m_1 + m_2}$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود (التسارع)<span>$a = \frac{m_1 - m_2}{m_1 + m_2}g$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. قوة الشد في أتوود<span>$T = \frac{2 m_1 m_2}{m_1 + m_2}g$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. تحليل القوى على المنحدر<span>$W_x = mg \sin(\theta)$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 5, this)">6. بكرة على سطح مائل<span>$a = \frac{m_1 g - m_2 g \sin\theta}{m_1 + m_2}$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 5, this)">6. بكرة على سطح مائل<span>$a = \frac{m_1 - m_2 \sin\theta}{m_1 + m_2}g$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 6, this)">7. الشد في حبل مصعد<span>$T = m(g \pm a)$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 7, this)">8. القوة العمودية السطحية<span>$F_N = mg \cos(\theta)$</span></button>
       </div>
@@ -667,10 +680,10 @@ const chemData = [
 const pulleyData = [
   {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>قوة الوزن ($W$):</b> قوة جذب الأرض للجسم وتساوي الكتلة ضرب تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.", math: "$$W = mg \\quad | \\quad F_k = \\mu_k F_N$$"},
   {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "$$\\sum F = ma \\quad | \\quad a = \\frac{F_{\\text{net}}}{m}$$"},
-  {title: "3. آلة أتوود (التسارع)", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "$$a = \\frac{(m_1 - m_2)g}{m_1 + m_2}$$"},
-  {title: "4. قوة الشد في أتوود", desc: "• <b>قوة الشد ($T$):</b> القوة الناشئة في خيط أتوود.", math: "$$T = \\frac{2 m_1 m_2 g}{m_1 + m_2}$$"},
+  {title: "3. آلة أتوود (التسارع)", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "$$a = \\frac{m_1 - m_2}{m_1 + m_2}g$$"},
+  {title: "4. قوة الشد في أتوود", desc: "• <b>قوة الشد ($T$):</b> القوة الناشئة في خيط أتوود.", math: "$$T = \\frac{2 m_1 m_2}{m_1 + m_2}g$$"},
   {title: "5. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم على السطح المائل.", math: "$$W_x = mg \\sin(\\theta) \\quad | \\quad W_y = mg \\cos(\\theta)$$"},
-  {title: "6. بكرة على سطح مائل", desc: "• <b>حركة كتلة معلقة مع سطح مائل:</b>", math: "$$a = \\frac{m_1 g - m_2 g \\sin\\theta}{m_1 + m_2}$$"},
+  {title: "6. بكرة على سطح مائل", desc: "• <b>حركة كتلة معلقة مع سطح مائل:</b>", math: "$$a = \\frac{m_1 - m_2 \\sin\\theta}{m_1 + m_2}g$$"},
   {title: "7. الشد في حبل مصعد / صعود ونزول", desc: "• <b>قوة الشد المتغيرة:</b>", math: "$$T = m(g \\pm a)$$"},
   {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
@@ -916,4 +929,15 @@ function submitSkillTest(testIdx) {
     let userChoice = userSkAnswers[testIdx] ? userSkAnswers[testIdx][qIndex] : undefined;
     buttons.forEach((b, oIdx) => {
       b.onclick = null;
-      if
+      if (oIdx === item.ans) b.classList.add('correct');
+      else if (oIdx === userChoice) b.classList.add('wrong');
+    });
+    if (userChoice === item.ans) score++;
+  });
+  let scoreBox = document.getElementById('skScore');
+  scoreBox.textContent = `نتيجة الاختبار: ${score} من ${questions.length} (${Math.round((score/questions.length)*100)}%)`;
+  window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
