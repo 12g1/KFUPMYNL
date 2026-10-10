@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 10:25 - Smooth Navigation & Bugfix & Full Pulley/Names -->
+<!-- Update Timestamp: 2026-10-10 10:30 - Exact Match for Common Names File Only -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -115,9 +115,22 @@ button { font: inherit; cursor: pointer; }
   background: rgba(99, 102, 241, 0.15);
   color: var(--accent);
 }
+
+.menu-toggle {
+  display: none;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.4rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
 .nav-controls {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .ctrl-btn {
   background: var(--panel2);
@@ -294,9 +307,22 @@ button { font: inherit; cursor: pointer; }
   margin: 15px 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 85px;
+    right: 0;
+    left: 0;
+    background: var(--panel);
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .nav-links.show { display: flex; }
   .grid-cards { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
 }
 </style>
 </head>
@@ -308,10 +334,12 @@ button { font: inherit; cursor: pointer; }
       <div class="brand-icon">K</div>
       <span>KFUPMYNL</span>
     </a>
-    <nav class="nav-links">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navLinks">
       <a href="#home" id="nav-home" class="active" onclick="showPage('home'); return false;">الرئيسية</a>
       <a href="#tests" id="nav-tests" onclick="showPage('tests'); return false;">الاختبارات</a>
       <a href="#laws" id="nav-laws" onclick="showPage('laws'); return false;">القوانين</a>
+      <a href="#math" id="nav-math" onclick="showPage('math'); return false;">ملخص الرياضيات</a>
       <a href="#linking" id="nav-linking" onclick="showPage('linking'); return false;">الربط</a>
       <a href="#summaries" id="nav-summaries" onclick="showPage('summaries'); return false;">الملخصات</a>
       <a href="#skills" id="nav-skills" onclick="showPage('skills'); return false;">المهارات</a>
@@ -327,7 +355,7 @@ button { font: inherit; cursor: pointer; }
   <section id="home" class="page-section active hero-wrapper">
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات الشاملة، واختبارات المهارات المتكاملة.</p>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، ملخص الرياضيات، والملخصات الشاملة.</p>
     
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
@@ -343,6 +371,12 @@ button { font: inherit; cursor: pointer; }
         <span class="card-action-link" onclick="showPage('laws')">تصفح القوانين والشرح ←</span>
       </div>
       <div class="card-item">
+        <div class="card-icon-box">📐</div>
+        <h3>ملخص الرياضيات</h3>
+        <p>أهم القواعد، التفاضل، التكامل، النهايات، وحساب المثلثات.</p>
+        <span class="card-action-link" onclick="showPage('math')">افتح ملخص الرياضيات ←</span>
+      </div>
+      <div class="card-item">
         <div class="card-icon-box">⌘</div>
         <h3>الربط</h3>
         <p>الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية.</p>
@@ -351,7 +385,7 @@ button { font: inherit; cursor: pointer; }
       <div class="card-item">
         <div class="card-icon-box">▤</div>
         <h3>الملخصات</h3>
-        <p>الأسماء الشائعة، مشتقات الهيدروكربونات، وملخصات المواد.</p>
+        <p>الأسماء الشائعة (مطابقة للملف الأصلي)، ومشتقات الهيدروكربونات.</p>
         <span class="card-action-link" onclick="showPage('summaries')">استعراض الملخصات ←</span>
       </div>
       <div class="card-item">
@@ -435,6 +469,29 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
+  <!-- ملخص الرياضيات -->
+  <section id="math" class="page-section">
+    <div class="main-panel">
+      <h2>📐 ملخص الرياضيات الشامل</h2>
+      <p style="color: var(--muted);">أهم القواعد الرياضية، التفاضل، التكامل، حساب المثلثات، والمتطابقات الأساسية.</p>
+      
+      <div class="concepts-section-title">📌 بطاقات ملخص الرياضيات:</div>
+      <div class="concept-cards-grid">
+        <button class="concept-tab-btn active" onclick="switchCard('mathSum', 0, this)">1. قواعد المشتقات<span>\frac{d}{dx}(x^n) = nx^{n-1}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('mathSum', 1, this)">2. قواعد التكامل غير المحدد<span>\int x^n dx = \frac{x^{n+1}}{n+1}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('mathSum', 2, this)">3. المتطابقات المثلثية الأساسية<span>\sin^2\theta + \cos^2\theta = 1</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('mathSum', 3, this)">4. مشتقات الدوال المثلثية<span>\frac{d}{dx}(\sin x) = \cos x</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('mathSum', 4, this)">5. قانون القوانين التربيعية (المميز)<span>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('mathSum', 5, this)">6. قوانين الأسس واللوغاريتمات<span>\ln(ab) = \ln a + \ln b</span></button>
+      </div>
+      <div class="concept-display-box" id="mathSumDisplay">
+        <h4>1. قواعد المشتقات الأساسية</h4>
+        <p>• <b>مشتقة القوة:</b> نزل الأس واطرح منه واحد.<br>• <b>مشتقة الثابت:</b> تساوي صفراً دائماً.</p>
+        <div class="math-block">$$\frac{d}{dx}(x^n) = n \cdot x^{n-1} \quad | \quad \frac{d}{dx}(c) = 0$$</div>
+      </div>
+    </div>
+  </section>
+
   <!-- 4. الربط -->
   <section id="linking" class="page-section">
     <div class="main-panel">
@@ -447,42 +504,30 @@ button { font: inherit; cursor: pointer; }
   <!-- 5. الملخصات -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية الشاملة (أكثر من 20 اسماً شائعاً ومشتقات الهيدروكربونات)</h2>
+      <h2>▤ الملخصات الأكاديمية (الأسماء الشائعة طبقاً للملف الأصلي ومشتقات الهيدروكربونات)</h2>
       
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar">
-        <div><h4>ملف الأسماء الشائعة الكامل (PDF)</h4></div>
+        <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
         <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح الملف ↗</a>
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (أكثر من 20 مركباً):</div>
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة (حسب محتوى الملف الأصلي بدقة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الأسيتيلين والجليسرول<span>C_2H_2 , C_3H_8O_3</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الأسيتون والفورمالديهايد<span>CH_3COCH_3 , HCHO</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. حمض الفورميك واليوريا<span>HCOOH , CO(NH_2)_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. التولوين والفينول<span>C_6H_5CH_3 , C_6H_5OH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. الكلوروفورم ورباعي كلوريد الكربون<span>CHCl_3 , CCl_4</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 5, this)">6. الميثان والإيثان<span>CH_4 , C_2H_6</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 6, this)">7. البروبان والبيوتان<span>C_3H_8 , C_4H_{10}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 7, this)">8. الإيثيلين والأستلين<span>C_2H_4 , C_2H_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 8, this)">9. حمض الخليك (الأسيتيك)<span>CH_3COOH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 9, this)">10. إيثانول (كحول إيثيلي)<span>C_2H_5OH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 10, this)">11. الميثانول (كحول ميثيلي)<span>CH_3OH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 11, this)">12. ثنائي إيثيل الإيثر<span>C_2H_5OC_2H_5</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 12, this)">13. أنيلين (فينيل أمين)<span>C_6H_5NH_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 13, this)">14. بنزالدهايد<span>C_6H_5CHO</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 14, this)">15. حمض البنزويك<span>C_6H_5COOH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 15, this)">16. أسيتات الإيثيل<span>CH_3COOC_2H_5</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 16, this)">17. أسيتاميد<span>CH_3CONH_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 17, this)">18. ثنائي كلورو ميثان<span>CH_2Cl_2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 18, this)">19. سيكلوهكسان<span>C_6H_{12}</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 19, this)">20. إيثيلين جلايكول<span>C_2H_4(OH)_2</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الأسيتيلين (الإيثاين)<span>C_2H_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الجليسرول<span>C_3H_8O_3</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. الأسيتون<span>CH_3COCH_3</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. الفورمالديهايد (الميثانال)<span>HCHO</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. حمض الفورميك (الميثانويك)<span>HCOOH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 5, this)">6. اليوريا<span>CO(NH_2)_2</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 6, this)">7. التولوين<span>C_6H_5CH_3</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 7, this)">8. الفينول<span>C_6H_5OH</span></button>
       </div>
       <div class="concept-display-box" id="namesDisplay">
-        <h4>1. الأسيتيلين والجليسرول</h4>
-        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات لشدة حرارته.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود في الطائرات وفي المستحضرات الصيدلانية.</p>
-        <div class="math-block">$$\text{الأسيتيلين:} \quad C_2H_2 \quad | \quad \text{الجليسرول:} \quad C_3H_8O_3$$</div>
+        <h4>1. الأسيتيلين (الإيثاين)</h4>
+        <p>• غاز هيدروكربوني يحتوي على رابطة ثلاثية، يُستعمل في لحام وقطع الفلزات لشدة حرارته العالية.</p>
+        <div class="math-block">$$C_2H_2$$</div>
       </div>
 
       <!-- مشتقات الهيدروكربونات -->
@@ -563,6 +608,11 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = isDark ? '☀️ نهاري' : '🌙 ليلي';
 });
 
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('show');
+}
+
 function showPage(pageId) {
   requestAnimationFrame(() => {
     document.querySelectorAll('.page-section').forEach(section => {
@@ -578,6 +628,9 @@ function showPage(pageId) {
     const targetLink = document.getElementById('nav-' + pageId);
     if (targetLink) targetLink.classList.add('active');
     
+    const nav = document.getElementById('navLinks');
+    if (nav) nav.classList.remove('show');
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
     renderMath();
   });
@@ -613,27 +666,25 @@ const pulleyData = [
   {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
 
+const mathSumData = [
+  {title: "1. قواعد المشتقات الأساسية", desc: "• <b>مشتقة القوة:</b> نزل الأس واطرح منه واحد.<br>• <b>مشتقة الثابت:</b> تساوي صفراً دائماً.", math: "$$\\frac{d}{dx}(x^n) = n \\cdot x^{n-1} \\quad | \\quad \\frac{d}{dx}(c) = 0$$"},
+  {title: "2. قواعد التكامل غير المحدد", desc: "• <b>تكامل القوة:</b> أضف للأس واحد واقسم على الأس الجديد.", math: "$$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)$$"},
+  {title: "3. المتطابقات المثلثية الأساسية", desc: "• <b>المتطابقة الأم:</b> مجموع مربعي الجيب وجيب التمام يساوي واحد.", math: "$$\\sin^2(\\theta) + \\cos^2(\\theta) = 1 \\quad | \\quad 1 + \\tan^2(\\theta) = \\sec^2(\\theta)$$"},
+  {title: "4. مشتقات الدوال المثلثية", desc: "• <b>مشتقة الجيب والجتا:</b>", math: "$$\\frac{d}{dx}(\\sin x) = \\cos x \\quad | \\quad \\frac{d}{dx}(\\cos x) = -\\sin x$$"},
+  {title: "5. القانون العام للمعادلات التربيعية", desc: "• لحساب جذور المعادلة من الدرجة الثانية $ax^2 + bx + c = 0$:", math: "$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$"},
+  {title: "6. قوانين اللوغاريتمات والأسس", desc: "• <b>خواص اللوغاريتم الطبيعي:</b>", math: "$$\\ln(ab) = \\ln a + \\ln b \\quad | \\quad \\ln(a^b) = b \\cdot \\ln a$$"}
+];
+
+// الأسماء الشائعة المطابقة تماماً لملف الأسماء الشائعة الأصلي فقط
 const namesData = [
-  {title: "1. الأسيتيلين والجليسرول", desc: "• <b>الأسيتيلين:</b> C2H2 للحام الفلزات.<br>• <b>الجليسرول:</b> C3H8O3 مانع لتجمد الوقود.", math: "$$\\text{الأسيتيلين:} \\quad C_2H_2 \\quad | \\quad \\text{الجليسرول:} \\quad C_3H_8O_3$$"},
-  {title: "2. الأسيتون والفورمالديهايد", desc: "• <b>الأسيتون:</b> مذيب طلاء الأظافر.<br>• <b>الفورمالديهايد:</b> حفظ الأنسجة البيولوجية.", math: "$$\\text{الأسيتون:} \\quad CH_3COCH_3 \\quad | \\quad \\text{الفورمالديهايد:} \\quad HCHO$$"},
-  {title: "3. حمض الفورميك واليوريا", desc: "• <b>ح. الفورميك:</b> HCOOH (يفرزه النمل).<br>• <b>اليوريا:</b> CO(NH2)2 للأسمدة.", math: "$$\\text{حمض الفورميك:} \\quad HCOOH \\quad | \\quad \\text{اليوريا:} \\quad CO(NH_2)_2$$"},
-  {title: "4. التولوين والفينول", desc: "• <b>التولوين:</b> C6H5CH3 مذيب ومتفجرات.<br>• <b>الفينول:</b> C6H5OH مطهر ومعقم.", math: "$$\\text{التولوين:} \\quad C_6H_5CH_3 \\quad | \\quad \\text{الفينول:} \\quad C_6H_5OH$$"},
-  {title: "5. الكلوروفورم ورباعي كلوريد الكربون", desc: "• <b>الكلوروفورم:</b> CHCl3 مخدر تاريخي.<br>• <b>رباعي الكلور:</b> CCl4 مذيب غير قطبي.", math: "$$\\text{الكلوروفورم:} \\quad CHCl_3 \\quad | \\quad \\text{رباعي الكلوريد:} \\quad CCl_4$$"},
-  {title: "6. الميثان والإيثان", desc: "• <b>الميثان:</b> CH4 الغاز الطبيعي.<br>• <b>الإيثان:</b> C2H6 ألكان بسيط.", math: "$$\\text{الميثان:} \\quad CH_4 \\quad | \\quad \\text{الإيثان:} \\quad C_2H_6$$"},
-  {title: "7. البروبان والبيوتان", desc: "• <b>البروبان:</b> C3H8 وقود الشواء.<br>• <b>البيوتان:</b> C4H10 وقود الولاعات.", math: "$$\\text{البروبان:} \\quad C_3H_8 \\quad | \\quad \\text{البيوتان:} \\quad C_4H_{10}$$"},
-  {title: "8. الإيثيلين والأستلين", desc: "• <b>الإيثيلين:</b> C2H4 إنضاج الفواكه.<br>• <b>الأسيتيلين:</b> C2H2 لحام.", math: "$$\\text{الإيثيلين:} \\quad C_2H_4 \\quad | \\quad \\text{الأسيتيلين:} \\quad C_2H_2$$"},
-  {title: "9. حمض الخليك (الأسيتيك)", desc: "• <b>حمض الأسيتيك:</b> CH3COOH المكون الرئيسي للخل.", math: "$$\\text{حمض الأسيتيك:} \\quad CH_3COOH$$"},
-  {title: "10. إيثانول (كحول إيثيلي)", desc: "• <b>الإيثانول:</b> C2H5OH كحول مطهر ومذيب.", math: "$$\\text{الإيثانول:} \\quad C_2H_5OH$$"},
-  {title: "11. الميثانول (كحول ميثيلي)", desc: "• <b>الميثانول:</b> CH3OH أبسط الكحولات سام.", math: "$$\\text{الميثانول:} \\quad CH_3OH$$"},
-  {title: "12. ثنائي إيثيل الإيثر", desc: "• <b>الإيثر الثنائي:</b> C2H5OC2H5 مخدر طبي شهير.", math: "$$\\text{ثنائي إيثيل الإيثر:} \\quad C_2H_5OC_2H_5$$"},
-  {title: "13. أنيلين (فينيل أمين)", desc: "• <b>الأنيلين:</b> C6H5NH2 لصناعة الأصباغ.", math: "$$\\text{الأنيلين:} \\quad C_6H_5NH_2$$"},
-  {title: "14. بنزالدهايد", desc: "• <b>بنزالدهايد:</b> C6H5CHO زيت اللوز المر.", math: "$$\\text{بنزالدهايد:} \\quad C_6H_5CHO$$"},
-  {title: "15. حمض البنزويك", desc: "• <b>ح. البنزويك:</b> C6H5COOH حافظ للأغذية.", math: "$$\\text{حمض البنزويك:} \\quad C_6H_5COOH$$"},
-  {title: "16. أسيتات الإيثيل", desc: "• <b>أسيتات الإيثيل:</b> CH3COOC2H5 إستر ذو رائحة مميزة.", math: "$$\\text{أسيتات الإيثيل:} \\quad CH_3COOC_2H_5$$"},
-  {title: "17. أسيتاميد", desc: "• <b>الأسيتاميد:</b> CH3CONH2 أميد عضوي.", math: "$$\\text{الأسيتاميد:} \\quad CH_3CONH_2$$"},
-  {title: "18. ثنائي كلورو ميثان", desc: "• <b>ثنائي كلورو ميثان:</b> CH2Cl2 مذيب عضوي هالوجيني.", math: "$$\\text{ثنائي كلورو ميثان:} \\quad CH_2Cl_2$$"},
-  {title: "19. سيكلوهكسان", desc: "• <b>سيكلوهكسان:</b> C6H12 ألكان حلقي مذيب.", math: "$$\\text{سيكلوهكسان:} \\quad C_6H_{12}$$"},
-  {title: "20. إيثيلين جلايكول", desc: "• <b>إيثيلين جلايكول:</b> C2H4(OH)2 مانع تجمد الرديتر.", math: "$$\\text{إيثيلين جلايكول:} \\quad C_2H_4(OH)_2$$"}
+  {title: "1. الأسيتيلين (الإيثاين)", desc: "• غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات لشدة حرارته.", math: "$$C_2H_2$$"},
+  {title: "2. الجليسرول", desc: "• كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود وفي المستحضرات الصيدلانية.", math: "$$C_3H_8O_3$$"},
+  {title: "3. الأسيتون", desc: "• أبسط الكيتونات، يُستخدم كمذيب عضوي شهير (مثل طلاء الأظافر).", math: "$$CH_3COCH_3$$"},
+  {title: "4. الفورمالديهايد (الميثانال)", desc: "• أبسط الألدهيدات، يُستخدم في حفظ العينات والأنسجة البيولوجية.", math: "$$HCHO$$"},
+  {title: "5. حمض الفورميك (الميثانويك)", desc: "• أبسط الأحماض الكربوكسيلية، يفرزه النمل للدفاع عن نفسه.", math: "$$HCOOH$$"},
+  {title: "6. اليوريا", desc: "• مركب أميدي عضوي هام يدخل في صناعة الأسمدة الزراعية.", math: "$$CO(NH_2)_2$$"},
+  {title: "7. التولوين (ميثيل بنزين)", desc: "• مركب أروماتي يُستخدم كمذيب ومادة أولية في الصناعات العضوية.", math: "$$C_6H_5CH_3$$"},
+  {title: "8. الفينول (هيدروكسي بنزين)", desc: "• مركب أروماتي حامضي ضعيف يُستخدم كمطهر ومعقم.", math: "$$C_6H_5OH$$"}
 ];
 
 const hydroData = [
@@ -652,6 +703,7 @@ function switchCard(type, index, btn) {
   let displayBox, dataObj;
   if(type === 'chem') { displayBox = document.getElementById('chemDisplay'); dataObj = chemData; }
   else if(type === 'pulley') { displayBox = document.getElementById('pulleyDisplay'); dataObj = pulleyData; }
+  else if(type === 'mathSum') { displayBox = document.getElementById('mathSumDisplay'); dataObj = mathSumData; }
   else if(type === 'names') { displayBox = document.getElementById('namesDisplay'); dataObj = namesData; }
   else if(type === 'hydro') { displayBox = document.getElementById('hydroDisplay'); dataObj = hydroData; }
 
@@ -671,7 +723,7 @@ const pulleyQuests = [
   {q: "3- جسم كتلته 10 kg يتحرك على سطح أفقي أملس ب تأثير قوة محصلة 20 N، يكون تسارعه:", opts: ["0.5 m/s^2", "2.0 m/s^2", "5.0 m/s^2", "200 m/s^2"], ans: 1},
   {q: "4- إذا وضع جسم على مستوى مائل يميل بزاوية 30 درجة، فإن المركبة الموازية لوزنه ($W_x$) تساوي:", opts: ["0.5 mg", "0.86 mg", "mg", "صفر"], ans: 0},
   {q: "5- معامل الاحتكاك الحركي يعتمد بشكل أساسي على:", opts: ["طبيعة السطحين المتلامسين فقط", "سرعة الحركة للجسم", "مساحة سطح التلامس", "كتلة الجسم المتحرك"], ans: 0},
-  {q: "6- في حالة صعود مصعد بتسارع (a)، فإن قوة الشد في حبل التعليق مقارنة بالوزن العقيقي تكون:", opts: ["أكبر من الوزن الحقيقي T = m(g+a)", "أقل من الوزن الحقيقي", "تساوي الوزن الحقيقي تماماً", "تساوي الصفر"], ans: 0}
+  {q: "6- في حالة صعود مصعد بتسارع (a)، فإن قوة الشد في حبل التعليق مقارنة بالوزن الحقيقي تكون:", opts: ["أكبر من الوزن الحقيقي T = m(g+a)", "أقل من الوزن الحقيقي", "تساوي الوزن الحقيقي تماماً", "تساوي الصفر"], ans: 0}
 ];
 
 let userPulleyAnswers = {};
