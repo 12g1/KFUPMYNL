@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KFUPMYNL | المنصة الأكاديمية المتكاملة</title>
+<!-- مكتبة KaTeX لعرض معادلات لاتكس بوضوح تام -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMath()"></script>
 <style>
 :root {
   --bg-dark: #070b19;
@@ -219,21 +223,21 @@ button { font: inherit; cursor: pointer; }
 }
 .concept-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
   margin-bottom: 20px;
 }
 .concept-tab-btn {
   background: var(--panel2);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-radius: 16px;
   font-weight: 700;
   text-align: right;
   transition: all 0.25s;
 }
-.concept-tab-btn span { font-size: 0.8rem; color: var(--muted); display: block; font-weight: 400; direction: ltr; }
+.concept-tab-btn span { font-size: 0.78rem; color: var(--muted); display: block; font-weight: 400; direction: ltr; margin-top: 4px; }
 .concept-tab-btn:hover, .concept-tab-btn.active {
   border-color: var(--accent);
   background: rgba(99, 102, 241, 0.12);
@@ -251,11 +255,11 @@ button { font: inherit; cursor: pointer; }
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--cyan);
-  font-size: 1.1rem;
-  padding: 14px 18px;
+  font-size: 1.15rem;
+  padding: 16px 20px;
   border-radius: 12px;
-  text-align: left;
-  margin: 12px 0;
+  text-align: center;
+  margin: 15px 0;
   font-weight: bold;
   direction: ltr;
 }
@@ -383,38 +387,38 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية (بالقوانين والرموز العلمية):</div>
+      <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية (معادلات لاتكس معتمدة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">1. حساب عدد المولات<span>n = m / M</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">2. عدد الجسيمات وأفوجادرو<span>N = n × NA</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">3. المادة المحددة للتفاعل<span>الناتج الأصغر يحدد</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 3, this)">4. نسبة المردود المئوية<span>(Actual / Theor) × 100</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">1. عدد المولات<span>$n = \frac{m}{M}$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">2. عدد الجسيمات<span>$N = n \times N_A$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">3. المادة المحددة<span>الناتج الأصغر</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 3, this)">4. المردود المئوي<span>$\frac{\text{Actual}}{\text{Theory}} \times 100$</span></button>
       </div>
       <div class="concept-display-box" id="chemDisplay">
         <h4>1. حساب عدد المولات والكتلة</h4>
         <p>• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <b>الكتلة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.</p>
-        <div class="math-block">n = m ÷ M   |   m = n × M</div>
+        <div class="math-block">$n = \frac{m}{M} \quad \text{و} \quad m = n \times M$</div>
       </div>
 
-      <!-- ميكانيكا البكرات (تم تحديث الاسم والامتداد إلى pulley-mechanics.pdf ليتوافق تماماً مع الموقع) -->
+      <!-- ميكانيكا البكرات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف ميكانيكا البكرات (PDF)</h4></div>
         <a class="card-action-link" href="pulley-mechanics.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="pulley-mechanics.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات (بالقوانين والرموز العلمية الكاملة):</div>
+      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات (معادلات لاتكس كاملة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك الحركي<span>W = mg  ,  Fk = μk FN</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>ΣF = ma  ,  a = Fnet / m</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود والبكرات<span>a = ((m1 - m2)g) / (m1 + m2)</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل القوى على المنحدر<span>Wx = mg sin(θ) , Wy = mg cos(θ)</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. الشد في الحبال المتصلة<span>T = mg ± ma (حسب اتجاه الحركة)</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك<span>$W = mg, \, F_k = \mu_k F_N$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>$\sum F = ma$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود وبكرات<span>$a = \frac{(m_1 - m_2)g}{m_1 + m_2}$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل المنحدر<span>$W_x = mg\sin(\theta)$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. قوة الشد بالحبال<span>$T = m(g \pm a)$</span></button>
       </div>
       <div class="concept-display-box" id="pulleyDisplay">
         <h4>1. قوى الوزن والاحتكاك الحركي</h4>
-        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.</p>
-        <div class="math-block">W = m × g   |   F_k = \mu_k \times F_N</div>
+        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام وتساوي حاصل ضرب معامل الاحتكاك في القوة العمودية.</p>
+        <div class="math-block">$W = m \cdot g \quad \text{,} \quad F_k = \mu_k \cdot F_N$</div>
       </div>
     </div>
   </section>
@@ -431,46 +435,52 @@ button { font: inherit; cursor: pointer; }
   <!-- 5. الملخصات -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية الشاملة والأسماء الشائعة</h2>
+      <h2>▤ الملخصات الأكاديمية الشاملة (الأسماء الشائعة ومشتقات الهيدروكربونات)</h2>
       
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar">
-        <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
+        <div><h4>ملف الأسماء الشائعة الكامل (PDF)</h4></div>
         <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح الملف ↗</a>
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات الأسماء الشائعة (مع الصيغ والمركبات):</div>
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الشاملة (مع الصيغ الكيميائية المعتمدة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الألكينات والألكانات<span>C2H2 , C3H8O3</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الكيتونات والألدهيدات<span>CH3COCH3 , HCHO</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. الأحماض واليوريا<span>HCOOH , CO(NH2)2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. المركبات العطرية<span>C6H5CH3 , C6H5OH</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الألكينات والألكانات<span>$C_2H_2, \, C_3H_8O_3$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الكيتونات والألدهيدات<span>$CH_3COCH_3, \, HCHO$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. الأحماض واليوريا<span>$HCOOH, \, CO(NH_2)_2$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. المركبات العطرية<span>$C_6H_5CH_3, \, C_6H_5OH$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. مشتقات الهيدروكربونات الخاصة<span>$CHCl_3, \, CCl_4$</span></button>
       </div>
       <div class="concept-display-box" id="namesDisplay">
         <h4>1. الألكينات والألكانات الشائعة</h4>
-        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام الفلزات.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود.</p>
-        <div class="math-block">Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3</div>
+        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات لشدة حرارته.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل يستخدم كمانع لتجمد الوقود في الطائرات وفي المستحضرات الطبية.</p>
+        <div class="math-block">$\text{الأسيتيلين: } C_2H_2 \quad | \quad \text{الجليسرول: } C_3H_8O_3$</div>
       </div>
 
       <!-- مشتقات الهيدروكربونات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
-        <div><h4>ملف مشتقات الهايدروكربونات (PDF)</h4></div>
+        <div><h4>ملف مشتقات الهايدروكربونات الشامل (PDF)</h4></div>
         <a class="card-action-link" href="مشتقات الهايدروكربونات.pdf" target="_blank">فتح الملف ↗</a>
       </div>
       <iframe class="pdf-viewer" src="مشتقات الهايدروكربونات.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات مشتقات الهيدروكربونات (مع المجموعات الوظيفية والصيغ R):</div>
+      <div class="concepts-section-title">📌 قائمة مشتقات الهيدروكربونات الكاملة (المجموعات الوظيفية بالصيغ العامة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">1. هاليدات الألكيل والأريل<span>R-X</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">2. الكحولات والأمينات<span>R-OH , R-NH2</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">3. الأحماض والإسترات<span>R-COOH , R-COO-R'</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 3, this)">4. الإيثرات والألدهيدات<span>R-O-R' , R-CHO</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">1. هاليدات الألكيل والأريل<span>$R - X$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">2. الكحولات<span>$R - OH$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">3. الإيثرات<span>$R - O - R'$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 3, this)">4. الأمينات<span>$R - NH_2$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 4, this)">5. الألدهيدات<span>$R - CHO$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 5, this)">6. الكيتونات<span>$R - CO - R'$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 6, this)">7. الأحماض الكربوكسيلية<span>$R - COOH$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 7, this)">8. الإسترات<span>$R - COO - R'$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 8, this)">9. الأميدات<span>$R - CONH_2$</span></button>
       </div>
       <div class="concept-display-box" id="hydroDisplay">
         <h4>1. هاليدات الألكيل والأريل</h4>
-        <p>• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) بسلسلة ألكيل أو أريل (R).<br>• <b>الصيغة العامة:</b> R - X (حيث X تمثل الفلور أو الكلور أو البروم أو اليود).</p>
-        <div class="math-block">المجموعة الوظيفية: R - X   (X = F, Cl, Br, I)</div>
+        <p>• <b>التعريف والمجموعة الوظيفية:</b> مشتقات هيدروكربونية ترتبط فيها ذرة هالوجين (F, Cl, Br, I) مباشرة بسلسلة أليفاتية أو أروماتية.<br>• <b>الاستخدامات:</b> مواد أولية هامة ومذيبات وعوامل تبريد ومخدرات طبية.</p>
+        <div class="math-block">$\text{المجموعة الوظيفية: } R - X \quad (X = F, Cl, Br, I)$</div>
       </div>
     </div>
   </section>
@@ -541,36 +551,54 @@ function showPage(pageId) {
   if (targetLink) targetLink.classList.add('active');
   
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderMath();
 }
 
-// شروحات القوانين بترميز نصي واضح ومفهوم 100%
+function renderMath() {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ]
+    });
+  }
+}
+
+// قواعد البيانات والقوانين مع صيغ لاتكس احترافية
 const chemData = [
-  {title: "1. حساب عدد المولات والكتلة", desc: "• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <b>كتلة المادة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", math: "n = m ÷ M   |   m = n × M"},
-  {title: "2. حساب عدد الجسيمات وثابت أفوجادرو", desc: "• <b>عدد الجسيمات (N):</b> يُحسب بضرب عدد المولات (n) في ثابت أفوجادرو (NA).<br>• <b>ثابت أفوجادرو:</b> يمثل (6.02 × 10^23 جسيم/مول).", math: "N = n × N_A   (N_A = 6.02 × 10^{23})"},
-  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً وتنتج الكمية الأقل من النواتج.", math: "الناتج الأصغر كمية هو الذي يحدد المادة المحددة للتفاعل"},
-  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود المئوية:</b> تقيس كفاءة التفاعل العملي مقارنة بالنظري.", math: "نسبة المردود المئوية = (المردود الفعلي ÷ المردود النظري) × 100"}
+  {title: "1. حساب عدد المولات والكتلة", desc: "• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <b>كتلة المادة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", math: "$n = \\frac{m}{M} \\quad | \\quad m = n \\times M$"},
+  {title: "2. حساب عدد الجسيمات وثابت أفوجادرو", desc: "• <b>عدد الجسيمات (N):</b> يُحسب بضرب عدد المولات (n) في ثابت أفوجادرو ($N_A$).<br>• <b>ثابت أفوجادرو:</b> يساوي ($6.02 \\times 10^{23}$ جسيم/مول).", math: "$N = n \\times N_A \\quad (N_A = 6.02 \\times 10^{23})$"},
+  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً في التفاعل وتنتج الكمية الأقل من النواتج النظرية.", math: "\\text{الناتج الأصغر كمية يحدد المادة المحددة للتفاعل}"},
+  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود المئوي:</b> تقيس كفاءة التفاعل العملي مقارنة بالناتج النظري المحسوب.", math: "\\text{المردود المئوي} = \\left( \\frac{\\text{المردود الفعلي}}{\\text{المردود النظري}} \\right) \\times 100"}
 ];
 
 const pulleyData = [
-  {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>الوزن (W):</b> قوة الجاذبية الأرضية وتساوي الكتلة في التسارع (W = mg).<br>• <b>الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام.", math: "W = m × g   |   F_k = \mu_k \times F_N"},
-  {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "\\Sigma F = m \times a   |   a = F_{net} ÷ m"},
-  {title: "3. آلة أتوود والبكرات", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "a = ((m_1 - m_2) \times g) ÷ (m_1 + m_2)"},
-  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم صعوداً أو نزولاً على السطح المائل.", math: "W_x = m \times g \times \\sin(\\theta)   |   W_y = m \times g \times \\cos(\\theta)"},
-  {title: "5. حساب الشد (T) في الحبال", desc: "• <b>قوة الشد:</b> القوة التي يؤثر بها الخيط على الجسم المتصل به أثناء الحركة.", math: "T = m(g + a) \\text{ (للصعود)}   |   T = m(g - a) \\text{ (للنزول)}"}
+  {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة ضرب تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.", math: "$W = mg \\quad | \\quad F_k = \\mu_k F_N$"},
+  {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "\\sum F = ma \\quad | \\quad a = \\frac{F_{\\text{net}}}{m}"},
+  {title: "3. آلة أتوود والبكرات", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط مهمل الكتسة على بكرة ملساء.", math: "$a = \\frac{(m_1 - m_2)g}{m_1 + m_2}$"},
+  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم صعوداً أو نزولاً على السطح المائل.", math: "$W_x = mg \\sin(\\theta) \\quad | \\quad W_y = mg \\cos(\\theta)$"},
+  {title: "5. قوة الشد في الحبال المتصلة", desc: "• <b>الشد (T):</b> القوة الناشئة في الخيط وتتأثر باتجاه حركة النظام وتارعة الكتلة.", math: "$T = m(g + a) \\text{ (للصعود)} \\quad | \\quad T = m(g - a) \\text{ (للنزول)}$"}
 ];
 
 const namesData = [
-  {title: "1. الألكينات والألكانات الشائعة", desc: "• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام الفلزات.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود.", math: "Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3"},
-  {title: "2. الكيتونات والألدهيدات الشائعة", desc: "• <b>الأسيتون (البروبانون):</b> مذيب عضوي لإزالة طلاء الأظافر.<br>• <b>الفورمالديهايد:</b> ألدهيد لحفظ العينات البيولوجية والأنسجة.", math: "Acetone: CH_3COCH_3   |   Formaldehyde: HCHO"},
-  {title: "3. الأحماض واليوريا الشائعة", desc: "• <b>حمض الفورميك:</b> حمض يفرزه النمل للدفاع عن نفسه.<br>• <b>اليوريا (كارباميد):</b> مركب غني بالنيتروجين للأسمدة الزراعية.", math: "Formic Acid: HCOOH   |   Urea: CO(NH_2)_2"},
-  {title: "4. المركبات العطرية المشهورة", desc: "• <b>التولوين:</b> مذيب عضوي وصناعة المتفجرات.<br>• <b>الفينول:</b> مركب يحتوي على مجموعة هيدروكسيل كمطهر قوي.", math: "Toluene: C_6H_5CH_3   |   Phenol: C_6H_5OH"}
+  {title: "1. الألكينات والألكانات الشائعة", desc: "• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني برابطة ثلاثية يُستعمل في لحام وقطع الفلزات.<br>• <b>الجليسرول:</b> كحول ثلاثي الهيدروكسيل مانع لتجمد الوقود في الطائرات.", math: "\\text{الأسيتيلين: } C_2H_2 \\quad | \\quad \\text{الجليسرول: } C_3H_8O_3"},
+  {title: "2. الكيتونات والألدهيدات الشائعة", desc: "• <b>الأسيتون (البروبانون):</b> مذيب عضوي شهير لإزالة طلاء الأظافر بالمختبرات.<br>• <b>الفورمالديهايد:</b> ألدهيد بسيط يُستخدم في حفظ وتثبيت العينات البيولوجية والأنسجة.", math: "\\text{الأسيتون: } CH_3COCH_3 \\quad | \\quad \\text{الفورمالديهايد: } HCHO"},
+  {title: "3. الأحماض واليوريا الشائعة", desc: "• <b>حمض الفورميك (الميثانويك):</b> حمض عضوي تفرزه النملة للدفاع عن نفسها.<br>• <b>اليوريا (كارباميد):</b> مركب عضوي غني بالنيتروجين لصناعة الأسمدة الزراعية.", math: "\\text{حمض الفورميك: } HCOOH \\quad | \\quad \\text{اليوريا: } CO(NH_2)_2"},
+  {title: "4. المركبات العطرية المشهورة", desc: "• <b>التولوين:</b> هيدروكربون أروماتي مذيب ومواد متفجرة وبلاستيك.<br>• <b>الفينول:</b> مركب أروماتي يحتوي على مجموعة هيدروكسيل كمطهر ومعقم.", math: "\\text{التولوين: } C_6H_5CH_3 \\quad | \\quad \\text{الفينول: } C_6H_5OH"},
+  {title: "5. المشتقات الخاصة والكلوروفورم", desc: "• <b>الكلوروفورم:</b> مذيب عضوي ومخدر تاريخي شهير.<br>• <b>رباعي كلوريد الكربون:</b> مذيب كيميائي غير قطبي.", math: "\\text{الكلوروفورم: } CHCl_3 \\quad | \\quad \\text{رباعي كلوريد الكربون: } CCl_4"}
 ];
 
 const hydroData = [
-  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين بسلسلة ألكيل أو أريل.<br>• <b>الصيغة العامة:</b> تعتمد على مجموعة الأيل والهالوجين.", math: "R - X   (حيث X تمثل F, Cl, Br, I)"},
-  {title: "2. الكحولات والأمينات", desc: "• <b>الكحولات:</b> تحتوي على مجموعة الهيدروكسيل القطبية.<br>• <b>الأمينات:</b> مشتقات عضوية للأمونيا بروائح نفاذة.", math: "الكحولات: R - OH   |   الأمينات: R - NH_2"},
-  {title: "3. الأحماض الكربوكسيلية والإسترات", desc: "• <b>الأحماض:</b> تتميز بمجموعة الكربوكسيل الحمضية.<br>• <b>الإسترات:</b> تتميز بروائح الفواكه العطرة.", math: "الأحماض: R - COOH   |   الإسترات: R - COO - R'"},
-  {title: "4. الإيثرات والألدهيدات", desc: "• <b>الإيثرات:</b> أكسجين وسطي بين سلسلتين كربونيتين.<br>• <b>الألدهيدات:</b> مجموعة كربونيل طرفية.", math: "الإيثرات: R - O - R'   |   الألدهيدات: R - CHO"}
+  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) بسلسلة كربونية أليفاتية أو أروماتية.", math: "$R - X \\quad (X = F, Cl, Br, I)$"},
+  {title: "2. الكحولات", desc: "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية وتتميز بغليان مرتفع.", math: "$R - OH$"},
+  {title: "3. الإيثرات", desc: "• <b>المجموعة الوظيفية:</b> ذرة أكسجين تقع وسط سلسلتين كربونيتين.", math: "$R - O - R'$"},
+  {title: "4. الأمينات", desc: "• <b>المجموعة الوظيفية:</b> مشتقات عضوية للأمونيا بروائح نفاذة.", math: "$R - NH_2$"},
+  {title: "5. الألدهيدات", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل طرفية متصلة بذرة هيدروجين.", math: "$R - CHO$"},
+  {title: "6. الكيتونات", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل وسطية واقعة بين مجموعتي ألكيل.", math: "$R - CO - R'$"},
+  {title: "7. الأحماض الكربوكسيلية", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربوكسيل مسؤولة عن الصفة الحمضية.", math: "$R - COOH$"},
+  {title: "8. الإسترات", desc: "• <b>المجموعة الوظيفية:</b> ناتجة عن تفاعل حمض مع كحول وتتميز بروائح الفواكه العطرة.", math: "$R - COO - R'$"},
+  {title: "9. الأميدات", desc: "• <b>المجموعة الوظيفية:</b> مشتقة من الأحماض الكربوكسيلية باستبدال الهيدروكسيل بأمين.", math: "$R - CONH_2$"}
 ];
 
 function switchCard(type, index, btn) {
@@ -586,6 +614,7 @@ function switchCard(type, index, btn) {
   
   let data = dataObj[index];
   displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
+  renderMath();
 }
 
 // أسئلة المهارات الكاملة
