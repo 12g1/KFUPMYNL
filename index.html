@@ -392,28 +392,29 @@ button { font: inherit; cursor: pointer; }
       </div>
       <div class="concept-display-box" id="chemDisplay">
         <h4>1. حساب عدد المولات والكتلة</h4>
-        <p>• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية للمركب (M).<br>• <b>الكتلة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.</p>
+        <p>• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <b>الكتلة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.</p>
         <div class="math-block">n = m ÷ M   |   m = n × M</div>
       </div>
 
-      <!-- ميكانيكا البكرات (تم تصحيح رابط الملف هنا ليعمل تماماً) -->
+      <!-- ميكانيكا البكرات (تم تحديث الاسم والامتداد إلى pulley-mechanics.pdf ليتوافق تماماً مع الموقع) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
-        <div><h4>ملف ميكانيكا البكرات - بوصلة المبكر (PDF)</h4></div>
-        <a class="card-action-link" href="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+        <div><h4>ملف ميكانيكا البكرات (PDF)</h4></div>
+        <a class="card-action-link" href="pulley-mechanics.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
-      <iframe class="pdf-viewer" src="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf#view=FitH" loading="lazy"></iframe>
+      <iframe class="pdf-viewer" src="pulley-mechanics.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات (بالقوانين والرموز العلمية):</div>
+      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات (بالقوانين والرموز العلمية الكاملة):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. قوى الوزن والاحتكاك<span>W = mg  ,  Fk = μk FN</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>ΣF = ma</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك الحركي<span>W = mg  ,  Fk = μk FN</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>ΣF = ma  ,  a = Fnet / m</span></button>
         <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود والبكرات<span>a = ((m1 - m2)g) / (m1 + m2)</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل القوى على المنحدر<span>Wx = mg sin(θ)</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل القوى على المنحدر<span>Wx = mg sin(θ) , Wy = mg cos(θ)</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. الشد في الحبال المتصلة<span>T = mg ± ma (حسب اتجاه الحركة)</span></button>
       </div>
       <div class="concept-display-box" id="pulleyDisplay">
         <h4>1. قوى الوزن والاحتكاك الحركي</h4>
-        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتتكاك الحركي (Fk):</b> قوة مقاومة تعيق الحركة.</p>
-        <div class="math-block">W = mg   |   F_k = \mu_k F_N</div>
+        <p>• <b>قوة الوزن (W):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.</p>
+        <div class="math-block">W = m × g   |   F_k = \mu_k \times F_N</div>
       </div>
     </div>
   </section>
@@ -468,8 +469,8 @@ button { font: inherit; cursor: pointer; }
       </div>
       <div class="concept-display-box" id="hydroDisplay">
         <h4>1. هاليدات الألكيل والأريل</h4>
-        <p>• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) بسلسلة ألكيل أو أريل.<br>• <b>الاستخدامات:</b> صناعة البلاستيك والمذيبات والمخدرات الطبية.</p>
-        <div class="math-block">المجموعة الوظيفية: R-X   (حيث X يمثل F, Cl, Br, I)</div>
+        <p>• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين (X) بسلسلة ألكيل أو أريل (R).<br>• <b>الصيغة العامة:</b> R - X (حيث X تمثل الفلور أو الكلور أو البروم أو اليود).</p>
+        <div class="math-block">المجموعة الوظيفية: R - X   (X = F, Cl, Br, I)</div>
       </div>
     </div>
   </section>
@@ -542,19 +543,20 @@ function showPage(pageId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// شروحات القوانين مع الرموز العلمية الواضحة
+// شروحات القوانين بترميز نصي واضح ومفهوم 100%
 const chemData = [
   {title: "1. حساب عدد المولات والكتلة", desc: "• <b>عدد المولات (n):</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <b>كتلة المادة بالجرام (m):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", math: "n = m ÷ M   |   m = n × M"},
   {title: "2. حساب عدد الجسيمات وثابت أفوجادرو", desc: "• <b>عدد الجسيمات (N):</b> يُحسب بضرب عدد المولات (n) في ثابت أفوجادرو (NA).<br>• <b>ثابت أفوجادرو:</b> يمثل (6.02 × 10^23 جسيم/مول).", math: "N = n × N_A   (N_A = 6.02 × 10^{23})"},
-  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً وتنتج الكمية الأقل من النواتج.", math: "\\text{الناتج الأصغر يحدد المادة المحددة للتفاعل}"},
-  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود المئوية:</b> تقيس كفاءة التفاعل العملي مقارنة بالنظري.", math: "\\text{المردود المئوي} = (\\text{المردود الفعلي} \\div \\text{المردود النظري}) \\times 100"}
+  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً وتنتج الكمية الأقل من النواتج.", math: "الناتج الأصغر كمية هو الذي يحدد المادة المحددة للتفاعل"},
+  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود المئوية:</b> تقيس كفاءة التفاعل العملي مقارنة بالنظري.", math: "نسبة المردود المئوية = (المردود الفعلي ÷ المردود النظري) × 100"}
 ];
 
 const pulleyData = [
-  {title: "1. قوى الوزن والاحتكاك الحركي", desc: "• <b>الوزن (W):</b> قوة الجاذبية الأرضية وتساوي الكتلة في التسارع.<br>• <b>الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام.", math: "W = mg   |   F_k = \\mu_k F_N"},
-  {title: "2. قانون نيوتن الثاني ومحصلة القوى", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة في التسارع.", math: "\\Sigma F = m \\cdot a   (a = \\frac{F_{net}}{m})"},
-  {title: "3. آلة أتوود والبكرات المعلقة", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "a = \\frac{(m_1 - m_2)g}{m_1 + m_2}"},
-  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم على السطح المائل.", math: "W_x = mg \\sin(\\theta)   |   W_y = mg \\cos(\\theta)"}
+  {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>الوزن (W):</b> قوة الجاذبية الأرضية وتساوي الكتلة في التسارع (W = mg).<br>• <b>الاحتكاك الحركي (Fk):</b> قوة مقاومة تعيق حركة الأجسام.", math: "W = m × g   |   F_k = \mu_k \times F_N"},
+  {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "\\Sigma F = m \times a   |   a = F_{net} ÷ m"},
+  {title: "3. آلة أتوود والبكرات", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "a = ((m_1 - m_2) \times g) ÷ (m_1 + m_2)"},
+  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم صعوداً أو نزولاً على السطح المائل.", math: "W_x = m \times g \times \\sin(\\theta)   |   W_y = m \times g \times \\cos(\\theta)"},
+  {title: "5. حساب الشد (T) في الحبال", desc: "• <b>قوة الشد:</b> القوة التي يؤثر بها الخيط على الجسم المتصل به أثناء الحركة.", math: "T = m(g + a) \\text{ (للصعود)}   |   T = m(g - a) \\text{ (للنزول)}"}
 ];
 
 const namesData = [
