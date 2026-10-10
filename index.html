@@ -251,13 +251,11 @@ button { font: inherit; cursor: pointer; }
   background: var(--bg);
   border: 1px solid var(--border);
   color: var(--cyan);
-  font-family: monospace;
-  font-size: 1.15rem;
-  padding: 12px 18px;
+  font-size: 1.1rem;
+  padding: 14px 18px;
   border-radius: 12px;
-  text-align: center;
+  text-align: right;
   margin: 12px 0;
-  direction: ltr;
   font-weight: bold;
 }
 
@@ -310,7 +308,7 @@ button { font: inherit; cursor: pointer; }
       <a href="#laws" id="nav-laws" onclick="showPage('laws')">القوانين</a>
       <a href="#linking" id="nav-linking" onclick="showPage('linking')">الربط</a>
       <a href="#summaries" id="nav-summaries" onclick="showPage('summaries')">الملخصات</a>
-      <a href="#skills" id="nav-skills" onclick="showPage('skills')">المهارات (85)</a>
+      <a href="#skills" id="nav-skills" onclick="showPage('skills')">المهارات</a>
     </nav>
     <div class="nav-controls">
       <button class="ctrl-btn" id="themeToggle">☀️ نهاري</button>
@@ -323,7 +321,7 @@ button { font: inherit; cursor: pointer; }
   <section id="home" class="page-section active hero-wrapper">
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات المعتمدة واختبارات المهارات الـ 85 الكاملة.</p>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات الشاملة، واختبارات المهارات المتكاملة.</p>
     
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
@@ -339,8 +337,20 @@ button { font: inherit; cursor: pointer; }
         <span class="card-action-link" onclick="showPage('laws')">تصفح القوانين والشرح ←</span>
       </div>
       <div class="card-item">
+        <div class="card-icon-box">⌘</div>
+        <h3>الربط</h3>
+        <p>الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية.</p>
+        <span class="card-action-link" onclick="showPage('linking')">افتح قسم الربط ←</span>
+      </div>
+      <div class="card-item">
+        <div class="card-icon-box">▤</div>
+        <h3>الملخصات</h3>
+        <p>الأسماء الشائعة، مشتقات الهيدروكربونات، وملخصات المواد.</p>
+        <span class="card-action-link" onclick="showPage('summaries')">استعراض الملخصات ←</span>
+      </div>
+      <div class="card-item">
         <div class="card-icon-box">◎</div>
-        <h3>المهارات (85 سؤالاً)</h3>
+        <h3>المهارات</h3>
         <p>ملف التأسيس و5 اختبارات تفاعلية شاملة لجميع تجميعات المهارات.</p>
         <span class="card-action-link" onclick="showPage('skills')">ابدأ اختبارات المهارات ←</span>
       </div>
@@ -372,35 +382,37 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
+      <div class="concepts-section-title">📌 شروحات وبطاقات الحسابات الكيميائية (شرح كامل بالعربي):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">المستوى 1: المولات والكتلة<span>n = m ÷ M</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">عدد الجسيمات وأفوجادرو<span>N = n × NA</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">المادة المحددة والمردود<span>الناتج الأصغر يحدد</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">1. حساب عدد المولات<span>الكتلة ÷ الكتلة المولية</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">2. عدد الجسيمات وأفوجادرو<span>المولات × ثابت أفوجادرو</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">3. المادة المحددة للتفاعل<span>المادة التي تعطي الناتج الأصغر</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 3, this)">4. حساب نسبة المردود المئوية<span>الفعلي ÷ النظري × 100</span></button>
       </div>
       <div class="concept-display-box" id="chemDisplay">
-        <h4>1. المستوى الأول: عدد المولات والكتلة</h4>
-        <p>• <b>قانون عدد المولات:</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <i>قانون الكتلة:</i> $m = n \times M$.</p>
-        <div class="math-block">n = m ÷ M   |   m = n × M</div>
+        <h4>1. حساب عدد المولات والكتلة</h4>
+        <p>• <b>عدد المولات:</b> هو مقياس لعدد الوحدات البنائية في المادة ويُحسب بقسمة كتلة المادة بالجرام على الكتلة المولية للمركب.<br>• <b>كتلة المادة بالجرام:</b> تُحسب بضرب عدد المولات في الكتلة المولية للمادة.</p>
+        <div class="math-block">القانون الأساسي: عدد المولات = كتلة المادة بالجرام ÷ الكتلة المولية للمركب</div>
       </div>
 
       <!-- ميكانيكا البكرات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
-        <div><h4>ملف ميكانيكا البكرات (PDF)</h4></div>
+        <div><h4>ملف ميكانيكا البكرات - بوصلة المبكر (PDF)</h4></div>
         <a class="card-action-link" href="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات:</div>
+      <div class="concepts-section-title">📌 شروحات وبطاقات ميكانيكا البكرات (شرح كامل بالعربي):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">القوى والاحتكاك<span>W, Fn, T, Fk</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">نيوتن الثاني والنظام<span>ΣF = ma وحذف الشد</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">أتوود والمنحدر<span>الكتل والقمة</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. قوى الوزن والاحتكاك<span>الكتلة × التسارع والمعامل</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني للنظام<span>المحركة ناقص المقاومة</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود والبكرات<span>الكتل المعلقة وحساب التسارع</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. تحليل القوى على المنحدر<span>المركبة الموازية والعمودية</span></button>
       </div>
       <div class="concept-display-box" id="pulleyDisplay">
-        <h4>1. القوى الأربع والاحتكاك</h4>
-        <p>• <b>الوزن ($W=mg$):</b> باتجاه أسفل الأرض.<br>• <b>الاحتكاك ($F_k = \mu_k F_N$):</b> عكس اتجاه الحركة دائماً.</p>
-        <div class="math-block">F_k = \mu_k F_N   |   W = mg</div>
+        <h4>1. قوى الوزن والاحتكاك</h4>
+        <p>• <b>الوزن:</b> قوة جذب الأرض للجسم وتتجه نحو مركز الأرض دوماً.<br>• <b>الاحتكاك الحركي:</b> قوة مقاومة تنشأ بين سطح الجسم والسطح المتحرك عليه وتكون عكس اتجاه الحركة.</p>
+        <div class="math-block">قوة الاحتكاك الحركي = معامل الاحتكاك الحركي × القوة العمودية للسطح</div>
       </div>
     </div>
   </section>
@@ -422,20 +434,21 @@ button { font: inherit; cursor: pointer; }
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
-        <a class="card-action-link" href="ملخص الاسماء الشائعة ❀.pdf" target="_blank">فتح الملف ↗</a>
+        <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح الملف ↗</a>
       </div>
-      <iframe class="pdf-viewer" src="ملخص الاسماء الشائعة ❀.pdf#view=FitH" loading="lazy"></iframe>
+      <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات الأسماء الشائعة:</div>
+      <div class="concepts-section-title">📌 شروحات وبطاقات الأسماء الشائعة (شرح كامل بالعربي):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">الألكينات والألكانات<span>أسيتيلين، جليسرول</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">الكيتونات والألدهيدات<span>الأسيتون، الفورمالديهايد</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">الأحماض واليوريا<span>فورميك، أسيتيك، كارباميد</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. الألكينات والألكانات<span>الأسيتيلين والجليسرول</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. الكيتونات والألدهيدات<span>الأسيتون والفورمالديهايد</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. الأحماض واليوريا<span>حمض الفورميك واليوريا</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. المركبات العطرية الشائعة<span>التولوين والفينول والأنيلين</span></button>
       </div>
       <div class="concept-display-box" id="namesDisplay">
-        <h4>1. الأسيتيلين والجليسرول والأيزوبيوتان</h4>
-        <p>• <b>الأسيتيلين (الإيثاين):</b> يُستعمل في لحام الفلزات.<br>• <b>الجليسرول:</b> مانع لتجمد الوقود في الطائرات.</p>
-        <div class="math-block">Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3</div>
+        <h4>1. الألكينات والألكانات الشائعة</h4>
+        <p>• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني ذو رابطة ثلاثية يُستعمل في عمليات لحام وفصل الفلزات لشدة حرارته.<br>• <b>الجليسرول:</b> مركب كحولي ثلاثي الهيدروكسيل يستخدم كمانع لتجمد الوقود في الطائرات وفي المستحضرات الطبية.</p>
+        <div class="math-block">الأسيتيلين هو الإيثاين (رابطة ثلاثية) | الجليسرول كحول ثلاثي الهيدروكسيل</div>
       </div>
 
       <!-- مشتقات الهيدروكربونات -->
@@ -445,39 +458,45 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="مشتقات الهايدروكربونات.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 بطاقات مشتقات الهيدروكربونات:</div>
+      <div class="concepts-section-title">📌 شروحات وبطاقات مشتقات الهيدروكربونات (شرح كامل بالعربي):</div>
       <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">هاليدات الألكيل والأريل<span>R-X مع الهالوجينات</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">الأمينات والكحولات<span>R-NH2 و R-OH</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">الأحماض والإسترات<span>R-COOH و R-COO-R</span></button>
+        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">1. هاليدات الألكيل والأريل<span>ارتباط الهالوجينات بالسلسلة</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">2. الأمينات والكحولات<span>مجموعات الهيدروكسيل والأمونيا</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">3. الأحماض والإسترات<span>مجموعات الكربوكسيل وروائح الفواكه</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 3, this)">4. الإيثرات والألدهيدات<span>مجموعات الأكسجين الوسطية والطرفية</span></button>
       </div>
       <div class="concept-display-box" id="hydroDisplay">
-        <h4>1. هاليدات الألكيل والأريل (R-X)</h4>
-        <p>• <b>المجموعة الوظيفية:</b> هالوجين (F, Cl, Br, I).<br>• <b>الاستخدامات:</b> مواد أولية للبلاستيك والسيليكون ومخدر هالوإيثان.</p>
-        <div class="math-block">R-X   |   CH_3I > CH_3Br > CH_3Cl</div>
+        <h4>1. هاليدات الألكيل والأريل</h4>
+        <p>• <b>التعريف:</b> مشتقات هيدروكربونية ترتبط فيها ذرة هالوجين (مثل الفلور، الكلور، البروم، اليود) بسلسلة أليفاتية أو أروماتية.<br>• <b>الاستخدامات:</b> تعتبر مواد أولية هامة في الصناعات الكيميائية ومذيبات وعوامل مخدرة طبياً.</p>
+        <div class="math-block">المجموعة الوظيفية: هالوجين مرتبط بسلسلة كربونية (يمثل الهالوجين بالحرف X)</div>
       </div>
     </div>
   </section>
 
-  <!-- 6. المهارات (الـ 85 سؤالاً الكاملة) -->
+  <!-- 6. المهارات -->
   <section id="skills" class="page-section">
     <div class="main-panel">
-      <h2>◎ قسم المهارات الكامل (85 سؤالاً وتأسيس)</h2>
+      <h2>◎ قسم المهارات (تأسيس واختبارات)</h2>
       <div class="pdf-download-bar">
         <div><h4>ملف تأسيس المهارات (PDF)</h4></div>
-        <a class="card-action-link" href="skills-foundation.pdf" target="_blank">فتح الملف ↗</a>
+        <a class="card-action-link" href="skills-foundation.pdf" target="_blank">فتح التأسيس ↗</a>
       </div>
       <iframe class="pdf-viewer" src="skills-foundation.pdf#view=FitH" loading="lazy"></iframe>
 
+      <div class="pdf-download-bar" style="margin-top: 30px;">
+        <div><h4>ملف تجميع المهارات الكامل (PDF)</h4><p>تحميل وتصفح التجميعات الورقية والواجبات</p></div>
+        <a class="card-action-link" href="تجميع%20المهارات%20محمد%20تحصيلي.pdf" target="_blank">فتح التجميعات ↗</a>
+      </div>
+
       <div style="margin-top: 40px;">
-        <h3>✍️ اختبارات تجميعات المهارات (5 اختبارات تفاعلية شاملة 85 سؤالاً)</h3>
+        <h3>✍️ اختبارات تجميعات المهارات (5 اختبارات تفاعلية شاملة)</h3>
         <p style="color: var(--muted);">اختر الاختبار للحل والتقييم الفوري:</p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0;">
-          <button class="ctrl-btn" onclick="loadSkillTest(0)">اختبار 1 (17 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(1)">اختبار 2 (17 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(2)">اختبار 3 (18 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(3)">اختبار 4 (16 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(4)">اختبار 5 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(0)">اختبار 1</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(1)">اختبار 2</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(2)">اختبار 3</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(3)">اختبار 4</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(4)">اختبار 5</button>
         </div>
         <div id="skillTestHost"></div>
       </div>
@@ -522,29 +541,33 @@ function showPage(pageId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// بطاقات الشرح التفصيلية
+// شروحات القوانين مفصلة بالكامل وبدون أي رموز معقدة
 const chemData = [
-  {title: "1. عدد المولات والكتلة", desc: "• عدد المولات (n) = كتلة المادة (m) ÷ الكتلة المولية (M).<br>• الكتلة (m) = n × M.", math: "n = m ÷ M   |   m = n × M"},
-  {title: "2. عدد الجسيمات وأفوجادرو", desc: "• عدد الجسيمات (N) = عدد المولات (n) × ثابت أفوجادرو (6.02 × 10^23).", math: "N = n × 6.02 × 10^23"},
-  {title: "3. المادة المحددة والمردود", desc: "• المادة المحددة هي التي تستهلك كلياً وتعطي الناتج الأصغر.", math: "\\text{الناتج الأصغر يحدد المادة المحددة}"}
+  {title: "1. حساب عدد المولات والكتلة", desc: "• <b>عدد المولات:</b> يُحسب بقسمة كتلة المادة بالجرام على الكتلة المولية للمركب.<br>• <b>كتلة المادة بالجرام:</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية للمادة.", math: "القانون: عدد المولات = كتلة المادة بالجرام ÷ الكتلة المولية للمركب"},
+  {title: "2. حساب عدد الجسيمات وثابت أفوجادرو", desc: "• <b>عدد الجسيمات (أو الذرات أو الجزيئات):</b> يُحسب بضرب عدد المولات في ثابت أفوجادرو.<br>• <b>ثابت أفوجادرو:</b> يمثل عدد الجسيمات الموجودة في مول واحد من المادة ويساوي (6.02 ضرب 10 مرفوعة للقوة 23).", math: "القانون: عدد الجسيمات = عدد المولات × ثابت أفوجادرو (6.02 × 10 مرفوعة لقوة 23)"},
+  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> هي المادة التي تستهلك كلياً أثناء التفاعل الكيميائي وتحدد بشكل مباشر كمية الناتج النظري.<br>• <b>طريقة التحديد:</b> نقوم بحساب كمية الناتج لكل مادة متفاعلة، والمادة التي تعطي الناتج الأصغر هي المادة المحددة.", math: "قاعدة أساسية: المادة التي تنتج الكمية الأقل من النواتج هي المادة المحددة للتفاعل"},
+  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود الفعلي:</b> هي كمية المادة الناتجة عملياً عند إجراء التجربة في المختبر.<br>• <b>المردود النظري:</b> هي الكمية القصوى الناتجة بالحسابات الرياضية.", math: "القانون: نسبة المردود المئوية = (المردود الفعلي ÷ المردود النظري) × 100"}
 ];
 
 const pulleyData = [
-  {title: "1. القوى الأربع والاحتكاك", desc: "• الوزن (W = mg).<br>• القوة العمودية (Fn) والاحتكاك (Fk = mu * Fn).", math: "F_k = \\mu_k F_N   |   W = mg"},
-  {title: "2. قانون نيوتن الثاني", desc: "• المحركة - المقاومة = الكتلة × التسارع (ΣF = ma).", math: "a = \\frac{\\Sigma F}{m_1 + m_2}"},
-  {title: "3. أتوود والمنحدر", desc: "• تسارع أتوود والكتل المعلقة والقمة.", math: "a = \\frac{(m_1 - m_2)g}{m_1 + m_2}"}
+  {title: "1. قوى الوزن والاحتكاك الحركي", desc: "• <b>قوة الوزن:</b> هي قوة الجذب الأرضي للجسم وتتجه نحو أسفل الأرض دوماً.<br>• <b>قوة الاحتكاك الحركي:</b> قوة مقاومة تعيق حركة الأجسام على الأسطح وتكون دائماً بعكس اتجاه حركة الجسم.", math: "القانون: قوة الاحتكاك الحركي = معامل الاحتكاك الحركي × القوة العمودية للسطح"},
+  {title: "2. قانون نيوتن الثاني ومحصلة القوى", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة على أي نظام تساوي كتلة الجسم مضروبة في تسارعه.<br>• <b>طريقة النظام المتصل:</b> يتم طرح القوى المحركة من القوى المقاومة لحذف قوى الشد الداخلية.", math: "القانون العام: محصلة القوى المؤثرة (القوى المحركة ناقص القوى المقاومة) = الكتلة الكلية × التسارع"},
+  {title: "3. آلة أتوود والبكرات المعلقة", desc: "• <b>آلة أتوود:</b> جهاز يتكون من كتلتين معلقتين بخيط مهمل الكتسة والامتكاش ويمر على بكرة ملساء.<br>• <b>تسارع النظام:</b> يُحسب بقسمة فرق الكتلتين مضروباً في تسارع الجاذبية على مجموع الكتلتين.", math: "القانون: تسارع النظام = (فرق الكتلتين × تسارع الجاذبية الأرضية) ÷ مجموع الكتلتين"},
+  {title: "4. تحليل القوى على المنحدرات", desc: "• <b>المنحدرات المائلة:</b> عندما يتحرك جسم على سطح مائل، يتم تحليل وزنه إلى مركبتين متعامدتين.<br>• <b>المركبة الموازية:</b> هي المسؤولة عن حركة الجسم صعوداً أو نزولاً على المنحدر.", math: "المركبة الموازية للوزن على المنحدر = الوزن × جيب الزاوية (سين)"}
 ];
 
 const namesData = [
-  {title: "1. الألكينات والألكانات الشائعة", desc: "• الأسيتيلين (الإيثاين): يُستعمل في لحام الفلزات.<br>• الجليسرول: مانع لتجمد الوقود في الطائرات.", math: "Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3"},
-  {title: "2. الكيتونات والألدهيدات", desc: "• الأسيتون: إزالة طلاء الأظافر.<br>• فورمالديهايد: حفظ العينات البيولوجية وتثبيتها.", math: "Acetone: CH_3COCH_3   |   Formaldehyde: HCHO"},
-  {title: "3. الأحماض واليوريا", desc: "• حمض الفورميك يفرزه النمل.<br>• اليوريا تستعمل في الأسمدة الزراعية لاحتوائها على نسبة عالية من النيتروجين.", math: "Formic: HCOOH   |   Urea: CO(NH_2)_2"}
+  {title: "1. الألكينات والألكانات الشائعة", desc: "• <b>الأسيتيلين (الإيثاين):</b> غاز هيدروكربوني يحتوي على رابطة ثلاثية ويُستعمل في عمليات لحام وقطع الفلزات لشدة حرارته.<br>• <b>الجليسرول:</b> مركب كحولي ثلاثي الهيدروكسيل يستخدم كمانع لتجمد الوقود في الطائرات وفي المستحضرات.", math: "الأسيتيلين هو الإيثاين (رابطة ثلاثية) | الجليسرول كحول متعدد الهيدروكسيل"},
+  {title: "2. الكيتونات والألدهيدات الشائعة", desc: "• <b>الأسيتون (البروبانون):</b> مذيب عضوي شهير يُستخدم في المختبرات وإزالة طلاء الأظافر.<br>• <b>الفورمالديهايد (الميثانال):</b> ألدهيد بسيط يُستخدم في حفظ وتثبيت العينات البيولوجية والأنسجة.", math: "الأسيتون هو أبسط كيتون | الفورمالديهايد هو أبسط ألدهيد"},
+  {title: "3. الأحماض واليوريا الشائعة", desc: "• <b>حمض الفورميك (الميثانويك):</b> حمض عضوي تفرزه النملة للدفاع عن نفسها ويسبب ألماً عند اللدغ.<br>• <b>اليوريا (كارباميد):</b> مركب عضوي غني بالنيتروجين تُستخدم بكثرة في صناعة الأسمدة الزراعية.", math: "حمض الفورميك يفرزه النمل | اليوريا تُستخدم كأسمدة زراعية غنية بالنيتروجين"},
+  {title: "4. المركبات العطرية المشهورة", desc: "• <b>التولوين:</b> هيدروكربون أروماتي يستخدم كمذيب عضوي وفي صناعة المتفجرات والبلاستيك.<br>• <b>الفينول:</b> مركب أروماتي يحتوي على مجموعة هيدروكسيل ويستخدم كمطهر ومعقم قوي.", math: "التولوين مشتق بنزين مذيب | الفينول مطهر ومعقم قوي للأنسجة"}
 ];
 
 const hydroData = [
-  {title: "1. هاليدات الألكيل والأريل (R-X)", desc: "• المجموعة الوظيفية: هالوجين (F, Cl, Br, I).<br>• درجات غليان وكثافة عالية تزداد من أعلى لأسفل.", math: "R-X   |   CH_3I > CH_3Br > CH_3Cl"},
-  {title: "2. الأمينات والكحولات", desc: "• الأمينات لها روائح مميزة لمخلفات الكائنات المتحللة.<br>• الكحولات تحوي مجموعة (-OH) وقطبية عالية.", math: "R-OH   |   R-NH_2"},
-  {title: "3. الأحماض والإسترات", desc: "• الأحماض الكربوكسيلية قطبية جداً وتتربع على قمة الغليان.<br>• الإسترات تتميز بروائحها العطرة والفواكه المتطايرة.", math: "R-COOH   |   R-COO-R'"}
+  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>التعريف:</b> مشتقات هيدروكربونية ترتبط فيها ذرة هالوجين (فلور، كلور، بروم، يود) بسلسلة كربونية أليفاتية أو أروماتية.<br>• <b>الاستخدامات:</b> مواد أولية صناعية هامة لصناعة البلاستيك ومذيبات ومواد مخدرة طبية.", math: "المجموعة الوظيفية: ارتباط هالوجين بسلسلة كربونية"},
+  {title: "2. الكحولات والأمينات", desc: "• <b>الكحولات:</b> تتميز بوجود مجموعة الهيدروكسيل وتتميز بقطبية عالية ودرجات غليان مرتفعة.<br>• <b>الأمينات:</b> مشتقات عضوية للأمونيا وتتميز بروائحها النفاذة المميزة لمخلفات الكائنات الحية.", math: "الكحولات تحوي مجموعة الهيدروكسيل | الأمينات مشتقات للأمونيا"},
+  {title: "3. الأحماض الكربوكسيلية والإسترات", desc: "• <b>الأحماض الكربوكسيلية:</b> تتميز بمجموعة الكربوكسيل وتعتبر الأبرز في الصفة الحمضية العضوية.<br>• <b>الإسترات:</b> تتميز بروائحها العطرة والذكية وتدخل في صناعة العطور ونكهات الفواكه.", math: "الأحماض تحوي مجموعة الكربوكسيل | الإسترات تتميز بالروائح العطرية والفواكه"},
+  {title: "4. الإيثرات والألدهيدات والكيتونات", desc: "• <b>الإيثرات:</b> مركبات تقع فيها ذرة أكسجين بين سلسلتين كربونيتين وتستخدم كمذيبات ومخدرات طبية تاريخية.<br>• <b>الألدهيدات والكيتونات:</b> تضم مجموعة الكربونيل الطرفية والوسطية.", math: "الإيثرات تحوي أكسجين وسطي بين سلسلتين | الكربونيل أساس الألدهيدات والكيتونات"}
 ];
 
 function switchCard(type, index, btn) {
@@ -562,7 +585,7 @@ function switchCard(type, index, btn) {
   displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
 }
 
-// أسئلة المهارات الـ 85 الكاملة
+// أسئلة المهارات الكاملة
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
@@ -666,7 +689,7 @@ function loadSkillTest(testIdx) {
   userSkAnswers = {};
   let questions = skillQuests[testIdx];
   let html = `<div class="q-card" style="border: 2px solid var(--accent); margin-top:15px;">`;
-  html += `<h3>اختبار المهارات ${testIdx + 1} (${questions.length} سؤالاً)</h3><div id="skScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
+  html += `<h3>اختبار المهارات رقم ${testIdx + 1} (${questions.length} سؤالاً)</h3><div id="skScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
   
   questions.forEach((item, qIndex) => {
     html += `<div style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;" id="sq-${testIdx}-${qIndex}">`;
