@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 11:25 - Fixed Navbar for Tablets & LaTeX Formulas for Common Names -->
+<!-- Update Timestamp: 2026-10-10 11:30 - Fixed Navbar & Proper LaTeX for Common Names -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -76,7 +76,6 @@ button { font: inherit; cursor: pointer; }
   align-items: center;
   justify-content: space-between;
   height: 85px;
-  flex-wrap: wrap;
 }
 .brand-box {
   display: flex;
@@ -101,7 +100,7 @@ button { font: inherit; cursor: pointer; }
   box-shadow: 0 4px 15px var(--accent-glow);
 }
 
-/* تعديل الشريط ليظهر بوضوح تام على كافة الشاشات والتابلتات */
+/* إصلاح الشريط ليكون مرناً وظاهراً تماماً على الأجهزة اللوحية والهواتف */
 .nav-links {
   display: flex;
   gap: 4px;
@@ -113,7 +112,7 @@ button { font: inherit; cursor: pointer; }
   padding: 8px 12px;
   border-radius: 10px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: all 0.25s;
 }
 .nav-links a:hover, .nav-links a.active {
@@ -315,8 +314,8 @@ button { font: inherit; cursor: pointer; }
   margin: 15px 0;
 }
 
-/* تفعيل التجاوز وتصغير الحد للفون والتابلتات الصغيرة جداً لتظهر القائمة المنسدلة */
-@media (max-width: 1024px) {
+/* تفعيل التجاوز للشاشات الصغيرة جداً فقط (الهواتف المحمولة)، بينما أجهزة التابلت ستعرض الشريط كاملاً بوضوح */
+@media (max-width: 800px) {
   .menu-toggle { display: flex; }
   .nav-links {
     display: none;
@@ -480,7 +479,7 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
-  <!-- 5. الملخصات (الأسماء الشائعة بصيغة اللاتكس الكاملة والتسميات الدقيقة) -->
+  <!-- 5. الملخصات -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
       <h2>▤ الملخصات الأكاديمية الشاملة</h2>
@@ -494,7 +493,7 @@ button { font: inherit; cursor: pointer; }
 
       <!-- ملخص أحياء (صور أحمد الحوت) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
-        <div><h4>ملخص أحياء (صور احمد الحوت) (PDF)</h4></div>
+        <div><h4>ملف أحياء (صور احمد الحوت) (PDF)</h4></div>
         <a class="card-action-link" href="صور احمد الحوت (2).pdf" target="_blank">فتح ملف صور أحمد الحوت ↗</a>
       </div>
       <iframe class="pdf-viewer" src="صور احمد الحوت (2).pdf#view=FitH" loading="lazy"></iframe>
@@ -506,7 +505,7 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (محولة بالكامل لمعادلات وصيغ LaTeX الدقيقة):</div>
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (مجهزة بصيغ LaTeX بالكامل):</div>
       <div class="concept-cards-grid">
         <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. 2-بيوتانول<span>$\text{C}_4\text{H}_{10}\text{O}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. هكسانول حلقي<span>$\text{C}_6\text{H}_{11}\text{OH}$</span></button>
@@ -533,8 +532,8 @@ button { font: inherit; cursor: pointer; }
       </div>
       <div class="concept-display-box" id="namesDisplay">
         <h4>1. 2-بيوتانول</h4>
-        <p>• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ[span_0](start_span)[span_0](end_span).</p>
-        <div class="math-block">$$\text{الصيغة:} \quad \text{C}_4\text{H}_{10}\text{O} \quad (\text{مذيب عضوي للأصباغ})$$</div>
+        <p>• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ.</p>
+        <div class="math-block">$$\text{C}_4\text{H}_{10}\text{O} \quad (\text{مذيب عضوي للأصباغ})$$</div>
       </div>
 
       <!-- مشتقات الهيدروكربونات -->
@@ -559,7 +558,7 @@ button { font: inherit; cursor: pointer; }
       <div class="concept-display-box" id="hydroDisplay">
         <h4>1. هاليدات الألكيل والأريل</h4>
         <p>• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين ($X$) مباشرة بسلسلة كربونية أليفاتية أو أروماتية ($R$).<br>• <b>الاستخدامات:</b> مواد أولية صناعية ومذيبات وعوامل تبريد ومخدرات طبية.</p>
-        <div class="math-block">$$\text{المجموعة الوظيفية:} \quad R - X \quad (X = F, Cl, Br, I)$$</div>
+        <div class="math-block">$$R - X \quad (X = F, Cl, Br, I)$$</div>
       </div>
     </div>
   </section>
@@ -673,30 +672,30 @@ const pulleyData = [
   {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
 
-// الأسماء الشائعة الكاملة (مكتوبة بصيغة اللاتكس الدقيقة)
+// الأسماء الشائعة الكاملة (مكتوبة ومصححة بصيغة اللاتكس الدقيقة)
 const namesData = [
-  {title: "1. 2-بيوتانول", desc: "• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ[span_1](start_span)[span_1](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10}\\text{O} \\quad (\\text{مذيب عضوي للأصباغ})$$"},
-  {title: "2. هكسانول حلقي", desc: "• <b>الاستعمال:</b> مركب سام، ومبيد حشري[span_2](start_span)[span_2](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{11}\\text{OH} \\quad (\\text{مبيد حشري حلقي})$$"},
-  {title: "3. ثنائي إيثيل إثير", desc: "• <b>الاستعمال:</b> مخدر في العمليات الجراحية[span_3](start_span)[span_3](end_span).", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{H}_5)_2\\text{O} \\quad (\\text{مخدر طبي وجراحي})$$"},
-  {title: "4. إيثانال (استبالدهيد)", desc: "• <b>الاستعمال:</b> يدخل في إنتاج الأصباغ الغامقة[span_4](start_span)[span_4](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CHO} \\quad (\\text{إنتاج الأصباغ})$$"},
-  {title: "5. بيوتانوات الإيثيل", desc: "• <b>الاستعمال:</b> يمنح رائحة ونكهة الأناناس[span_5](start_span)[span_5](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{12}\\text{O}_2 \\quad (\\text{نكهة الأناناس})$$"},
-  {title: "6. هكسانوات الميثيل", desc: "• <b>الاستعمال:</b> يمنح نكهة ورائحة الفراولة[span_6](start_span)[span_6](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_7\\text{H}_{14}\\text{O}_2 \\quad (\\text{نكهة الفراولة})$$"},
-  {title: "7. الميثان", desc: "• <b>الاستعمال:</b> يُعد مصدراً رئيسياً للوقود والغاز الطبيعي[span_7](start_span)[span_7](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_4 \\quad (\\text{غاز طبيعي ووقود})$$"},
-  {title: "8. البروبان", desc: "• <b>الاستعمال:</b> يُستخدم كوقود للطبخ والتسخين[span_8](start_span)[span_8](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8 \\quad (\\text{وقود الطبخ})$$"},
-  {title: "9. البيوتان", desc: "• <b>الاستعمال:</b> يُستخدم بشكل شائع في الفداحات[span_9](start_span)[span_9](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10} \\quad (\\text{وقود الولاعات})$$"},
-  {title: "10. الإيثين", desc: "• <b>الاستعمال:</b> مسؤول عن نضج الفواكه وتساقط أوراق الشجر[span_10](start_span)[span_10](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_4 \\quad (\\text{هرمون نضج الفواكه})$$"},
-  {title: "11. رباعي فلورو بولي إيثين", desc: "• <b>الاستعمال:</b> يدخل في صناعة البلاستيك ومانع الالتصاق[span_11](start_span)[span_11](end_span).", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{F}_4)_n \\quad (\\text{مانع الالتصاق})$$"},
-  {title: "12. الهالو إيثان", desc: "• <b>الاستعمال:</b> يُستخدم كمخدر في العمليات الجراحية[span_12](start_span)[span_12](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{Br} \\quad (\\text{مخدر طبي})$$"},
-  {title: "13. الإيثانول", desc: "• <b>الاستعمال:</b> يُستخدم كمطهر ومعقم ومهم لتحضير مركبات أخرى[span_13](start_span)[span_13](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{OH} \\quad (\\text{مطهّر ومعقّم})$$"},
-  {title: "14. الأسيتيلين (الإيثاين)", desc: "• <b>الاستعمال:</b> يُستخدم في لحام وقطع الفلزات لشدة حرارته[span_14](start_span)[span_14](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_2 \\quad (\\text{لحام وقطع الفلزات})$$"},
-  {title: "15. الجليسرول", desc: "• <b>الاستعمال:</b> يمنع تجمد الوقود في الطائرات وفي الأدوية[span_15](start_span)[span_15](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8\\text{O}_3 \\quad (\\text{مانع تجمد الوقود})$$"},
-  {title: "16. 2-ميثيل بروبان (الأيزوبيوتان)", desc: "• <b>الاستعمال:</b> مادة آمنة تُستخدم في التبريد ومنتجات الحلاقة[span_16](start_span)[span_16](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CH}(\\text{CH}_3)_2 \\quad (\\text{التبريد والحلاقة})$$"},
-  {title: "17. ميثيل كلوريد", desc: "• <b>الاستعمال:</b> يدخل في صناعة المواد اللاصقة والسيليكون[span_17](start_span)[span_17](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{Cl} \\quad (\\text{صناعة السيليكون})$$"},
-  {title: "18. الأسيتون", desc: "• <b>الاستعمال:</b> يُستخدم في إزالة طلاء الأظافر وكمذيب[span_18](start_span)[span_18](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COCH}_3 \\quad (\\text{إزالة طلاء الأظافر})$$"},
-  {title: "19. فورمالدهيد (الفرمالين)", desc: "• <b>الاستعمال:</b> يُستخدم في حفظ العينات البيولوجية[span_19](start_span)[span_19](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{HCHO} \\quad (\\text{حفظ العينات البيولوجية})$$"},
-  {title: "20. حمض الميثانويك (الفورميك)", desc: "• <b>الاستعمال:</b> يفرزه النمل للدفاع عن النفس[span_20](start_span)[span_20](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{HCOOH} \\quad (\\text{إفراز دفاعي للنمل})$$"},
-  {title: "21. حمض الإيثانويك (الأسيتيك)", desc: "• <b>الاستعمال:</b> يُعرف بحمض الخل (الخليك) في الصناعات الغذائية[span_21](start_span)[span_21](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COOH} \\quad (\\text{حمض الخل})$$"},
-  {title: "22. اليوريا", desc: "• <b>الاستعمال:</b> تُستعمل في الأسمدة الزراعية وتصنيع البلاستيك[span_22](start_span)[span_22](end_span).", math: "$$\\text{الصيغة:} \\quad \\text{CO}(\\text{NH}_2)_2 \\quad (\\text{الأسمدة الزراعية})$$"}
+  {title: "1. 2-بيوتانول", desc: "• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ.", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10}\\text{O} \\quad (\\text{مذيب عضوي للأصباغ})$$"},
+  {title: "2. هكسانول حلقي", desc: "• <b>الاستعمال:</b> مركب سام، ومبيد حشري.", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{11}\\text{OH} \\quad (\\text{مبيد حشري حلقي})$$"},
+  {title: "3. ثنائي إيثيل إثير", desc: "• <b>الاستعمال:</b> مخدر في العمليات الجراحية.", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{H}_5)_2\\text{O} \\quad (\\text{مخدر طبي وجراحي})$$"},
+  {title: "4. إيثانال (استبالدهيد)", desc: "• <b>الاستعمال:</b> يدخل في إنتاج الأصباغ الغامقة.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CHO} \\quad (\\text{إنتاج الأصباغ})$$"},
+  {title: "5. بيوتانوات الإيثيل", desc: "• <b>الاستعمال:</b> يمنح رائحة ونكهة الأناناس.", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{12}\\text{O}_2 \\quad (\\text{نكهة الأناناس})$$"},
+  {title: "6. هكسانوات الميثيل", desc: "• <b>الاستعمال:</b> يمنح نكهة ورائحة الفراولة.", math: "$$\\text{الصيغة:} \\quad \\text{C}_7\\text{H}_{14}\\text{O}_2 \\quad (\\text{نكهة الفراولة})$$"},
+  {title: "7. الميثان", desc: "• <b>الاستعمال:</b> يُعد مصدراً رئيسياً للوقود والغاز الطبيعي.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_4 \\quad (\\text{غاز طبيعي ووقود})$$"},
+  {title: "8. البروبان", desc: "• <b>الاستعمال:</b> يُستخدم كوقود للطبخ والتسخين.", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8 \\quad (\\text{وقود الطبخ})$$"},
+  {title: "9. البيوتان", desc: "• <b>الاستعمال:</b> يُستخدم بشكل شائع في الفداحات.", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10} \\quad (\\text{وقود الولاعات})$$"},
+  {title: "10. الإيثين", desc: "• <b>الاستعمال:</b> مسؤول عن نضج الفواكه وتساقط أوراق الشجر.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_4 \\quad (\\text{هرمون نضج الفواكه})$$"},
+  {title: "11. رباعي فلورو بولي إيثين", desc: "• <b>الاستعمال:</b> يدخل في صناعة البلاستيك ومانع الالتصاق.", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{F}_4)_n \\quad (\\text{مانع الالتصاق})$$"},
+  {title: "12. الهالو إيثان", desc: "• <b>الاستعمال:</b> يُستخدم كمخدر في العمليات الجراحية.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{Br} \\quad (\\text{مخدر طبي})$$"},
+  {title: "13. الإيثانول", desc: "• <b>الاستعمال:</b> يُستخدم كمطهر ومعقم ومهم لتحضير مركبات أخرى.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{OH} \\quad (\\text{مطهّر ومعقّم})$$"},
+  {title: "14. الأسيتيلين (الإيثاين)", desc: "• <b>الاستعمال:</b> يُستخدم في لحام وقطع الفلزات لشدة حرارته.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_2 \\quad (\\text{لحام وقطع الفلزات})$$"},
+  {title: "15. الجليسرول", desc: "• <b>الاستعمال:</b> يمنع تجمد الوقود في الطائرات وفي الأدوية.", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8\\text{O}_3 \\quad (\\text{مانع تجمد الوقود})$$"},
+  {title: "16. 2-ميثيل بروبان (الأيزوبيوتان)", desc: "• <b>الاستعمال:</b> مادة آمنة تُستخدم في التبريد ومنتجات الحلاقة.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CH}(\\text{CH}_3)_2 \\quad (\\text{التبريد والحلاقة})$$"},
+  {title: "17. ميثيل كلوريد", desc: "• <b>الاستعمال:</b> يدخل في صناعة المواد اللاصقة والسيليكون.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{Cl} \\quad (\\text{صناعة السيليكون})$$"},
+  {title: "18. الأسيتون", desc: "• <b>الاستعمال:</b> يُستخدم في إزالة طلاء الأظافر وكمذيب.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COCH}_3 \\quad (\\text{إزالة طلاء الأظافر})$$"},
+  {title: "19. فورمالدهيد (الفرمالين)", desc: "• <b>الاستعمال:</b> يُستخدم في حفظ العينات البيولوجية.", math: "$$\\text{الصيغة:} \\quad \\text{HCHO} \\quad (\\text{حفظ العينات البيولوجية})$$"},
+  {title: "20. حمض الميثانويك (الفورميك)", desc: "• <b>الاستعمال:</b> يفرزه النمل للدفاع عن النفس.", math: "$$\\text{الصيغة:} \\quad \\text{HCOOH} \\quad (\\text{إفراز دفاعي للنمل})$$"},
+  {title: "21. حمض الإيثانويك (الأسيتيك)", desc: "• <b>الاستعمال:</b> يُعرف بحمض الخل (الخليك) في الصناعات الغذائية.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COOH} \\quad (\\text{حمض الخل})$$"},
+  {title: "22. اليوريا", desc: "• <b>الاستعمال:</b> تُستعمل في الأسمدة الزراعية وتصنيع البلاستيك.", math: "$$\\text{الصيغة:} \\quad \\text{CO}(\\text{NH}_2)_2 \\quad (\\text{الأسمدة الزراعية})$$"}
 ];
 
 const hydroData = [
