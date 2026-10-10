@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 11:50 - Fixed Common Names Buttons Layout to Horizontal & Removed Text -->
+<!-- Update Timestamp: 2026-10-10 11:55 - Horizontal Buttons Grid Layout Fix -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -241,10 +241,10 @@ button { font: inherit; cursor: pointer; }
   margin: 30px 0 15px;
 }
 
-/* شبكة أفقية واضحة لعرض الأزرار بجانب بعضها بالعرض */
+/* تعديل عرض شبكة الأزرار لتكون متجاوبة أفقياً وعرضياً بشكل صحيح */
 .concept-cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 20px;
 }
@@ -257,6 +257,7 @@ button { font: inherit; cursor: pointer; }
   font-weight: 700;
   text-align: right;
   transition: all 0.25s;
+  width: 100%;
 }
 .concept-tab-btn span { font-size: 0.85rem; color: var(--cyan); display: block; font-weight: 600; direction: ltr; margin-top: 6px; unicode-bidi: embed; }
 .concept-tab-btn:hover, .concept-tab-btn.active {
@@ -312,6 +313,10 @@ button { font: inherit; cursor: pointer; }
   font-size: 1.1rem;
   font-weight: 900;
   margin: 15px 0;
+}
+
+@media (max-width: 1024px) {
+  .concept-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 768px) {
@@ -505,7 +510,6 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <!-- تم إزالة عبارة (بالعرض وبصيغة LaTeX) كما طلبت تماماً -->
       <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
       <div class="concept-cards-grid">
         <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. 2-بيوتانول<span>$\text{C}_4\text{H}_{10}\text{O}$</span></button>
