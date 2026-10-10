@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 11:30 - Fixed Navbar & Proper LaTeX for Common Names -->
+<!-- Update Timestamp: 2026-10-10 11:42 - Updated Descriptions on Home Cards -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -61,7 +61,7 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
-.shell { max-width: 1200px; margin: auto; padding: 0 20px; }
+.shell { max-width: 1300px; margin: auto; padding: 0 20px; }
 
 .header-container {
   position: sticky;
@@ -100,19 +100,18 @@ button { font: inherit; cursor: pointer; }
   box-shadow: 0 4px 15px var(--accent-glow);
 }
 
-/* إصلاح الشريط ليكون مرناً وظاهراً تماماً على الأجهزة اللوحية والهواتف */
 .nav-links {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
 }
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.25s;
 }
 .nav-links a:hover, .nav-links a.active {
@@ -126,8 +125,8 @@ button { font: inherit; cursor: pointer; }
   border: 1px solid var(--border);
   color: var(--text);
   font-size: 1.5rem;
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -142,10 +141,9 @@ button { font: inherit; cursor: pointer; }
   background: var(--panel2);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 8px 14px;
-  border-radius: 10px;
+  padding: 10px 16px;
+  border-radius: 12px;
   font-weight: 700;
-  font-size: 0.9rem;
 }
 
 .page-section { display: none; padding: 40px 0; }
@@ -244,7 +242,7 @@ button { font: inherit; cursor: pointer; }
 }
 .concept-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   margin-bottom: 20px;
 }
@@ -314,8 +312,7 @@ button { font: inherit; cursor: pointer; }
   margin: 15px 0;
 }
 
-/* تفعيل التجاوز للشاشات الصغيرة جداً فقط (الهواتف المحمولة)، بينما أجهزة التابلت ستعرض الشريط كاملاً بوضوح */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .menu-toggle { display: flex; }
   .nav-links {
     display: none;
@@ -331,6 +328,7 @@ button { font: inherit; cursor: pointer; }
   }
   .nav-links.show { display: flex; }
   .grid-cards { grid-template-columns: 1fr; }
+  .concept-cards-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -368,25 +366,25 @@ button { font: inherit; cursor: pointer; }
       <div class="card-item">
         <div class="card-icon-box">✎</div>
         <h3>الاختبارات</h3>
-        <p>تدرب على اختبارات التجميعات الأصلية والمجمعة مع التصحيح الفوري.</p>
+        <p>تدرب على اختبارات الأسئلة المخترعة.</p>
         <span class="card-action-link" onclick="showPage('tests')">استعرض الاختبارات ←</span>
       </div>
       <div class="card-item">
         <div class="card-icon-box">∑</div>
         <h3>القوانين</h3>
-        <p>ميكانيكا البكرات والحسابات الكيميائية مع بطاقات الشرح التفصيلية.</p>
+        <p>جميع القوانين اللي تحتاجها مع بعض التدريبات.</p>
         <span class="card-action-link" onclick="showPage('laws')">تصفح القوانين والشرح ←</span>
       </div>
       <div class="card-item">
         <div class="card-icon-box">⌘</div>
         <h3>الربط</h3>
-        <p>الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية.</p>
+        <p>اربط معلوماتك عشان لا تنساها!</p>
         <span class="card-action-link" onclick="showPage('linking')">افتح قسم الربط ←</span>
       </div>
       <div class="card-item">
         <div class="card-icon-box">▤</div>
         <h3>الملخصات</h3>
-        <p>ملخص الرياضيات، الأسماء الشائعة الكاملة بصيغة LaTeX، وملخص الأحياء.</p>
+        <p>ملخصات شاملة لكل ما تحتاجه.</p>
         <span class="card-action-link" onclick="showPage('summaries')">استعراض الملخصات ←</span>
       </div>
       <div class="card-item">
@@ -505,12 +503,12 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (مجهزة بصيغ LaTeX بالكامل):</div>
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (بالعرض وبصيغة LaTeX):</div>
       <div class="concept-cards-grid">
         <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. 2-بيوتانول<span>$\text{C}_4\text{H}_{10}\text{O}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. هكسانول حلقي<span>$\text{C}_6\text{H}_{11}\text{OH}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. ثنائي إيثيل إثير<span>$(\text{C}_2\text{H}_5)_2\text{O}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. إيثانال (استبالدهيد)<span>$\text{CH}_3\text{CHO}$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. إيثانال<span>$\text{CH}_3\text{CHO}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. بيوتانوات الإيثيل<span>$\text{C}_6\text{H}_{12}\text{O}_2$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 5, this)">6. هكسانوات الميثيل<span>$\text{C}_7\text{H}_{14}\text{O}_2$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 6, this)">7. الميثان<span>$\text{CH}_4$</span></button>
@@ -520,7 +518,7 @@ button { font: inherit; cursor: pointer; }
         <button class="concept-tab-btn" onclick="switchCard('names', 10, this)">11. رباعي فلورو بولي إيثين<span>$(\text{C}_2\text{F}_4)_n$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 11, this)">12. الهالو إيثان<span>$\text{C}_2\text{H}_5\text{Br}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 12, this)">13. الإيثانول<span>$\text{C}_2\text{H}_5\text{OH}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 13, this)">14. الأسيتيلين (الإيثاين)<span>$\text{C}_2\text{H}_2$</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 13, this)">14. الأسيتيلين<span>$\text{C}_2\text{H}_2$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 14, this)">15. الجليسرول<span>$\text{C}_3\text{H}_8\text{O}_3$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 15, this)">16. 2-ميثيل بروبان<span>$\text{CH}_3\text{CH}(\text{CH}_3)_2$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 16, this)">17. ميثيل كلوريد<span>$\text{CH}_3\text{Cl}$</span></button>
@@ -672,7 +670,6 @@ const pulleyData = [
   {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
 ];
 
-// الأسماء الشائعة الكاملة (مكتوبة ومصححة بصيغة اللاتكس الدقيقة)
 const namesData = [
   {title: "1. 2-بيوتانول", desc: "• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ.", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10}\\text{O} \\quad (\\text{مذيب عضوي للأصباغ})$$"},
   {title: "2. هكسانول حلقي", desc: "• <b>الاستعمال:</b> مركب سام، ومبيد حشري.", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{11}\\text{OH} \\quad (\\text{مبيد حشري حلقي})$$"},
@@ -726,7 +723,6 @@ function switchCard(type, index, btn) {
   renderMath();
 }
 
-// اختبار مسائل البكرات الجديد
 const pulleyQuests = [
   {q: "1- في آلة أتوود، كتلتان m1 = 5 kg و m2 = 3 kg معلقتان بخيط مهمل الكتلة على بكرة ملساء، احسب التسارع (a) باعتراض g = 10 m/s^2:", opts: ["2.5 m/s^2", "1.25 m/s^2", "5.0 m/s^2", "10 m/s^2"], ans: 0},
   {q: "2- في نفس آلة أتوود السابقة، احسب قوة الشد (T) في الخيط:", opts: ["37.5 N", "45.0 N", "25.0 N", "60.0 N"], ans: 0},
@@ -780,7 +776,6 @@ function submitPulleyTest() {
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 
-// أسئلة المهارات الكاملة
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
