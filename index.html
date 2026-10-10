@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 11:42 - Updated Descriptions on Home Cards -->
+<!-- Update Timestamp: 2026-10-10 11:50 - Fixed Common Names Buttons Layout to Horizontal & Removed Text -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -240,6 +240,8 @@ button { font: inherit; cursor: pointer; }
   color: var(--cyan);
   margin: 30px 0 15px;
 }
+
+/* شبكة أفقية واضحة لعرض الأزرار بجانب بعضها بالعرض */
 .concept-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -503,7 +505,8 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة (بالعرض وبصيغة LaTeX):</div>
+      <!-- تم إزالة عبارة (بالعرض وبصيغة LaTeX) كما طلبت تماماً -->
+      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
       <div class="concept-cards-grid">
         <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. 2-بيوتانول<span>$\text{C}_4\text{H}_{10}\text{O}$</span></button>
         <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. هكسانول حلقي<span>$\text{C}_6\text{H}_{11}\text{OH}$</span></button>
