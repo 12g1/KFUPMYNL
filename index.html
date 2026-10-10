@@ -355,7 +355,7 @@ button { font: inherit; cursor: pointer; }
   <section id="home" class="page-section active hero-wrapper">
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، ملخص الرياضيات، والملخصات الشاملة.</p>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، ملخص الرياضيات، والملخصات الشاملة (بما فيها صور أحمد الحوت والأسماء الشائعة).</p>
     
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
@@ -373,7 +373,7 @@ button { font: inherit; cursor: pointer; }
       <div class="card-item">
         <div class="card-icon-box">📐</div>
         <h3>ملخص الرياضيات</h3>
-        <p>أهم القواعد، التفاضل، التكامل، النهايات، وحساب المثلثات.</p>
+        <p>أهم القواعد، التفاضل، التكامل، النهايات، وحساب المثلثات (math-summary.pdf).</p>
         <span class="card-action-link" onclick="showPage('math')">افتح ملخص الرياضيات ←</span>
       </div>
       <div class="card-item">
@@ -385,7 +385,7 @@ button { font: inherit; cursor: pointer; }
       <div class="card-item">
         <div class="card-icon-box">▤</div>
         <h3>الملخصات</h3>
-        <p>الأسماء الشائعة (مطابقة للملف الأصلي)، ومشتقات الهيدروكربونات.</p>
+        <p>الأسماء الشائعة، ملخص الأحياء (صور أحمد الحوت)، ومشتقات الهيدروكربونات.</p>
         <span class="card-action-link" onclick="showPage('summaries')">استعراض الملخصات ←</span>
       </div>
       <div class="card-item">
@@ -472,8 +472,14 @@ button { font: inherit; cursor: pointer; }
   <!-- ملخص الرياضيات -->
   <section id="math" class="page-section">
     <div class="main-panel">
-      <h2>📐 ملخص الرياضيات الشامل</h2>
-      <p style="color: var(--muted);">أهم القواعد الرياضية، التفاضل، التكامل، حساب المثلثات، والمتطابقات الأساسية.</p>
+      <h2>📐 ملخص الرياضيات الشامل (math-summary.pdf)</h2>
+      <div class="pdf-download-bar">
+        <div><h4>ملف ملخص الرياضيات (PDF)</h4></div>
+        <a class="card-action-link" href="math-summary.pdf" target="_blank">فتح الملف ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="math-summary.pdf#view=FitH" loading="lazy"></iframe>
+
+      <p style="color: var(--muted); margin-top: 20px;">أهم القواعد الرياضية، التفاضل، التكامل، حساب المثلثات، والمتطابقات الأساسية.</p>
       
       <div class="concepts-section-title">📌 بطاقات ملخص الرياضيات:</div>
       <div class="concept-cards-grid">
@@ -504,10 +510,17 @@ button { font: inherit; cursor: pointer; }
   <!-- 5. الملخصات -->
   <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية (الأسماء الشائعة طبقاً للملف الأصلي ومشتقات الهيدروكربونات)</h2>
+      <h2>▤ الملخصات الأكاديمية (الأسماء الشائعة، ملخص أحياء صور أحمد الحوت، ومشتقات الهيدروكربونات)</h2>
       
+      <!-- ملخص أحياء (صور أحمد الحوت) -->
+      <div class="pdf-download-bar" style="margin-bottom: 30px;">
+        <div><h4>ملخص أحياء (صور احمد الحوت) (PDF)</h4></div>
+        <a class="card-action-link" href="صور احمد الحوت (2).pdf" target="_blank">فتح ملف صور أحمد الحوت ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="صور احمد الحوت (2).pdf#view=FitH" loading="lazy"></iframe>
+
       <!-- الأسماء الشائعة -->
-      <div class="pdf-download-bar">
+      <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
         <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح الملف ↗</a>
       </div>
