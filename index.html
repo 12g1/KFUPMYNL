@@ -265,16 +265,21 @@ button { font: inherit; cursor: pointer; }
   white-space: nowrap;
   transition: all 0.25s;
 }
-.concept-tab-btn span { 
-  font-size: 0.85rem; 
-  color: var(--cyan); 
-  display: block; 
-  font-weight: 600; 
-  direction: ltr; 
+/* الإصلاح: المحدد > span يطبق على الـ span الخارجي فقط (وليس على spans مكتبة KaTeX الداخلية) */
+.concept-tab-btn > span {
+  font-size: 0.85rem;
+  color: var(--cyan);
+  display: block;
+  font-weight: 600;
+  direction: ltr;
   margin-top: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
   unicode-bidi: embed;
+}
+.concept-tab-btn .katex {
+  font-size: 1em;
+  white-space: nowrap;
 }
 .concept-tab-btn:hover, .concept-tab-btn.active {
   border-color: var(--accent);
@@ -437,9 +442,9 @@ button { font: inherit; cursor: pointer; }
       <!-- الحسابات الكيميائية -->
       <div class="pdf-download-bar">
         <div><h4>ملف الحسابات الكيميائية (PDF)</h4></div>
-        <a class="card-action-link" href="الحسابات الكيميائيه .pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+        <a class="card-action-link" href="الحسابات الكيميائيه .pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
-      <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" loading="lazy"></iframe>
+      <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" loading="lazy"></iframe>
 
       <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
       <div class="concept-cards-grid">
@@ -519,9 +524,9 @@ button { font: inherit; cursor: pointer; }
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
-        <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح ملف الأسماء الشائعة ↗</a>
+        <a class="card-action-link" href="ملخص%20الاسماء%20الشائعة%20❀.pdf" target="_blank">فتح ملف الأسماء الشائعة ↗</a>
       </div>
-      <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
+      <iframe class="pdf-viewer" src="ملخص%20الاسماء%20الشائعة%20❀.pdf#view=FitH" loading="lazy"></iframe>
 
       <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
       <div class="concept-cards-grid">
