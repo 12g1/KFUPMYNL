@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 12:00 - Flexbox Horizontal Buttons Layout Fix -->
+<!-- Update Timestamp: 2026-10-10 12:10 - Flexbox Horizontal Cards Layout Fix -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -241,7 +241,7 @@ button { font: inherit; cursor: pointer; }
   margin: 30px 0 15px;
 }
 
-/* تعديل عرض أزرار المفاهيم والأسماء الشائعة لتصبح أفقية وعرضية بجانب بعضها تماماً */
+/* تنسيق الفليكس الأفقية المتجاوبة لبطاقات الاختيار والأزرار */
 .concept-cards-grid {
   display: flex;
   flex-direction: row;
@@ -916,15 +916,4 @@ function submitSkillTest(testIdx) {
     let userChoice = userSkAnswers[testIdx] ? userSkAnswers[testIdx][qIndex] : undefined;
     buttons.forEach((b, oIdx) => {
       b.onclick = null;
-      if (oIdx === item.ans) b.classList.add('correct');
-      else if (oIdx === userChoice) b.classList.add('wrong');
-    });
-    if (userChoice === item.ans) score++;
-  });
-  let scoreBox = document.getElementById('skScore');
-  scoreBox.textContent = `نتيجة الاختبار: ${score} من ${questions.length} (${Math.round((score/questions.length)*100)}%)`;
-  window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
-}
-</script>
-</body>
-</html>
+      if
