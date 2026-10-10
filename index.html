@@ -8,7 +8,7 @@
 <style>
 :root {
   --bg-dark: #070b19;
-  --panel-dark: rgba(17, 24, 39, 0.85);
+  --panel-dark: rgba(17, 24, 39, 0.95);
   --panel2-dark: #111827;
   --text-dark: #f9fafb;
   --muted-dark: #9ca3af;
@@ -57,7 +57,6 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.8;
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
@@ -103,16 +102,15 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   gap: 6px;
 }
-.nav-links button {
-  background: transparent;
+.nav-links a {
   color: var(--muted);
-  border: none;
+  text-decoration: none;
   padding: 10px 16px;
   border-radius: 12px;
   font-weight: 700;
   transition: all 0.25s;
 }
-.nav-links button:hover, .nav-links button.active {
+.nav-links a:hover, .nav-links a.active {
   background: rgba(99, 102, 241, 0.15);
   color: var(--accent);
 }
@@ -127,29 +125,11 @@ button { font: inherit; cursor: pointer; }
   padding: 10px 16px;
   border-radius: 12px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
-.mobile-btn { display: none; background: transparent; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 10px; }
 
 .hero-wrapper {
   padding: 70px 0 50px;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 40px;
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(6, 182, 212, 0.1);
-  color: var(--cyan);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 800;
-  margin-bottom: 20px;
+  text-align: center;
 }
 .hero-title {
   font-size: clamp(2.5rem, 4.5vw, 4rem);
@@ -166,58 +146,22 @@ button { font: inherit; cursor: pointer; }
 .hero-subtitle {
   font-size: 1.15rem;
   color: var(--muted);
-  margin-bottom: 30px;
-  max-width: 550px;
+  margin: 0 auto 30px;
+  max-width: 650px;
 }
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.action-btn {
-  padding: 14px 26px;
-  border-radius: 14px;
-  font-weight: 800;
-  border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.action-btn:hover { transform: translateY(-3px); }
-.action-btn.primary {
-  background: linear-gradient(135deg, var(--accent), var(--cyan));
-  color: #fff;
-  box-shadow: 0 10px 25px var(--accent-glow);
-}
-.action-btn.secondary {
-  background: var(--panel2);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.hero-box-art {
-  background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
-  border: 1px solid var(--border);
-  border-radius: 30px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-.hero-box-art h3 { font-size: 1.8rem; margin: 0 0 10px; font-weight: 900; }
-.hero-box-art p { color: var(--muted); margin: 0; }
 
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  padding: 40px 0 70px;
+  padding: 20px 0 50px;
 }
 .card-item {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 28px;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  transition: all 0.3s;
 }
 .card-item:hover {
   transform: translateY(-6px);
@@ -237,11 +181,6 @@ button { font: inherit; cursor: pointer; }
 .card-item h3 { font-size: 1.35rem; margin: 0 0 8px; font-weight: 800; }
 .card-item p { color: var(--muted); margin: 0 0 18px; font-size: 0.94rem; }
 .card-action-link { color: var(--accent); font-weight: 800; font-size: 0.95rem; }
-
-.back-link { background: transparent; border: none; color: var(--accent); font-weight: 800; font-size: 1.05rem; padding: 10px 0; margin-bottom: 20px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
-.section-header { margin-bottom: 25px; }
-.section-header h1 { font-size: 2.4rem; font-weight: 900; margin: 5px 0 10px; }
-.section-header p { color: var(--muted); font-size: 1.05rem; max-width: 750px; }
 
 .main-panel {
   background: var(--panel);
@@ -263,13 +202,10 @@ button { font: inherit; cursor: pointer; }
   margin-bottom: 22px;
   flex-wrap: wrap;
 }
-.pdf-download-bar h4 { margin: 0 0 4px; font-size: 1.15rem; }
-.pdf-download-bar p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-
 .pdf-viewer, .quiz-iframe {
   width: 100%;
-  height: 80vh;
-  min-height: 700px;
+  height: 75vh;
+  min-height: 600px;
   border: 1px solid var(--border);
   border-radius: 20px;
   background: #fff;
@@ -281,9 +217,6 @@ button { font: inherit; cursor: pointer; }
   font-weight: 800;
   color: var(--cyan);
   margin: 30px 0 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .concept-cards-grid {
   display: grid;
@@ -300,16 +233,12 @@ button { font: inherit; cursor: pointer; }
   font-weight: 700;
   text-align: right;
   transition: all 0.25s;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
-.concept-tab-btn span { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+.concept-tab-btn span { font-size: 0.8rem; color: var(--muted); display: block; font-weight: 400; }
 .concept-tab-btn:hover, .concept-tab-btn.active {
   border-color: var(--accent);
   background: rgba(99, 102, 241, 0.12);
   color: var(--accent);
-  transform: translateY(-2px);
 }
 .concept-display-box {
   background: var(--panel2);
@@ -317,11 +246,8 @@ button { font: inherit; cursor: pointer; }
   border-radius: 18px;
   padding: 25px;
   margin-top: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  animation: fadeIn 0.3s ease;
 }
-.concept-display-box h4 { color: var(--cyan); margin-top: 0; font-size: 1.25rem; font-weight: 800; }
-.concept-display-box p { color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+.concept-display-box h4 { color: var(--cyan); margin-top: 0; font-size: 1.25rem; }
 .math-block {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -336,34 +262,14 @@ button { font: inherit; cursor: pointer; }
   font-weight: bold;
 }
 
-.q-card { background: var(--panel2); border: 1px solid var(--border); border-radius: 18px; padding: 22px; margin-bottom: 20px; }
-.q-title { font-weight: 800; font-size: 1.05rem; margin-bottom: 16px; }
-.opts-grid { display: grid; gap: 10px; }
-.opt-btn {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 14px 18px;
-  border-radius: 12px;
-  text-align: right;
-  transition: all 0.2s;
-}
+.q-card { background: var(--panel2); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; }
+.opts-grid { display: grid; gap: 10px; margin-top: 12px; }
+.opt-btn { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 12px 16px; border-radius: 10px; text-align: right; width: 100%; cursor: pointer; }
 .opt-btn:hover { border-color: var(--accent); background: rgba(99, 102, 241, 0.1); }
 .opt-btn.selected { background: rgba(99, 102, 241, 0.25); border-color: var(--accent); font-weight: bold; }
 .opt-btn.correct { background: rgba(16, 185, 129, 0.25); border-color: var(--success); color: #a7f3d0; font-weight: bold; }
 .opt-btn.wrong { background: rgba(239, 68, 68, 0.25); border-color: var(--danger); color: #fecdd3; }
-
-.submit-quiz-btn {
-  display: block; width: 100%;
-  background: linear-gradient(135deg, var(--accent), var(--cyan));
-  color: #fff; border: none; padding: 16px; font-size: 1.2rem; font-weight: 900;
-  border-radius: 16px; margin-top: 25px; cursor: pointer; box-shadow: var(--shadow);
-}
-.score-box {
-  background: var(--panel2); border: 2px solid var(--cyan); border-radius: 16px;
-  padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 900; color: var(--cyan);
-  margin-bottom: 25px; display: none;
-}
+.submit-quiz-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #fff; border: none; padding: 15px; font-weight: 900; border-radius: 14px; margin-top: 20px; cursor: pointer; }
 
 .main-footer {
   background: var(--panel);
@@ -383,23 +289,12 @@ button { font: inherit; cursor: pointer; }
   font-size: 1.15rem;
   font-weight: 900;
   box-shadow: 0 10px 30px rgba(36, 161, 222, 0.4);
-  transition: transform 0.2s, background 0.2s;
   margin: 20px 0;
 }
-.telegram-btn:hover { background: #1e8bc3; transform: scale(1.03); }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 900px) {
-  .nav-links { display: none; position: absolute; top: 85px; right: 20px; left: 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 20px; flex-direction: column; }
-  .nav-links.open { display: flex; }
-  .mobile-btn { display: block; }
-  .hero-wrapper { grid-template-columns: 1fr; padding-top: 30px; }
-  .grid-cards { grid-template-columns: repeat(2, 1fr); }
-  .pdf-viewer, .quiz-iframe { height: 70vh; min-height: 500px; }
-}
-@media (max-width: 600px) {
   .grid-cards { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
 }
 </style>
 </head>
@@ -407,34 +302,161 @@ button { font: inherit; cursor: pointer; }
 
 <div class="header-container">
   <div class="shell navbar">
-    <a class="brand-box" href="#home">
+    <a class="brand-box" href="#">
       <div class="brand-icon">K</div>
       <span>KFUPMYNL</span>
     </a>
-    <nav class="nav-links" id="navLinks">
-      <button data-page="home" class="active">الرئيسية</button>
-      <button data-page="tests">الاختبارات</button>
-      <button data-page="laws">القوانين</button>
-      <button data-page="linking">الربط</button>
-      <button data-page="summaries">الملخصات</button>
-      <button data-page="skills">المهارات</button>
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#tests">الاختبارات</a>
+      <a href="#laws">القوانين</a>
+      <a href="#linking">الربط</a>
+      <a href="#summaries">الملخصات</a>
+      <a href="#skills">المهارات (85)</a>
     </nav>
     <div class="nav-controls">
       <button class="ctrl-btn" id="themeToggle">☀️ نهاري</button>
-      <button class="mobile-btn" id="menuToggle">☰</button>
     </div>
   </div>
 </div>
 
-<main id="appContainer" class="shell">
-  <!-- Dynamic Injection -->
+<main class="shell">
+  <!-- قسم الرئيسية -->
+  <section id="home" class="hero-wrapper">
+    <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
+    <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات المعتمدة واختبارات المهارات الـ 85.</p>
+    
+    <div class="grid-cards" style="text-align: right;">
+      <div class="card-item">
+        <div class="card-icon-box">✎</div>
+        <h3>الاختبارات</h3>
+        <p>تدرب على اختبارات التجميعات الأصلية والمجمعة مع التصحيح الفوري.</p>
+        <a class="card-action-link" href="#tests">استعرض الاختبارات ←</a>
+      </div>
+      <div class="card-item">
+        <div class="card-icon-box">∑</div>
+        <h3>القوانين</h3>
+        <p>ميكانيكا البكرات والحسابات الكيميائية مع بطاقات الشرح التفصيلية.</p>
+        <a class="card-action-link" href="#laws">تصفح القوانين والشرح ←</a>
+      </div>
+      <div class="card-item">
+        <div class="card-icon-box">◎</div>
+        <h3>المهارات (85 سؤالاً)</h3>
+        <p>ملف التأسيس و5 اختبارات تفاعلية شاملة لجميع تجميعات المهارات.</p>
+        <a class="card-action-link" href="#skills">ابدأ اختبارات المهارات ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الاختبارات -->
+  <section id="tests" style="padding-top: 50px;">
+    <div class="main-panel">
+      <h2>✍️ الاختبارات التجميعية</h2>
+      <p style="color: var(--muted);">تصفح اختبارات التجميعات الأصلية المعتمدة.</p>
+      <div style="display: grid; gap: 20px; margin-top: 20px;">
+        <div><h4>اختبار 1</h4><iframe class="quiz-iframe" src="test-1.html" loading="lazy"></iframe></div>
+        <div><h4>اختبار 2</h4><iframe class="quiz-iframe" src="test-2.html" loading="lazy"></iframe></div>
+        <div><h4>اختبار 3</h4><iframe class="quiz-iframe" src="test-3.html" loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم القوانين -->
+  <section id="laws" style="padding-top: 50px;">
+    <div class="main-panel">
+      <h2>⚖️ الحسابات الكيميائية وميكانيكا البكرات</h2>
+      
+      <div class="pdf-download-bar">
+        <div><h4>ملف الحسابات الكيميائية (PDF)</h4></div>
+        <a class="card-action-link" href="الحسابات الكيميائيه .pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" loading="lazy"></iframe>
+
+      <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
+      <div class="concept-cards-grid">
+        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">المستوى 1: المولات والكتلة<span>n = m ÷ M</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">عدد الجسيمات وأفوجادرو<span>N = n × NA</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">المادة المحددة والمردود<span>الناتج الأصغر يحدد</span></button>
+      </div>
+      <div class="concept-display-box" id="chemDisplay">
+        <h4>1. المستوى الأول: عدد المولات والكتلة</h4>
+        <p>• <b>قانون عدد المولات:</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <i>قانون الكتلة:</i> $m = n \times M$.</p>
+        <div class="math-block">n = m ÷ M   |   m = n × M</div>
+      </div>
+
+      <div class="pdf-download-bar" style="margin-top: 40px;">
+        <div><h4>ملف ميكانيكا البكرات - بوصلة المبكر (PDF)</h4></div>
+        <a class="card-action-link" href="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf#view=FitH" loading="lazy"></iframe>
+
+      <div class="concepts-section-title">📌 بطاقات ميكانيكا البكرات:</div>
+      <div class="concept-cards-grid">
+        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">القوى والاحتكاك<span>W, Fn, T, Fk</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">نيوتن الثاني والنظام<span>ΣF = ma وحذف الشد</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">أتوود والمنحدر<span>الكتل والقمة</span></button>
+      </div>
+      <div class="concept-display-box" id="pulleyDisplay">
+        <h4>1. القوى الأربع والاحتكاك</h4>
+        <p>• <b>الوزن ($W=mg$):</b> باتجاه أسفل الأرض.<br>• <b>الاحتكاك ($F_k = \mu_k F_N$):</b> عكس اتجاه الحركة دائماً.</p>
+        <div class="math-block">F_k = \mu_k F_N   |   W = mg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم الربط -->
+  <section id="linking" style="padding-top: 50px;">
+    <div class="main-panel">
+      <h2>⌘ قسم الربط البصري</h2>
+      <div style="margin-bottom: 20px;"><h4>الجدول الدوري الحديث</h4><img src="periodic-table.jpeg" alt="الجدول الدوري" style="width:100%; border-radius:16px;"></div>
+      <div><h4>الهيكل العظمي البشري</h4><img src="skeleton.jpeg" alt="الهيكل العظمي" style="width:100%; border-radius:16px;"></div>
+    </div>
+  </section>
+
+  <!-- قسم الملخصات -->
+  <section id="summaries" style="padding-top: 50px;">
+    <div class="main-panel">
+      <h2>▤ الملخصات الأكاديمية الشاملة</h2>
+      <div class="pdf-download-bar"><div><h4>ملف الأسماء الشائعة</h4></div><a class="card-action-link" href="ملخص الاسماء الشائعة ❀.pdf" target="_blank">فتح الملف ↗</a></div>
+      <iframe class="pdf-viewer" src="ملخص الاسماء الشائعة ❀.pdf#view=FitH" loading="lazy"></iframe>
+
+      <div class="pdf-download-bar" style="margin-top: 30px;"><div><h4>ملف مشتقات الهايدروكربونات</h4></div><a class="card-action-link" href="مشتقات الهايدروكربونات.pdf" target="_blank">فتح الملف ↗</a></div>
+      <iframe class="pdf-viewer" src="مشتقات الهايدروكربونات.pdf#view=FitH" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- قسم المهارات (85 سؤالاً) -->
+  <section id="skills" style="padding-top: 50px;">
+    <div class="main-panel">
+      <h2>◎ قسم المهارات الكامل (85 سؤالاً وتأسيس)</h2>
+      <div class="pdf-download-bar">
+        <div><h4>ملف تأسيس المهارات (PDF)</h4></div>
+        <a class="card-action-link" href="skills-foundation.pdf" target="_blank">فتح الملف ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="skills-foundation.pdf#view=FitH" loading="lazy"></iframe>
+
+      <div style="margin-top: 40px;">
+        <h3>✍️ اختبارات تجميعات المهارات (5 اختبارات تفاعلية شاملة 85 سؤالاً)</h3>
+        <p style="color: var(--muted);">اختر الاختبار للحل والتقييم الفوري:</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0;">
+          <button class="ctrl-btn" onclick="loadSkillTest(0)">اختبار المهارات 1 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(1)">اختبار المهارات 2 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(2)">اختبار المهارات 3 (18 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(3)">اختبار المهارات 4 (16 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(4)">اختبار المهارات 5 (17 سؤال)</button>
+        </div>
+        <div id="skillTestHost"></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="main-footer">
   <div class="shell">
     <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">دعواتكم لـ ينال و نواف ❤️</div>
     <div>
-      <a class="telegram-btn" href="https://t.me/KFUPMYNL" target="_blank" rel="noopener">
+      <a class="telegram-btn" href="https://t.me/KFUPMYNL" target="_blank">
         ✈️ انضم لقناة التليجرام الرسمية (KFUPMYNL)
       </a>
     </div>
@@ -443,25 +465,37 @@ button { font: inherit; cursor: pointer; }
 </footer>
 
 <script>
-const appContainer = document.getElementById('appContainer');
-const navLinks = document.getElementById('navLinks');
 const themeToggle = document.getElementById('themeToggle');
-const menuToggle = document.getElementById('menuToggle');
-
 let isDark = true;
 themeToggle.addEventListener('click', () => {
   isDark = !isDark;
   document.body.className = isDark ? 'dark-mode' : 'light-mode';
   themeToggle.textContent = isDark ? '☀️ نهاري' : '🌙 ليلي';
 });
-menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-const testsList = [
-  {title: 'اختبار 1', desc: 'ملف الاختبار الأصلي الأول', url: 'test-1.html', icon: '①'},
-  {title: 'اختبار 2', desc: 'ملف الاختبار الأصلي الثاني', url: 'test-2.html', icon: '②'},
-  {title: 'اختبار 3', desc: 'ملف الاختبار الأصلي الثالث', url: 'test-3.html', icon: '③'}
+const chemData = [
+  {title: "1. عدد المولات والكتلة", desc: "• عدد المولات (n) = كتلة المادة (m) ÷ الكتلة المولية (M).<br>• الكتلة (m) = n × M.", math: "n = m ÷ M   |   m = n × M"},
+  {title: "2. عدد الجسيمات وأفوجادرو", desc: "• عدد الجسيمات (N) = عدد المولات (n) × ثابت أفوجادرو (6.02 × 10^23).", math: "N = n × 6.02 × 10^23"},
+  {title: "3. المادة المحددة والمردود", desc: "• المادة المحددة هي التي تستهلك كلياً وتعطي الناتج الأصغر.", math: "\\text{الناتج الأصغر يحدد المادة المحددة}"}
 ];
 
+const pulleyData = [
+  {title: "1. القوى الأربع والاحتكاك", desc: "• الوزن (W = mg).<br>• القوة العمودية (Fn) والاحتكاك (Fk = mu * Fn).", math: "F_k = \\mu_k F_N   |   W = mg"},
+  {title: "2. قانون نيوتن الثاني", desc: "• المحركة - المقاومة = الكتلة × التسارع (ΣF = ma).", math: "a = \\frac{\\Sigma F}{m_1 + m_2}"},
+  {title: "3. أتوود والمنحدر", desc: "• تسارع أتوود والكتل المعلقة والقمة.", math: "a = \\frac{(m_1 - m_2)g}{m_1 + m_2}"}
+];
+
+function switchCard(type, index, btn) {
+  let displayBox = document.getElementById(type === 'chem' ? 'chemDisplay' : 'pulleyDisplay');
+  let dataObj = type === 'chem' ? chemData : pulleyData;
+  let parent = btn.parentElement;
+  parent.querySelectorAll('.concept-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  let data = dataObj[index];
+  displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
+}
+
+// الـ 85 سؤالاً كاملة ومقسّمة على 5 اختبارات بدقة
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
@@ -483,681 +517,128 @@ const skillQuests = [
     {q: "17- الأسلوب الأنسب لتمثيل مجموع المدفوعات الشهرية ونسبة كل منها هو:", opts: ["رسم بياني بالأعمدة", "رسم خطي زمني", "رسم دائري نسبوي", "جدول نصي بسيط"], ans: 2}
   ],
   [
-    {q: "18- اختصار لوحة المفاتيح لتغيير لغة الكتابة في النظام هو:", opts: ["Ctrl + Shift", "Alt + Shift", "Win + Alt", "Ctrl + Alt"], ans: 1},
-    {q: "19- لحساب الدرجة المتوسطة لاختبارين في الخلية N11 و N12 ببرنامج Excel:", opts: ["(N11+N12)/2", "N11+N12/2", "$N11+N12/2", "(N11-N12)/2"], ans: 0},
-    {q: "20- التطبيق الأنسب لحساب المصاريف بدون آلة حاسبة:", opts: ["Word", "Excel", "PowerPoint", "Notepad"], ans: 1},
-    {q: "21- امتداد الملفات الخاص ببرنامج الجداول الحسابية Excel هو:", opts: ["docx", "xlsx", "pptx", "jpg"], ans: 1},
-    {q: "22- من أشهر برامج التخزين السحابي الإلكتروني:", opts: ["Dropbox", "PowerPoint", "Teams", "Photoshop"], ans: 0},
-    {q: "23- الأداة الأنسب لصنع رزنامة أعمال إلكترونية قابلة للمشاركة:", opts: ["Google Calendar", "Microsoft Word", "Teams", "Dropbox"], ans: 0},
-    {q: "24- ماجد يريد إنتاج عرض تقديمي مع فريق عمله في مدن مختلفة، الخيار الأمثل:", opts: ["إنشاء ملف مشارك عبر الإنترنت ومناقشته", "العمل بمفرده تماماً", "طباعة نسخ ورقية وإرسالها بالبريد", "اجتماع صوتي بدون ملفات"], ans: 0},
-    {q: "25- الطريقة الأفضل لمقارنة كفاءة الموظفين بصرياً:", opts: ["تمثيل بياني بالأعمدة", "تمثيل خطي", "تمثيل دائري", "جدول بياني"], ans: 0},
-    {q: "26- التطبيق الأمثل لإعداد السجلات المالية وحساباتها للشركات:", opts: ["Word", "Excel", "PowerPoint", "Skype"], ans: 1},
-    {q: "27- زر لوحة المفاتيح المخصص لبدء عرض الشرائح في PowerPoint هو:", opts: ["F4", "F5", "F6", "F7"], ans: 1},
-    {q: "28- بناءً على المخطط البياني للإجراءات الوقائية لجائحة كورونا:", opts: ["نسبة العمل عن بعد تجاوزت حاجز 60%", "العلاج المجاني هو الوحيد الأقل من 20%", "النسبة بين الإجازات وموارد الوقاية متباينة", "جميعها أقل من 40% باستثناء واحدة"], ans: 0},
-    {q: "29- اختصار لوحة المفاتيح لحفظ المستند في برنامج Word:", opts: ["Ctrl + S", "Ctrl + C", "Ctrl + P", "Ctrl + X"], ans: 0},
-    {q: "30- نسبة تقدم الشركة ب من 2011 إلى 2012 بناءً على الرسم المرفق:", opts: ["100%", "50%", "60%", "40%"], ans: 0},
-    {q: "31- إرسال بريد إلكتروني لعدة مستلمين دون رؤيتهم لعناوين بعضهم يكون عبر حقل:", opts: ["CC", "BCC", "TO", "BC"], ans: 1},
-    {q: "32- وظيفة الاختصار Ctrl + F2 في برنامج Word:", opts: ["إعادة تسمية", "حفظ مستند", "فتح ملف جديد", "معاينة الطباعة"], ans: 3},
-    {q: "33- دلالة خط كفاءة الموظف بنهاية السنة في الرسم البياني:", opts: ["متزايدة باستمرار", "متناقصة بوضوح", "ثابتة تماماً", "غير قابلة للتحديد بدقة"], ans: 3},
-    {q: "34- ماذا ينتج عند الضغط على مفتاح F12 في برنامج Microsoft Word؟", opts: ["فتح الصفحة", "إغلاق المستند", "حفظ سريع", "نافذة الحفظ باسم (Save As)"], ans: 3}
+    {q: "1- اختصار لوحة المفاتيح لتغيير لغة الكتابة في النظام هو:", opts: ["Ctrl + Shift", "Alt + Shift", "Win + Alt", "Ctrl + Alt"], ans: 1},
+    {q: "2- لحساب الدرجة المتوسطة لاختبارين في الخلية N11 و N12 ببرنامج Excel:", opts: ["(N11+N12)/2", "N11+N12/2", "$N11+N12/2", "(N11-N12)/2"], ans: 0},
+    {q: "3- التطبيق الأنسب لحساب المصاريف بدون آلة حاسبة:", opts: ["Word", "Excel", "PowerPoint", "Notepad"], ans: 1},
+    {q: "4- امتداد الملفات الخاص ببرنامج الجداول الحسابية Excel هو:", opts: ["docx", "xlsx", "pptx", "jpg"], ans: 1},
+    {q: "5- من أشهر برامج التخزين السحابي الإلكتروني:", opts: ["Dropbox", "PowerPoint", "Teams", "Photoshop"], ans: 0},
+    {q: "6- الأداة الأنسب لصنع رزنامة أعمال إلكترونية قابلة للمشاركة:", opts: ["Google Calendar", "Microsoft Word", "Teams", "Dropbox"], ans: 0},
+    {q: "7- ماجد يريد إنتاج عرض تقديمي مع فريق عمله في مدن مختلفة، الخيار الأمثل:", opts: ["إنشاء ملف مشارك عبر الإنترنت ومناقشته", "العمل بمفرده تماماً", "طباعة نسخ ورقية وإرسالها بالبريد", "اجتماع صوتي بدون ملفات"], ans: 0},
+    {q: "8- الطريقة الأفضل لمقارنة كفاءة الموظفين بصرياً:", opts: ["تمثيل بياني بالأعمدة", "تمثيل خطي", "تمثيل دائري", "جدول بياني"], ans: 0},
+    {q: "9- التطبيق الأمثل لإعداد السجلات المالية وحساباتها للشركات:", opts: ["Word", "Excel", "PowerPoint", "Skype"], ans: 1},
+    {q: "10- زر لوحة المفاتيح المخصص لبدء عرض الشرائح في PowerPoint هو:", opts: ["F4", "F5", "F6", "F7"], ans: 1},
+    {q: "11- بناءً على المخطط البياني للإجراءات الوقائية لجائحة كورونا:", opts: ["نسبة العمل عن بعد تجاوزت حاجز 60%", "العلاج المجاني هو الوحيد الأقل من 20%", "النسبة بين الإجازات وموارد الوقاية متباينة", "جميعها أقل من 40% باستثناء واحدة"], ans: 0},
+    {q: "12- اختصار لوحة المفاتيح لحفظ المستند في برنامج Word:", opts: ["Ctrl + S", "Ctrl + C", "Ctrl + P", "Ctrl + X"], ans: 0},
+    {q: "13- نسبة تقدم الشركة ب من 2011 إلى 2012 بناءً على الرسم المرفق:", opts: ["100%", "50%", "60%", "40%"], ans: 0},
+    {q: "14- إرسال بريد إلكتروني لعدة مستلمين دون رؤيتهم لعناوين بعضهم يكون عبر حقل:", opts: ["CC", "BCC", "TO", "BC"], ans: 1},
+    {q: "15- وظيفة الاختصار Ctrl + F2 في برنامج Word:", opts: ["إعادة تسمية", "حفظ مستند", "فتح ملف جديد", "معاينة الطباعة"], ans: 3},
+    {q: "16- دلالة خط كفاءة الموظف بنهاية السنة في الرسم البياني:", opts: ["متزايدة باستمرار", "متناقصة بوضوح", "ثابتة تماماً", "غير قابلة للتحديد بدقة"], ans: 3},
+    {q: "17- ماذا ينتج عند الضغط على مفتاح F12 في برنامج Microsoft Word؟", opts: ["فتح الصفحة", "إغلاق المستند", "حفظ سريع", "نافذة الحفظ باسم (Save As)"], ans: 3}
   ],
   [
-    {q: "35- المكون المسؤول عن تحويل النصوص والرسومات الورقية إلى بيانات رقمية هو:", opts: ["الراسم البياني", "المحول الرقمي (Digitizer)", "القارئ الرقمي", "برنامج Excel"], ans: 1},
-    {q: "36- من الشكل البياني للسيارتين أ و ب، الاستنتاج الصحيح هو:", opts: ["ارتفاع سعر ب في 2017 وانخفاض أ مقارنة بـ 2015", "ارتفاع سعر الكلتين في 2017", "ارتفاع سعر أ فقط وانخفاض ب", "انخفاض أسعار السيارتين تماماً"], ans: 0},
-    {q: "37- التمثيل البياني الأنسب لإظهار نسب ومقارنات المبيعات في جدول Excel هو:", opts: ["تمثيل دائري نسبي", "تمثيل بالأعمدة", "تمثيل خطي", "جدول تفصيلي"], ans: 0},
-    {q: "38- الموظف الذي يريد تنسيق مواعيد اجتماعاته وجدولته يختار من أوفيس:", opts: ["Excel", "Access", "Word", "Outlook"], ans: 3},
-    {q: "39- اختصار فتح مستند أو ملف جديد في برنامج Word:", opts: ["CTRL + R", "CTRL + N", "CTRL + S", "CTRL + W"], ans: 1},
-    {q: "40- برنامج أوفيس الأنسب لإنشاء سجل أسماء وأعمار ورواتب الموظفين:", opts: ["Word", "PowerPoint", "Excel", "Publisher"], ans: 2},
-    {q: "41- لإنشاء قاعدة بيانات متكاملة ومترابطة لتنظيم بيانات الموظفين نستخدم:", opts: ["Word", "Microsoft Access", "Excel", "PowerPoint"], ans: 1},
-    {q: "42- ما هو الرقم الذي يمثل 20% من العدد 200؟", opts: ["20", "30", "40", "50"], ans: 2},
-    {q: "43- شركة زادت أرباحها بنسبة 2% بالسنة الأولى و 3% بالثانية، نسبة الزيادة الكلية:", opts: ["5%", "5.06%", "6.05%", "5% تقريباً"], ans: 1},
-    {q: "44- في اجتماع لـ 8 أشخاص، إذا صافح كل شخص الآخرين مرة واحدة، عدد المصافحات الكلي:", opts: ["28", "56", "16", "24"], ans: 0},
-    {q: "45- كعكة مخزونها (600:450:300) بنسبة (3:2:1)، أكبر كمية استخدام ممكنة هي:", opts: ["200:400:600", "200:300:600", "300:450:600", "300:450:150"], ans: 0},
-    {q: "46- ماجد صرف نصف ماله، ثم ثلثي الباقي، ثم 20 ريالاً ولم يبق معه شيء، كم كان معه؟", opts: ["60", "100", "120", "80"], ans: 2},
-    {q: "47- مؤشر وقود على الربع، تم تعبئته بـ 20 لتر فأصبح ثلاثة أرباع، فما السعة الكلية للخزان؟", opts: ["30", "40", "45", "50"], ans: 1},
-    {q: "48- مدينة ارتفعت حرارتها تدريجياً ثم استقرت عند قيمة ثابتة، الرسم الذي يمثلها:", opts: ["m1", "m2", "m3", "m4"], ans: 2},
-    {q: "49- خزان مياه مصبوه الأول بـ 8 ساعات والثاني 12 والثالث 24، لو فتحت معاً تستغرق:", opts: ["3 ساعات", "4 ساعات", "6 ساعات", "5 ساعات"], ans: 0},
-    {q: "50- وزن ماجد أكثر من خالد بـ 15، وأحمد ضعف ماجد، ويوسف 79 وهو يساوي أحمد، فما وزن خالد؟", opts: ["24.5", "25", "26", "24"], ans: 0},
-    {q: "51- أرض مساحتها 750 متر وسعرها بضريبة 2.5% هو 300,000، سعر المتر قبل الضريبة:", opts: ["300", "390", "400", "350"], ans: 0},
-    {q: "52- محل يبيع سلعتين أ (تكلفتها 30 تباع بـ 50) وب (تكلفتها 30 تباع بـ 75). باع 55 من أ بإيرادات س و 60 من ب بربح ص، قارن بين س و ص:", opts: ["س أكبر من ص", "ص أكبر من س", "س و ص متساويان", "المعطيات غير كافية"], ans: 1}
+    {q: "1- المكون المسؤول عن تحويل النصوص والرسومات الورقية إلى بيانات رقمية هو:", opts: ["الراسم البياني", "المحول الرقمي (Digitizer)", "القارئ الرقمي", "برنامج Excel"], ans: 1},
+    {q: "2- من الشكل البياني للسيارتين أ و ب، الاستنتاج الصحيح هو:", opts: ["ارتفاع سعر ب في 2017 وانخفاض أ مقارنة بـ 2015", "ارتفاع سعر الكلتين في 2017", "ارتفاع سعر أ فقط وانخفاض ب", "انخفاض أسعار السيارتين تماماً"], ans: 0},
+    {q: "3- التمثيل البياني الأنسب لإظهار نسب ومقارنات المبيعات في جدول Excel هو:", opts: ["تمثيل دائري نسبي", "تمثيل بالأعمدة", "تمثيل خطي", "جدول تفصيلي"], ans: 0},
+    {q: "4- الموظف الذي يريد تنسيق مواعيد اجتماعاته وجدولته يختار من أوفيس:", opts: ["Excel", "Access", "Word", "Outlook"], ans: 3},
+    {q: "5- اختصار فتح مستند أو ملف جديد في برنامج Word:", opts: ["CTRL + R", "CTRL + N", "CTRL + S", "CTRL + W"], ans: 1},
+    {q: "6- برنامج أوفيس الأنسب لإنشاء سجل أسماء وأعمار ورواتب الموظفين:", opts: ["Word", "PowerPoint", "Excel", "Publisher"], ans: 2},
+    {q: "7- لإنشاء قاعدة بيانات متكاملة ومترابطة لتنظيم بيانات الموظفين نستخدم:", opts: ["Word", "Microsoft Access", "Excel", "PowerPoint"], ans: 1},
+    {q: "8- ما هو الرقم الذي يمثل 20% من العدد 200؟", opts: ["20", "30", "40", "50"], ans: 2},
+    {q: "9- شركة زادت أرباحها بنسبة 2% بالسنة الأولى و 3% بالثانية، نسبة الزيادة الكلية:", opts: ["5%", "5.06%", "6.05%", "5% تقريباً"], ans: 1},
+    {q: "10- في اجتماع لـ 8 أشخاص، إذا صافح كل شخص الآخرين مرة واحدة، عدد المصافحات الكلي:", opts: ["28", "56", "16", "24"], ans: 0},
+    {q: "11- كعكة مخزونها (600:450:300) بنسبة (3:2:1)، أكبر كمية استخدام ممكنة هي:", opts: ["200:400:600", "200:300:600", "300:450:600", "300:450:150"], ans: 0},
+    {q: "12- ماجد صرف نصف ماله، ثم ثلثي الباقي، ثم 20 ريالاً ولم يبق معه شيء، كم كان معه؟", opts: ["60", "100", "120", "80"], ans: 2},
+    {q: "13- مؤشر وقود على الربع، تم تعبئته بـ 20 لتر فأصبح ثلاثة أرباع، فما السعة الكلية للخزان؟", opts: ["30", "40", "45", "50"], ans: 1},
+    {q: "14- مدينة ارتفعت حرارتها تدريجياً ثم استقرت عند قيمة ثابتة، الرسم الذي يمثلها:", opts: ["m1", "m2", "m3", "m4"], ans: 2},
+    {q: "15- خزان مياه مصبوه الأول بـ 8 ساعات والثاني 12 والثالث 24، لو فتحت معاً تستغرق:", opts: ["3 ساعات", "4 ساعات", "6 ساعات", "5 ساعات"], ans: 0},
+    {q: "16- وزن ماجد أكثر من خالد بـ 15، وأحمد ضعف ماجد، ويوسف 79 وهو يساوي أحمد، فما وزن خالد؟", opts: ["24.5", "25", "26", "24"], ans: 0},
+    {q: "17- أرض مساحتها 750 متر وسعرها بضريبة 2.5% هو 300,000، سعر المتر قبل الضريبة:", opts: ["300", "390", "400", "350"], ans: 0},
+    {q: "18- محل يبيع سلعتين أ (تكلفتها 30 تباع بـ 50) وب (تكلفتها 30 تباع بـ 75). باع 55 من أ بإيرادات س و 60 من ب بربح ص، قارن بين س و ص:", opts: ["س أكبر من ص", "ص أكبر من س", "س و ص متساويان", "المعطيات غير كافية"], ans: 1}
   ],
   [
-    {q: "53- أحمد ركض 5 دورات بمضمار 400 متر وعبدالله 9 دورات بضمار 700 قدم (المتر=3.28 قدم)، إذن:", opts: ["أحمد ركض أكثر من عبدالله", "عبدالله ركض أكثر من أحمد", "المسافتان متساويتان", "المعطيات غير كافية"], ans: 0},
-    {q: "54- كيسان بطاطس: الكبير متوسط رقاقته 200 جرام، والصغير 400 جرام، بناءً على ذلك:", opts: ["كمية الكبير أكبر", "كمية الكبير أقل", "الكميتان متساويتان", "المعطيات غير كافية لتحديد الكمية"], ans: 3},
-    {q: "55- شخص استثمر 100 وتضاعف للمثلين سنوياً، وآخر 150 وتضاعف 3 أمثال، مجموع استثمارهما بعد 5 و 4 سنوات:", opts: ["1000 و 1800", "3000 و 3600", "3600 و 12150", "1500 و 3600"], ans: 2},
-    {q: "56- المسافة بين ينبع والمدينة 350 كم وسرعة السيارة 120 كم/س، الزمن المستغرق:", opts: ["ساعتان و 55 دقيقة", "ساعتان و 35 دقيقة", "ثلاث ساعات وربع", "ثلاث ساعات ونصف"], ans: 2},
-    {q: "57- سلعة بـ 60 ريالاً ارتفعت إلى 120 ريالاً، نسبة الزيادة المئوية:", opts: ["60%", "80%", "90%", "100%"], ans: 3},
-    {q: "58- قرية فيها 300 منزل، متوسط الفاتورة للكهرباء والغاز 250 ريال، إيرادات الغاز ثلاثة أرباع الإجمالي، إيرادات الكهرباء بسنة:", opts: ["900,000", "225,000", "675,000", "75,000"], ans: 1},
-    {q: "59- استهلاك منزل 17,000 كيلوواط في 1990، وفي 2000 أصبح 15,000، ثم انخفض 6% في 2010، الفرق بالنسبة المئوية بين 1990 و 2010:", opts: ["17.3%", "25.7%", "43.2%", "81.2%"], ans: 1},
-    {q: "60- البعد بين مدرستين 120 ميل، إذا كان كل 5 ميل = 8 كم، البعد بالكيلومتر:", opts: ["283", "312", "192", "200"], ans: 1},
-    {q: "61- فرع الدمام 2015 إلى الرياض 2017 من القطاعات الدائرية للأرباح تقريباً:", opts: ["1:2", "1:3", "1:4", "2:3"], ans: 0},
-    {q: "62- انخفاض مبيعات الساخنة بشهر 6 بنسبة 30% وثبات الحلويات، نسبة الزيادة اللازمة للمشروبات الباردة لتحقيق نفس الأرباح:", opts: ["40.4%", "30.4%", "15.4%", "0.4%"], ans: 0},
-    {q: "63- أعداد المشاركين بالفئات الثلاث، السنة التي كانت فيها النسبة 4:5:6 هي:", opts: ["2013", "2014", "2015", "2016"], ans: 2},
-    {q: "64- الحجم الكلي لمياه الأرض 1.386 مليون كم مكعب، والعذبة 2.5% والسطحية 0.3%، والبحيرات 87%، احسب حجم البحيرات التقريبي:", opts: ["4410", "6300", "4830", "6900"], ans: 0},
-    {q: "65- سيارة تسير بسرعة 29 ميل/س في نفق طوله 7 كم (1 ميل = 1.6 كم)، الزمن بالدقائق لقطع النفق:", opts: ["6", "7", "5", "8"], ans: 2},
-    {q: "66- خزان فارغ 1200 لتر لتعبئة 80% منه بمعدل 0.6 لتر/ثانية، يحتاج دقائق:", opts: ["25.1", "26.7", "29.1", "24"], ans: 1},
-    {q: "67- جنيه إسترليني = 190 ين، اليورو = 164 ين، كم جنيه يساوي 1827 يورو؟", opts: ["1576.99", "1430.74", "1230.55", "1340.89"], ans: 0},
-    {q: "68- كيسان بطاطس: الكبير 200 جرام والصغير 450 جرام، الخيار الصحيح:", opts: ["كمية الكبير أكبر", "المعلومات غير كافية", "الكميتان متساويتان", "كمية الكبير أقل من الصغير"], ans: 3}
+    {q: "1- أحمد ركض 5 دورات بمضمار 400 متر وعبدالله 9 دورات بمضمار 700 قدم (المتر=3.28 قدم)، إذن:", opts: ["أحمد ركض أكثر من عبدالله", "عبدالله ركض أكثر من أحمد", "المسافتان متساويتان", "المعطيات غير كافية"], ans: 0},
+    {q: "2- كيسان بطاطس: الكبير متوسط رقاقته 200 جرام، والصغير 400 جرام، بناءً على ذلك:", opts: ["كمية الكبير أكبر", "كمية الكبير أقل", "الكميتان متساويتان", "المعطيات غير كافية لتحديد الكمية"], ans: 3},
+    {q: "3- شخص استثمر 100 وتضاعف للمثلين سنوياً، وآخر 150 وتضاعف 3 أمثال، مجموع استثمارهما بعد 5 و 4 سنوات:", opts: ["1000 و 1800", "3000 و 3600", "3600 و 12150", "1500 و 3600"], ans: 2},
+    {q: "4- المسافة بين ينبع والمدينة 350 كم وسرعة السيارة 120 كم/س، الزمن المستغرق:", opts: ["ساعتان و 55 دقيقة", "ساعتان و 35 دقيقة", "ثلاث ساعات وربع", "ثلاث ساعات ونصف"], ans: 2},
+    {q: "5- سلعة بـ 60 ريالاً ارتفعت إلى 120 ريالاً، نسبة الزيادة المئوية:", opts: ["60%", "80%", "90%", "100%"], ans: 3},
+    {q: "6- قرية فيها 300 منزل، متوسط الفاتورة للكهرباء والغاز 250 ريال، إيرادات الغاز ثلاثة أرباع الإجمالي، إيرادات الكهرباء بسنة:", opts: ["900,000", "225,000", "675,000", "75,000"], ans: 1},
+    {q: "7- استهلاك منزل 17,000 كيلوواط في 1990، وفي 2000 أصبح 15,000، ثم انخفض 6% في 2010، الفرق بالنسبة المئوية بين 1990 و 2010:", opts: ["17.3%", "25.7%", "43.2%", "81.2%"], ans: 1},
+    {q: "8- البعد بين مدرستين 120 ميل، إذا كان كل 5 ميل = 8 كم، البعد بالكيلومتر:", opts: ["283", "312", "192", "200"], ans: 1},
+    {q: "9- فرع الدمام 2015 إلى الرياض 2017 من القطاعات الدائرية للأرباح تقريباً:", opts: ["1:2", "1:3", "1:4", "2:3"], ans: 0},
+    {q: "10- انخفاض مبيعات الساخنة بشهر 6 بنسبة 30% وثبات الحلويات، نسبة الزيادة اللازمة للمشروبات الباردة لتحقيق نفس الأرباح:", opts: ["40.4%", "30.4%", "15.4%", "0.4%"], ans: 0},
+    {q: "11- أعداد المشاركين بالفئات الثلاث، السنة التي كانت فيها النسبة 4:5:6 هي:", opts: ["2013", "2014", "2015", "2016"], ans: 2},
+    {q: "12- الحجم الكلي لمياه الأرض 1.386 مليون كم مكعب، والعذبة 2.5% والسطحية 0.3%، والبحيرات 87%، احسب حجم البحيرات التقريبي:", opts: ["4410", "6300", "4830", "6900"], ans: 0},
+    {q: "13- سيارة تسير بسرعة 29 ميل/س في نفق طوله 7 كم (1 ميل = 1.6 كم)، الزمن بالدقائق لقطع النفق:", opts: ["6", "7", "5", "8"], ans: 2},
+    {q: "14- خزان فارغ 1200 لتر لتعبئة 80% منه بمعدل 0.6 لتر/ثانية، يحتاج دقائق:", opts: ["25.1", "26.7", "29.1", "24"], ans: 1},
+    {q: "15- جنيه إسترليني = 190 ين، اليورو = 164 ين، كم جنيه يساوي 1827 يورو؟", opts: ["1576.99", "1430.74", "1230.55", "1340.89"], ans: 0},
+    {q: "16- كيسان بطاطس: الكبير 200 جرام والصغير 450 جرام، الخيار الصحيح:", opts: ["كمية الكبير أكبر", "المعلومات غير كافية", "الكميتان متساويتان", "كمية الكبير أقل من الصغير"], ans: 3}
   ],
   [
-    {q: "69- شركة 80% من موظفيها تقنية (20% سعوديون) وتصدر 30% للخليج والإدارة كلها سعوديون، نستنتج:", opts: ["السعوديون لا يعملون بالتقنية", "70% استهلاك محلي", "20% مهندسون", "الشركة لا تحبذ غير السعوديين بالإدارة"], ans: 3},
-    {q: "70- طبيب أخذ إذن لتجربة على أطفال مصابين بالشلل، وآخر أجرى تجربة بلا إذن على كبار السن، فعل الثاني:", opts: ["أخلاقي وقانوني", "أخلاقي وغير قانوني", "غير أخلاقي وقانوني", "غير أخلاقي وغير قانوني"], ans: 3},
-    {q: "71- قرية 30% تحت خط الفقر و90% عاطلون، شركة فتحت متجراً وتقدم 5% فقط للوظيفة، التفسير:", opts: ["أهل القرية كسالى", "رواتب الشركة منخفضة", "ظروف العمل غير مناسبة", "أغلب من هم تحت خط الفقر أطفال وكبار سن"], ans: 3},
-    {q: "72- دراسة ترتفع فيها الحوادث بسبب الجوال ومطالبة برفع عقوبته لتساوي التفحيط، الفرضية الأساسية:", opts: ["استخدام الجوال أكثر خطورة من التفحيط", "عقوبة التفحيط رادعة", "ممارسو التفحيط أقل من مستخدمي الجوال", "لا توجد عقوبة للجوال"], ans: 0},
-    {q: "73- النمو الاقتصادي يؤثر سلباً على الموارد غير المتجددة. العبارات: (1) الحفاظ على الموارد، (2) التقليل من النمو، (3) توفير موارد أخرى:", opts: ["العبارة الأولى فقط", "العبارة الثانية فقط", "العبارة الثالثة فقط", "العبارة الأولى والثالثة"], ans: 3},
-    {q: "74- ارتفعت أرباح شركات النفط العالمية / انخفضت أسهم شركات النفط العالمية، العلاقة:", opts: ["الأولى سبب للثانية", "الثانية سبب للأولى", "مستقلتان تماماً", "مترابطتان وعكسيتان"], ans: 3},
-    {q: "75- مدرب رياضي صرح بأن الفريق يحتاج لتحسين خطة التدريب للفوز على الفريق الأقوى، الاستنتاج:", opts: ["فرصة الفوز أمام الأقوى ضعيفة بالخطة الحالية", "الفرق الأقوى تمتلك خططاً أفضل", "لا فرصة للفوز نهائياً", "مستحيل الفوز"], ans: 0},
-    {q: "76- جامعة تضع شرط سنتين خبرة للماجستير لتحسين المخرجات، أي الدراسات تدعم ذلك:", opts: ["60% من ذوي الخبرة اجتازوا الماجستير بلا تأخير", "الطلاب بلا خبرة تخرجوا أسرع", "الجميع تخرج بنفس المعدل", "الذين بلا خبرة واجهوا صعوبات كبيرة"], ans: 3},
-    {q: "77- أشخاص يخططون للسفر بالسيارة، السبب الأكثر منطقية:", opts: ["سيصلون أسرع من النقل العام", "يمكن لجميع العائلة السفر معاً بسيارة واحدة", "السيارة أسهل وسيلة", "جميع ما ذكر"], ans: 1},
-    {q: "78- انخفضت نسبة البطالة بشكل كبير / سعت الدولة للتخلص من العوائق الاستثمارية، العلاقة:", opts: ["الأولى سبب للثانية", "الثانية سبب للأولى", "كل جملة لسبب مختلف", "كل جملة تعبر عن نتيجة"], ans: 1},
-    {q: "79- تطور الذكاء الاصطناعي يسهم في تحسين رفاهية الإنسان، الفرضية الداعمة:", opts: ["لأنه يُستخدم في العمليات الجراحية الدقيقة والمعقدة", "لأنه يحد من تفاعل الإنسان", "لأنه يقلل الرفاهية ويسبب بطالة", "الفرضية الأولى والثانية"], ans: 0},
-    {q: "80- منظمة الصحة حذرت من استخدام دواء لعدم كفاية الأدلة واستمر بعض الأطباء باستخدامه للأعراض الخفيفة، الاستنتاج:", opts: ["تجاهلت بعض الجهات التحذيرات واستخدمت العقار بنطاق ضيق", "هو العقار الوحيد الفعال", "جميع الدول استخدمته", "الدواء الوحيد ببتائج إيجابية"], ans: 0},
-    {q: "81- ناس يخزنون معلوماتهم بالإنترنت دون قصد عبر التخزين السحابي، التخمين الأقرب:", opts: ["التخمين الأول والثاني", "معظم الناس تحفظ معلوماتهم وهم لا يديرون ذلك", "الثالت والرابع", "الأول والثالث"], ans: 1},
-    {q: "82- شركة ملابس واجهت ارتفاع التكاليف فنقلت التصنيع للخارج لتقليل التكلفة وزيادة الربح، الفرضية:", opts: ["الأيدي العاملة أقل بالخارج", "إذا صُنعت الملابس بالخارج تقل التكلفة ويزداد الربح", "الملابس أقل جودة", "1 فقط"], ans: 1},
-    {q: "83- ظلت أسعار الذرة ثابتة السنة الأخيرة / هبطت أسعار الذرة في الأسواق، العلاقة:", opts: ["الأولى سبب والثانية نتيجة", "الثانية سبب والأولى نتيجة", "كلا العبارتين نتجتا عن نفس السبب", "كلا العبارتين نتجتا عن أسباب مختلفة ومتناقضة"], ans: 3},
-    {q: "84- النمو السكاني في الدول الأفريقية واستهلاك الموارد بكثرة، ماذا نستنتج؟", opts: ["الدول الأفريقية ليست لديها استدامة بالموارد", "الدول الأفريقية تعتمد على الزراعة", "لديها زيادة سكانية أكثر من استهلاكها", "لا يمكن الاستنتاج بدقة"], ans: 0},
-    {q: "85- الشركات تستخدم وسائل لزيادة الأرباح وتحفيز الموظفين بإعطاء أسهم لضمان بقائهم، يدل على:", opts: ["الشركات مجبورة", "لا علاقة له بالأرباح", "الشركات تتبع طرقاً مبتكرة لاستمرار الموظفين وعدم الإفلاس", "الشركات تطرد الموظفين للتقليل"], ans: 2}
+    {q: "1- شركة 80% من موظفيها تقنية (20% سعوديون) وتصدر 30% للخليج والإدارة كلها سعوديون، نستنتج:", opts: ["السعوديون لا يعملون بالتقنية", "70% استهلاك محلي", "20% مهندسون", "الشركة لا تحبذ غير السعوديين بالإدارة"], ans: 3},
+    {q: "2- طبيب أخذ إذن لتجربة على أطفال مصابين بالشلل، وآخر أجرى تجربة بلا إذن على كبار السن، فعل الثاني:", opts: ["أخلاقي وقانوني", "أخلاقي وغير قانوني", "غير أخلاقي وقانوني", "غير أخلاقي وغير قانوني"], ans: 3},
+    {q: "3- قرية 30% تحت خط الفقر و90% عاطلون، شركة فتحت متجراً وتقدم 5% فقط للوظيفة، التفسير:", opts: ["أهل القرية كسالى", "رواتب الشركة منخفضة", "ظروف العمل غير مناسبة", "أغلب من هم تحت خط الفقر أطفال وكبار سن"], ans: 3},
+    {q: "4- دراسة ترتفع فيها الحوادث بسبب الجوال ومطالبة برفع عقوبته لتساوي التفحيط، الفرضية الأساسية:", opts: ["استخدام الجوال أكثر خطورة من التفحيط", "عقوبة التفحيط رادعة", "ممارسو التفحيط أقل من مستخدمي الجوال", "لا توجد عقوبة للجوال"], ans: 0},
+    {q: "5- النمو الاقتصادي يؤثر سلباً على الموارد غير المتجددة. العبارات: (1) الحفاظ على الموارد، (2) التقليل من النمو، (3) توفير موارد أخرى:", opts: ["العبارة الأولى فقط", "العبارة الثانية فقط", "العبارة الثالثة فقط", "العبارة الأولى والثالثة"], ans: 3},
+    {q: "6- ارتفعت أرباح شركات النفط العالمية / انخفضت أسهم شركات النفط العالمية، العلاقة:", opts: ["الأولى سبب للثانية", "الثانية سبب للأولى", "مستقلتان تماماً", "مترابطتان وعكسيتان"], ans: 3},
+    {q: "7- مدرب رياضي صرح بأن الفريق يحتاج لتحسين خطة التدريب للفوز على الفريق الأقوى، الاستنتاج:", opts: ["فرصة الفوز أمام الأقوى ضعيفة بالخطة الحالية", "الفرق الأقوى تمتلك خططاً أفضل", "لا فرصة للفوز نهائياً", "مستحيل الفوز"], ans: 0},
+    {q: "8- جامعة تضع شرط سنتين خبرة للماجستير لتحسين المخرجات، أي الدراسات تدعم ذلك:", opts: ["60% من ذوي الخبرة اجتازوا الماجستير بلا تأخير", "الطلاب بلا خبرة تخرجوا أسرع", "الجميع تخرج بنفس المعدل", "الذين بلا خبرة واجهوا صعوبات كبيرة"], ans: 3},
+    {q: "9- أشخاص يخططون للسفر بالسيارة، السبب الأكثر منطقية:", opts: ["سيصلون أسرع من النقل العام", "يمكن لجميع العائلة السفر معاً بسيارة واحدة", "السيارة أسهل وسيلة", "جميع ما ذكر"], ans: 1},
+    {q: "10- انخفضت نسبة البطالة بشكل كبير / سعت الدولة للتخلص من العوائق الاستثمارية، العلاقة:", opts: ["الأولى سبب للثانية", "الثانية سبب للأولى", "كل جملة لسبب مختلف", "كل جملة تعبر عن نتيجة"], ans: 1},
+    {q: "11- تطور الذكاء الاصطناعي يسهم في تحسين رفاهية الإنسان، الفرضية الداعمة:", opts: ["لأنه يُستخدم في العمليات الجراحية الدقيقة والمعقدة", "لأنه يحد من تفاعل الإنسان", "لأنه يقلل الرفاهية ويسبب بطالة", "الفرضية الأولى والثانية"], ans: 0},
+    {q: "12- منظمة الصحة حذرت من استخدام دواء لعدم كفاية الأدلة واستمر بعض الأطباء باستخدامه للأعراض الخفيفة، الاستنتاج:", opts: ["تجاهلت بعض الجهات التحذيرات واستخدمت العقار بنطاق ضيق", "هو العقار الوحيد الفعال", "جميع الدول استخدمته", "الدواء الوحيد ببتائج إيجابية"], ans: 0},
+    {q: "13- ناس يخزنون معلوماتهم بالإنترنت دون قصد عبر التخزين السحابي، التخمين الأقرب:", opts: ["التخمين الأول والثاني", "معظم الناس تحفظ معلوماتهم وهم لا يديرون ذلك", "الثالت والرابع", "الأول والثالث"], ans: 1},
+    {q: "14- شركة ملابس واجهت ارتفاع التكاليف فنقلت التصنيع للخارج لتقليل التكلفة وزيادة الربح، الفرضية:", opts: ["الأيدي العاملة أقل بالخارج", "إذا صُنعت الملابس بالخارج تقل التكلفة ويزداد الربح", "الملابس أقل جودة", "1 فقط"], ans: 1},
+    {q: "15- ظلت أسعار الذرة ثابتة السنة الأخيرة / هبطت أسعار الذرة في الأسواق، العلاقة:", opts: ["الأولى سبب والثانية نتيجة", "الثانية سبب والأولى نتيجة", "كلا العبارتين نتجتا عن نفس السبب", "كلا العبارتين نتجتا عن أسباب مختلفة ومتناقضة"], ans: 3},
+    {q: "16- النمو السكاني في الدول الأفريقية واستهلاك الموارد بكثرة، ماذا نستنتج؟", opts: ["الدول الأفريقية ليست لديها استدامة بالموارد", "الدول الأفريقية تعتمد على الزراعة", "لديها زيادة سكانية أكثر من استهلاكها", "لا يمكن الاستنتاج بدقة"], ans: 0},
+    {q: "17- الشركات تستخدم وسائل لزيادة الأرباح وتحفيز الموظفين بإعطاء أسهم لضمان بقائهم، يدل على:", opts: ["الشركات مجبورة", "لا علاقة له بالأرباح", "الشركات تتبع طرقاً مبتكرة لاستمرار الموظفين وعدم الإفلاس", "الشركات تطرد الموظفين للتقليل"], ans: 2}
   ]
 ];
 
-function renderHome() {
-  return `
-    <section class="hero-wrapper">
-      <div>
-        <div class="hero-badge">✨ مرجعك الأكاديمي النخبوي</div>
-        <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-        <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات المعتمدة مع بطاقات الشرح الكاملة لجميع تفاصيل الملفات.</p>
-        <div class="hero-actions">
-          <button class="action-btn primary" data-page="tests">ابدأ الاختبارات الآن ←</button>
-          <button class="action-btn secondary" data-page="skills">استعراض المهارات (85 سؤالاً)</button>
-        </div>
-      </div>
-      <div class="hero-box-art">
-        <h3>🚀 محتوى شامل ومطور</h3>
-        <p>جميع الملفات والشروح التفصيلية دقيقة ومستخرجة حرفياً من ملفاتك.</p>
-      </div>
-    </section>
-
-    <div class="grid-cards">
-      <div class="card-item" data-page="tests">
-        <div class="card-icon-box">✎</div>
-        <h3>الاختبارات</h3>
-        <p>تدرب على اختبارات التجميعات الأصلية والمجمعة مع التصحيح الفوري.</p>
-        <span class="card-action-link">استعرض الاختبارات ←</span>
-      </div>
-      <div class="card-item" data-page="laws">
-        <div class="card-icon-box">∑</div>
-        <h3>القوانين</h3>
-        <p>ميكانيكا البكرات والحسابات الكيميائية مع بطاقات الشرح التفصيلية.</p>
-        <span class="card-action-link">تصفح القوانين والشرح ←</span>
-      </div>
-      <div class="card-item" data-page="linking">
-        <div class="card-icon-box">⌘</div>
-        <h3>الربط</h3>
-        <p>الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية.</p>
-        <span class="card-action-link">افتح قسم الربط ←</span>
-      </div>
-      <div class="card-item" data-page="summaries">
-        <div class="card-icon-box">▤</div>
-        <h3>الملخصات</h3>
-        <p>الأسماء الشائعة، مشتقات الهيدروكربونات، وملخص الرياضيات.</p>
-        <span class="card-action-link">استعراض الملخصات الشاملة ←</span>
-      </div>
-      <div class="card-item" data-page="skills">
-        <div class="card-icon-box">◎</div>
-        <h3>المهارات (85 سؤالاً)</h3>
-        <p>ملف التأسيس و5 اختبارات تفاعلية شاملة لجميع أفكار التجميعات.</p>
-        <span class="card-action-link">ابدأ تدريبات المهارات ←</span>
-      </div>
-    </div>
-  `;
-}
-
-function renderTests() {
-  return `
-    <button class="back-link" data-page="home">← العودة للرئيسية</button>
-    <div class="section-header">
-      <h1>الاختبارات التجميعية</h1>
-      <p>اختر الاختبار الفردي أو افتح الاختبار المجمع لحل جميع الملفات متتابعة.</p>
-    </div>
-    <div class="grid-cards">
-      ${testsList.map((t, i) => `
-        <div class="card-item" data-openquiz="${i}">
-          <div class="card-icon-box">${t.icon}</div>
-          <h3>${t.title}</h3>
-          <p>${t.desc}</p>
-          <span class="card-action-link">بدء الاختبار الفردي ←</span>
-        </div>
-      `).join('')}
-      <div class="card-item" data-page="combined">
-        <div class="card-icon-box">∞</div>
-        <h3>الاختبار المجمع الشامل</h3>
-        <p>جميع الاختبارات (1 و 2 و 3) مرتبة ومفتوحة في صفحة واحدة.</p>
-        <span class="card-action-link">فتح الاختبار المجمع ←</span>
-      </div>
-    </div>
-    <div id="quizViewerHost"></div>
-  `;
-}
-
-function renderQuizViewer(idx) {
-  let t = testsList[idx];
-  return `
-    <div class="main-panel">
-      <div class="pdf-download-bar">
-        <div><h4>${t.title} — الملف الأصلي</h4><p>يمكنك تحميل الملف بصيغة HTML أو فتحه بملء الشاشة.</p></div>
-        <a class="action-btn primary" href="${t.url}" target="_blank" rel="noopener">فتح في نافذة مستقلة ↗</a>
-      </div>
-      <iframe class="quiz-iframe" src="${t.url}" title="${t.title}" loading="lazy"></iframe>
-    </div>
-  `;
-}
-
-function renderCombined() {
-  return `
-    <button class="back-link" data-page="tests">← العودة لقائمة الاختبارات</button>
-    <div class="section-header">
-      <h1>الاختبار المجمع الشامل</h1>
-      <p>استعراض وحل الملفات الثلاثة متتابعة لتغطية كافة الأسئلة.</p>
-    </div>
-    ${testsList.map(t => `
-      <div class="main-panel">
-        <h3>${t.title}</h3>
-        <div class="pdf-download-bar">
-          <div><h4>${t.desc}</h4><p>رابط مباشر للتحميل والتصفح</p></div>
-          <a class="action-btn primary" href="${t.url}" target="_blank" rel="noopener">فتح الملف ↗</a>
-        </div>
-        <iframe class="quiz-iframe" src="${t.url}" title="${t.title}" loading="lazy"></iframe>
-      </div>
-    `).join('')}
-  `;
-}
-
-function renderLaws() {
-  return `
-    <button class="back-link" data-page="home">← العودة للرئيسية</button>
-    <div class="section-header">
-      <h1>القوانين والحسابات الكيميائية والفيزيائية</h1>
-      <p>تصفح الملفات الأصلية بالأسفل، واستعرض جميع تفاصيل وأفكار الملفات عبر بطاقات الشرح التفاعلية المفصلة.</p>
-    </div>
-
-    <!-- 1. الحسابات الكيميائية -->
-    <div class="main-panel">
-      <h2>⚖️ ملف الحسابات الكيميائية الشامل</h2>
-      <div class="pdf-download-bar">
-        <div><h4>دليل مخططات المختبر والحسابات الكيميائية (PDF)</h4><p>رابط التحميل الأصلي للملف</p></div>
-        <a class="action-btn primary" href="الحسابات الكيميائيه .pdf" target="_blank" rel="noopener">فتح / تحميل الملف ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="الحسابات الكيميائيه .pdf#view=FitH" title="الحسابات الكيميائية" loading="lazy"></iframe>
-
-      <div class="concepts-section-title">📌 بطاقات تفصيلية تشمل كل محتويات الحسابات الكيميائية:</div>
-      <div class="concept-cards-grid" id="chemTabs">
-        <button class="concept-tab-btn active" onclick="switchConcept('chem', 0)">المستوى 1: المولات والكتلة<span>n = m ÷ M</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 1)">عدد الجسيمات وأفوجادرو<span>N = n × NA</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 2)">الكتلة المولية والنسبة<span>مجموع كتل العناصر</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 3)">الصيغة الأولية والجزيئية<span>n = M(تجريبية) / M(أولية)</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 4)">الأملاح المائية (التمهيد)<span>حساب ماء التبلور x</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 5)">المستوى 3: النسب المولية والمقص<span>n(n-1) وطريقة المقص</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 6)">المادة المحددة والفائضة<span>الناتج الأصغر يحدد</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('chem', 7)">المردود النظري والفعلي<span>نسبة المردود المئوية</span></button>
-      </div>
-      <div class="concept-display-box" id="chemDisplay">
-        <h4>1. المستوى الأول: المفاهيم الأساسية (عدد المولات والكتلة)</h4>
-        <p>• <b>قانون عدد المولات:</b> يُحسب بقسمة كتلة المادة بالجرام (m) على الكتلة المولية (M).<br>• <i>قانون الكتلة:</i> $m = n \times M$.<br>• <i>مثال توضيحي:</i> لحساب مولات 40 جرام من هيدروكسيد الصوديوم بكتلة مولية 40 g/mol يصبح الناتج 1 مول.</p>
-        <div class="math-block">n = m ÷ M   |   m = n × M</div>
-      </div>
-    </div>
-
-    <!-- 2. ميكانيكا البكرات -->
-    <div class="main-panel">
-      <h2>⚙️ ميكانيكا البكرات (بوصلة المبكر)</h2>
-      <div class="pdf-download-bar">
-        <div><h4>ملف ميكانيكا البكرات - بوصلة المبكر (PDF)</h4><p>رابط التحميل الأصلي للملف</p></div>
-        <a class="action-btn primary" href="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf" target="_blank" rel="noopener">فتح / تحميل PDF ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf#view=FitH" title="ميكانيكا البكرات" loading="lazy"></iframe>
-
-      <div class="concepts-section-title">📌 بطاقات تفصيلية تشمل كل فصول وأسرار ميكانيكا البكرات:</div>
-      <div class="concept-cards-grid" id="pulleyTabs">
-        <button class="concept-tab-btn active" onclick="switchConcept('pulley', 0)">الفصول 1 & 2: القوى والاحتكاك<span>W, Fn, T, Fk</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('pulley', 1)">الفصول 3, 4 & 5: نيوتن الثاني والنظام<span>ΣF = ma وحذف الشد</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('pulley', 2)">الفصول 6 & 7: أتوود والطاولة<span>الكتل المعلقة والسطح</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('pulley', 3)">الفصول 8 & 9: القوة المائلة والمنحدر<span>تحليل الفورس والوزن</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('pulley', 4)">الفصل 10: المنحدر وبكرة (القمة)<span>المقارنة وحساب التسارع</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('pulley', 5)">الأخطاء الشائعة وخريطة الحل<span>أبرز الفخاخ بالاختبارات</span></button>
-      </div>
-      <div class="concept-display-box" id="pulleyDisplay">
-        <h4>1. القوى الأربع والاحتكاك بالتفصيل</h4>
-        <p>• <b>الوزن ($W=mg$):</b> موجود دائماً باتجاه أسفل الأرض.<br>• <b>القوة العمودية ($F_N$):</b> عمودية على السطح، ولا تساوي الوزن دائماً.<br>• <b>الشد ($T$):</b> الحبل يسحب ولا يدفع ونفس الشد بالحبل.<br>• <b>الاحتكاك ($F_k = \mu_k F_N$):</b> عكس اتجاه الحركة دائماً.</p>
-        <div class="math-block">F_k = \mu_k F_N   |   F_s \le \mu_s F_N</div>
-      </div>
-    </div>
-  `;
-}
-
-const chemConcepts = [
-  {
-    title: "1. المستوى الأول: المولات والكتلة والجسيمات",
-    desc: "• <b>عدد المولات (n):</b> كتلة المادة (m) ÷ الكتلة المولية (M).<br>• <b>الكتلة بالجرام (m):</b> عدد المولات (n) × الكتلة المولية (M).<br>• <i>مثال:</i> 40g من مادة كتلتها المولية 16 تساوي 2.5 mol.",
-    math: "n = m / M   |   m = n × M",
-    example: "التحويل بين الكتلة والمولات يعتمد كلياً على الكتلة المولية للمركب."
-  },
-  {
-    title: "2. عدد الجسيمات وثابت أفوجادرو",
-    desc: "• <b>عدد الجسيمات (N):</b> عدد المولات (n) × ثابت أفوجادرو ($N_A$).<br>• <b>ثابت أفوجادرو:</b> $N_A = 6.02 \times 10^{23}$ جزيء/مول.<br>• لحساب المولات من الجسيمات نقسم عدد الجسيمات على $N_A$.",
-    math: "N = n \times 6.02 \times 10^{23}",
-    example: "عدد الجزيئات في 3 مول من غاز $CO_2$ = $3 \times (6.02 \times 10^{23}) = 18.06 \times 10^{23}$."
-  },
-  {
-    title: "3. المستوى الثاني: الكتلة المولية والنسبة المئوية",
-    desc: "• <b>الكتلة المولية لمركب:</b> مجموع الكتل الذرية للعناصر المكونة له من الجدول الدوري.<br>• <b>النسبة المئوية بالكتلة:</b> (كتلة العنصر ÷ كتلة المركب الكلية) × 100.<br>• تقيس النسبة مساهمة كل عنصر في كتلة المركب.",
-    math: "% العنصر = (كتلة العنصر ÷ الكتلة الكلية للمركب) \times 100",
-    example: "في ماء $H_2O$ (كتلته 18)، كتلة الهيدروجين 2 فتكون نسبته $(2 \div 18) \times 100 = 11\%$."
-  },
-  {
-    title: "4. الصيغة الأولية والصيغة الجزيئية",
-    desc: "• <b>الأولية:</b> أبسط نسبة عددية صحيحة لذرات العناصر (مثل $CH_2O$).<br>• <b>الجزيئية:</b> العدد الفعلي للذرات ($n \times$ الصيغة الأولية).<br>• <b>حساب النسبة n:</b> الكتلة المولية الجزيئية ÷ كتلة الصيغة الأولية.",
-    math: "n = \text{الكتلة المولية الجزيئية} / \text{كتلة الصيغة الأولية}",
-    example: "إذا كانت كتلة الصيغة 30 والكتلة الجزيئية 60 فإن n = 2، وتصبح الصيغة مضاعفة."
-  },
-  {
-    title: "5. حساب الأملاح المائية (ماء التبلور)",
-    desc: "• <b>كتلة الماء المفقود:</b> كتلة الملح المائي قبل التسخين - كتلة الملح اللامائي بعد التسخين.<br>• <b>عدد مولات الماء (x):</b> مقارنة مولات الماء بمولات الملح اللامائي للحصول على صيغة الملح المائي المرتبط بـ $xH_2O$.",
-    math: "x = \text{مولات الماء} / \text{مولات الملح اللامائي}",
-    example: "إذا نتج 30 مول ماء و 10 مول ملح فإن x = 3 وتكون الصيغة النهائية متبوعة بـ $3H_2O$."
-  },
-  {
-    title: "6. المستوى الثالث: النسب المولية وطريقة المقص",
-    desc: "• <b>عدد النسب المولية للتفاعل:</b> تُحسب بقانون $n(n-1)$ حيث n هو عدد المواد في المعادلة الموزونة.<br>• <b>طريقة المقص:</b> لإيجاد عدد مولات أو كتلة مادة مجهولة بدلالة مادة معلومة من المعادلة.",
-    math: "\text{عدد النسب} = n(n-1)",
-    example: "تفاعل بـ 4 مواد له $4(4-1) = 12$ نسبة مولية ممكنة."
-  },
-  {
-    title: "7. المادة المحددة والمادة الفائضة",
-    desc: "• <b>المادة المحددة للتفاعل:</b> هي التي تستهلك كلياً وتحدد كمية الناتج (يعطي الناتج الأصغر عند قسمة مولات المعطى على المعامل).<br>• <b>المادة الفائضة:</b> هي المتبقية بدون استهلاك كامل.",
-    math: "\text{الناتج الأصغر من (المولات المعطاة ÷ المعامل) هو المادة المحددة}",
-    example: "دائماً نقسم عدد المولات على المعامل في المعادلة الموزونة لنعرف من هي المحددة."
-  },
-  {
-    title: "8. المردود النظري والفعلي والمئوي",
-    desc: "• <b>المردود النظري:</b> أكبر كمية من الناتج تحسب ورقياً من المعادلة الموزونة.<br>• <b>المردود الفعلي:</b> كمية المادة الناتجة عملياً بالمختبر.<br>• <b>نسبة المردود المئوية:</b> (المردود الفعلي ÷ المردود النظري) × 100.",
-    math: "% \text{المردود} = (\text{الفعلي} / \text{النظري}) \times 100",
-    example: "تعبر عن كفاءة التجربة العملية مقارنة بالحسابات النظرية."
-  }
-];
-
-const pulleyConcepts = [
-  {
-    title: "1. القوى الأربع والاحتكاك بالتفصيل",
-    desc: "• <b>قوى البكرات الأربع:</b> الوزن ($W=mg$ لأعلى الأرض)، القوة العمودية ($F_N$ للسطح)، الشد ($T$ للحبل يسحب ولا يدفع)، والاحتكاك ($F_k$ عكس الحركة).<br>• <b>الاحتكاك السكوني والحركي:</b> $F_k = \mu_k F_N$، ويتحدد اتجاهه دائماً بعكس اتجاه حركة الجسم.",
-    math: "F_N = mg \quad (\text{على سطح أفقي بدون قوة مائلة}) \quad | \quad F_k = \mu_k F_N",
-    example: "صندوق كتلته 10kg ومعامل احتكاكه 0.3 على سطح أفقي، قوة الاحتكاك = $0.3 \times 100 = 30N$."
-  },
-  {
-    title: "2. قانون نيوتن الثاني وطريقة النظام",
-    desc: "• <b>قانون نيوتن الثاني:</b> $\Sigma F = ma$ (المحركة - المقاومة = الكتلة × التسارع).<br>• <b>البكرة والحبل:</b> افتراض أن الحبل خفيف (الشد نفسه بكل النقاط) وبكرة ملساء تغير الاتجاه ولا تغير الشد.<br>• <b>طريقة النظام:</b> جمع معادلات الأجسام ليحذف الشد كقوة داخلية، والتسارع = (القوى المحركة - المقاومة) ÷ مجموع الكتل.",
-    math: "a = \frac{\Sigma F_{\text{driving}} - \Sigma F_{\text{resisting}}}{m_1 + m_2}",
-    example: "أسرع طريقة لإيجاد التسارع دون الدخول في حسابات الشد الداخلية."
-  },
-  {
-    title: "3. آلة أتوود والطاولة والكتلة المعلقة",
-    desc: "• <b>آلة أتوود:</b> كتلتان معلقتان على طرفي حبل ($m_1, m_2$). التسارع $a = \frac{(m_1-m_2)g}{m_1+m_2}$ والشد $T = \frac{2m_1m_2g}{m_1+m_2}$.<br>• <b>الطاولة والكتلة المعلقة:</b> طاولة ملساء أو خشنة مع كتلة معلقة تحرك النظام.",
-    math: "a_{\text{Atwood}} = \frac{(m_1-m_2)g}{m_1+m_2} \quad | \quad T = m_2(g+a)",
-    example: "إذا تساوت الكتلتان في أتوود كان التسارع صفر والشد مساوياً لوزن إحداهما."
-  },
-  {
-    title: "4. القوة المائلة والسطح المائل",
-    desc: "• <b>القوة المائلة:</b> تحلل لـ $F\cos\theta$ أفقياً و $F\sin\theta$ رأسياً. في السحب تطرح من الوزن ($F_N = mg - F\sin\theta$) وفي الدفع تضاف ($F_N = mg + F\sin\theta$).<br>• <b>السطح المائل:</b> تحليل الوزن لمركبتين: $mg\sin\theta$ موازية للسطح (تسحب للأسفل) و $mg\cos\theta$ عمودية تعادلها $F_N$.",
-    math: "F_N(\text{slope}) = mg\cos\theta \quad | \quad a(\text{smooth slope}) = g\sin\theta",
-    example: "مركبة الجيب ($\sin$) على امتداد المنحدر، وجيب التمام ($\cos$) عمودياً عليه."
-  },
-  {
-    title: "5. المنحدر وبكرة (القمة) - قمة التأسيس",
-    desc: "• <b>نظام المنحدر وبكرة:</b> مقارنة بين وزن الكتلة المعلقة $m_1g$ ومركبة وزن المنحدر $m_2g\sin\theta$. الأكبر يحدد اتجاه الحركة.<br>• <b>حساب التسارع:</b> الصافي مقسوماً على مجموع الكتل ومطروحاً منه الاحتكاك إن وجد.",
-    math: "a = \frac{m_1g - m_2g\sin\theta - \mu_k m_2g\cos\theta}{m_1 + m_2}",
-    example: "إذا كان الفرق أصغر من الاحتكاك، فالنظام لا يتحرك والتسارع صفر."
-  },
-  {
-    title: "6. الأخطاء الشائعة وخريطة الحل في الاختبارات",
-    desc: "• <b>فخاخ هامة:</b> لا تساوي الشد بالوزن أثناء التسارع، ولا تهمل الاحتكاك عند كلمة 'خشن'، ولا تحسب الاحتكاك من الوزن الكامل بل من المركبة العمودية $mg\cos\theta$.<br>• <b>خريطة الحل:</b> 1. تحديد اتجاه الحركة -> 2. رسم القوى -> 3. تحليل المائل -> 4. حساب الاحتكاك -> 5. تطبيق نيوتن الثاني.",
-    math: "\text{دائماً حدد اتجاه الحركة أولاً ثم اجعل الاحتكاك عكسها}",
-    example: "الشد يقع دائماً بين وزن الكتلة الصاعدة ووزن الكتلة الهابطة."
-  }
-];
-
-function renderLinking() {
-  return `
-    <button class="back-link" data-page="home">← العودة للرئيسية</button>
-    <div class="section-header">
-      <h1>قسم الربط البصري</h1>
-      <p>استعراض الجدول الدوري الحديث والهيكل العظمي للمراجعة البصرية الدقيقة.</p>
-    </div>
-    <div class="main-panel">
-      <div class="pdf-download-bar">
-        <h4>الجدول الدوري الحديث</h4>
-        <a class="action-btn primary" href="periodic-table.jpeg" target="_blank" rel="noopener">تحميل الصورة ↗</a>
-      </div>
-      <img src="periodic-table.jpeg" alt="الجدول الدوري الحديث" style="width:100%; border-radius:16px; display:block;" loading="lazy">
-    </div>
-    <div class="main-panel">
-      <div class="pdf-download-bar">
-        <h4>الهيكل العظمي البشري</h4>
-        <a class="action-btn primary" href="skeleton.jpeg" target="_blank" rel="noopener">تحميل الصورة ↗</a>
-      </div>
-      <img src="skeleton.jpeg" alt="الهيكل العظمي" style="width:100%; border-radius:16px; display:block;" loading="lazy">
-    </div>
-  `;
-}
-
-function renderSummaries() {
-  return `
-    <button class="back-link" data-page="home">← العودة للرئيسية</button>
-    <div class="section-header">
-      <h1>الملخصات الأكاديمية الشاملة</h1>
-      <p>تصفح ملخص الرياضيات، الأسماء الشائعة، ومشتقات الهيدروكربونات. استعرض تفاصيل الملفات كاملة عبر البطاقات التفاعلية أسفل كل ملف.</p>
-    </div>
-
-    <!-- 1. الأسماء الشائعة -->
-    <div class="main-panel">
-      <h2>📌 ملخص الأسماء الشائعة للمركبات العضوية وغير العضوية</h2>
-      <div class="pdf-download-bar">
-        <div><h4>ملف الأسماء الشائعة (PDF)</h4><p>رابط التحميل الأصلي للملف</p></div>
-        <a class="action-btn primary" href="ملخص الاسماء الشائعة ❀.pdf" target="_blank" rel="noopener">فتح / تحميل الملف ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="ملخص الاسماء الشائعة ❀.pdf#view=FitH" title="الأسماء الشائعة" loading="lazy"></iframe>
-
-      <div class="concepts-section-title">📌 بطاقات تفصيلية تشمل كل الأسماء الشائعة واستخداماتها بالملف:</div>
-      <div class="concept-cards-grid" id="namesTabs">
-        <button class="concept-tab-btn active" onclick="switchConcept('names', 0)">المجموعة 1: الألكينات والألكانات<span>أسيتيلين، جليسرول، أيزوبيوتان</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('names', 1)">المجموعة 2: الهاليدات والكيتونات<span>كلوروميثان، الأسيتون، فورمالديهايد</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('names', 2)">المجموعة 3: الأحماض واليوريا<span>فورميك، أسيتيك، كارباميد</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('names', 3)">المجموعة 4: الهيدروكربونات والعطور<span>تولوين، بنزوبايرين، إيثانول</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('names', 4)">المجموعة 5: الإسترات والأميدات<span>بيوتانوات الإيثيل، أسيتاميد</span></button>
-      </div>
-      <div class="concept-display-box" id="namesDisplay">
-        <h4>1. الأسيتيلين والجليسرول والأيزوبيوتان</h4>
-        <p>• <b>الأسيتيلين (الإيثاين):</b> يُستعمل في لحام الفلزات.<br>• <b>الجليسرول (بروبان ترايول):</b> مانع لتجمد الوقود في الطائرات.<br>• <b>الأيزوبيوتان (-2 ميثيل بروبان):</b> مادة آمنة تستخدم في التبريد ومنتجات الحلاقة.</p>
-        <div class="math-block">\text{Acetylene: } C_2H_2 \quad | \quad \text{Glycerol: } C_3H_8O_3</div>
-      </div>
-    </div>
-
-    <!-- 2. مشتقات الهيدروكربونات -->
-    <div class="main-panel">
-      <h2>🧪 ملخص مشتقات الهيدروكربونات (المخطط العضوي الشامل)</h2>
-      <div class="pdf-download-bar">
-        <div><h4>ملف مشتقات الهايدروكربونات (PDF)</h4><p>رابط التحميل الأصلي للملف</p></div>
-        <a class="action-btn primary" href="مشتقات الهايدروكربونات.pdf" target="_blank" rel="noopener">فتح / تحميل الملف ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="مشتقات الهايدروكربونات.pdf#view=FitH" title="مشتقات الهيدروكربونات" loading="lazy"></iframe>
-
-      <div class="concepts-section-title">📌 بطاقات تفصيلية تشمل كل العائلات والمجموعات الوظيفية بالملف:</div>
-      <div class="concept-cards-grid" id="hydroTabs">
-        <button class="concept-tab-btn active" onclick="switchConcept('hydro', 0)">1. هاليدات الألكيل والأريل<span>R-X مع الهالوجينات</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('hydro', 1)">2. الأمينات والكحولات<span>R-NH2 و R-OH</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('hydro', 2)">3. الإيثرات والألدهيدات<span>R-O-R ومجموعة الكربونيل</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('hydro', 3)">4. الكيتونات والأحماض<span>R-CO-R و R-COOH</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('hydro', 4)">5. الإسترات والأميدات<span>R-COO-R و R-CO-NH2</span></button>
-        <button class="concept-tab-btn" onclick="switchConcept('hydro', 5)">6. خريطة التفاعلات الكيميائية<span>إضافة، حذف، استبدال، تكثف</span></button>
-      </div>
-      <div class="concept-display-box" id="hydroDisplay">
-        <h4>1. هاليدات الألكيل والأريل ($R-X$)</h4>
-        <p>• <b>المجموعة الوظيفية:</b> هالوجين ($F, Cl, Br, I$).<br>• <b>التسمية:</b> اسم الهالوجين + و + اسم الألكان (مثل كلوروميثان).<br>• <b>الخصائص:</b> درجات غليان وكثافة عالية، وتزداد من أعلى لأسفل بزيادة قوى التشتت.<br>• <b>الاستخدامات:</b> مواد أولية للبلاستيك والسيليكون ومخدر هالوإيثان.</p>
-        <div class="math-block">R-X \quad | \quad CH_3I > CH_3Br > CH_3Cl > CH_3F</div>
-      </div>
-    </div>
-
-    <!-- 3. ملخص الرياضيات -->
-    <div class="main-panel">
-      <h2>📐 ملخص الرياضيات الشامل</h2>
-      <div class="pdf-download-bar">
-        <div><h4>ملخص الرياضيات (PDF)</h4><p>تحميل أو استعراض ملخص الرياضيات المعتمد</p></div>
-        <a class="action-btn primary" href="math-summary.pdf" target="_blank" rel="noopener">فتح / تحميل PDF ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="math-summary.pdf#view=FitH" title="ملخص الرياضيات" loading="lazy"></iframe>
-    </div>
-  `;
-}
-
-const summaryConceptData = {
-  names: [
-    {
-      title: "1. الألكينات والألكانات (أسيتيلين، جليسرول، أيزوبيوتان)",
-      desc: "• <b>الأسيتيلين (الإيثاين):</b> يُستعمل في لحام الفلزات.<br>• <b>الجليسرول (بروبان ترايول):</b> مانع لتجمد الوقود في الطائرات.<br>• <b>الأيزوبيوتان (-2 ميثيل بروبان):</b> مادة آمنة تستخدم في التبريد ومنتجات الحلاقة.",
-      math: "\text{Acetylene: } C_2H_2 \quad | \quad \text{Glycerol: } C_3H_8O_3",
-      example: "تستخدم هذه الأسماء في تبسيط الصيغ العضوية المعقدة."
-    },
-    {
-      title: "2. الهاليدات والكيتونات والألدهيدات الشائعة",
-      desc: "• <b>ميثيل كلوريد (كلوروميثان):</b> صناعة المواد اللاصقة والسيليكون.<br><b>الأسيتون (ثنائي ميثيل كيتون):</b> إزالة طلاء الأظافر.<br>• <b>فورمالديهايد (فورمالين / ميثانال):</b> حفظ العينات البيولوجية وتثبيتها لسنوات.",
-      math: "\text{Acetone: } CH_3COCH_3 \quad | \quad \text{Formaldehyde: } HCHO",
-      example: "الأسيتون مذيب عضوي ممتاز وفورمالديهايد مثبت حيوي شهير."
-    },
-    {
-      title: "3. الأحماض واليوريا (فورميك، أسيتيك، كارباميد)",
-      desc: "• <b>حمض الميثانويك (فورميك):</b> يفرزه النمل للدفاع عن نفسه.<br>• <b>حمض الخل (الأسيتيك / إيثانويك):</b> المكون الأساسي للخل.<br>• <b>اليوريا (كارباميد):</b> تستعمل في الأسمدة الزراعية لاحتوائها على نسبة عالية من النيتروجين.",
-      math: "\text{Formic Acid: } HCOOH \quad | \quad \text{Acetic Acid: } CH_3COOH",
-      example: "تحتوي اليوريا على نسبة عالية من النيتروجين المفيد للنباتات."
-    },
-    {
-      title: "4. الهيدروكربونات والعطور الشائعة",
-      desc: "• <b>الميثان:</b> مصدر للوقود والغاز الطبيعي.<br>• <b>البيوتان والبروبان:</b> وقود الطبخ والتسخين والقداحات.<br>• <b>الإيثين:</b> مسؤول عن نضج الفواكه وتساقط أوراق الشجر.<br>• <b>تولوين (ميثيل بنزين)، وبنزوبايرين (مسرطن بدخان السيارات)، والإيثانول (مطهر).</b>",
-      math: "\text{Ethylene (Ethene): } C_2H_4",
-      example: "للإيثين دور هرموني طبيعي في نباتات الفواكه."
-    },
-    {
-      title: "5. الإسترات والأميدات",
-      desc: "• <b>بيوتانوات الإيثيل:</b> يعطي نكهة ورائحة الأناناس.<br>• <b>هكسانوات الميثيل:</b> يعطي رائحة الفراولة العطرة.<br>• <b>الإيثاناميد (أسيتاميد):</b> أميد بسيط في المركبات الحيوية.",
-      math: "\text{Pineapple: Ethyl Butanoate} \quad | \quad \text{Strawberry: Methyl Hexanoate}",
-      example: "تتميز الإسترات بروائحها الزكية والفواكه المتطايرة."
-    }
-  ],
-  hydro: [
-    {
-      title: "1. هاليدات الألكيل والأريل (R-X)",
-      desc: "• <b>المجموعة الوظيفية:</b> هالوجين ($F, Cl, Br, I$). التسمية: اسم الهالوجين + و + اسم الألكان.<br>• <b>الخصائص:</b> درجات غليان وكثافة أعلى من الألكانات، وتزداد من أعلى لأسفل بزيادة قوى التشتت.<br>• <b>الاستخدامات:</b> مواد أولية للبلاستيك والسيليكون ومخدر هالوإيثان.",
-      math: "R-X \quad | \quad CH_3I > CH_3Br > CH_3Cl > CH_3F",
-      example: "كلوروميثان ومخدر الهالوإيثان للعمليات الجراحية."
-    },
-    {
-      title: "2. الأمينات والكحولات ($R-NH_2$ و $R-OH$)",
-      desc: "• <b>الأمينات:</b> لها روائح مميزة لمخلفات الكائنات المتحللة، وتكون روابط هيدروجينية وتذوب بالماء (مثل الأنيلين للأصباغ).<br>• <b>الكحولات:</b> تحوي مجموعة (-OH)، مركبات قطبية عالية الغليان وتكون روابط هيدروجينية (مثل الإيثانول والميثانول).",
-      math: "R-OH \quad | \quad R-NH_2",
-      example: "تستعمل الكلاب البوليسية الأمينات لتحديد مكان الرفات البشري."
-    },
-    {
-      title: "3. الإيثرات والألدهيدات",
-      desc: "• <b>الإيثرات ($R-O-R'$):</b> قطبية أقل من الكحولات، متطايرة ولا تكون روابط هيدروجينية بين جزيئاتها (درجة غليان منخفضة).<br>• <b>الألدهيدات ($R-CHO$):</b> مجموعة كربونيل في آخر السلسلة، قطبية وتستخدم بحفظ العينات (فورمالديهايد).",
-      math: "R-O-R' \quad | \quad R-CHO",
-      example: "ثنائي إيثيل إيثر استعمل قديماً كمخدر جراحي."
-    },
-    {
-      title: "4. الكيتونات والأحماض الكربوكسيلية",
-      desc: "• <b>الكيتونات ($R-CO-R'$):</b> مجموعة كربونيل وسطية، مثل الأسيتون (بروبانون) لإزالة طلاء الأظافر.<br>• <b>الأحماض الكربوكسيلية ($R-COOH$):</b> مجموعة كربوكسيل (-COOH)، قطبية جداً وتتربع على قمة درجات الغليان والحموضة (تحول تباع الشمس للأحمر).",
-      math: "R-CO-R' \quad | \quad R-COOH",
-      example: "حمض الأسيتيك وحمض الفورميك."
-    },
-    {
-      title: "5. الإسترات والأميدات",
-      desc: "• <b>الإسترات ($R-COO-R'$):</b> مجموعة ألكيل حلت محل هيدروجين الكربوكسيل، متطايرة وذات روائح عطرة وفواكه.<br>• <b>الأميدات ($R-CO-NH_2$):</b> إحلال نيتروجين محل الهيدروكسيل، توجد بالبروتينات واليوريا للأسمدة.",
-      math: "R-COO-R' \quad | \quad R-CO-NH_2",
-      example: "إسترات الفراولة والأناناس واليوريا الزراعية."
-    },
-    {
-      title: "6. خريطة التفاعلات الكيميائية العضوية",
-      desc: "• <b>الإضافة:</b> كسر الرابطة الثنائية (مثل إضافة هيدروجين للألكين لتكوين ألكان أو كحول).<br>• <b>الحذف:</b> تكوين رابطة ثنائية بنزع ماء ($H_2O$).<br>• <b>الاستبدال:</b> إحلال ذرة محل أخرى (هالوجين مكان هيدروجين).<br>• <b>التكثف:</b> دمج جزيئين مع نزع ماء لإنتاج إستر.",
-      math: "\text{Alkene} \xrightarrow{+H_2O} \text{Alcohol} \xrightarrow{-H_2O} \text{Alkene}",
-      example: "ملخص الخريطة يربط التحويلات بين الألكانات والألكينات والكحولات والإسترات."
-    }
-  ]
-};
-
-function switchConcept(type, index) {
-  let tabsContainer, displayBox, dataObj;
-  if(type === 'chem') { tabsContainer = document.getElementById('chemTabs'); displayBox = document.getElementById('chemDisplay'); dataObj = chemConcepts; }
-  else if(type === 'pulley') { tabsContainer = document.getElementById('pulleyTabs'); displayBox = document.getElementById('pulleyDisplay'); dataObj = pulleyConcepts; }
-  else if(type === 'names') { tabsContainer = document.getElementById('namesTabs'); displayBox = document.getElementById('namesDisplay'); dataObj = summaryConceptData.names; }
-  else if(type === 'hydro') { tabsContainer = document.getElementById('hydroTabs'); displayBox = document.getElementById('hydroDisplay'); dataObj = summaryConceptData.hydro; }
-
-  tabsContainer.querySelectorAll('.concept-tab-btn').forEach((btn, idx) => {
-    btn.classList.toggle('active', idx === index);
-  });
-
-  let data = dataObj[index];
-  displayBox.innerHTML = `
-    <h4>${data.title}</h4>
-    <p>${data.desc}</p>
-    <div class="math-block">${data.math}</div>
-    <p><b>${data.example}</b></p>
-  `;
-}
-
-function renderSkills() {
-  return `
-    <button class="back-link" data-page="home">← العودة للرئيسية</button>
-    <div class="section-header">
-      <h1>قسم المهارات المتكامل</h1>
-      <p>ملف التأسيس الشامل لجميع المهارات، بالإضافة إلى 5 اختبارات تفاعلية تغطي الـ 85 سؤالاً بدقة.</p>
-    </div>
-
-    <div class="main-panel">
-      <div class="pdf-download-bar">
-        <div><h4>ملف تأسيس المهارات — محمد تحصيلي</h4><p>تحميل ملف التأسيس بصيغة PDF</p></div>
-        <a class="action-btn primary" href="skills-foundation.pdf" target="_blank" rel="noopener">فتح / تحميل التأسيس ↗</a>
-      </div>
-      <iframe class="pdf-viewer" src="skills-foundation.pdf#view=FitH" title="تأسيس المهارات" loading="lazy"></iframe>
-    </div>
-
-    <div class="main-panel" style="margin-top:30px;">
-      <h2>✍️ اختبارات تجميعات المهارات (5 اختبارات تفاعلية — 85 سؤالاً)</h2>
-      <p>اختر أحد الاختبارات أدناه للتدرب الفوري وتقييم أدائك:</p>
-      <div class="grid-cards" style="padding: 20px 0;">
-        ${[1, 2, 3, 4, 5].map(n => `
-          <div class="card-item" data-skquIdx="${n-1}">
-            <div class="card-icon-box">${n}</div>
-            <h3>اختبار المهارات ${n}</h3>
-            <p>تدرب على أسئلة القسم ${n} وتأكد من إجابتك فوراً.</p>
-            <span class="card-action-link">ابدأ الاختبار التفاعلي ←</span>
-          </div>
-        `).join('')}
-      </div>
-      <div id="skQuizHost" style="margin-top:20px;"></div>
-    </div>
-
-    <div class="main-panel" style="text-align: center;">
-      <h3>ملف تجميع المهارات الأصلي الكامل (PDF)</h3>
-      <p>للاطلاع على التجميعات الورقية والواجبات:</p>
-      <a class="action-btn primary" href="تجميع%20المهارات%20محمد%20تحصيلي.pdf" target="_blank" rel="noopener">فتح أو تحميل ملف تجميع المهارات الأصلي ↗</a>
-    </div>
-  `;
-}
-
-let skAnswers = {};
-function renderSkillQuiz(qIdx) {
-  let items = skillQuests[qIdx];
-  let html = `
-    <div class="main-panel" style="border: 2px solid var(--accent);">
-      <h2>اختبار المهارات ${qIdx+1} — تفاعلي مباشر</h2>
-      <div id="skScoreBox" class="score-box"></div>
-  `;
-  items.forEach((item, idx) => {
-    html += `
-      <div class="q-card" id="skq-${qIdx}-${idx}">
-        <div class="q-title">${item.q}</div>
-        <div class="opts-grid">
-    `;
-    item.opts.forEach((opt, oIdx) => {
-      html += `<button class="opt-btn" onclick="selectSkOpt(${qIdx}, ${idx}, ${oIdx}, this)">${opt}</button>`;
+let userSkAnswers = {};
+function loadSkillTest(testIdx) {
+  userSkAnswers = {};
+  let questions = skillQuests[testIdx];
+  let html = `<div class="q-card" style="border: 2px solid var(--accent); margin-top:15px;">`;
+  html += `<h3>اختبار المهارات ${testIdx + 1} (${questions.length} سؤالاً)</h3><div id="skScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
+  
+  questions.forEach((item, qIndex) => {
+    html += `<div style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;" id="sq-${testIdx}-${qIndex}">`;
+    html += `<div style="font-weight:bold; margin-bottom:8px;">${item.q}</div><div class="opts-grid">`;
+    item.opts.forEach((opt, oIndex) => {
+      html += `<button class="opt-btn" onclick="selectSkillOpt(${testIdx}, ${qIndex}, ${oIndex}, this)">${opt}</button>`;
     });
     html += `</div></div>`;
   });
-  html += `<button class="submit-quiz-btn" onclick="checkSkQuiz(${qIdx})">تصحيح الاختبار وعرض النتيجة النهائية</button></div>`;
-  
-  document.getElementById('skQuizHost').innerHTML = html;
-  window.scrollTo({ top: document.getElementById('skQuizHost').offsetTop - 60, behavior: 'smooth' });
+  html += `<button class="submit-quiz-btn" onclick="submitSkillTest(${testIdx})">تصحيح الاختبار وعرض النتيجة</button></div>`;
+  document.getElementById('skillTestHost').innerHTML = html;
+  window.scrollTo({ top: document.getElementById('skillTestHost').offsetTop - 100, behavior: 'smooth' });
 }
 
-function selectSkOpt(qIdx, itemIdx, optIdx, btn) {
-  if (!skAnswers[qIdx]) skAnswers[qIdx] = {};
-  skAnswers[qIdx][itemIdx] = optIdx;
+function selectSkillOpt(testIdx, qIndex, oIndex, btn) {
+  if (!userSkAnswers[testIdx]) userSkAnswers[testIdx] = {};
+  userSkAnswers[testIdx][qIndex] = oIndex;
   let parent = btn.parentElement;
   parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
 }
 
-function checkSkQuiz(qIdx) {
-  let items = skillQuests[qIdx];
+function submitSkillTest(testIdx) {
+  let questions = skillQuests[testIdx];
   let score = 0;
-  items.forEach((item, idx) => {
-    let card = document.getElementById(`skq-${qIdx}-${idx}`);
-    let opts = card.querySelectorAll('.opt-btn');
-    let uAns = skAnswers[qIdx] ? skAnswers[qIdx][idx] : undefined;
-    opts.forEach((btn, oIdx) => {
-      btn.onclick = null;
-      if (oIdx === item.ans) btn.classList.add('correct');
-      else if (oIdx === uAns) btn.classList.add('wrong');
+  questions.forEach((item, qIndex) => {
+    let qDiv = document.getElementById(`sq-${testIdx}-${qIndex}`);
+    let buttons = qDiv.querySelectorAll('.opt-btn');
+    let userChoice = userSkAnswers[testIdx] ? userSkAnswers[testIdx][qIndex] : undefined;
+    buttons.forEach((b, oIdx) => {
+      b.onclick = null;
+      if (oIdx === item.ans) b.classList.add('correct');
+      else if (oIdx === userChoice) b.classList.add('wrong');
     });
-    if (uAns === item.ans) score++;
+    if (userChoice === item.ans) score++;
   });
-  let sb = document.getElementById('skScoreBox');
-  sb.style.display = 'block';
-  sb.innerHTML = `نتيجة اختبار المهارات ${qIdx+1}: ${score} من ${items.length} (${Math.round((score/items.length)*100)}%)`;
-}
-
-function renderRouter() {
-  let hash = location.hash.replace('#', '') || 'home';
-  let html = '';
-
-  if (hash.startsWith('quiz-')) {
-    let idx = Number(hash.split('-')[1]);
-    html = renderTests() + renderQuizViewer(idx);
-  } else if (hash === 'combined') {
-    html = renderCombined();
-  } else if (hash === 'home') {
-    html = renderHome();
-  } else if (hash === 'tests') {
-    html = renderTests();
-  } else if (hash === 'laws') {
-    html = renderLaws();
-  } else if (hash === 'linking') {
-    html = renderLinking();
-  } else if (hash === 'summaries') {
-    html = renderSummaries();
-  } else if (hash === 'skills') {
-    html = renderSkills();
-  } else {
-    html = renderHome();
-  }
-
-  appContainer.innerHTML = html;
-  navLinks.classList.remove('open');
-
-  navLinks.querySelectorAll('[data-page]').forEach(b => {
-    b.classList.toggle('active', b.dataset.page === hash);
-    b.onclick = () => location.hash = b.dataset.page;
-  });
-
-  document.querySelectorAll('[data-page]').forEach(el => {
-    el.onclick = () => location.hash = el.dataset.page;
-  });
-
-  document.querySelectorAll('[data-openquiz]').forEach(el => {
-    el.onclick = () => location.hash = 'quiz-' + el.dataset.openquiz;
-  });
-
-  document.querySelectorAll('[data-skquIdx]').forEach(el => {
-    el.onclick = () => renderSkillQuiz(Number(el.dataset.skquidx));
-  });
-
-  if (!hash.startsWith('quiz-')) window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-window.addEventListener('hashchange', renderRouter);
-
-// تعديل لضمان التحقق التلقائي وعرض الصفحة الرئيسية فوراً على GitHub Pages
-if (!location.hash) {
-  location.hash = 'home';
-} else {
-  renderRouter();
+  let scoreBox = document.getElementById('skScore');
+  scoreBox.textContent = `نتيجة الاختبار: ${score} من ${questions.length} (${Math.round((score/questions.length)*100)}%)`;
+  window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 </script>
 </body>
