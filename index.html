@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#070b19">
 <title>KFUPMYNL | المنصة الأكاديمية المتكاملة</title>
 <style>
 :root {
@@ -13,14 +12,12 @@
   --text-dark: #f9fafb;
   --muted-dark: #9ca3af;
   --border-dark: rgba(255, 255, 255, 0.08);
-
   --bg-light: #f3f4f6;
   --panel-light: rgba(255, 255, 255, 0.95);
   --panel2-light: #ffffff;
   --text-light: #111827;
   --muted-light: #4b5563;
   --border-light: rgba(0, 0, 0, 0.08);
-
   --accent: #6366f1;
   --accent-glow: rgba(99, 102, 241, 0.35);
   --cyan: #06b6d4;
@@ -49,7 +46,6 @@ body.light-mode {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
@@ -127,8 +123,11 @@ button { font: inherit; cursor: pointer; }
   font-weight: 700;
 }
 
+.page-section { display: none; padding: 40px 0; }
+.page-section.active { display: block; }
+
 .hero-wrapper {
-  padding: 70px 0 50px;
+  padding: 50px 0;
   text-align: center;
 }
 .hero-title {
@@ -154,7 +153,7 @@ button { font: inherit; cursor: pointer; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  padding: 20px 0 50px;
+  padding: 20px 0;
 }
 .card-item {
   background: var(--panel);
@@ -180,7 +179,7 @@ button { font: inherit; cursor: pointer; }
 }
 .card-item h3 { font-size: 1.35rem; margin: 0 0 8px; font-weight: 800; }
 .card-item p { color: var(--muted); margin: 0 0 18px; font-size: 0.94rem; }
-.card-action-link { color: var(--accent); font-weight: 800; font-size: 0.95rem; }
+.card-action-link { color: var(--accent); font-weight: 800; font-size: 0.95rem; cursor: pointer; }
 
 .main-panel {
   background: var(--panel);
@@ -274,9 +273,9 @@ button { font: inherit; cursor: pointer; }
 .main-footer {
   background: var(--panel);
   border-top: 1px solid var(--border);
-  padding: 50px 0;
+  padding: 40px 0;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .telegram-btn {
   display: inline-flex;
@@ -284,12 +283,11 @@ button { font: inherit; cursor: pointer; }
   gap: 10px;
   background: #24A1DE;
   color: #fff;
-  padding: 16px 32px;
+  padding: 14px 28px;
   border-radius: 16px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 900;
-  box-shadow: 0 10px 30px rgba(36, 161, 222, 0.4);
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 @media (max-width: 900px) {
@@ -302,17 +300,17 @@ button { font: inherit; cursor: pointer; }
 
 <div class="header-container">
   <div class="shell navbar">
-    <a class="brand-box" href="#">
+    <a class="brand-box" href="#home" onclick="showPage('home')">
       <div class="brand-icon">K</div>
       <span>KFUPMYNL</span>
     </a>
     <nav class="nav-links">
-      <a href="#home">الرئيسية</a>
-      <a href="#tests">الاختبارات</a>
-      <a href="#laws">القوانين</a>
-      <a href="#linking">الربط</a>
-      <a href="#summaries">الملخصات</a>
-      <a href="#skills">المهارات (85)</a>
+      <a href="#home" id="nav-home" class="active" onclick="showPage('home')">الرئيسية</a>
+      <a href="#tests" id="nav-tests" onclick="showPage('tests')">الاختبارات</a>
+      <a href="#laws" id="nav-laws" onclick="showPage('laws')">القوانين</a>
+      <a href="#linking" id="nav-linking" onclick="showPage('linking')">الربط</a>
+      <a href="#summaries" id="nav-summaries" onclick="showPage('summaries')">الملخصات</a>
+      <a href="#skills" id="nav-skills" onclick="showPage('skills')">المهارات (85)</a>
     </nav>
     <div class="nav-controls">
       <button class="ctrl-btn" id="themeToggle">☀️ نهاري</button>
@@ -321,36 +319,36 @@ button { font: inherit; cursor: pointer; }
 </div>
 
 <main class="shell">
-  <!-- قسم الرئيسية -->
-  <section id="home" class="hero-wrapper">
+  <!-- 1. الرئيسية -->
+  <section id="home" class="page-section active hero-wrapper">
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
-    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات المعتمدة واختبارات المهارات الـ 85.</p>
+    <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات المعتمدة واختبارات المهارات الـ 85 الكاملة.</p>
     
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
         <div class="card-icon-box">✎</div>
         <h3>الاختبارات</h3>
         <p>تدرب على اختبارات التجميعات الأصلية والمجمعة مع التصحيح الفوري.</p>
-        <a class="card-action-link" href="#tests">استعرض الاختبارات ←</a>
+        <span class="card-action-link" onclick="showPage('tests')">استعرض الاختبارات ←</span>
       </div>
       <div class="card-item">
         <div class="card-icon-box">∑</div>
         <h3>القوانين</h3>
         <p>ميكانيكا البكرات والحسابات الكيميائية مع بطاقات الشرح التفصيلية.</p>
-        <a class="card-action-link" href="#laws">تصفح القوانين والشرح ←</a>
+        <span class="card-action-link" onclick="showPage('laws')">تصفح القوانين والشرح ←</span>
       </div>
       <div class="card-item">
         <div class="card-icon-box">◎</div>
         <h3>المهارات (85 سؤالاً)</h3>
         <p>ملف التأسيس و5 اختبارات تفاعلية شاملة لجميع تجميعات المهارات.</p>
-        <a class="card-action-link" href="#skills">ابدأ اختبارات المهارات ←</a>
+        <span class="card-action-link" onclick="showPage('skills')">ابدأ اختبارات المهارات ←</span>
       </div>
     </div>
   </section>
 
-  <!-- قسم الاختبارات -->
-  <section id="tests" style="padding-top: 50px;">
+  <!-- 2. الاختبارات -->
+  <section id="tests" class="page-section">
     <div class="main-panel">
       <h2>✍️ الاختبارات التجميعية</h2>
       <p style="color: var(--muted);">تصفح اختبارات التجميعات الأصلية المعتمدة.</p>
@@ -362,11 +360,12 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
-  <!-- قسم القوانين -->
-  <section id="laws" style="padding-top: 50px;">
+  <!-- 3. القوانين -->
+  <section id="laws" class="page-section">
     <div class="main-panel">
       <h2>⚖️ الحسابات الكيميائية وميكانيكا البكرات</h2>
       
+      <!-- الحسابات الكيميائية -->
       <div class="pdf-download-bar">
         <div><h4>ملف الحسابات الكيميائية (PDF)</h4></div>
         <a class="card-action-link" href="الحسابات الكيميائيه .pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
@@ -385,8 +384,9 @@ button { font: inherit; cursor: pointer; }
         <div class="math-block">n = m ÷ M   |   m = n × M</div>
       </div>
 
+      <!-- ميكانيكا البكرات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
-        <div><h4>ملف ميكانيكا البكرات - بوصلة المبكر (PDF)</h4></div>
+        <div><h4>ملف ميكانيكا البكرات (PDF)</h4></div>
         <a class="card-action-link" href="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="ميكانيكا-البكرات-بوصلة-المبكر-1.pdf#view=FitH" loading="lazy"></iframe>
@@ -405,29 +405,62 @@ button { font: inherit; cursor: pointer; }
     </div>
   </section>
 
-  <!-- قسم الربط -->
-  <section id="linking" style="padding-top: 50px;">
+  <!-- 4. الربط -->
+  <section id="linking" class="page-section">
     <div class="main-panel">
       <h2>⌘ قسم الربط البصري</h2>
-      <div style="margin-bottom: 20px;"><h4>الجدول الدوري الحديث</h4><img src="periodic-table.jpeg" alt="الجدول الدوري" style="width:100%; border-radius:16px;"></div>
+      <div style="margin-bottom: 25px;"><h4>الجدول الدوري الحديث</h4><img src="periodic-table.jpeg" alt="الجدول الدوري" style="width:100%; border-radius:16px;"></div>
       <div><h4>الهيكل العظمي البشري</h4><img src="skeleton.jpeg" alt="الهيكل العظمي" style="width:100%; border-radius:16px;"></div>
     </div>
   </section>
 
-  <!-- قسم الملخصات -->
-  <section id="summaries" style="padding-top: 50px;">
+  <!-- 5. الملخصات -->
+  <section id="summaries" class="page-section">
     <div class="main-panel">
-      <h2>▤ الملخصات الأكاديمية الشاملة</h2>
-      <div class="pdf-download-bar"><div><h4>ملف الأسماء الشائعة</h4></div><a class="card-action-link" href="ملخص الاسماء الشائعة ❀.pdf" target="_blank">فتح الملف ↗</a></div>
+      <h2>▤ الملخصات الأكاديمية الشاملة والأسماء الشائعة</h2>
+      
+      <!-- الأسماء الشائعة -->
+      <div class="pdf-download-bar">
+        <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
+        <a class="card-action-link" href="ملخص الاسماء الشائعة ❀.pdf" target="_blank">فتح الملف ↗</a>
+      </div>
       <iframe class="pdf-viewer" src="ملخص الاسماء الشائعة ❀.pdf#view=FitH" loading="lazy"></iframe>
 
-      <div class="pdf-download-bar" style="margin-top: 30px;"><div><h4>ملف مشتقات الهايدروكربونات</h4></div><a class="card-action-link" href="مشتقات الهايدروكربونات.pdf" target="_blank">فتح الملف ↗</a></div>
+      <div class="concepts-section-title">📌 بطاقات الأسماء الشائعة:</div>
+      <div class="concept-cards-grid">
+        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">الألكينات والألكانات<span>أسيتيلين، جليسرول</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">الكيتونات والألدهيدات<span>الأسيتون، الفورمالديهايد</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">الأحماض واليوريا<span>فورميك، أسيتيك، كارباميد</span></button>
+      </div>
+      <div class="concept-display-box" id="namesDisplay">
+        <h4>1. الأسيتيلين والجليسرول والأيزوبيوتان</h4>
+        <p>• <b>الأسيتيلين (الإيثاين):</b> يُستعمل في لحام الفلزات.<br>• <b>الجليسرول:</b> مانع لتجمد الوقود في الطائرات.</p>
+        <div class="math-block">Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3</div>
+      </div>
+
+      <!-- مشتقات الهيدروكربونات -->
+      <div class="pdf-download-bar" style="margin-top: 40px;">
+        <div><h4>ملف مشتقات الهايدروكربونات (PDF)</h4></div>
+        <a class="card-action-link" href="مشتقات الهايدروكربونات.pdf" target="_blank">فتح الملف ↗</a>
+      </div>
       <iframe class="pdf-viewer" src="مشتقات الهايدروكربونات.pdf#view=FitH" loading="lazy"></iframe>
+
+      <div class="concepts-section-title">📌 بطاقات مشتقات الهيدروكربونات:</div>
+      <div class="concept-cards-grid">
+        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">هاليدات الألكيل والأريل<span>R-X مع الهالوجينات</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">الأمينات والكحولات<span>R-NH2 و R-OH</span></button>
+        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">الأحماض والإسترات<span>R-COOH و R-COO-R</span></button>
+      </div>
+      <div class="concept-display-box" id="hydroDisplay">
+        <h4>1. هاليدات الألكيل والأريل (R-X)</h4>
+        <p>• <b>المجموعة الوظيفية:</b> هالوجين (F, Cl, Br, I).<br>• <b>الاستخدامات:</b> مواد أولية للبلاستيك والسيليكون ومخدر هالوإيثان.</p>
+        <div class="math-block">R-X   |   CH_3I > CH_3Br > CH_3Cl</div>
+      </div>
     </div>
   </section>
 
-  <!-- قسم المهارات (85 سؤالاً) -->
-  <section id="skills" style="padding-top: 50px;">
+  <!-- 6. المهارات (الـ 85 سؤالاً الكاملة) -->
+  <section id="skills" class="page-section">
     <div class="main-panel">
       <h2>◎ قسم المهارات الكامل (85 سؤالاً وتأسيس)</h2>
       <div class="pdf-download-bar">
@@ -440,11 +473,11 @@ button { font: inherit; cursor: pointer; }
         <h3>✍️ اختبارات تجميعات المهارات (5 اختبارات تفاعلية شاملة 85 سؤالاً)</h3>
         <p style="color: var(--muted);">اختر الاختبار للحل والتقييم الفوري:</p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0;">
-          <button class="ctrl-btn" onclick="loadSkillTest(0)">اختبار المهارات 1 (17 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(1)">اختبار المهارات 2 (17 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(2)">اختبار المهارات 3 (18 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(3)">اختبار المهارات 4 (16 سؤال)</button>
-          <button class="ctrl-btn" onclick="loadSkillTest(4)">اختبار المهارات 5 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(0)">اختبار 1 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(1)">اختبار 2 (17 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(2)">اختبار 3 (18 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(3)">اختبار 4 (16 سؤال)</button>
+          <button class="ctrl-btn" onclick="loadSkillTest(4)">اختبار 5 (17 سؤال)</button>
         </div>
         <div id="skillTestHost"></div>
       </div>
@@ -454,13 +487,12 @@ button { font: inherit; cursor: pointer; }
 
 <footer class="main-footer">
   <div class="shell">
-    <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 10px;">دعواتكم لـ ينال و نواف ❤️</div>
+    <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">دعواتكم لـ ينال و نواف ❤️</div>
     <div>
       <a class="telegram-btn" href="https://t.me/KFUPMYNL" target="_blank">
         ✈️ انضم لقناة التليجرام الرسمية (KFUPMYNL)
       </a>
     </div>
-    <small style="color: var(--muted); font-size: 0.9rem;">KFUPMYNL · المنصة الأكاديمية المتكاملة</small>
   </div>
 </footer>
 
@@ -473,6 +505,24 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = isDark ? '☀️ نهاري' : '🌙 ليلي';
 });
 
+function showPage(pageId) {
+  document.querySelectorAll('.page-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  const targetSection = document.getElementById(pageId);
+  if (targetSection) targetSection.classList.add('active');
+  
+  const targetLink = document.getElementById('nav-' + pageId);
+  if (targetLink) targetLink.classList.add('active');
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// بطاقات الشرح التفصيلية
 const chemData = [
   {title: "1. عدد المولات والكتلة", desc: "• عدد المولات (n) = كتلة المادة (m) ÷ الكتلة المولية (M).<br>• الكتلة (m) = n × M.", math: "n = m ÷ M   |   m = n × M"},
   {title: "2. عدد الجسيمات وأفوجادرو", desc: "• عدد الجسيمات (N) = عدد المولات (n) × ثابت أفوجادرو (6.02 × 10^23).", math: "N = n × 6.02 × 10^23"},
@@ -485,17 +535,34 @@ const pulleyData = [
   {title: "3. أتوود والمنحدر", desc: "• تسارع أتوود والكتل المعلقة والقمة.", math: "a = \\frac{(m_1 - m_2)g}{m_1 + m_2}"}
 ];
 
+const namesData = [
+  {title: "1. الألكينات والألكانات الشائعة", desc: "• الأسيتيلين (الإيثاين): يُستعمل في لحام الفلزات.<br>• الجليسرول: مانع لتجمد الوقود في الطائرات.", math: "Acetylene: C_2H_2   |   Glycerol: C_3H_8O_3"},
+  {title: "2. الكيتونات والألدهيدات", desc: "• الأسيتون: إزالة طلاء الأظافر.<br>• فورمالديهايد: حفظ العينات البيولوجية وتثبيتها.", math: "Acetone: CH_3COCH_3   |   Formaldehyde: HCHO"},
+  {title: "3. الأحماض واليوريا", desc: "• حمض الفورميك يفرزه النمل.<br>• اليوريا تستعمل في الأسمدة الزراعية لاحتوائها على نسبة عالية من النيتروجين.", math: "Formic: HCOOH   |   Urea: CO(NH_2)_2"}
+];
+
+const hydroData = [
+  {title: "1. هاليدات الألكيل والأريل (R-X)", desc: "• المجموعة الوظيفية: هالوجين (F, Cl, Br, I).<br>• درجات غليان وكثافة عالية تزداد من أعلى لأسفل.", math: "R-X   |   CH_3I > CH_3Br > CH_3Cl"},
+  {title: "2. الأمينات والكحولات", desc: "• الأمينات لها روائح مميزة لمخلفات الكائنات المتحللة.<br>• الكحولات تحوي مجموعة (-OH) وقطبية عالية.", math: "R-OH   |   R-NH_2"},
+  {title: "3. الأحماض والإسترات", desc: "• الأحماض الكربوكسيلية قطبية جداً وتتربع على قمة الغليان.<br>• الإسترات تتميز بروائحها العطرة والفواكه المتطايرة.", math: "R-COOH   |   R-COO-R'"}
+];
+
 function switchCard(type, index, btn) {
-  let displayBox = document.getElementById(type === 'chem' ? 'chemDisplay' : 'pulleyDisplay');
-  let dataObj = type === 'chem' ? chemData : pulleyData;
+  let displayBox, dataObj;
+  if(type === 'chem') { displayBox = document.getElementById('chemDisplay'); dataObj = chemData; }
+  else if(type === 'pulley') { displayBox = document.getElementById('pulleyDisplay'); dataObj = pulleyData; }
+  else if(type === 'names') { displayBox = document.getElementById('namesDisplay'); dataObj = namesData; }
+  else if(type === 'hydro') { displayBox = document.getElementById('hydroDisplay'); dataObj = hydroData; }
+
   let parent = btn.parentElement;
   parent.querySelectorAll('.concept-tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  
   let data = dataObj[index];
   displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
 }
 
-// الـ 85 سؤالاً كاملة ومقسّمة على 5 اختبارات بدقة
+// أسئلة المهارات الـ 85 الكاملة
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
