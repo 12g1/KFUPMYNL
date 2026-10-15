@@ -1,4 +1,4 @@
-<!-- Update Timestamp: 2026-10-10 13:05 - English file names + KaTeX horizontal cards fix -->
+<!-- Update Timestamp: 2026-10-15 - Added المنهج section + projectile/circular cards + Hess law + activity series image -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,302 +11,67 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMath()"></script>
 <style>
 :root {
-  --bg-dark: #070b19;
-  --panel-dark: rgba(17, 24, 39, 0.95);
-  --panel2-dark: #111827;
-  --text-dark: #f9fafb;
-  --muted-dark: #9ca3af;
-  --border-dark: rgba(255, 255, 255, 0.08);
-  --bg-light: #f3f4f6;
-  --panel-light: rgba(255, 255, 255, 0.95);
-  --panel2-light: #ffffff;
-  --text-light: #111827;
-  --muted-light: #4b5563;
-  --border-light: rgba(0, 0, 0, 0.08);
-  --accent: #6366f1;
-  --accent-glow: rgba(99, 102, 241, 0.35);
-  --cyan: #06b6d4;
-  --pink: #ec4899;
-  --success: #10b981;
-  --danger: #ef4444;
+  --bg-dark: #070b19; --panel-dark: rgba(17, 24, 39, 0.95); --panel2-dark: #111827;
+  --text-dark: #f9fafb; --muted-dark: #9ca3af; --border-dark: rgba(255, 255, 255, 0.08);
+  --bg-light: #f3f4f6; --panel-light: rgba(255, 255, 255, 0.95); --panel2-light: #ffffff;
+  --text-light: #111827; --muted-light: #4b5563; --border-light: rgba(0, 0, 0, 0.08);
+  --accent: #6366f1; --accent-glow: rgba(99, 102, 241, 0.35);
+  --cyan: #06b6d4; --pink: #ec4899; --success: #10b981; --danger: #ef4444;
   --shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
-
-body.dark-mode {
-  --bg: var(--bg-dark);
-  --panel: var(--panel-dark);
-  --panel2: var(--panel2-dark);
-  --text: var(--text-dark);
-  --muted: var(--muted-dark);
-  --border: var(--border-dark);
-}
-
-body.light-mode {
-  --bg: var(--bg-light);
-  --panel: var(--panel-light);
-  --panel2: var(--panel2-light);
-  --text: var(--text-light);
-  --muted: var(--muted-light);
-  --border: var(--border-light);
-}
+body.dark-mode { --bg: var(--bg-dark); --panel: var(--panel-dark); --panel2: var(--panel2-dark); --text: var(--text-dark); --muted: var(--muted-dark); --border: var(--border-dark); }
+body.light-mode { --bg: var(--bg-light); --panel: var(--panel-light); --panel2: var(--panel2-light); --text: var(--text-light); --muted: var(--muted-light); --border: var(--border-light); }
 
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.8;
-  min-height: 100vh;
-}
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.8; min-height: 100vh; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
 .shell { max-width: 1300px; margin: auto; padding: 0 20px; }
 
-.header-container {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--panel);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 85px;
-}
-.brand-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  direction: ltr;
-  font-weight: 900;
-  font-size: 1.4rem;
-  background: linear-gradient(135deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.brand-icon {
-  width: 42px; height: 42px;
-  background: linear-gradient(135deg, var(--accent), var(--pink));
-  color: #fff;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  font-weight: bold;
-  box-shadow: 0 4px 15px var(--accent-glow);
-}
+.header-container { position: sticky; top: 0; z-index: 100; background: var(--panel); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.navbar { display: flex; align-items: center; justify-content: space-between; height: 85px; }
+.brand-box { display: flex; align-items: center; gap: 12px; direction: ltr; font-weight: 900; font-size: 1.4rem; background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent), var(--pink)); color: #fff; display: grid; place-items: center; border-radius: 12px; font-weight: bold; box-shadow: 0 4px 15px var(--accent-glow); }
 
-.nav-links {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.25s;
-}
-.nav-links a:hover, .nav-links a.active {
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--accent);
-}
+.nav-links { display: flex; gap: 4px; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; padding: 10px 13px; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.25s; }
+.nav-links a:hover, .nav-links a.active { background: rgba(99, 102, 241, 0.15); color: var(--accent); }
 
-.menu-toggle {
-  display: none;
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 1.5rem;
-  padding: 8px 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-controls {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.ctrl-btn {
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 10px 16px;
-  border-radius: 12px;
-  font-weight: 700;
-}
+.menu-toggle { display: none; background: var(--panel2); border: 1px solid var(--border); color: var(--text); font-size: 1.5rem; padding: 8px 14px; border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; }
+.nav-controls { display: flex; gap: 10px; align-items: center; }
+.ctrl-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; border-radius: 12px; font-weight: 700; }
 
 .page-section { display: none; padding: 40px 0; }
 .page-section.active { display: block; }
 
-.hero-wrapper {
-  padding: 50px 0;
-  text-align: center;
-}
-.hero-title {
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  line-height: 1.15;
-  font-weight: 900;
-  margin: 0 0 20px;
-}
-.hero-title span {
-  background: linear-gradient(120deg, var(--accent), var(--cyan), var(--pink));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-subtitle {
-  font-size: 1.15rem;
-  color: var(--muted);
-  margin: 0 auto 30px;
-  max-width: 650px;
-}
+.hero-wrapper { padding: 50px 0; text-align: center; }
+.hero-title { font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 1.15; font-weight: 900; margin: 0 0 20px; }
+.hero-title span { background: linear-gradient(120deg, var(--accent), var(--cyan), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 1.15rem; color: var(--muted); margin: 0 auto 30px; max-width: 650px; }
 
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  padding: 20px 0;
-}
-.card-item {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 28px;
-  transition: all 0.3s;
-}
-.card-item:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-}
-.card-icon-box {
-  width: 55px; height: 55px;
-  background: rgba(99, 102, 241, 0.12);
-  color: var(--accent);
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-}
+.grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 20px 0; }
+.card-item { background: var(--panel); border: 1px solid var(--border); border-radius: 24px; padding: 28px; transition: all 0.3s; }
+.card-item:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow); }
+.card-icon-box { width: 55px; height: 55px; background: rgba(99, 102, 241, 0.12); color: var(--accent); border-radius: 16px; display: grid; place-items: center; font-size: 1.6rem; margin-bottom: 20px; }
 .card-item h3 { font-size: 1.35rem; margin: 0 0 8px; font-weight: 800; }
 .card-item p { color: var(--muted); margin: 0 0 18px; font-size: 0.94rem; }
 .card-action-link { color: var(--accent); font-weight: 800; font-size: 0.95rem; cursor: pointer; }
 
-.main-panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 32px;
-  margin-bottom: 30px;
-  box-shadow: var(--shadow);
-}
-.pdf-download-bar {
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 22px;
-  flex-wrap: wrap;
-}
-.pdf-viewer, .quiz-iframe {
-  width: 100%;
-  height: 75vh;
-  min-height: 600px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #fff;
-}
+.main-panel { background: var(--panel); border: 1px solid var(--border); border-radius: 24px; padding: 32px; margin-bottom: 30px; box-shadow: var(--shadow); }
+.pdf-download-bar { background: var(--panel2); border: 1px solid var(--border); border-radius: 18px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
+.pdf-viewer, .quiz-iframe { width: 100%; height: 75vh; min-height: 600px; border: 1px solid var(--border); border-radius: 20px; background: #fff; }
 .quiz-iframe { background: #0b0f19; }
 
-.concepts-section-title {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--cyan);
-  margin: 30px 0 15px;
-}
-
-/* التعديل النهائي لشبكة الأزرار ومنع تداخل النصوص */
-.concept-cards-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.concept-tab-btn {
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 12px 14px;
-  border-radius: 14px;
-  font-weight: 700;
-  text-align: center;
-  flex: 1 1 calc(22% - 12px);
-  min-width: 200px;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: all 0.25s;
-}
-/* الإصلاح: المحدد > span يطبق على الـ span الخارجي فقط (وليس على spans مكتبة KaTeX الداخلية) */
-.concept-tab-btn > span {
-  font-size: 0.85rem;
-  color: var(--cyan);
-  display: block;
-  font-weight: 600;
-  direction: ltr;
-  margin-top: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  unicode-bidi: embed;
-}
-.concept-tab-btn .katex {
-  font-size: 1em;
-  white-space: nowrap;
-}
-.concept-tab-btn:hover, .concept-tab-btn.active {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.12);
-  color: var(--accent);
-}
-.concept-display-box {
-  background: var(--panel2);
-  border: 1px solid var(--accent);
-  border-radius: 18px;
-  padding: 25px;
-  margin-top: 15px;
-}
+.concepts-section-title { font-size: 1.3rem; font-weight: 800; color: var(--cyan); margin: 30px 0 15px; }
+.concept-cards-grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.concept-tab-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 14px; font-weight: 700; text-align: center; flex: 1 1 calc(22% - 12px); min-width: 200px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: all 0.25s; }
+/* المحدد > span يطبق على الـ span الخارجي فقط (وليس على spans مكتبة KaTeX الداخلية) */
+.concept-tab-btn > span { font-size: 0.85rem; color: var(--cyan); display: block; font-weight: 600; direction: ltr; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; unicode-bidi: embed; }
+.concept-tab-btn .katex { font-size: 1em; white-space: nowrap; }
+.concept-tab-btn:hover, .concept-tab-btn.active { border-color: var(--accent); background: rgba(99, 102, 241, 0.12); color: var(--accent); }
+.concept-display-box { background: var(--panel2); border: 1px solid var(--accent); border-radius: 18px; padding: 25px; margin-top: 15px; }
 .concept-display-box h4 { color: var(--cyan); margin-top: 0; font-size: 1.25rem; }
-.math-block {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--cyan);
-  font-size: 1.15rem;
-  padding: 16px 20px;
-  border-radius: 12px;
-  text-align: center;
-  margin: 15px 0;
-  font-weight: bold;
-  direction: ltr;
-  overflow-x: auto;
-}
+.math-block { background: var(--bg); border: 1px solid var(--border); color: var(--cyan); font-size: 1.15rem; padding: 16px 20px; border-radius: 12px; text-align: center; margin: 15px 0; font-weight: bold; direction: ltr; overflow-x: auto; }
 
 .q-card { background: var(--panel2); border: 1px solid var(--border); border-radius: 16px; padding: 22px; margin-bottom: 20px; }
 .opts-grid { display: grid; gap: 10px; margin-top: 12px; }
@@ -317,41 +82,16 @@ button { font: inherit; cursor: pointer; }
 .opt-btn.wrong { background: rgba(239, 68, 68, 0.25); border-color: var(--danger); color: #fecdd3; }
 .submit-quiz-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #fff; border: none; padding: 15px; font-weight: 900; border-radius: 14px; margin-top: 20px; cursor: pointer; }
 
-.main-footer {
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-  padding: 40px 0;
-  text-align: center;
-  margin-top: 40px;
-}
-.telegram-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #24A1DE;
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 16px;
-  font-size: 1.1rem;
-  font-weight: 900;
-  margin: 15px 0;
-}
+.main-footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 40px; }
+.telegram-btn { display: inline-flex; align-items: center; gap: 10px; background: #24A1DE; color: #fff; padding: 14px 28px; border-radius: 16px; font-size: 1.1rem; font-weight: 900; margin: 15px 0; }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) { .nav-links a { padding: 10px 9px; font-size: 0.92rem; } }
+@media (max-width: 900px) {
   .menu-toggle { display: flex; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 85px;
-    right: 0;
-    left: 0;
-    background: var(--panel);
-    flex-direction: column;
-    padding: 20px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
+  .nav-links { display: none; position: absolute; top: 85px; right: 0; left: 0; background: var(--panel); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow); }
   .nav-links.show { display: flex; }
+}
+@media (max-width: 768px) {
   .grid-cards { grid-template-columns: 1fr; }
   .concept-tab-btn { flex: 1 1 100%; min-width: 100%; white-space: normal; }
 }
@@ -373,6 +113,7 @@ button { font: inherit; cursor: pointer; }
       <a href="#linking" id="nav-linking" onclick="showPage('linking'); return false;">الربط</a>
       <a href="#summaries" id="nav-summaries" onclick="showPage('summaries'); return false;">الملخصات</a>
       <a href="#skills" id="nav-skills" onclick="showPage('skills'); return false;">المهارات</a>
+      <a href="#curriculum" id="nav-curriculum" onclick="showPage('curriculum'); return false;">المنهج</a>
     </nav>
     <div class="nav-controls">
       <button class="ctrl-btn" id="themeToggle">☀️ نهاري</button>
@@ -386,7 +127,7 @@ button { font: inherit; cursor: pointer; }
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
     <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات الشاملة.</p>
-    
+
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
         <div class="card-icon-box">✎</div>
@@ -418,6 +159,12 @@ button { font: inherit; cursor: pointer; }
         <p>ملف التأسيس و5 اختبارات تفاعلية شاملة لجميع تجميعات المهارات.</p>
         <span class="card-action-link" onclick="showPage('skills')">ابدأ اختبارات المهارات ←</span>
       </div>
+      <div class="card-item">
+        <div class="card-icon-box">📚</div>
+        <h3>المنهج</h3>
+        <p>كتب الأحياء والفيزياء والكيمياء والرياضيات وأسئلتها.</p>
+        <span class="card-action-link" onclick="showPage('curriculum')">افتح المنهج الدراسي ←</span>
+      </div>
     </div>
   </section>
 
@@ -437,27 +184,17 @@ button { font: inherit; cursor: pointer; }
   <!-- 3. القوانين -->
   <section id="laws" class="page-section">
     <div class="main-panel">
-      <h2>⚖️ الحسابات الكيميائية وميكانيكا البكرات</h2>
-      
+      <h2>⚖️ القوانين: الكيمياء والبكرات والمقذوفات والحركة الدائرية</h2>
+
       <!-- الحسابات الكيميائية -->
       <div class="pdf-download-bar">
         <div><h4>ملف الحسابات الكيميائية (PDF)</h4></div>
         <a class="card-action-link" href="chemical-calculations.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="chemical-calculations.pdf#view=FitH" loading="lazy"></iframe>
-
       <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
-      <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('chem', 0, this)">1. حساب عدد المولات<span>$n = m / M$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 1, this)">2. عدد الجسيمات<span>$N = n \times N_A$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 2, this)">3. المادة المحددة<span>الناتج الأصغر</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('chem', 3, this)">4. المردود المئوي<span>$\text{Actual} / \text{Theory} \times 100$</span></button>
-      </div>
-      <div class="concept-display-box" id="chemDisplay">
-        <h4>1. حساب عدد المولات والكتلة</h4>
-        <p>• <b>عدد المولات ($n$):</b> يُحسب بقسمة كتلة المادة بالجرام ($m$) على الكتلة المولية ($M$).<br>• <b>الكتلة بالجرام ($m$):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.</p>
-        <div class="math-block">$$n = \frac{m}{M} \quad \text{و} \quad m = n \times M$$</div>
-      </div>
+      <div class="concept-cards-grid" id="chemGrid"></div>
+      <div class="concept-display-box" id="chemDisplay"></div>
 
       <!-- ميكانيكا البكرات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
@@ -465,23 +202,9 @@ button { font: inherit; cursor: pointer; }
         <a class="card-action-link" href="pulley-mechanics.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="pulley-mechanics.pdf#view=FitH" loading="lazy"></iframe>
-
       <div class="concepts-section-title">📌 بطاقات وقوانين ميكانيكا البكرات الشاملة:</div>
-      <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('pulley', 0, this)">1. الوزن والاحتكاك<span>$W = mg , F_k = \mu_k F_N$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 1, this)">2. قانون نيوتن الثاني<span>$\sum F = ma$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 2, this)">3. آلة أتوود (التسارع)<span>$a = \frac{m_1 - m_2}{m_1 + m_2}g$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 3, this)">4. قوة الشد في أتوود<span>$T = \frac{2 m_1 m_2}{m_1 + m_2}g$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 4, this)">5. تحليل القوى على المنحدر<span>$W_x = mg \sin(\theta)$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 5, this)">6. بكرة على سطح مائل<span>$a = \frac{m_1 - m_2 \sin\theta}{m_1 + m_2}g$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 6, this)">7. الشد في حبل مصعد<span>$T = m(g \pm a)$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('pulley', 7, this)">8. القوة العمودية السطحية<span>$F_N = mg \cos(\theta)$</span></button>
-      </div>
-      <div class="concept-display-box" id="pulleyDisplay">
-        <h4>1. قوى الوزن والاحتكاك الحركي</h4>
-        <p>• <b>قوة الوزن ($W$):</b> قوة جذب الأرض للجسم وتساوي الكتلة في تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> قوة مقاومة تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.</p>
-        <div class="math-block">$$W = m \cdot g \quad , \quad F_k = \mu_k \cdot F_N$$</div>
-      </div>
+      <div class="concept-cards-grid" id="pulleyGrid"></div>
+      <div class="concept-display-box" id="pulleyDisplay"></div>
 
       <!-- اختبار مسائل ملف البكرات -->
       <div style="margin-top: 40px;">
@@ -490,6 +213,26 @@ button { font: inherit; cursor: pointer; }
         <button class="ctrl-btn" onclick="loadPulleyTest()" style="margin: 10px 0; background: var(--accent); color: #fff;">ابدأ اختبار مسائل البكرات الآن</button>
         <div id="pulleyTestHost"></div>
       </div>
+
+      <!-- ميكانيكا المقذوفات -->
+      <div class="pdf-download-bar" style="margin-top: 50px;">
+        <div><h4>ملف ميكانيكا المقذوفات (PDF)</h4></div>
+        <a class="card-action-link" href="Projectile_mechanics.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="Projectile_mechanics.pdf#view=FitH" loading="lazy"></iframe>
+      <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا المقذوفات:</div>
+      <div class="concept-cards-grid" id="projGrid"></div>
+      <div class="concept-display-box" id="projDisplay"></div>
+
+      <!-- ميكانيكا الحركة الدائرية -->
+      <div class="pdf-download-bar" style="margin-top: 50px;">
+        <div><h4>ملف ميكانيكا الحركة الدائرية (PDF)</h4></div>
+        <a class="card-action-link" href="Circular_motion_mechanics.pdf" target="_blank">فتح الملف في نافذة مستقلة ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="Circular_motion_mechanics.pdf#view=FitH" loading="lazy"></iframe>
+      <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا الحركة الدائرية:</div>
+      <div class="concept-cards-grid" id="circGrid"></div>
+      <div class="concept-display-box" id="circDisplay"></div>
     </div>
   </section>
 
@@ -506,13 +249,23 @@ button { font: inherit; cursor: pointer; }
   <section id="summaries" class="page-section">
     <div class="main-panel">
       <h2>▤ الملخصات الأكاديمية الشاملة</h2>
-      
+
       <!-- ملخص الرياضيات -->
       <div class="pdf-download-bar">
         <div><h4>ملف ملخص الرياضيات (PDF)</h4></div>
         <a class="card-action-link" href="math-summary.pdf" target="_blank">فتح ملخص الرياضيات ↗</a>
       </div>
       <iframe class="pdf-viewer" src="math-summary.pdf#view=FitH" loading="lazy"></iframe>
+
+      <!-- التبرير والبرهان (رياضيات أول ثانوي) -->
+      <div class="pdf-download-bar" style="margin-top: 40px;">
+        <div><h4>ملف التبرير والبرهان - رياضيات أول ثانوي (PDF)</h4></div>
+        <a class="card-action-link" href="Justification_proof.pdf" target="_blank">فتح الملف ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="Justification_proof.pdf#view=FitH" loading="lazy"></iframe>
+      <div class="concepts-section-title">📌 ملخص رياضيات أول ثانوي:</div>
+      <div class="concept-cards-grid" id="math1Grid"></div>
+      <div class="concept-display-box" id="math1Display"></div>
 
       <!-- ملخص أحياء (صور أحمد الحوت) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
@@ -521,43 +274,28 @@ button { font: inherit; cursor: pointer; }
       </div>
       <iframe class="pdf-viewer" src="ahmad-alhout-images.pdf#view=FitH" loading="lazy"></iframe>
 
+      <!-- قانون هس -->
+      <div class="pdf-download-bar" style="margin-top: 40px;">
+        <div><h4>ملف قانون هس (PDF)</h4></div>
+        <a class="card-action-link" href="HassLaw.pdf" target="_blank">فتح ملف قانون هس ↗</a>
+      </div>
+      <iframe class="pdf-viewer" src="HassLaw.pdf#view=FitH" loading="lazy"></iframe>
+
+      <!-- سلسلة النشاط الكيميائي -->
+      <div style="margin-top: 40px;">
+        <h4>سلسلة النشاط الكيميائي (الفلزات والهالوجينات)</h4>
+        <img src="IMG_8441.jpeg" alt="سلسلة النشاط الكيميائي" style="width:100%; border-radius:16px;">
+      </div>
+
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
         <a class="card-action-link" href="common-names.pdf" target="_blank">فتح ملف الأسماء الشائعة ↗</a>
       </div>
       <iframe class="pdf-viewer" src="common-names.pdf#view=FitH" loading="lazy"></iframe>
-
       <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
-      <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('names', 0, this)">1. 2-بيوتانول<span>$\text{C}_4\text{H}_{10}\text{O}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 1, this)">2. هكسانول حلقي<span>$\text{C}_6\text{H}_{11}\text{OH}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 2, this)">3. ثنائي إيثيل إثير<span>$(\text{C}_2\text{H}_5)_2\text{O}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 3, this)">4. إيثانال<span>$\text{CH}_3\text{CHO}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 4, this)">5. بيوتانوات الإيثيل<span>$\text{C}_6\text{H}_{12}\text{O}_2$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 5, this)">6. هكسانوات الميثيل<span>$\text{C}_7\text{H}_{14}\text{O}_2$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 6, this)">7. الميثان<span>$\text{CH}_4$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 7, this)">8. البروبان<span>$\text{C}_3\text{H}_8$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 8, this)">9. البيوتان<span>$\text{C}_4\text{H}_{10}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 9, this)">10. الإيثين<span>$\text{C}_2\text{H}_4$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 10, this)">11. رباعي فلورو بولي إيثين<span>$(\text{C}_2\text{F}_4)_n$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 11, this)">12. الهالو إيثان<span>$\text{C}_2\text{H}_5\text{Br}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 12, this)">13. الإيثانول<span>$\text{C}_2\text{H}_5\text{OH}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 13, this)">14. الأسيتيلين<span>$\text{C}_2\text{H}_2$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 14, this)">15. الجليسرول<span>$\text{C}_3\text{H}_8\text{O}_3$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 15, this)">16. 2-ميثيل بروبان<span>$\text{CH}_3\text{CH}(\text{CH}_3)_2$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 16, this)">17. ميثيل كلوريد<span>$\text{CH}_3\text{Cl}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 17, this)">18. الأسيتون<span>$\text{CH}_3\text{COCH}_3$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 18, this)">19. فورمالدهيد<span>$\text{HCHO}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 19, this)">20. حمض الميثانويك<span>$\text{HCOOH}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 20, this)">21. حمض الإيثانويك<span>$\text{CH}_3\text{COOH}$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('names', 21, this)">22. اليوريا<span>$\text{CO}(\text{NH}_2)_2$</span></button>
-      </div>
-      <div class="concept-display-box" id="namesDisplay">
-        <h4>1. 2-بيوتانول</h4>
-        <p>• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ.</p>
-        <div class="math-block">$$\text{C}_4\text{H}_{10}\text{O} \quad (\text{مذيب عضوي للأصباغ})$$</div>
-      </div>
+      <div class="concept-cards-grid" id="namesGrid"></div>
+      <div class="concept-display-box" id="namesDisplay"></div>
 
       <!-- مشتقات الهيدروكربونات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
@@ -565,24 +303,9 @@ button { font: inherit; cursor: pointer; }
         <a class="card-action-link" href="hydrocarbon-derivatives.pdf" target="_blank">فتح الملف ↗</a>
       </div>
       <iframe class="pdf-viewer" src="hydrocarbon-derivatives.pdf#view=FitH" loading="lazy"></iframe>
-
       <div class="concepts-section-title">📌 قائمة مشتقات الهيدروكربونات الكاملة:</div>
-      <div class="concept-cards-grid">
-        <button class="concept-tab-btn active" onclick="switchCard('hydro', 0, this)">1. هاليدات الألكيل والأريل<span>$R - X$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 1, this)">2. الكحولات<span>$R - OH$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 2, this)">3. الإيثرات<span>$R - O - R'$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 3, this)">4. الأمينات<span>$R - NH_2$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 4, this)">5. الألدهيدات<span>$R - CHO$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 5, this)">6. الكيتونات<span>$R - CO - R'$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 6, this)">7. الأحماض الكربوكسيلية<span>$R - COOH$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 7, this)">8. الإسترات<span>$R - COO - R'$</span></button>
-        <button class="concept-tab-btn" onclick="switchCard('hydro', 8, this)">9. الأميدات<span>$R - CONH_2$</span></button>
-      </div>
-      <div class="concept-display-box" id="hydroDisplay">
-        <h4>1. هاليدات الألكيل والأريل</h4>
-        <p>• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين ($X$) مباشرة بسلسلة كربونية أليفاتية أو أروماتية ($R$).<br>• <b>الاستخدامات:</b> مواد أولية صناعية ومذيبات وعوامل تبريد ومخدرات طبية.</p>
-        <div class="math-block">$$R - X \quad (X = F, Cl, Br, I)$$</div>
-      </div>
+      <div class="concept-cards-grid" id="hydroGrid"></div>
+      <div class="concept-display-box" id="hydroDisplay"></div>
     </div>
   </section>
 
@@ -615,6 +338,17 @@ button { font: inherit; cursor: pointer; }
       </div>
     </div>
   </section>
+
+  <!-- 7. المنهج -->
+  <section id="curriculum" class="page-section">
+    <div class="main-panel">
+      <h2>📚 المنهج الدراسي</h2>
+      <p style="color: var(--muted);">كتب الأسئلة لجميع المواد. افتح الكتاب في نافذة مستقلة للتصفح الأسهل، أو اضغط «عرض الكتاب هنا» لعرضه داخل الصفحة.</p>
+
+      <div class="grid-cards" id="curriculumGrid" style="text-align: right;"></div>
+      <div id="curriculumViewer"></div>
+    </div>
+  </section>
 </main>
 
 <footer class="main-footer">
@@ -637,29 +371,18 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = isDark ? '☀️ نهاري' : '🌙 ليلي';
 });
 
-function toggleMenu() {
-  const nav = document.getElementById('navLinks');
-  nav.classList.toggle('show');
-}
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('show'); }
 
 function showPage(pageId) {
   requestAnimationFrame(() => {
-    document.querySelectorAll('.page-section').forEach(section => {
-      section.classList.remove('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.classList.remove('active');
-    });
-    
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
     const targetSection = document.getElementById(pageId);
     if (targetSection) targetSection.classList.add('active');
-    
     const targetLink = document.getElementById('nav-' + pageId);
     if (targetLink) targetLink.classList.add('active');
-    
     const nav = document.getElementById('navLinks');
     if (nav) nav.classList.remove('show');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
     renderMath();
   });
@@ -676,78 +399,210 @@ function renderMath() {
   }
 }
 
-// قواعد البيانات والقوانين
+/* =====================================================
+   بيانات البطاقات
+   كل عنصر: t = عنوان البطاقة، s = صيغة الزر (لاتكس)، st = نص بدل الصيغة (اختياري)،
+            d = الشرح، m = المعادلة الكبيرة (لاتكس)
+   ===================================================== */
 const chemData = [
-  {title: "1. حساب عدد المولات والكتلة", desc: "• <b>عدد المولات ($n$):</b> يُحسب بقسمة كتلة المادة بالجرام ($m$) على الكتلة المولية ($M$).<br>• <b>كتلة المادة بالجرام ($m$):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", math: "$$n = \\frac{m}{M} \\quad | \\quad m = n \\times M$$"},
-  {title: "2. حساب عدد الجسيمات وثابت أفوجادرو", desc: "• <b>عدد الجسيمات ($N$):</b> يُحسب بضرب عدد المولات ($n$) في ثابت أفوجادرو ($N_A$).<br>• <b>ثابت أفوجادرو:</b> يساوي ($6.02 \\times 10^{23}$ جسيم/مول).", math: "$$N = n \\times N_A \\quad (N_A = 6.02 \\times 10^{23})$$"},
-  {title: "3. المادة المحددة للتفاعل", desc: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً في التفاعل وتنتج الكمية الأقل من النواتج النظرية.", math: "$$\\text{الناتج الأصغر كمية يحدد المادة المحددة للتفاعل}$$"},
-  {title: "4. حساب نسبة المردود المئوية", desc: "• <b>المردود المئوي:</b> تقيس كفاءة التفاعل العملي مقارنة بالناتج النظري المحسوب.", math: "$$\\text{المردود المئوي} = \\left( \\frac{\\text{المردود الفعلي}}{\\text{المردود النظري}} \\right) \\times 100$$"}
+  {t: "1. حساب عدد المولات والكتلة", s: String.raw`n = m / M`, d: "• <b>عدد المولات ($n$):</b> يُحسب بقسمة كتلة المادة بالجرام ($m$) على الكتلة المولية ($M$).<br>• <b>كتلة المادة بالجرام ($m$):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", m: String.raw`n = \frac{m}{M} \quad | \quad m = n \times M`},
+  {t: "2. عدد الجسيمات", s: String.raw`N = n \times N_A`, d: "• <b>عدد الجسيمات ($N$):</b> يُحسب بضرب عدد المولات ($n$) في ثابت أفوجادرو ($N_A$).<br>• <b>ثابت أفوجادرو:</b> يساوي ($6.02 \\times 10^{23}$ جسيم/مول).", m: String.raw`N = n \times N_A \quad (N_A = 6.02 \times 10^{23})`},
+  {t: "3. المادة المحددة", st: "الناتج الأصغر", d: "• <b>المادة المحددة:</b> المادة التي تستهلك كلياً في التفاعل وتنتج الكمية الأقل من النواتج النظرية.", m: String.raw`\text{الناتج الأصغر كمية يحدد المادة المحددة للتفاعل}`},
+  {t: "4. المردود المئوي", s: String.raw`\text{Actual} / \text{Theory} \times 100`, d: "• <b>المردود المئوي:</b> تقيس كفاءة التفاعل العملي مقارنة بالناتج النظري المحسوب.", m: String.raw`\text{المردود المئوي} = \left( \frac{\text{المردود الفعلي}}{\text{المردود النظري}} \right) \times 100`}
 ];
 
 const pulleyData = [
-  {title: "1. الوزن والاحتكاك الحركي", desc: "• <b>قوة الوزن ($W$):</b> قوة جذب الأرض للجسم وتساوي الكتلة ضرب تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.", math: "$$W = mg \\quad | \\quad F_k = \\mu_k F_N$$"},
-  {title: "2. قانون نيوتن الثاني", desc: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", math: "$$\\sum F = ma \\quad | \\quad a = \\frac{F_{\\text{net}}}{m}$$"},
-  {title: "3. آلة أتوود (التسارع)", desc: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", math: "$$a = \\frac{m_1 - m_2}{m_1 + m_2}g$$"},
-  {title: "4. قوة الشد في أتوود", desc: "• <b>قوة الشد ($T$):</b> القوة الناشئة في خيط أتوود.", math: "$$T = \\frac{2 m_1 m_2}{m_1 + m_2}g$$"},
-  {title: "5. تحليل القوى على المنحدرات", desc: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم على السطح المائل.", math: "$$W_x = mg \\sin(\\theta) \\quad | \\quad W_y = mg \\cos(\\theta)$$"},
-  {title: "6. بكرة على سطح مائل", desc: "• <b>حركة كتلة معلقة مع سطح مائل:</b>", math: "$$a = \\frac{m_1 - m_2 \\sin\\theta}{m_1 + m_2}g$$"},
-  {title: "7. الشد في حبل مصعد / صعود ونزول", desc: "• <b>قوة الشد المتغيرة:</b>", math: "$$T = m(g \\pm a)$$"},
-  {title: "8. القوة العمودية السطحية", desc: "• <b>القوة العمودية ($F_N$):</b>", math: "$$F_N = mg \\cos(\\theta)$$"}
+  {t: "1. الوزن والاحتكاك", s: String.raw`W = mg , F_k = \mu_k F_N`, d: "• <b>قوة الوزن ($W$):</b> قوة جذب الأرض للجسم وتساوي الكتلة ضرب تسارع الجاذبية.<br>• <b>قوة الاحتكاك الحركي ($F_k$):</b> تعيق حركة الأجسام وتساوي معامل الاحتكاك ضرب القوة العمودية.", m: String.raw`W = mg \quad | \quad F_k = \mu_k F_N`},
+  {t: "2. قانون نيوتن الثاني", s: String.raw`\sum F = ma`, d: "• <b>قانون نيوتن الثاني:</b> محصلة القوى المؤثرة تساوي الكتلة مضروبة في التسارع.", m: String.raw`\sum F = ma \quad | \quad a = \frac{F_{\text{net}}}{m}`},
+  {t: "3. آلة أتوود (التسارع)", s: String.raw`a = \frac{m_1 - m_2}{m_1 + m_2}g`, d: "• <b>آلة أتوود:</b> نظام يتكون من كتلتين معلقتين بخيط على بكرة ملساء.", m: String.raw`a = \frac{m_1 - m_2}{m_1 + m_2}g`},
+  {t: "4. قوة الشد في أتوود", s: String.raw`T = \frac{2 m_1 m_2}{m_1 + m_2}g`, d: "• <b>قوة الشد ($T$):</b> القوة الناشئة في خيط أتوود.", m: String.raw`T = \frac{2 m_1 m_2}{m_1 + m_2}g`},
+  {t: "5. تحليل القوى على المنحدرات", s: String.raw`W_x = mg \sin(\theta)`, d: "• <b>المركبة الموازية للوزن:</b> المسؤولة عن حركة الجسم على السطح المائل.", m: String.raw`W_x = mg \sin(\theta) \quad | \quad W_y = mg \cos(\theta)`},
+  {t: "6. بكرة على سطح مائل", s: String.raw`a = \frac{m_1 - m_2 \sin\theta}{m_1 + m_2}g`, d: "• <b>حركة كتلة معلقة مع سطح مائل:</b>", m: String.raw`a = \frac{m_1 - m_2 \sin\theta}{m_1 + m_2}g`},
+  {t: "7. الشد في حبل مصعد", s: String.raw`T = m(g \pm a)`, d: "• <b>قوة الشد المتغيرة (صعود ونزول):</b>", m: String.raw`T = m(g \pm a)`},
+  {t: "8. القوة العمودية السطحية", s: String.raw`F_N = mg \cos(\theta)`, d: "• <b>القوة العمودية ($F_N$):</b>", m: String.raw`F_N = mg \cos(\theta)`}
 ];
 
-const namesData = [
-  {title: "1. 2-بيوتانول", desc: "• <b>الاستعمال:</b> مذيب في بعض الأخشاب والأصباغ.", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10}\\text{O} \\quad (\\text{مذيب عضوي للأصباغ})$$"},
-  {title: "2. هكسانول حلقي", desc: "• <b>الاستعمال:</b> مركب سام، ومبيد حشري.", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{11}\\text{OH} \\quad (\\text{مبيد حشري حلقي})$$"},
-  {title: "3. ثنائي إيثيل إثير", desc: "• <b>الاستعمال:</b> مخدر في العمليات الجراحية.", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{H}_5)_2\\text{O} \\quad (\\text{مخدر طبي وجراحي})$$"},
-  {title: "4. إيثانال (استبالدهيد)", desc: "• <b>الاستعمال:</b> يدخل في إنتاج الأصباغ الغامقة.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CHO} \\quad (\\text{إنتاج الأصباغ})$$"},
-  {title: "5. بيوتانوات الإيثيل", desc: "• <b>الاستعمال:</b> يمنح رائحة ونكهة الأناناس.", math: "$$\\text{الصيغة:} \\quad \\text{C}_6\\text{H}_{12}\\text{O}_2 \\quad (\\text{نكهة الأناناس})$$"},
-  {title: "6. هكسانوات الميثيل", desc: "• <b>الاستعمال:</b> يمنح نكهة ورائحة الفراولة.", math: "$$\\text{الصيغة:} \\quad \\text{C}_7\\text{H}_{14}\\text{O}_2 \\quad (\\text{نكهة الفراولة})$$"},
-  {title: "7. الميثان", desc: "• <b>الاستعمال:</b> يُعد مصدراً رئيسياً للوقود والغاز الطبيعي.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_4 \\quad (\\text{غاز طبيعي ووقود})$$"},
-  {title: "8. البروبان", desc: "• <b>الاستعمال:</b> يُستخدم كوقود للطبخ والتسخين.", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8 \\quad (\\text{وقود الطبخ})$$"},
-  {title: "9. البيوتان", desc: "• <b>الاستعمال:</b> يُستخدم بشكل شائع في الفداحات.", math: "$$\\text{الصيغة:} \\quad \\text{C}_4\\text{H}_{10} \\quad (\\text{وقود الولاعات})$$"},
-  {title: "10. الإيثين", desc: "• <b>الاستعمال:</b> مسؤول عن نضج الفواكه وتساقط أوراق الشجر.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_4 \\quad (\\text{هرمون نضج الفواكه})$$"},
-  {title: "11. رباعي فلورو بولي إيثين", desc: "• <b>الاستعمال:</b> يدخل في صناعة البلاستيك ومانع الالتصاق.", math: "$$\\text{الصيغة:} \\quad (\\text{C}_2\\text{F}_4)_n \\quad (\\text{مانع الالتصاق})$$"},
-  {title: "12. الهالو إيثان", desc: "• <b>الاستعمال:</b> يُستخدم كمخدر في العمليات الجراحية.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{Br} \\quad (\\text{مخدر طبي})$$"},
-  {title: "13. الإيثانول", desc: "• <b>الاستعمال:</b> يُستخدم كمطهر ومعقم ومهم لتحضير مركبات أخرى.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_5\\text{OH} \\quad (\\text{مطهّر ومعقّم})$$"},
-  {title: "14. الأسيتيلين (الإيثاين)", desc: "• <b>الاستعمال:</b> يُستخدم في لحام وقطع الفلزات لشدة حرارته.", math: "$$\\text{الصيغة:} \\quad \\text{C}_2\\text{H}_2 \\quad (\\text{لحام وقطع الفلزات})$$"},
-  {title: "15. الجليسرول", desc: "• <b>الاستعمال:</b> يمنع تجمد الوقود في الطائرات وفي الأدوية.", math: "$$\\text{الصيغة:} \\quad \\text{C}_3\\text{H}_8\\text{O}_3 \\quad (\\text{مانع تجمد الوقود})$$"},
-  {title: "16. 2-ميثيل بروبان (الأيزوبيوتان)", desc: "• <b>الاستعمال:</b> مادة آمنة تُستخدم في التبريد ومنتجات الحلاقة.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{CH}(\\text{CH}_3)_2 \\quad (\\text{التبريد والحلاقة})$$"},
-  {title: "17. ميثيل كلوريد", desc: "• <b>الاستعمال:</b> يدخل في صناعة المواد اللاصقة والسيليكون.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{Cl} \\quad (\\text{صناعة السيليكون})$$"},
-  {title: "18. الأسيتون", desc: "• <b>الاستعمال:</b> يُستخدم في إزالة طلاء الأظافر وكمذيب.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COCH}_3 \\quad (\\text{إزالة طلاء الأظافر})$$"},
-  {title: "19. فورمالدهيد (الفرمالين)", desc: "• <b>الاستعمال:</b> يُستخدم في حفظ العينات البيولوجية.", math: "$$\\text{الصيغة:} \\quad \\text{HCHO} \\quad (\\text{حفظ العينات البيولوجية})$$"},
-  {title: "20. حمض الميثانويك (الفورميك)", desc: "• <b>الاستعمال:</b> يفرزه النمل للدفاع عن النفس.", math: "$$\\text{الصيغة:} \\quad \\text{HCOOH} \\quad (\\text{إفراز دفاعي للنمل})$$"},
-  {title: "21. حمض الإيثانويك (الأسيتيك)", desc: "• <b>الاستعمال:</b> يُعرف بحمض الخل (الخليك) في الصناعات الغذائية.", math: "$$\\text{الصيغة:} \\quad \\text{CH}_3\\text{COOH} \\quad (\\text{حمض الخل})$$"},
-  {title: "22. اليوريا", desc: "• <b>الاستعمال:</b> تُستعمل في الأسمدة الزراعية وتصنيع البلاستيك.", math: "$$\\text{الصيغة:} \\quad \\text{CO}(\\text{NH}_2)_2 \\quad (\\text{الأسمدة الزراعية})$$"}
+/* ميكانيكا المقذوفات (g = 10 m/s² وإهمال مقاومة الهواء) */
+const projData = [
+  {t: "1. المركبة الأفقية الابتدائية", s: String.raw`v_{ix} = v_i \cos\theta`, d: "• <b>المركبة الأفقية:</b> السرعة الابتدائية مضروبة في جيب تمام الزاوية. وتبقى <b>ثابتة طوال الرحلة</b> لأنه لا توجد قوة أفقية ($a_x = 0$).", m: String.raw`v_{ix} = v_i \cos\theta`},
+  {t: "2. المركبة الرأسية الابتدائية", s: String.raw`v_{iy} = v_i \sin\theta`, d: "• <b>المركبة الرأسية:</b> السرعة الابتدائية مضروبة في جيب الزاوية، وهي التي تتأثر بالجاذبية.", m: String.raw`v_{iy} = v_i \sin\theta`},
+  {t: "3. السرعة الرأسية في أي لحظة", s: String.raw`v_y = v_{iy} - g\,t`, d: "• <b>السرعة الرأسية:</b> تقل صعوداً حتى تصبح صفراً عند القمة، ثم تزداد هبوطاً.", m: String.raw`v_y = v_{iy} - g\,t`},
+  {t: "4. السرعة المحصلة", s: String.raw`v = \sqrt{v_x^2 + v_y^2}`, d: "• <b>السرعة المحصلة:</b> من مركبتين متعامدتين بنظرية فيثاغورس. عند القمة $v_y = 0$ فتكون $v = v_x$ وليست صفراً.", m: String.raw`v = \sqrt{v_x^2 + v_y^2}`},
+  {t: "5. زمن الصعود", s: String.raw`t_{up} = \frac{v_i \sin\theta}{g}`, d: "• <b>زمن الصعود:</b> الزمن اللازم لتصل السرعة الرأسية إلى الصفر.", m: String.raw`t_{up} = \frac{v_i \sin\theta}{g}`},
+  {t: "6. زمن التحليق", s: String.raw`t' = \frac{2 v_i \sin\theta}{g}`, d: "• <b>زمن التحليق:</b> ضعف زمن الصعود، لأن الصعود والهبوط متماثلان على الارتفاع نفسه.", m: String.raw`t' = 2\,t_{up} = \frac{2 v_i \sin\theta}{g}`},
+  {t: "7. أقصى ارتفاع", s: String.raw`y_{max} = \frac{v_i^2 \sin^2\theta}{2g}`, d: "• <b>أقصى ارتفاع:</b> أعلى نقطة يصل إليها المقذوف، وله صيغة أخرى بدلالة زمن الصعود.", m: String.raw`y_{max} = \frac{v_i^2 \sin^2\theta}{2g} = \frac{1}{2}\,g\,t_{up}^2`},
+  {t: "8. المدى الأفقي", s: String.raw`R = \frac{v_i^2 \sin 2\theta}{g}`, d: "• <b>المدى الأفقي:</b> المسافة الأفقية المقطوعة خلال زمن التحليق.", m: String.raw`R = v_{ix}\,t' = \frac{v_i^2 \sin 2\theta}{g}`},
+  {t: "9. أقصى مدى (عند 45°)", s: String.raw`R_{max} = \frac{v_i^2}{g}`, d: "• <b>أقصى مدى:</b> يتحقق عند زاوية $45^\\circ$ لأن $\\sin 90^\\circ = 1$. والزاويتان المتتامتان تعطيان المدى نفسه.", m: String.raw`R_{max} = \frac{v_i^2}{g} \quad (\theta = 45^\circ)`},
+  {t: "10. نسبة الارتفاع إلى المدى", s: String.raw`\frac{y_{max}}{R} = \frac{\tan\theta}{4}`, d: "• <b>الارتفاع والمدى:</b> نسبة أقصى ارتفاع إلى المدى تعتمد على الزاوية فقط، ولا تعتمد على السرعة.", m: String.raw`\frac{y_{max}}{R} = \frac{\tan\theta}{4}`},
+  {t: "11. المقذوف الأفقي: زمن السقوط", s: String.raw`t = \sqrt{\frac{2h}{g}}`, d: "• <b>المقذوف الأفقي من ارتفاع $h$:</b> السرعة الرأسية الابتدائية صفر، فيعتمد زمن السقوط على الارتفاع فقط.", m: String.raw`t = \sqrt{\frac{2h}{g}}`},
+  {t: "12. المقذوف الأفقي: المدى", s: String.raw`R = v_i\,t`, d: "• <b>المدى الأفقي:</b> السرعة الأفقية الثابتة مضروبة في زمن السقوط.", m: String.raw`R = v_i\,t = v_i\sqrt{\frac{2h}{g}}`},
+  {t: "13. سرعة الارتطام", s: String.raw`v = \sqrt{v_i^2 + 2gh}`, d: "• <b>سرعة الارتطام بالأرض:</b> محصلة المركبة الأفقية الثابتة والمركبة الرأسية المكتسبة من السقوط.", m: String.raw`v = \sqrt{v_i^2 + 2gh}`}
 ];
 
-const hydroData = [
-  {title: "1. هاليدات الألكيل والأريل", desc: "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين ($X$) مباشرة بسلسلة كربونية أليفاتية أو أروماتية ($R$).", math: "$$R - X \\quad (X = F, Cl, Br, I)$$"},
-  {title: "2. الكحولات", desc: "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية.", math: "$$R - OH$$"},
-  {title: "3. الإيثرات", desc: "• <b>المجموعة الوظيفية:</b> ذرة أكسجين تقع وسط سلسلتين كربونيتين.", math: "$$R - O - R'$$"},
-  {title: "4. الأمينات", desc: "• <b>المجموعة الوظيفية:</b> مشتقات عضوية للأمونيا بروائح نفاذة.", math: "$$R - NH_2$$"},
-  {title: "5. الألدهيدات", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل طرفية متصلة بذرة هيدروجين.", math: "$$R - CHO$$"},
-  {title: "6. الكيتونات", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل وسطية واقعة بين مجموعتي ألكيل.", math: "$$R - CO - R'$$"},
-  {title: "7. الأحماض الكربوكسيلية", desc: "• <b>المجموعة الوظيفية:</b> مجموعة كربوكسيل مسؤولة عن الصفة الحمضية.", math: "$$R - COOH$$"},
-  {title: "8. الإسترات", desc: "• <b>المجموعة الوظيفية:</b> ناتجة عن تفاعل حمض مع كحول وتتميز بروائح الفواكه العطرة.", math: "$$R - COO - R'$$"},
-  {title: "9. الأميدات", desc: "• <b>المجموعة الوظيفية:</b> مشتقة من الأحماض الكربوكسيلية باستبدال الهيدروكسيل بأمين.", math: "$$R - CONH_2$$"}
+/* ميكانيكا الحركة الدائرية */
+const circData = [
+  {t: "1. الزمن الدوري", s: String.raw`T = \frac{t}{n}`, d: "• <b>الزمن الدوري ($T$):</b> الزمن اللازم لإكمال دورة واحدة، ووحدته الثانية.<br>• $n$ عدد الدورات، و $t$ الزمن الكلي.", m: String.raw`T = \frac{t}{n}`},
+  {t: "2. التردد", s: String.raw`f = \frac{n}{t} = \frac{1}{T}`, d: "• <b>التردد ($f$):</b> عدد الدورات في الثانية، ووحدته الهرتز Hz. إذا أعطاك عدد الدورات في الدقيقة فاقسمه على 60.", m: String.raw`f = \frac{n}{t} \quad | \quad f = \frac{1}{T}`},
+  {t: "3. الزاوية بالراديان", s: String.raw`\theta = \frac{s}{r}`, d: "• <b>الراديان:</b> الزاوية = طول القوس ÷ نصف القطر. في الدورة الكاملة $s = 2\\pi r$ فتكون الزاوية $2\\pi$ rad.", m: String.raw`\theta = \frac{s}{r} \quad | \quad 2\pi\,\text{rad} = 360^\circ`},
+  {t: "4. التحويل بين الدرجات والراديان", s: String.raw`\text{rad} = \text{deg} \times \frac{\pi}{180}`, d: "• <b>التحويل:</b> اضرب في $\\pi/180$ للتحويل إلى راديان، واضرب في $180/\\pi$ للتحويل إلى درجات. الدوران عكس عقارب الساعة موجب.", m: String.raw`\text{rad} = \text{deg} \times \frac{\pi}{180^\circ} \quad | \quad \text{deg} = \text{rad} \times \frac{180^\circ}{\pi}`},
+  {t: "5. الإزاحة الزاوية", s: String.raw`\theta = 2\pi \times n`, d: "• <b>الإزاحة الزاوية:</b> كل دورة تساوي $2\\pi$ rad. وبالتناسب: $\\theta = 2\\pi \\times \\frac{t}{T}$.", m: String.raw`\theta = 2\pi \times n = 2\pi \times \frac{t}{T}`},
+  {t: "6. السرعة الزاوية", s: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`, d: "• <b>السرعة الزاوية ($\\omega$):</b> الإزاحة الزاوية مقسومة على الزمن، ووحدتها rad/s.", m: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`},
+  {t: "7. السرعة الزاوية والدور والتردد", s: String.raw`\omega = \frac{2\pi}{T} = 2\pi f`, d: "• <b>من أين جاء؟</b> في دورة كاملة الإزاحة $2\\pi$ والزمن $T$. وبما أن $f = 1/T$ فإن $\\omega = 2\\pi f$. وللعكس: $f = \\omega / 2\\pi$.", m: String.raw`\omega = \frac{2\pi}{T} = 2\pi f`},
+  {t: "8. التسارع الزاوي", s: String.raw`\alpha = \frac{\Delta\omega}{\Delta t}`, d: "• <b>التسارع الزاوي ($\\alpha$):</b> التغير في السرعة الزاوية مقسوماً على الزمن، ووحدته rad/s². وهو ميل منحنى $\\omega$ مع الزمن. وفي الحركة الدائرية المنتظمة $\\alpha = 0$.", m: String.raw`\alpha = \frac{\Delta\omega}{\Delta t}`},
+  {t: "9. ربط الإزاحة الخطية بالزاوية", s: String.raw`d = r\theta`, d: "• <b>الإزاحة الخطية (طول القوس):</b> نصف القطر × الإزاحة الزاوية.", m: String.raw`d = r\theta`},
+  {t: "10. السرعة الخطية (المماسية)", s: String.raw`v = r\omega`, d: "• <b>السرعة الخطية:</b> نصف القطر × السرعة الزاوية، وهي مماسة للدائرة وعمودية على نصف القطر. وبالتعويض: $v = \\frac{2\\pi r}{T}$.", m: String.raw`v = r\omega = \frac{2\pi r}{T}`},
+  {t: "11. التسارع الخطي (المماسي)", s: String.raw`a = r\alpha`, d: "• <b>التسارع الخطي:</b> نصف القطر × التسارع الزاوي.", m: String.raw`a = r\alpha`},
+  {t: "12. التسارع المركزي (السرعة الخطية)", s: String.raw`a_c = \frac{v^2}{r}`, d: "• <b>التسارع المركزي:</b> يتجه دائماً نحو المركز، ويغير اتجاه السرعة فقط. استخدمه إذا كان المعطى $v$.", m: String.raw`a_c = \frac{v^2}{r}`},
+  {t: "13. التسارع المركزي (السرعة الزاوية)", s: String.raw`a_c = \omega^2 r`, d: "• <b>بالتعويض $v = r\\omega$:</b> استخدمه إذا كان المعطى $\\omega$.", m: String.raw`a_c = \frac{(r\omega)^2}{r} = \omega^2 r`},
+  {t: "14. التسارع المركزي (الزمن الدوري)", s: String.raw`a_c = \frac{4\pi^2 r}{T^2}`, d: "• <b>بالتعويض $v = 2\\pi r / T$:</b> استخدمه إذا كان المعطى $T$.", m: String.raw`a_c = \frac{1}{r}\left(\frac{2\pi r}{T}\right)^2 = \frac{4\pi^2 r}{T^2}`},
+  {t: "15. القوة المركزية", s: String.raw`F_c = \frac{mv^2}{r}`, d: "• <b>القوة المركزية:</b> محصلة القوى نحو المركز، وليست قوة جديدة (الشد، الاحتكاك، الجاذبية). ووحدتها النيوتن. إذا انقطع الخيط تحرك الجسم على المماس.", m: String.raw`F_c = m\,a_c = \frac{mv^2}{r}`},
+  {t: "16. نقاط القرص الواحد", s: String.raw`\omega_A = \omega_B`, d: "• <b>على قرص واحد:</b> السرعة الزاوية متساوية لجميع النقاط، والسرعة الخطية أكبر للنقطة الأبعد.", m: String.raw`\omega_A = \omega_B \quad , \quad r_B > r_A \Rightarrow v_B > v_A`},
+  {t: "17. الترسان المتلامسان", s: String.raw`v_1 = v_2`, d: "• <b>ترسان متلامسان:</b> السرعة الخطية لحافتيهما متساوية، والترس الأصغر سرعته الزاوية أكبر، ويدوران في اتجاهين متعاكسين.", m: String.raw`v_1 = v_2 \quad , \quad r_2 < r_1 \Rightarrow \omega_2 > \omega_1`}
 ];
+
+/* الأسماء الشائعة: [العنوان، الاستعمال، الصيغة (لاتكس)، ملاحظة قصيرة] */
+const namesRaw = [
+  ["1. 2-بيوتانول", "مذيب في بعض الأخشاب والأصباغ.", String.raw`\text{C}_4\text{H}_{10}\text{O}`, "مذيب عضوي للأصباغ"],
+  ["2. هكسانول حلقي", "مركب سام، ومبيد حشري.", String.raw`\text{C}_6\text{H}_{11}\text{OH}`, "مبيد حشري حلقي"],
+  ["3. ثنائي إيثيل إثير", "مخدر في العمليات الجراحية.", String.raw`(\text{C}_2\text{H}_5)_2\text{O}`, "مخدر طبي وجراحي"],
+  ["4. إيثانال (استبالدهيد)", "يدخل في إنتاج الأصباغ الغامقة.", String.raw`\text{CH}_3\text{CHO}`, "إنتاج الأصباغ"],
+  ["5. بيوتانوات الإيثيل", "يمنح رائحة ونكهة الأناناس.", String.raw`\text{C}_6\text{H}_{12}\text{O}_2`, "نكهة الأناناس"],
+  ["6. هكسانوات الميثيل", "يمنح نكهة ورائحة الفراولة.", String.raw`\text{C}_7\text{H}_{14}\text{O}_2`, "نكهة الفراولة"],
+  ["7. الميثان", "يُعد مصدراً رئيسياً للوقود والغاز الطبيعي.", String.raw`\text{CH}_4`, "غاز طبيعي ووقود"],
+  ["8. البروبان", "يُستخدم كوقود للطبخ والتسخين.", String.raw`\text{C}_3\text{H}_8`, "وقود الطبخ"],
+  ["9. البيوتان", "يُستخدم بشكل شائع في الفداحات.", String.raw`\text{C}_4\text{H}_{10}`, "وقود الولاعات"],
+  ["10. الإيثين", "مسؤول عن نضج الفواكه وتساقط أوراق الشجر.", String.raw`\text{C}_2\text{H}_4`, "هرمون نضج الفواكه"],
+  ["11. رباعي فلورو بولي إيثين", "يدخل في صناعة البلاستيك ومانع الالتصاق.", String.raw`(\text{C}_2\text{F}_4)_n`, "مانع الالتصاق"],
+  ["12. الهالو إيثان", "يُستخدم كمخدر في العمليات الجراحية.", String.raw`\text{C}_2\text{H}_5\text{Br}`, "مخدر طبي"],
+  ["13. الإيثانول", "يُستخدم كمطهر ومعقم ومهم لتحضير مركبات أخرى.", String.raw`\text{C}_2\text{H}_5\text{OH}`, "مطهّر ومعقّم"],
+  ["14. الأسيتيلين (الإيثاين)", "يُستخدم في لحام وقطع الفلزات لشدة حرارته.", String.raw`\text{C}_2\text{H}_2`, "لحام وقطع الفلزات"],
+  ["15. الجليسرول", "يمنع تجمد الوقود في الطائرات وفي الأدوية.", String.raw`\text{C}_3\text{H}_8\text{O}_3`, "مانع تجمد الوقود"],
+  ["16. 2-ميثيل بروبان (الأيزوبيوتان)", "مادة آمنة تُستخدم في التبريد ومنتجات الحلاقة.", String.raw`\text{CH}_3\text{CH}(\text{CH}_3)_2`, "التبريد والحلاقة"],
+  ["17. ميثيل كلوريد", "يدخل في صناعة المواد اللاصقة والسيليكون.", String.raw`\text{CH}_3\text{Cl}`, "صناعة السيليكون"],
+  ["18. الأسيتون", "يُستخدم في إزالة طلاء الأظافر وكمذيب.", String.raw`\text{CH}_3\text{COCH}_3`, "إزالة طلاء الأظافر"],
+  ["19. فورمالدهيد (الفرمالين)", "يُستخدم في حفظ العينات البيولوجية.", String.raw`\text{HCHO}`, "حفظ العينات البيولوجية"],
+  ["20. حمض الميثانويك (الفورميك)", "يفرزه النمل للدفاع عن النفس.", String.raw`\text{HCOOH}`, "إفراز دفاعي للنمل"],
+  ["21. حمض الإيثانويك (الأسيتيك)", "يُعرف بحمض الخل (الخليك) في الصناعات الغذائية.", String.raw`\text{CH}_3\text{COOH}`, "حمض الخل"],
+  ["22. اليوريا", "تُستعمل في الأسمدة الزراعية وتصنيع البلاستيك.", String.raw`\text{CO}(\text{NH}_2)_2`, "الأسمدة الزراعية"]
+];
+const namesData = namesRaw.map(([t, use, f, note]) => ({
+  t, s: f, d: "• <b>الاستعمال:</b> " + use,
+  m: String.raw`\text{الصيغة:} \quad ` + f + String.raw` \quad (\text{` + note + String.raw`})`
+}));
+
+/* مشتقات الهيدروكربونات: [العنوان، الوصف، الصيغة] */
+const hydroRaw = [
+  ["1. هاليدات الألكيل والأريل", "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين ($X$) مباشرة بسلسلة كربونية أليفاتية أو أروماتية ($R$).", "R - X", String.raw`R - X \quad (X = F, Cl, Br, I)`],
+  ["2. الكحولات", "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية.", "R - OH"],
+  ["3. الإيثرات", "• <b>المجموعة الوظيفية:</b> ذرة أكسجين تقع وسط سلسلتين كربونيتين.", "R - O - R'"],
+  ["4. الأمينات", "• <b>المجموعة الوظيفية:</b> مشتقات عضوية للأمونيا بروائح نفاذة.", "R - NH_2"],
+  ["5. الألدهيدات", "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل طرفية متصلة بذرة هيدروجين.", "R - CHO"],
+  ["6. الكيتونات", "• <b>المجموعة الوظيفية:</b> مجموعة كربونيل وسطية واقعة بين مجموعتي ألكيل.", "R - CO - R'"],
+  ["7. الأحماض الكربوكسيلية", "• <b>المجموعة الوظيفية:</b> مجموعة كربوكسيل مسؤولة عن الصفة الحمضية.", "R - COOH"],
+  ["8. الإسترات", "• <b>المجموعة الوظيفية:</b> ناتجة عن تفاعل حمض مع كحول وتتميز بروائح الفواكه العطرة.", "R - COO - R'"],
+  ["9. الأميدات", "• <b>المجموعة الوظيفية:</b> مشتقة من الأحماض الكربوكسيلية باستبدال الهيدروكسيل بأمين.", "R - CONH_2"]
+];
+const hydroData = hydroRaw.map(([t, d, s, m]) => ({t, d, s, m: m || s}));
+
+/* ملخص رياضيات أول ثانوي */
+const math1Data = [
+  {t: "1. المنطق: النفي والعبارات المركبة", s: String.raw`p \wedge q \; , \; p \vee q`, d: "• <b>النفي ($\\sim p$):</b> يعاكس قيمة الصواب للعبارة.<br>• <b>العطف (و) $p \\wedge q$:</b> صحيحة فقط إذا كانت العبارتان صحيحتين.<br>• <b>الفصل (أو) $p \\vee q$:</b> خاطئة فقط إذا كانت العبارتان خاطئتين.", m: String.raw`p \wedge q \;\text{(صحيحة فقط إذا } T,T) \quad | \quad p \vee q \;\text{(خاطئة فقط إذا } F,F)`},
+  {t: "2. العبارة الشرطية والمعكوس والمحاكس", s: String.raw`p \to q`, d: "• <b>الشرطية:</b> $p \\to q$ (إذا كان $p$ فإن $q$) وتكون خاطئة فقط إذا كان $p$ صحيحاً و $q$ خاطئاً.<br>• <b>العكس:</b> $q \\to p$ &nbsp; • <b>المعكوس:</b> $\\sim p \\to \\sim q$ &nbsp; • <b>المعاكس الإيجابي:</b> $\\sim q \\to \\sim p$.<br>• الشرطية تكافئ معاكسها الإيجابي، والعكس يكافئ المعكوس.", m: String.raw`p \to q \equiv \sim q \to \sim p \quad | \quad q \to p \equiv \sim p \to \sim q`},
+  {t: "3. قوانين دي مورغان", s: String.raw`\sim(p \vee q)`, d: "• <b>نفي الفصل:</b> نفي كل عبارة مع تحويل (أو) إلى (و).<br>• <b>نفي العطف:</b> نفي كل عبارة مع تحويل (و) إلى (أو).", m: String.raw`\sim(p \vee q) \equiv \sim p \wedge \sim q \quad | \quad \sim(p \wedge q) \equiv \sim p \vee \sim q`},
+  {t: "4. قانون الفصل والقياس المنطقي", s: String.raw`p \to q ,\; p`, d: "• <b>قانون الفصل:</b> إذا كانت $p \\to q$ صحيحة و $p$ صحيحة فإن $q$ صحيحة.<br>• <b>القياس المنطقي:</b> إذا كانت $p \\to q$ و $q \\to r$ صحيحتين فإن $p \\to r$ صحيحة.", m: String.raw`(p \to q) \wedge p \Rightarrow q \quad | \quad (p \to q) \wedge (q \to r) \Rightarrow p \to r`},
+  {t: "5. الزوايا والمستقيمات المتوازية", s: String.raw`m\angle 1 + m\angle 2 = 180^\circ`, d: "• المستقيم القاطع لمستقيمين متوازيين: <b>المتبادلة (داخلياً وخارجياً) والمتناظرة</b> متطابقة، و<b>المتحالفة</b> مجموعها $180^\\circ$.<br>• العكس صحيح: تطابق زوج منها يثبت التوازي.", m: String.raw`a \parallel b \Rightarrow \text{المتبادلة والمتناظرة متطابقة} \; , \; \text{المتحالفة} = 180^\circ`},
+  {t: "6. نقطة المنتصف وجمع القطع", s: String.raw`AB + BC = AC`, d: "• <b>نقطة المنتصف:</b> $\\overline{AM} \\cong \\overline{MB}$.<br>• <b>جمع الأطوال:</b> إذا وقعت $B$ بين $A$ و $C$ فإن $AB + BC = AC$.", m: String.raw`AM = MB \quad | \quad AB + BC = AC`},
+  {t: "7. خواص الأعداد الحقيقية", s: String.raw`a = b \Rightarrow b = a`, d: "• <b>الانعكاس:</b> $a = a$ &nbsp; • <b>التماثل:</b> $a = b \\Rightarrow b = a$ &nbsp; • <b>التعدي:</b> $a = b$ و $b = c$ فإن $a = c$.<br>• <b>التوزيع:</b> $a(b + c) = ab + ac$ &nbsp; • <b>الإبدال:</b> $a + b = b + a$ ، $ab = ba$.", m: String.raw`a(b + c) = ab + ac \quad | \quad a + b = b + a`},
+  {t: "8. ميل المستقيم", s: String.raw`m = \frac{y_2 - y_1}{x_2 - x_1}`, d: "• <b>الميل:</b> التغير الرأسي ÷ التغير الأفقي.<br>• المستقيم الأفقي ميله صفر ومعادلته $y = b$، والرأسي ميله غير معرف ومعادلته $x = a$.", m: String.raw`m = \frac{y_2 - y_1}{x_2 - x_1}`},
+  {t: "9. معادلة المستقيم", s: String.raw`y = mx + b`, d: "• <b>صيغة الميل والمقطع:</b> $m$ الميل و $b$ المقطع الصادي.<br>• <b>صيغة الميل ونقطة:</b> تُستخدم إذا عُلمت نقطة والميل.", m: String.raw`y = mx + b \quad | \quad y - y_1 = m(x - x_1)`},
+  {t: "10. التوازي والتعامد", s: String.raw`m_1 \cdot m_2 = -1`, d: "• <b>المستقيمان المتوازيان:</b> ميلاهما متساويان.<br>• <b>المستقيمان المتعامدان:</b> حاصل ضرب ميليهما $-1$ (أي مقلوب الميل بإشارة معاكسة)، ويُستثنى الأفقي والرأسي.", m: String.raw`m_1 = m_2 \;(\parallel) \quad | \quad m_1 \cdot m_2 = -1 \;(\perp)`},
+  {t: "11. المسافة ونقطة المنتصف", s: String.raw`d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}`, d: "• <b>المسافة بين نقطتين:</b> من نظرية فيثاغورس.<br>• <b>نقطة المنتصف:</b> متوسط الإحداثيين.", m: String.raw`d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \quad | \quad M = \left(\frac{x_1 + x_2}{2} , \frac{y_1 + y_2}{2}\right)`},
+  {t: "12. زوايا المثلث", s: String.raw`\angle A + \angle B + \angle C = 180^\circ`, d: "• مجموع زوايا المثلث $180^\\circ$.<br>• <b>الزاوية الخارجية:</b> تساوي مجموع الزاويتين الداخليتين البعيدتين عنها، ومع المجاورة لها $180^\\circ$.", m: String.raw`\angle A + \angle B + \angle C = 180^\circ \quad | \quad \text{الخارجية} = \text{مجموع البعيدتين}`},
+  {t: "13. تطابق المثلثات", s: String.raw`SSS \; SAS \; ASA \; AAS`, d: "• مسلمات التطابق: <b>SSS</b> (ثلاثة أضلاع)، <b>SAS</b> (ضلعان والزاوية المحصورة)، <b>ASA</b> و <b>AAS</b> (زاويتان وضلع).<br>• لا تكفي AAA ولا SSA.", m: String.raw`SSS \;|\; SAS \;|\; ASA \;|\; AAS`},
+  {t: "14. متباينة المثلث", s: String.raw`|a - b| < c < a + b`, d: "• مجموع طولي أي ضلعين أكبر من الثالث.<br>• الزاوية الكبرى تقابل الضلع الأطول والعكس.", m: String.raw`|a - b| < c < a + b`},
+  {t: "15. المثلثات الخاصة", s: String.raw`45^\circ\text{-}45^\circ\text{-}90^\circ`, d: "• <b>45-45-90:</b> الوتر $= \\sqrt{2} \\times$ الضلع.<br>• <b>30-60-90:</b> الضلع المقابل لـ $30^\\circ$ نصف الوتر، والمقابل لـ $60^\\circ$ يساوي $\\sqrt{3} \\times$ الضلع القصير.", m: String.raw`c = a\sqrt{2} \quad | \quad 1 : \sqrt{3} : 2`},
+  {t: "16. القطعة المنصفة في المثلث ومساحته", s: String.raw`DE = \frac{BC}{2}`, d: "• <b>القطعة المنصفة لضلعين:</b> توازي الضلع الثالث وطولها نصفه.<br>• <b>مساحة المثلث:</b> نصف القاعدة × الارتفاع.", m: String.raw`DE \parallel BC \; , \; DE = \frac{BC}{2} \quad | \quad A = \frac{1}{2} b h`},
+  {t: "17. المضلعات: الزوايا والأقطار", s: String.raw`(n - 2) \times 180^\circ`, d: "• <b>مجموع الزوايا الداخلية</b> لمضلع من $n$ ضلعاً، ومجموع الخارجية $360^\\circ$.<br>• <b>المنتظم:</b> قياس الزاوية الداخلية = المجموع ÷ $n$.<br>• عدد الأقطار الكلية $\\frac{n(n-3)}{2}$.", m: String.raw`S = (n - 2) \times 180^\circ \quad | \quad \theta = \frac{(n-2) \times 180^\circ}{n} \quad | \quad \frac{n(n-3)}{2}`},
+  {t: "18. الأشكال الرباعية", s: String.raw`\text{متوازي الأضلاع}`, d: "• <b>متوازي الأضلاع:</b> كل ضلعين متقابلين متوازيان ومتطابقان، والمتقابلة من زواياه متطابقة، والمتتالية متكاملة، والقطران ينصف كل منهما الآخر.<br>• <b>المستطيل:</b> قطراه متطابقان.<br>• <b>المعين:</b> قطراه متعامدان وينصفان زواياه.<br>• <b>المربع:</b> جمع خواص المستطيل والمعين.<br>• <b>شبه المنحرف:</b> فيه ضلعان فقط متوازيان.", m: String.raw`\text{المربع} = \text{مستطيل} + \text{معين}`},
+  {t: "19. التشابه", s: String.raw`AA \; SAS \; SSS`, d: "• <b>المضلعان المتشابهان:</b> زواياهما المتناظرة متطابقة وأضلاعهما المتناظرة متناسبة.<br>• <b>تشابه المثلثات:</b> AA أو SAS (ضلعان متناسبان وزاوية محصورة) أو SSS (ثلاثة أضلاع متناسبة).", m: String.raw`\frac{AB}{DE} = \frac{BC}{EF} = \frac{AC}{DF}`},
+  {t: "20. نظرية التناسب في المثلث", s: String.raw`\frac{AD}{DB} = \frac{AE}{EC}`, d: "• إذا وازى مستقيم أحد أضلاع المثلث وقطع الضلعين الآخرين قسمهما إلى أجزاء متناسبة.<br>• <b>منصف الزاوية</b> يقسم الضلع المقابل بنسبة الضلعين المجاورين.", m: String.raw`DE \parallel BC \Rightarrow \frac{AD}{DB} = \frac{AE}{EC} \quad | \quad \frac{BA}{BD} = \frac{CA}{CD}`},
+  {t: "21. نسب التشابه", s: String.raw`\text{نسبة المساحتين} = k^2`, d: "• معامل التشابه $k$ هو نسبة الأضلاع المتناظرة، وهو أيضاً نسبة المحيطين والارتفاعات والقطع المتوسطة والمنصفات.<br>• <b>نسبة المساحتين</b> = مربع معامل التشابه.", m: String.raw`\frac{P_1}{P_2} = k \quad | \quad \frac{A_1}{A_2} = k^2`},
+  {t: "22. الانعكاس", s: String.raw`(x, y) \to (x, -y)`, d: "• <b>حول محور السينات:</b> تتغير إشارة $y$.<br>• <b>حول محور الصادات:</b> تتغير إشارة $x$.<br>• <b>حول المستقيم $y = x$:</b> تتبدل الإحداثيات.", m: String.raw`x\text{-axis}: (x,-y) \quad | \quad y\text{-axis}: (-x,y) \quad | \quad y=x: (y,x)`},
+  {t: "23. الإزاحة والدوران", s: String.raw`(x, y) \to (-y, x)`, d: "• <b>دوران $90^\\circ$ عكس عقارب الساعة:</b> $(x,y)\\to(-y,x)$.<br>• <b>دوران $180^\\circ$:</b> $(x,y)\\to(-x,-y)$.<br>• <b>دوران $270^\\circ$ عكس الساعة:</b> $(x,y)\\to(y,-x)$.<br>• <b>الإزاحة:</b> إضافة مقدار ثابت للإحداثيات. والدوران عكس عقارب الساعة موجب.", m: String.raw`90^\circ: (-y,x) \quad | \quad 180^\circ: (-x,-y) \quad | \quad 270^\circ: (y,-x)`},
+  {t: "24. التمدد", s: String.raw`(x, y) \to (kx, ky)`, d: "• <b>التمدد بمعامل $k$:</b> يضرب الإحداثيين في $k$.<br>• $|k| > 1$ تكبير، و $0 < |k| < 1$ تصغير، و $|k| = 1$ تطابق.", m: String.raw`(x, y) \to (kx, ky) \quad , \quad k = \frac{\text{الصورة}}{\text{الأصل}}`},
+  {t: "25. الدائرة: المحيط والمساحة", s: String.raw`C = 2\pi r`, d: "• <b>المحيط:</b> $C = 2\\pi r = \\pi d$.<br>• <b>المساحة:</b> $A = \\pi r^2$.<br>• <b>حجم الكرة:</b> $\\frac{4}{3}\\pi r^3$.", m: String.raw`C = 2\pi r \quad | \quad A = \pi r^2 \quad | \quad V = \frac{4}{3}\pi r^3`},
+  {t: "26. طول القوس ومساحة القطاع", s: String.raw`\ell = \frac{x}{360} \times 2\pi r`, d: "• <b>طول القوس:</b> نسبة الزاوية المركزية إلى $360^\\circ$ من المحيط.<br>• <b>مساحة القطاع:</b> النسبة نفسها من مساحة الدائرة.", m: String.raw`\ell = \frac{x}{360} \times 2\pi r \quad | \quad A = \frac{x}{360} \times \pi r^2`},
+  {t: "27. الزاوية المحيطية", s: String.raw`m\angle = \frac{1}{2} m\widehat{AB}`, d: "• <b>الزاوية المحيطية:</b> قياسها نصف قياس القوس المقابل لها.<br>• <b>الزاوية المحيطية في نصف دائرة</b> قائمة ($90^\\circ$).<br>• الزوايا المقابلة في الرباعي الدائري متكاملة.", m: String.raw`m\angle = \frac{1}{2} m\widehat{AB} \quad | \quad \text{في نصف دائرة} = 90^\circ`},
+  {t: "28. معادلة الدائرة", s: String.raw`(x-h)^2 + (y-k)^2 = r^2`, d: "• مركزها $(h, k)$ ونصف قطرها $r$.<br>• إذا كان المركز نقطة الأصل: $x^2 + y^2 = r^2$.", m: String.raw`(x - h)^2 + (y - k)^2 = r^2`}
+];
+
+const CARD_SETS = {
+  math1:  {grid: 'math1Grid',  box: 'math1Display',  items: math1Data},
+  chem:   {grid: 'chemGrid',   box: 'chemDisplay',   items: chemData},
+  pulley: {grid: 'pulleyGrid', box: 'pulleyDisplay', items: pulleyData},
+  proj:   {grid: 'projGrid',   box: 'projDisplay',   items: projData},
+  circ:   {grid: 'circGrid',   box: 'circDisplay',   items: circData},
+  names:  {grid: 'namesGrid',  box: 'namesDisplay',  items: namesData},
+  hydro:  {grid: 'hydroGrid',  box: 'hydroDisplay',  items: hydroData}
+};
+
+function showCard(type, index) {
+  const set = CARD_SETS[type], data = set.items[index];
+  document.getElementById(set.box).innerHTML =
+    `<h4>${data.t}</h4><p>${data.d}</p><div class="math-block">$$${data.m}$$</div>`;
+}
 
 function switchCard(type, index, btn) {
-  let displayBox, dataObj;
-  if(type === 'chem') { displayBox = document.getElementById('chemDisplay'); dataObj = chemData; }
-  else if(type === 'pulley') { displayBox = document.getElementById('pulleyDisplay'); dataObj = pulleyData; }
-  else if(type === 'names') { displayBox = document.getElementById('namesDisplay'); dataObj = namesData; }
-  else if(type === 'hydro') { displayBox = document.getElementById('hydroDisplay'); dataObj = hydroData; }
-
-  let parent = btn.parentElement;
-  parent.querySelectorAll('.concept-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.parentElement.querySelectorAll('.concept-tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  
-  let data = dataObj[index];
-  displayBox.innerHTML = `<h4>${data.title}</h4><p>${data.desc}</p><div class="math-block">${data.math}</div>`;
+  showCard(type, index);
   renderMath();
 }
 
+function buildCards() {
+  Object.keys(CARD_SETS).forEach(type => {
+    const set = CARD_SETS[type];
+    document.getElementById(set.grid).innerHTML = set.items.map((it, i) => {
+      const label = it.st ? it.st : `$${it.s}$`;
+      return `<button class="concept-tab-btn${i === 0 ? ' active' : ''}" onclick="switchCard('${type}', ${i}, this)">${it.t}<span>${label}</span></button>`;
+    }).join('');
+    showCard(type, 0);
+  });
+}
+
+/* =====================  المنهج  ===================== */
+const curriculumBooks = [
+  {name: "الأحياء", icon: "🧬", file: "Biology_bookQs_compressed.pdf", pages: 260},
+  {name: "الفيزياء", icon: "⚛️", file: "Physics_bookQs_compressed.pdf", pages: 208},
+  {name: "الكيمياء", icon: "🧪", file: "Chemistry_bookQs_compressed.pdf", pages: 189},
+  {name: "الرياضيات - أول ثانوي", icon: "📐", file: "Math_1st_secondary_bookQs_compressed.pdf", pages: 283},
+  {name: "الرياضيات - ثاني ثانوي", icon: "📏", file: "Math_2nd_secondary_bookQs_compressed.pdf", pages: 243}
+];
+
+function buildCurriculum() {
+  document.getElementById('curriculumGrid').innerHTML = curriculumBooks.map((b, i) => `
+    <div class="card-item">
+      <div class="card-icon-box">${b.icon}</div>
+      <h3>${b.name}</h3>
+      <p>كتاب الأسئلة (${b.pages} صفحة).</p>
+      <a class="card-action-link" href="${b.file}" target="_blank">فتح في نافذة مستقلة ↗</a><br>
+      <span class="card-action-link" onclick="viewBook(${i})">عرض الكتاب هنا ←</span>
+    </div>`).join('');
+}
+
+function viewBook(i) {
+  const b = curriculumBooks[i];
+  const host = document.getElementById('curriculumViewer');
+  host.innerHTML = `
+    <div class="pdf-download-bar" style="margin-top: 30px;">
+      <div><h4>${b.icon} كتاب ${b.name}</h4></div>
+      <a class="card-action-link" href="${b.file}" target="_blank">فتح في نافذة مستقلة ↗</a>
+    </div>
+    <iframe class="pdf-viewer" src="${b.file}#view=FitH"></iframe>`;
+  window.scrollTo({ top: host.offsetTop - 100, behavior: 'smooth' });
+}
+
+/* =====================  اختبار البكرات  ===================== */
 const pulleyQuests = [
   {q: "1- في آلة أتوود، كتلتان m1 = 5 kg و m2 = 3 kg معلقتان بخيط مهمل الكتلة على بكرة ملساء، احسب التسارع (a) باعتراض g = 10 m/s^2:", opts: ["2.5 m/s^2", "1.25 m/s^2", "5.0 m/s^2", "10 m/s^2"], ans: 0},
   {q: "2- في نفس آلة أتوود السابقة، احسب قوة الشد (T) في الخيط:", opts: ["37.5 N", "45.0 N", "25.0 N", "60.0 N"], ans: 0},
@@ -762,7 +617,6 @@ function loadPulleyTest() {
   userPulleyAnswers = {};
   let html = `<div class="q-card" style="border: 2px solid var(--cyan); margin-top:15px;">`;
   html += `<h3>اختبار مسائل ميكانيكا البكرات (${pulleyQuests.length} أسئلة)</h3><div id="pulleyScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
-  
   pulleyQuests.forEach((item, qIndex) => {
     html += `<div style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;" id="pq-${qIndex}">`;
     html += `<div style="font-weight:bold; margin-bottom:8px;">${item.q}</div><div class="opts-grid">`;
@@ -774,21 +628,20 @@ function loadPulleyTest() {
   html += `<button class="submit-quiz-btn" onclick="submitPulleyTest()">تصحيح اختبار البكرات</button></div>`;
   document.getElementById('pulleyTestHost').innerHTML = html;
   window.scrollTo({ top: document.getElementById('pulleyTestHost').offsetTop - 100, behavior: 'smooth' });
+  renderMath();
 }
 
 function selectPulleyOpt(qIndex, oIndex, btn) {
   userPulleyAnswers[qIndex] = oIndex;
-  let parent = btn.parentElement;
-  parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
 }
 
 function submitPulleyTest() {
   let score = 0;
   pulleyQuests.forEach((item, qIndex) => {
-    let qDiv = document.getElementById(`pq-${qIndex}`);
-    let buttons = qDiv.querySelectorAll('.opt-btn');
-    let userChoice = userPulleyAnswers[qIndex];
+    const buttons = document.getElementById(`pq-${qIndex}`).querySelectorAll('.opt-btn');
+    const userChoice = userPulleyAnswers[qIndex];
     buttons.forEach((b, oIdx) => {
       b.onclick = null;
       if (oIdx === item.ans) b.classList.add('correct');
@@ -796,11 +649,12 @@ function submitPulleyTest() {
     });
     if (userChoice === item.ans) score++;
   });
-  let scoreBox = document.getElementById('pulleyScore');
+  const scoreBox = document.getElementById('pulleyScore');
   scoreBox.textContent = `نتيجة اختبار البكرات: ${score} من ${pulleyQuests.length} (${Math.round((score/pulleyQuests.length)*100)}%)`;
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 
+/* =====================  اختبارات المهارات  ===================== */
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
@@ -902,10 +756,9 @@ const skillQuests = [
 let userSkAnswers = {};
 function loadSkillTest(testIdx) {
   userSkAnswers = {};
-  let questions = skillQuests[testIdx];
+  const questions = skillQuests[testIdx];
   let html = `<div class="q-card" style="border: 2px solid var(--accent); margin-top:15px;">`;
   html += `<h3>اختبار المهارات رقم ${testIdx + 1} (${questions.length} سؤالاً)</h3><div id="skScore" style="font-weight:bold; color:var(--cyan); margin-bottom:15px;"></div>`;
-  
   questions.forEach((item, qIndex) => {
     html += `<div style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;" id="sq-${testIdx}-${qIndex}">`;
     html += `<div style="font-weight:bold; margin-bottom:8px;">${item.q}</div><div class="opts-grid">`;
@@ -922,18 +775,16 @@ function loadSkillTest(testIdx) {
 function selectSkillOpt(testIdx, qIndex, oIndex, btn) {
   if (!userSkAnswers[testIdx]) userSkAnswers[testIdx] = {};
   userSkAnswers[testIdx][qIndex] = oIndex;
-  let parent = btn.parentElement;
-  parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
 }
 
 function submitSkillTest(testIdx) {
-  let questions = skillQuests[testIdx];
+  const questions = skillQuests[testIdx];
   let score = 0;
   questions.forEach((item, qIndex) => {
-    let qDiv = document.getElementById(`sq-${testIdx}-${qIndex}`);
-    let buttons = qDiv.querySelectorAll('.opt-btn');
-    let userChoice = userSkAnswers[testIdx] ? userSkAnswers[testIdx][qIndex] : undefined;
+    const buttons = document.getElementById(`sq-${testIdx}-${qIndex}`).querySelectorAll('.opt-btn');
+    const userChoice = userSkAnswers[testIdx] ? userSkAnswers[testIdx][qIndex] : undefined;
     buttons.forEach((b, oIdx) => {
       b.onclick = null;
       if (oIdx === item.ans) b.classList.add('correct');
@@ -941,10 +792,14 @@ function submitSkillTest(testIdx) {
     });
     if (userChoice === item.ans) score++;
   });
-  let scoreBox = document.getElementById('skScore');
+  const scoreBox = document.getElementById('skScore');
   scoreBox.textContent = `نتيجة الاختبار: ${score} من ${questions.length} (${Math.round((score/questions.length)*100)}%)`;
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
+
+/* تشغيل البطاقات والمنهج عند تحميل الصفحة */
+buildCards();
+buildCurriculum();
 </script>
 </body>
 </html>
