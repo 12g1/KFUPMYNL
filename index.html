@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Update Timestamp: 2026-10-15 - In-page PDF viewer (PDF.js) + download buttons + file checker -->
+<!-- Update Timestamp: 2026-10-15 - In-page PDF viewer (PDF.js) + download buttons + file checker + AI Chat + Interactive Whiteboard -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -40,6 +40,7 @@ button { font: inherit; cursor: pointer; }
 .menu-toggle { display: none; background: var(--panel2); border: 1px solid var(--border); color: var(--text); font-size: 1.5rem; padding: 8px 14px; border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; }
 .nav-controls { display: flex; gap: 10px; align-items: center; }
 .ctrl-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; border-radius: 12px; font-weight: 700; }
+.ctrl-btn.active-tool { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 .page-section { display: none; padding: 40px 0; }
 .page-section.active { display: block; }
@@ -95,6 +96,12 @@ button { font: inherit; cursor: pointer; }
 .opt-btn.wrong { background: rgba(239, 68, 68, 0.25); border-color: var(--danger); color: #fecdd3; }
 .submit-quiz-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #fff; border: none; padding: 15px; font-weight: 900; border-radius: 14px; margin-top: 20px; cursor: pointer; }
 
+/* تنسيقات سبورة الحل السلسة والذكية */
+.whiteboard-container { background: var(--panel2); border: 1px solid var(--border); border-radius: 18px; padding: 20px; margin-top: 30px; box-shadow: var(--shadow); text-align: right; }
+.wb-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.wb-canvas-wrap { position: relative; width: 100%; height: 350px; background: #0f172a; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); cursor: crosshair; touch-action: none; }
+.wb-canvas-wrap canvas { width: 100%; height: 100%; display: block; }
+
 .main-footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 40px; }
 .telegram-btn { display: inline-flex; align-items: center; gap: 10px; background: #24A1DE; color: #fff; padding: 14px 28px; border-radius: 16px; font-size: 1.1rem; font-weight: 900; margin: 15px 0; }
 
@@ -146,6 +153,44 @@ button { font: inherit; cursor: pointer; }
     <div style="font-size: 0.9rem; font-weight: 800; color: var(--cyan); margin-bottom: 15px;">✨ مرجعك الأكاديمي النخبوي</div>
     <h1 class="hero-title">منصة <span>KFUPMYNL</span><br>بوابتك للتفوق المطلق</h1>
     <p class="hero-subtitle">استعرض الاختبارات التفاعلية، القوانين الفيزيائية والكيميائية، والملخصات الشاملة.</p>
+
+    <!-- صندوق المساعد الذكي المدمج في الرئيسية -->
+    <div class="main-panel" style="max-width: 600px; margin: 30px auto; text-align: right;">
+      <h3 style="color: var(--cyan); margin-top: 0;">🤖 المساعد الذكي للمنصة</h3>
+      <div id="ai-chat" dir="auto" style="font:inherit">
+        <div id="ai-log" style="min-height:120px; max-height:280px; overflow-y:auto; padding:12px; background:var(--panel2); border:1px solid var(--border); border-radius:14px; margin-bottom:12px; text-align:right;"></div>
+        <div style="display:flex; gap:8px">
+          <input id="ai-input" type="text" placeholder="اسأل أي شي عن المنهج أو القوانين..." maxlength="1000"
+            style="flex:1; padding:12px; background:var(--panel2); border:1px solid var(--border); color:var(--text); border-radius:12px; font:inherit">
+          <button id="ai-send" class="ctrl-btn" style="background:linear-gradient(135deg, var(--accent), var(--cyan)); color:#fff; border:0;">إرسال</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سبورة الحل السريعة (قلم، مساحة، تحكم سلس وسريع) -->
+    <div class="whiteboard-container" style="max-width: 600px; margin: 30px auto;">
+      <h3 style="color: var(--cyan); margin-top: 0;">✏️ سبورة الحل السريعة</h3>
+      <div class="wb-toolbar">
+        <button id="wb-pen-btn" class="ctrl-btn active-tool" onclick="setWbTool('pen')">✍️ قلم</button>
+        <button id="wb-eraser-btn" class="ctrl-btn" onclick="setWbTool('eraser')">🧹 مساحة</button>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <label style="font-size: 0.85rem; color: var(--muted);">اللون:</label>
+          <input type="color" id="wb-color" value="#06b6d4" style="border:none; width:32px; height:32px; background:transparent; cursor:pointer;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <label style="font-size: 0.85rem; color: var(--muted);">السمك:</label>
+          <select id="wb-size" class="ctrl-btn" style="padding: 6px 10px;">
+            <option value="2">رفيع</option>
+            <option value="5" selected>متوسط</option>
+            <option value="10">سميك</option>
+          </select>
+        </div>
+        <button class="ctrl-btn" onclick="clearWb()" style="background: rgba(239, 68, 68, 0.2); color: var(--danger); border-color: var(--danger);">🗑️ مسح الكل</button>
+      </div>
+      <div class="wb-canvas-wrap" id="wbCanvasWrap">
+        <canvas id="whiteboardCanvas"></canvas>
+      </div>
+    </div>
 
     <div class="grid-cards" style="text-align: right;">
       <div class="card-item">
@@ -373,9 +418,6 @@ button { font: inherit; cursor: pointer; }
 <script>
 /* ============================================================
    إعدادات مسارات الملفات
-   - الملفات بجانب هذه الصفحة: اترك FILES_BASE فارغاً.
-   - إذا كانت داخل مجلد فرعي مثلاً files: اكتب "files/"
-   - للفحص: أضف ?check في آخر رابط الموقع
    ============================================================ */
 const FILES_BASE = "";
 
@@ -563,7 +605,7 @@ function buildPdfBoxes() {
 }
 
 /* ============================================================
-   فحص الملفات: أضف ?check إلى رابط الموقع
+   فحص الملفات
    ============================================================ */
 async function checkFiles() {
   if (!/[?&]check\b/.test(location.search) || location.protocol === 'file:') return;
@@ -590,7 +632,7 @@ async function checkFiles() {
   banner.innerHTML = missing.length
     ? `<b>⚠️ ملفات لا تُفتح (${missing.length}):</b><button onclick="this.parentElement.remove()">إغلاق</button><br>` +
       missing.map(m => `<code>${decodeURIComponent(m.url.split('/').pop())}</code> — ${m.status}`).join('<br>') +
-      `<br><small>تأكد أن الاسم مطابق حرفياً (الحروف الكبيرة والصغيرة) وأن الملف مرفوع في نفس مجلد الصفحة.</small>`
+      `<br><small>تأكد أن الاسم مطابق حرفياً وأن الملف مرفوع في نفس مجلد الصفحة.</small>`
     : `✅ كل الملفات (${urls.size}) موجودة وتفتح بشكل سليم.<button onclick="this.parentElement.remove()">إغلاق</button>`;
   document.body.appendChild(banner);
 }
@@ -1017,6 +1059,127 @@ function submitSkillTest(testIdx) {
   const scoreBox = document.getElementById('skScore');
   scoreBox.textContent = `نتيجة الاختبار: ${score} من ${questions.length} (${Math.round((score/questions.length)*100)}%)`;
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
+}
+
+/* ============================================================
+   منطق تشغيل الذكاء الاصطناعي (AI Chat Script)
+   ============================================================ */
+const WORKER_URL = "https://my-ai.yanalmhmd7.workers.dev";
+const log = document.getElementById("ai-log");
+const input = document.getElementById("ai-input");
+const btn = document.getElementById("ai-send");
+
+function addMsg(who, text) {
+  const p = document.createElement("p");
+  p.style.margin = "0 0 10px";
+  p.textContent = (who === "me" ? "أنت: " : "المساعد: ") + text;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+  return p;
+}
+
+async function send() {
+  const message = input.value.trim();
+  if (!message) return;
+  input.value = "";
+  addMsg("me", message);
+  const wait = addMsg("ai", "…");
+  btn.disabled = true;
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const data = await res.json();
+    wait.textContent = "المساعد: " + (data.reply || data.error || "صار خطأ");
+  } catch {
+    wait.textContent = "المساعد: تعذر الاتصال، جرب مرة ثانية";
+  } finally {
+    btn.disabled = false;
+    input.focus();
+  }
+}
+
+if (btn && input) {
+  btn.addEventListener("click", send);
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") send(); });
+}
+
+/* ============================================================
+   منطق سبورة الحل السريعة (Whiteboard Script)
+   ============================================================ */
+const wbCanvas = document.getElementById("whiteboardCanvas");
+const wbCtx = wbCanvas.getContext("2d");
+let isDrawing = false;
+let wbTool = "pen"; // 'pen' or 'eraser'
+
+function resizeWb() {
+  const wrap = document.getElementById("wbCanvasWrap");
+  const dpr = window.devicePixelRatio || 1;
+  wbCanvas.width = wrap.clientWidth * dpr;
+  wbCanvas.height = wrap.clientHeight * dpr;
+  wbCtx.scale(dpr, dpr);
+  wbCtx.lineCap = "round";
+  wbCtx.lineJoin = "round";
+}
+window.addEventListener("resize", resizeWb);
+resizeWb();
+
+function setWbTool(tool) {
+  wbTool = tool;
+  document.getElementById("wb-pen-btn").classList.toggle("active-tool", tool === "pen");
+  document.getElementById("wb-eraser-btn").classList.toggle("active-tool", tool === "eraser");
+}
+
+function clearWb() {
+  const wrap = document.getElementById("wbCanvasWrap");
+  wbCtx.clearRect(0, 0, wrap.clientWidth, wrap.clientHeight);
+}
+
+function getPos(e) {
+  const rect = wbCanvas.getBoundingClientRect();
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  return { x: clientX - rect.left, y: clientY - rect.top };
+}
+
+wbCanvas.addEventListener("mousedown", startDraw);
+wbCanvas.addEventListener("mousemove", draw);
+window.addEventListener("mouseup", stopDraw);
+
+wbCanvas.addEventListener("touchstart", startDraw, {passive: false});
+wbCanvas.addEventListener("touchmove", draw, {passive: false});
+window.addEventListener("touchend", stopDraw);
+
+function startDraw(e) {
+  e.preventDefault();
+  isDrawing = true;
+  const pos = getPos(e);
+  wbCtx.beginPath();
+  wbCtx.moveTo(pos.x, pos.y);
+}
+
+function draw(e) {
+  if (!isDrawing) return;
+  e.preventDefault();
+  const pos = getPos(e);
+  const size = document.getElementById("wb-size").value;
+  
+  if (wbTool === "eraser") {
+    wbCtx.strokeStyle = "#0f172a"; // لون خلفية السبورة
+    wbCtx.lineWidth = Number(size) * 3;
+  } else {
+    wbCtx.strokeStyle = document.getElementById("wb-color").value;
+    wbCtx.lineWidth = Number(size);
+  }
+  
+  wbCtx.lineTo(pos.x, pos.y);
+  wbCtx.stroke();
+}
+
+function stopDraw() {
+  isDrawing = false;
 }
 
 resolveStaticFiles();
