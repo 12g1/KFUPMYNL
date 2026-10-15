@@ -1,5 +1,5 @@
-<!-- Update Timestamp: 2026-10-15 - Added المنهج section + projectile/circular cards + Hess law + activity series image -->
 <!doctype html>
+<!-- Update Timestamp: 2026-10-15 - Fixed file paths (auto-resolve + FILES_BASE + ?check diagnostics) & Math 1st secondary renamed (under25MB) -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -65,7 +65,6 @@ button { font: inherit; cursor: pointer; }
 .concepts-section-title { font-size: 1.3rem; font-weight: 800; color: var(--cyan); margin: 30px 0 15px; }
 .concept-cards-grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .concept-tab-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 14px; font-weight: 700; text-align: center; flex: 1 1 calc(22% - 12px); min-width: 200px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: all 0.25s; }
-/* المحدد > span يطبق على الـ span الخارجي فقط (وليس على spans مكتبة KaTeX الداخلية) */
 .concept-tab-btn > span { font-size: 0.85rem; color: var(--cyan); display: block; font-weight: 600; direction: ltr; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; unicode-bidi: embed; }
 .concept-tab-btn .katex { font-size: 1em; white-space: nowrap; }
 .concept-tab-btn:hover, .concept-tab-btn.active { border-color: var(--accent); background: rgba(99, 102, 241, 0.12); color: var(--accent); }
@@ -84,6 +83,11 @@ button { font: inherit; cursor: pointer; }
 
 .main-footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 40px; }
 .telegram-btn { display: inline-flex; align-items: center; gap: 10px; background: #24A1DE; color: #fff; padding: 14px 28px; border-radius: 16px; font-size: 1.1rem; font-weight: 900; margin: 15px 0; }
+
+.file-check-banner { position: fixed; bottom: 0; right: 0; left: 0; z-index: 1000; background: #7f1d1d; color: #fff; padding: 14px 20px; max-height: 45vh; overflow: auto; font-size: 0.9rem; line-height: 1.7; box-shadow: 0 -6px 20px rgba(0,0,0,.4); }
+.file-check-banner.ok { background: #065f46; }
+.file-check-banner code { direction: ltr; unicode-bidi: embed; background: rgba(0,0,0,.25); padding: 1px 6px; border-radius: 6px; }
+.file-check-banner button { background: rgba(255,255,255,.2); color: #fff; border: 0; border-radius: 8px; padding: 4px 12px; margin-inline-start: 10px; }
 
 @media (max-width: 1100px) { .nav-links a { padding: 10px 9px; font-size: 0.92rem; } }
 @media (max-width: 900px) {
@@ -260,9 +264,9 @@ button { font: inherit; cursor: pointer; }
       <!-- التبرير والبرهان (رياضيات أول ثانوي) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف التبرير والبرهان - رياضيات أول ثانوي (PDF)</h4></div>
-        <a class="card-action-link" href="Justification_proof.pdf" target="_blank">فتح الملف ↗</a>
+        <a class="card-action-link" href="Justification&proof.pdf" target="_blank">فتح الملف ↗</a>
       </div>
-      <iframe class="pdf-viewer" src="Justification_proof.pdf#view=FitH" loading="lazy"></iframe>
+      <iframe class="pdf-viewer" src="Justification&proof.pdf#view=FitH" loading="lazy"></iframe>
       <div class="concepts-section-title">📌 ملخص رياضيات أول ثانوي:</div>
       <div class="concept-cards-grid" id="math1Grid"></div>
       <div class="concept-display-box" id="math1Display"></div>
@@ -363,6 +367,69 @@ button { font: inherit; cursor: pointer; }
 </footer>
 
 <script>
+/* ============================================================
+   إعدادات مسارات الملفات
+   - إذا كانت الملفات بجانب هذه الصفحة في نفس المجلد: اترك FILES_BASE فارغاً.
+   - إذا كانت داخل مجلد فرعي مثلاً files فاكتب: "files/"
+   - يمكنك كتابة رابط كامل أيضاً: "https://example.com/pdfs/"
+   - للفحص: افتح الموقع وأضف ?check في آخر الرابط
+   ============================================================ */
+const FILES_BASE = "";
+
+function pageDir() {
+  let p = location.pathname;
+  const last = p.split('/').pop();
+  if (!p.endsWith('/') && !/\.[a-z0-9]+$/i.test(last)) p += '/';
+  p = p.replace(/[^/]*$/, '');
+  return (location.protocol === 'file:' ? 'file://' : location.origin) + p;
+}
+
+function fileUrl(name) {
+  const parts = name.split('#');
+  const file = parts[0];
+  const hash = parts.length > 1 ? '#' + parts.slice(1).join('#') : '';
+  let base = /^https?:\/\//i.test(FILES_BASE) ? FILES_BASE : pageDir() + FILES_BASE;
+  base = base.replace(/\/?$/, '/');
+  return base + file.split('/').map(encodeURIComponent).join('/') + hash;
+}
+
+function resolveStaticFiles() {
+  document.querySelectorAll('a[href], iframe[src], img[src]').forEach(el => {
+    const attr = el.tagName === 'A' ? 'href' : 'src';
+    const v = el.getAttribute(attr);
+    if (!v || /^(#|https?:|mailto:|tel:|javascript:|data:)/i.test(v)) return;
+    el.setAttribute(attr, fileUrl(v));
+  });
+}
+
+async function checkFiles() {
+  if (!/[?&]check\b/.test(location.search) || location.protocol === 'file:') return;
+  const urls = new Set();
+  document.querySelectorAll('a[href], iframe[src], img[src]').forEach(el => {
+    const v = el.getAttribute(el.tagName === 'A' ? 'href' : 'src');
+    if (!v || v.startsWith('#') || !v.startsWith(location.origin)) return;
+    urls.add(v.split('#')[0]);
+  });
+  const missing = [];
+  await Promise.all([...urls].map(async u => {
+    try {
+      const r = await fetch(u, { method: 'HEAD', cache: 'no-store' });
+      if (!r.ok) missing.push({ url: u, status: r.status });
+    } catch (e) {
+      missing.push({ url: u, status: 'خطأ اتصال' });
+    }
+  }));
+  if (missing.length) console.warn('ملفات غير موجودة:', missing);
+  const banner = document.createElement('div');
+  banner.className = 'file-check-banner' + (missing.length ? '' : ' ok');
+  banner.innerHTML = missing.length
+    ? `<b>⚠️ ملفات لا تُفتح (${missing.length}):</b><button onclick="this.parentElement.remove()">إغلاق</button><br>` +
+      missing.map(m => `<code>${decodeURIComponent(m.url.split('/').pop())}</code> — ${m.status}`).join('<br>') +
+      `<br><small>تأكد أن الاسم مطابق حرفياً (الحروف الكبيرة والصغيرة) وأن الملف مرفوع في نفس مجلد الصفحة، أو اضبط FILES_BASE.</small>`
+    : `✅ كل الملفات (${urls.size}) موجودة وتفتح بشكل سليم.<button onclick="this.parentElement.remove()">إغلاق</button>`;
+  document.body.appendChild(banner);
+}
+
 const themeToggle = document.getElementById('themeToggle');
 let isDark = true;
 themeToggle.addEventListener('click', () => {
@@ -399,11 +466,6 @@ function renderMath() {
   }
 }
 
-/* =====================================================
-   بيانات البطاقات
-   كل عنصر: t = عنوان البطاقة، s = صيغة الزر (لاتكس)، st = نص بدل الصيغة (اختياري)،
-            d = الشرح، m = المعادلة الكبيرة (لاتكس)
-   ===================================================== */
 const chemData = [
   {t: "1. حساب عدد المولات والكتلة", s: String.raw`n = m / M`, d: "• <b>عدد المولات ($n$):</b> يُحسب بقسمة كتلة المادة بالجرام ($m$) على الكتلة المولية ($M$).<br>• <b>كتلة المادة بالجرام ($m$):</b> تساوي حاصل ضرب عدد المولات في الكتلة المولية.", m: String.raw`n = \frac{m}{M} \quad | \quad m = n \times M`},
   {t: "2. عدد الجسيمات", s: String.raw`N = n \times N_A`, d: "• <b>عدد الجسيمات ($N$):</b> يُحسب بضرب عدد المولات ($n$) في ثابت أفوجادرو ($N_A$).<br>• <b>ثابت أفوجادرو:</b> يساوي ($6.02 \\times 10^{23}$ جسيم/مول).", m: String.raw`N = n \times N_A \quad (N_A = 6.02 \times 10^{23})`},
@@ -422,7 +484,6 @@ const pulleyData = [
   {t: "8. القوة العمودية السطحية", s: String.raw`F_N = mg \cos(\theta)`, d: "• <b>القوة العمودية ($F_N$):</b>", m: String.raw`F_N = mg \cos(\theta)`}
 ];
 
-/* ميكانيكا المقذوفات (g = 10 m/s² وإهمال مقاومة الهواء) */
 const projData = [
   {t: "1. المركبة الأفقية الابتدائية", s: String.raw`v_{ix} = v_i \cos\theta`, d: "• <b>المركبة الأفقية:</b> السرعة الابتدائية مضروبة في جيب تمام الزاوية. وتبقى <b>ثابتة طوال الرحلة</b> لأنه لا توجد قوة أفقية ($a_x = 0$).", m: String.raw`v_{ix} = v_i \cos\theta`},
   {t: "2. المركبة الرأسية الابتدائية", s: String.raw`v_{iy} = v_i \sin\theta`, d: "• <b>المركبة الرأسية:</b> السرعة الابتدائية مضروبة في جيب الزاوية، وهي التي تتأثر بالجاذبية.", m: String.raw`v_{iy} = v_i \sin\theta`},
@@ -439,7 +500,6 @@ const projData = [
   {t: "13. سرعة الارتطام", s: String.raw`v = \sqrt{v_i^2 + 2gh}`, d: "• <b>سرعة الارتطام بالأرض:</b> محصلة المركبة الأفقية الثابتة والمركبة الرأسية المكتسبة من السقوط.", m: String.raw`v = \sqrt{v_i^2 + 2gh}`}
 ];
 
-/* ميكانيكا الحركة الدائرية */
 const circData = [
   {t: "1. الزمن الدوري", s: String.raw`T = \frac{t}{n}`, d: "• <b>الزمن الدوري ($T$):</b> الزمن اللازم لإكمال دورة واحدة، ووحدته الثانية.<br>• $n$ عدد الدورات، و $t$ الزمن الكلي.", m: String.raw`T = \frac{t}{n}`},
   {t: "2. التردد", s: String.raw`f = \frac{n}{t} = \frac{1}{T}`, d: "• <b>التردد ($f$):</b> عدد الدورات في الثانية، ووحدته الهرتز Hz. إذا أعطاك عدد الدورات في الدقيقة فاقسمه على 60.", m: String.raw`f = \frac{n}{t} \quad | \quad f = \frac{1}{T}`},
@@ -460,7 +520,6 @@ const circData = [
   {t: "17. الترسان المتلامسان", s: String.raw`v_1 = v_2`, d: "• <b>ترسان متلامسان:</b> السرعة الخطية لحافتيهما متساوية، والترس الأصغر سرعته الزاوية أكبر، ويدوران في اتجاهين متعاكسين.", m: String.raw`v_1 = v_2 \quad , \quad r_2 < r_1 \Rightarrow \omega_2 > \omega_1`}
 ];
 
-/* الأسماء الشائعة: [العنوان، الاستعمال، الصيغة (لاتكس)، ملاحظة قصيرة] */
 const namesRaw = [
   ["1. 2-بيوتانول", "مذيب في بعض الأخشاب والأصباغ.", String.raw`\text{C}_4\text{H}_{10}\text{O}`, "مذيب عضوي للأصباغ"],
   ["2. هكسانول حلقي", "مركب سام، ومبيد حشري.", String.raw`\text{C}_6\text{H}_{11}\text{OH}`, "مبيد حشري حلقي"],
@@ -490,7 +549,6 @@ const namesData = namesRaw.map(([t, use, f, note]) => ({
   m: String.raw`\text{الصيغة:} \quad ` + f + String.raw` \quad (\text{` + note + String.raw`})`
 }));
 
-/* مشتقات الهيدروكربونات: [العنوان، الوصف، الصيغة] */
 const hydroRaw = [
   ["1. هاليدات الألكيل والأريل", "• <b>المجموعة الوظيفية:</b> ارتباط ذرة هالوجين ($X$) مباشرة بسلسلة كربونية أليفاتية أو أروماتية ($R$).", "R - X", String.raw`R - X \quad (X = F, Cl, Br, I)`],
   ["2. الكحولات", "• <b>المجموعة الوظيفية:</b> تحتوي على مجموعة الهيدروكسيل القطبية.", "R - OH"],
@@ -504,7 +562,6 @@ const hydroRaw = [
 ];
 const hydroData = hydroRaw.map(([t, d, s, m]) => ({t, d, s, m: m || s}));
 
-/* ملخص رياضيات أول ثانوي */
 const math1Data = [
   {t: "1. المنطق: النفي والعبارات المركبة", s: String.raw`p \wedge q \; , \; p \vee q`, d: "• <b>النفي ($\\sim p$):</b> يعاكس قيمة الصواب للعبارة.<br>• <b>العطف (و) $p \\wedge q$:</b> صحيحة فقط إذا كانت العبارتان صحيحتين.<br>• <b>الفصل (أو) $p \\vee q$:</b> خاطئة فقط إذا كانت العبارتان خاطئتين.", m: String.raw`p \wedge q \;\text{(صحيحة فقط إذا } T,T) \quad | \quad p \vee q \;\text{(خاطئة فقط إذا } F,F)`},
   {t: "2. العبارة الشرطية والمعكوس والمحاكس", s: String.raw`p \to q`, d: "• <b>الشرطية:</b> $p \\to q$ (إذا كان $p$ فإن $q$) وتكون خاطئة فقط إذا كان $p$ صحيحاً و $q$ خاطئاً.<br>• <b>العكس:</b> $q \\to p$ &nbsp; • <b>المعكوس:</b> $\\sim p \\to \\sim q$ &nbsp; • <b>المعاكس الإيجابي:</b> $\\sim q \\to \\sim p$.<br>• الشرطية تكافئ معاكسها الإيجابي، والعكس يكافئ المعكوس.", m: String.raw`p \to q \equiv \sim q \to \sim p \quad | \quad q \to p \equiv \sim p \to \sim q`},
@@ -570,12 +627,11 @@ function buildCards() {
   });
 }
 
-/* =====================  المنهج  ===================== */
 const curriculumBooks = [
   {name: "الأحياء", icon: "🧬", file: "Biology_bookQs_compressed.pdf", pages: 260},
   {name: "الفيزياء", icon: "⚛️", file: "Physics_bookQs_compressed.pdf", pages: 208},
   {name: "الكيمياء", icon: "🧪", file: "Chemistry_bookQs_compressed.pdf", pages: 189},
-  {name: "الرياضيات - أول ثانوي", icon: "📐", file: "Math_1st_secondary_bookQs_compressed.pdf", pages: 283},
+  {name: "الرياضيات - أول ثانوي", icon: "📐", file: "Math_1st_secondary_bookQs_compressed_under25MB.pdf", pages: 283},
   {name: "الرياضيات - ثاني ثانوي", icon: "📏", file: "Math_2nd_secondary_bookQs_compressed.pdf", pages: 243}
 ];
 
@@ -585,7 +641,7 @@ function buildCurriculum() {
       <div class="card-icon-box">${b.icon}</div>
       <h3>${b.name}</h3>
       <p>كتاب الأسئلة (${b.pages} صفحة).</p>
-      <a class="card-action-link" href="${b.file}" target="_blank">فتح في نافذة مستقلة ↗</a><br>
+      <a class="card-action-link" href="${fileUrl(b.file)}" target="_blank">فتح في نافذة مستقلة ↗</a><br>
       <span class="card-action-link" onclick="viewBook(${i})">عرض الكتاب هنا ←</span>
     </div>`).join('');
 }
@@ -596,13 +652,12 @@ function viewBook(i) {
   host.innerHTML = `
     <div class="pdf-download-bar" style="margin-top: 30px;">
       <div><h4>${b.icon} كتاب ${b.name}</h4></div>
-      <a class="card-action-link" href="${b.file}" target="_blank">فتح في نافذة مستقلة ↗</a>
+      <a class="card-action-link" href="${fileUrl(b.file)}" target="_blank">فتح في نافذة مستقلة ↗</a>
     </div>
-    <iframe class="pdf-viewer" src="${b.file}#view=FitH"></iframe>`;
+    <iframe class="pdf-viewer" src="${fileUrl(b.file)}#view=FitH"></iframe>`;
   window.scrollTo({ top: host.offsetTop - 100, behavior: 'smooth' });
 }
 
-/* =====================  اختبار البكرات  ===================== */
 const pulleyQuests = [
   {q: "1- في آلة أتوود، كتلتان m1 = 5 kg و m2 = 3 kg معلقتان بخيط مهمل الكتلة على بكرة ملساء، احسب التسارع (a) باعتراض g = 10 m/s^2:", opts: ["2.5 m/s^2", "1.25 m/s^2", "5.0 m/s^2", "10 m/s^2"], ans: 0},
   {q: "2- في نفس آلة أتوود السابقة، احسب قوة الشد (T) في الخيط:", opts: ["37.5 N", "45.0 N", "25.0 N", "60.0 N"], ans: 0},
@@ -654,12 +709,11 @@ function submitPulleyTest() {
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 
-/* =====================  اختبارات المهارات  ===================== */
 const skillQuests = [
   [
     {q: "1- أي من المصادر التالية يعتبر الأكثر موضوعية ودقة عند البحث عن العلاقة بين السمنة والمشروبات الغازية ؟", opts: ["استبيانات شركات المشروبات", "دورية علمية محكمة في التغذية", "دراسة متطوعين غير متخصصين", "تقرير وزارة النقل"], ans: 1},
     {q: "2- خالد يخطط لإجراء بحث حول الغش التجاري خلال أزمة كورونا، ما هو المصدر الأكثر موثوقية ؟", opts: ["التقرير السنوي لوزارة التجارة", "تقرير وزارة الصحة لكورونا", "ورقة بحثية عن سلوك المستهلك", "استبيانات دول أخرى"], ans: 0},
-    {q: "3- إذا أردت البحث عن فوائد الشاي باستثناء الشاي الأخضر، ماذا تكتب في محرك البحث ؟", opts: ["فوائد الشاي \"الأخضر\"", "فوائد الشاي : الأخضر", "فوائد الشاي - الأخضر", "فوائد الشاي"], ans: 2},
+    {q: "3- إذا أردت البحث عن فوائد الشاي باستثناء الشاي الأخضر، ماذا تكتب في محرك البحث ؟", opts: ["فوائد الشاي \"الخضر\"", "فوائد الشاي : الأخضر", "فوائد الشاي - الأخضر", "فوائد الشاي"], ans: 2},
     {q: "4- طلب من خبير البحث عن العوامل المؤثرة في كفاءة الموظفين، ما الأسلوب المناسب لجمع البيانات ؟", opts: ["البحث في الإنترنت عن تقارير مشابهة", "دراسة مسحية باستبيان للموظفين", "دعوة خبراء للشركة وسؤالهم", "توزيع مكافآت مالية"], ans: 1},
     {q: "5- المكان الأكثر دقة وموثوقية للبحث عن معلومة علمية عبر الإنترنت:", opts: ["مدونة شخصية", "ويكيبيديا الحرة", "ورقة علمية محكمة", "مواقع التواصل الاجتماعي"], ans: 2},
     {q: "6- من الحجج التي تدعم عدم موثوقية بعض مصادر الإنترنت:", opts: ["أنها سهلة الوصول", "اختلاط المعلومات العلمية بالدعائية والأخبارية", "أنها مجانية بالكامل", "تتحدث بصفة مستمرة"], ans: 1},
@@ -797,9 +851,10 @@ function submitSkillTest(testIdx) {
   window.scrollTo({ top: scoreBox.offsetTop - 120, behavior: 'smooth' });
 }
 
-/* تشغيل البطاقات والمنهج عند تحميل الصفحة */
+resolveStaticFiles();
 buildCards();
 buildCurriculum();
+checkFiles();
 </script>
 </body>
 </html>
