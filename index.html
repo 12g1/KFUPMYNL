@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Update Timestamp: 2026-10-15 - In-page PDF viewer (PDF.js) + download buttons + file checker + AI Chat + Interactive Whiteboard -->
+<!-- Update Timestamp: 2026-10-15 - Full Platform Code with Draggable/Resizable Controls for Whiteboard & AI Modal -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -96,19 +96,35 @@ button { font: inherit; cursor: pointer; }
 .opt-btn.wrong { background: rgba(239, 68, 68, 0.25); border-color: var(--danger); color: #fecdd3; }
 .submit-quiz-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #fff; border: none; padding: 15px; font-weight: 900; border-radius: 14px; margin-top: 20px; cursor: pointer; }
 
-/* الأزرار العائمة الدائرية في الأسفل والنوافذ المنبثقة الخاصة بها */
+/* الأزرار العائمة والنوافذ القابلة للسحب والتحكم بالحجم */
 .float-btn { position: fixed; bottom: 25px; z-index: 1000; width: 60px; height: 60px; border-radius: 50%; border: none; color: #fff; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.3); display: grid; place-items: center; cursor: pointer; transition: transform 0.2s; }
 .float-btn:hover { transform: scale(1.08); }
 .ai-float-btn { right: 25px; background: linear-gradient(135deg, var(--accent), var(--cyan)); }
 .wb-float-btn { left: 25px; background: linear-gradient(135deg, var(--pink), var(--accent)); }
 
-.float-modal { position: fixed; bottom: 95px; z-index: 1001; width: 360px; max-width: 90vw; background: var(--panel); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); padding: 20px; display: none; text-align: right; }
-.float-modal.show { display: block; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 800; color: var(--cyan); }
+.float-modal {
+  position: fixed; bottom: 95px; z-index: 1001;
+  width: 360px; min-width: 280px; max-width: 90vw;
+  height: 420px; min-height: 250px; max-height: 85vh;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
+  box-shadow: var(--shadow); padding: 16px; display: none; text-align: right;
+  resize: both; overflow: hidden; /* يتيح التحكم بالحجم بالزاوية أو عبر الأزرار */
+  box-sizing: border-box;
+}
+.float-modal.show { display: flex; flex-direction: column; }
+
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px; font-weight: 800; color: var(--cyan);
+  cursor: move; user-select: none; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+}
+.modal-controls-group { display: flex; gap: 4px; align-items: center; }
+.modal-ctrl-icon { background: rgba(99,102,241,0.15); border: none; color: var(--text); width: 24px; height: 24px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: grid; place-items: center; }
+.modal-ctrl-icon:hover { background: var(--accent); color: #fff; }
 .modal-close { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; }
 
-.wb-toolbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-.wb-canvas-wrap { position: relative; width: 100%; height: 260px; background: #0f172a; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); cursor: crosshair; touch-action: none; }
+.wb-toolbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.wb-canvas-wrap { position: relative; width: 100%; flex: 1; background: #0f172a; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); cursor: crosshair; touch-action: none; min-height: 150px; }
 .wb-canvas-wrap canvas { width: 100%; height: 100%; display: block; }
 
 .main-footer { background: var(--panel); border-top: 1px solid var(--border); padding: 40px 0; text-align: center; margin-top: 40px; }
@@ -156,14 +172,17 @@ button { font: inherit; cursor: pointer; }
   </div>
 </div>
 
-<!-- زر المساعد الذكي العائم (دائرة أسفل اليمين) -->
+<!-- زر المساعد الذكي العائم -->
 <button class="float-btn ai-float-btn" onclick="toggleAiModal()">AI</button>
 <div class="float-modal" id="aiModal" style="right: 25px;">
-  <div class="modal-header">
+  <div class="modal-header" id="aiHeader" title="اسحب لتحريك النافذة">
     <span>🤖 المساعد الذكي</span>
-    <button class="modal-close" onclick="toggleAiModal()">×</button>
+    <div class="modal-controls-group">
+      <button class="modal-ctrl-icon" onclick="resetModalSize('aiModal')" title="إعادة الحجم الافتراضي">⤢</button>
+      <button class="modal-close" onclick="toggleAiModal()">×</button>
+    </div>
   </div>
-  <div id="ai-log" style="min-height:140px; max-height:220px; overflow-y:auto; padding:10px; background:var(--panel2); border:1px solid var(--border); border-radius:12px; margin-bottom:10px; font-size:0.9rem;"></div>
+  <div id="ai-log" style="flex: 1; min-height:120px; overflow-y:auto; padding:10px; background:var(--panel2); border:1px solid var(--border); border-radius:12px; margin-bottom:10px; font-size:0.9rem;"></div>
   <div style="display:flex; gap:6px;">
     <input id="ai-input" type="text" placeholder="اسأل أي شيء..." maxlength="1000"
       style="flex:1; padding:8px 10px; background:var(--panel2); border:1px solid var(--border); color:var(--text); border-radius:10px; font:inherit; font-size:0.9rem;">
@@ -171,23 +190,26 @@ button { font: inherit; cursor: pointer; }
   </div>
 </div>
 
-<!-- زر سبورة الحل العائم (دائرة أسفل اليسار) -->
+<!-- زر سبورة الحل العائم -->
 <button class="float-btn wb-float-btn" onclick="toggleWbModal()">✏️</button>
-<div class="float-modal" id="wbModal" style="left: 25px; width: 330px;">
-  <div class="modal-header">
+<div class="float-modal" id="wbModal" style="left: 25px; width: 340px;">
+  <div class="modal-header" id="wbHeader" title="اسحب لتحريك النافذة">
     <span>✏️ سبورة الحل</span>
-    <button class="modal-close" onclick="toggleWbModal()">×</button>
+    <div class="modal-controls-group">
+      <button class="modal-ctrl-icon" onclick="resetModalSize('wbModal')" title="إعادة الحجم الافتراضي">⤢</button>
+      <button class="modal-close" onclick="toggleWbModal()">×</button>
+    </div>
   </div>
   <div class="wb-toolbar">
-    <button id="wb-pen-btn" class="ctrl-btn active-tool" onclick="setWbTool('pen')" style="padding:4px 8px; font-size:0.8rem;">قلم</button>
-    <button id="wb-eraser-btn" class="ctrl-btn" onclick="setWbTool('eraser')" style="padding:4px 8px; font-size:0.8rem;">مساحة</button>
-    <input type="color" id="wb-color" value="#06b6d4" style="border:none; width:26px; height:26px; background:transparent; cursor:pointer;">
-    <select id="wb-size" class="ctrl-btn" style="padding:2px 4px; font-size:0.8rem;">
+    <button id="wb-pen-btn" class="ctrl-btn active-tool" onclick="setWbTool('pen')" style="padding:3px 6px; font-size:0.75rem;">قلم</button>
+    <button id="wb-eraser-btn" class="ctrl-btn" onclick="setWbTool('eraser')" style="padding:3px 6px; font-size:0.75rem;">مساحة</button>
+    <input type="color" id="wb-color" value="#06b6d4" style="border:none; width:24px; height:24px; background:transparent; cursor:pointer;" title="لون القلم">
+    <select id="wb-size" class="ctrl-btn" style="padding:2px 4px; font-size:0.75rem;">
       <option value="2">رفيع</option>
       <option value="5" selected>متوسط</option>
       <option value="10">سميك</option>
     </select>
-    <button class="ctrl-btn" onclick="clearWb()" style="padding:4px 8px; font-size:0.8rem; background:rgba(239,68,68,0.2); color:var(--danger); border-color:var(--danger);">مسح</button>
+    <button class="ctrl-btn" onclick="clearWb()" style="padding:3px 6px; font-size:0.75rem; background:rgba(239,68,68,0.2); color:var(--danger); border-color:var(--danger);">مسح</button>
   </div>
   <div class="wb-canvas-wrap" id="wbCanvasWrap">
     <canvas id="whiteboardCanvas"></canvas>
@@ -722,7 +744,7 @@ const circData = [
   {t: "3. الزاوية بالراديان", s: String.raw`\theta = \frac{s}{r}`, d: "• <b>الراديان:</b> الزاوية = طول القوس ÷ نصف القطر. في الدورة الكاملة $s = 2\\pi r$ فتكون الزاوية $2\\pi$ rad.", m: String.raw`\theta = \frac{s}{r} \quad | \quad 2\pi\,\text{rad} = 360^\circ`},
   {t: "4. التحويل بين الدرجات والراديان", s: String.raw`\text{rad} = \text{deg} \times \frac{\pi}{180}`, d: "• <b>التحويل:</b> اضرب في $\\pi/180$ للتحويل إلى راديان، واضرب في $180/\\pi$ للتحويل إلى درجات. الدوران عكس عقارب الساعة موجب.", m: String.raw`\text{rad} = \text{deg} \times \frac{\pi}{180^\circ} \quad | \quad \text{deg} = \text{rad} \times \frac{180^\circ}{\pi}`},
   {t: "5. الإزاحة الزاوية", s: String.raw`\theta = 2\pi \times n`, d: "• <b>الإزاحة الزاوية:</b> كل دورة تساوي $2\\pi$ rad. وبالتناسب: $\\theta = 2\\pi \\times \\frac{t}{T}$.", m: String.raw`\theta = 2\pi \times n = 2\pi \times \frac{t}{T}`},
-  {t: "6. السرعة الزاوية", s: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`, d: "• <b>السرعة الزاوية ($\\omega$):</b> الإزاحة الزاوية مقسومة على الزمن، ووحدتها rad/s.", m: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`},
+  {t: "6. السرعة الزاوية", s: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`, d: "• <b>السرعة الزاوية ($\\omega$):</b> الإزاحة الزاوية مقسومة على الزمن، ووحدته rad/s.", m: String.raw`\omega = \frac{\Delta\theta}{\Delta t}`},
   {t: "7. السرعة الزاوية والدور والتردد", s: String.raw`\omega = \frac{2\pi}{T} = 2\pi f`, d: "• <b>من أين جاء؟</b> في دورة كاملة الإزاحة $2\\pi$ والزمن $T$. وبما أن $f = 1/T$ فإن $\\omega = 2\\pi f$. وللعكس: $f = \\omega / 2\\pi$.", m: String.raw`\omega = \frac{2\pi}{T} = 2\pi f`},
   {t: "8. التسارع الزاوي", s: String.raw`\alpha = \frac{\Delta\omega}{\Delta t}`, d: "• <b>التسارع الزاوي ($\\alpha$):</b> التغير في السرعة الزاوية مقسوماً على الزمن، ووحدته rad/s². وهو ميل منحنى $\\omega$ مع الزمن. وفي الحركة الدائرية المنتظمة $\\alpha = 0$.", m: String.raw`\alpha = \frac{\Delta\omega}{\Delta t}`},
   {t: "9. ربط الإزاحة الخطية بالزاوية", s: String.raw`d = r\theta`, d: "• <b>الإزاحة الخطية (طول القوس):</b> نصف القطر × الإزاحة الزاوية.", m: String.raw`d = r\theta`},
@@ -731,7 +753,7 @@ const circData = [
   {t: "12. التسارع المركزي (السرعة الخطية)", s: String.raw`a_c = \frac{v^2}{r}`, d: "• <b>التسارع المركزي:</b> يتجه دائماً نحو المركز، ويغير اتجاه السرعة فقط. استخدمه إذا كان المعطى $v$.", m: String.raw`a_c = \frac{v^2}{r}`},
   {t: "13. التسارع المركزي (السرعة الزاوية)", s: String.raw`a_c = \omega^2 r`, d: "• <b>بالتعويض $v = r\\omega$:</b> استخدمه إذا كان المعطى $\\omega$.", m: String.raw`a_c = \frac{(r\omega)^2}{r} = \omega^2 r`},
   {t: "14. التسارع المركزي (الزمن الدوري)", s: String.raw`a_c = \frac{4\pi^2 r}{T^2}`, d: "• <b>بالتعويض $v = 2\\pi r / T$:</b> استخدمه إذا كان المعطى $T$.", m: String.raw`a_c = \frac{1}{r}\left(\frac{2\pi r}{T}\right)^2 = \frac{4\pi^2 r}{T^2}`},
-  {t: "15. القوة المركزية", s: String.raw`F_c = \frac{mv^2}{r}`, d: "• <b>القوة المركزية:</b> محصلة القوى نحو المركز، وليست قوة جديدة (الشد، الاحتكاك، الجاذبية). ووحدتها النيوتن. إذا انقطع الخيط تحرك الجسم على المماس.", m: String.raw`F_c = m\,a_c = \frac{mv^2}{r}`},
+  {t: "15. القوة المركزية", s: String.raw`F_c = \frac{mv^2}{r}`, d: "• <b>القوة المركزية:</b> محصلة القوى نحو المركز، وليست قوة جديدة (الشد، الاحتكاك، الجاذبية). ووحدته النيوتن. إذا انقطع الخيط تحرك الجسم على المماس.", m: String.raw`F_c = m\,a_c = \frac{mv^2}{r}`},
   {t: "16. نقاط القرص الواحد", s: String.raw`\omega_A = \omega_B`, d: "• <b>على قرص واحد:</b> السرعة الزاوية متساوية لجميع النقاط، والسرعة الخطية أكبر للنقطة الأبعد.", m: String.raw`\omega_A = \omega_B \quad , \quad r_B > r_A \Rightarrow v_B > v_A`},
   {t: "17. الترسان المتلامسان", s: String.raw`v_1 = v_2`, d: "• <b>ترسان متلامسان:</b> السرعة الخطية لحافتيهما متساوية، والترس الأصغر سرعته الزاوية أكبر، ويدوران في اتجاهين متعاكسين.", m: String.raw`v_1 = v_2 \quad , \quad r_2 < r_1 \Rightarrow \omega_2 > \omega_1`}
 ];
@@ -1088,7 +1110,7 @@ function addMsg(who, text) {
   p.innerHTML = (who === "me" ? "أنت: " : "المساعد: ") + text;
   log.appendChild(p);
   log.scrollTop = log.scrollHeight;
-  renderMath(); // تفسير المعادلات فور إضافة الرسالة
+  renderMath();
   return p;
 }
 
@@ -1107,7 +1129,7 @@ async function send() {
     });
     const data = await res.json();
     wait.innerHTML = "المساعد: " + (data.reply || data.error || "خطأ غير معروف");
-    renderMath(); // تفسير المعادلات بعد وصول الرد ورسمه
+    renderMath();
   } catch (err) {
     wait.textContent = "المساعد: تعذر الاتصال بالخدمة";
   } finally {
@@ -1204,6 +1226,106 @@ function draw(e) {
 function stopDraw() {
   isDrawing = false;
 }
+
+/* ============================================================
+   إضافات التحكم المتقدم بمكان (السحب) وحجم النوافذ العائمة
+   ============================================================ */
+function makeDraggable(modalId, headerId) {
+  const modal = document.getElementById(modalId);
+  const header = document.getElementById(headerId);
+  let isDragging = false;
+  let startX, startY, initialLeft, initialTop;
+
+  header.addEventListener('mousedown', (e) => {
+    if (e.target.tagName === 'BUTTON' || e.target.classList.contains('modal-ctrl-icon')) return;
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    
+    const rect = modal.getBoundingClientRect();
+    // تحويل الموقع المطلق إلى left/top بدلاً من right/bottom ليسهل التحكم الحر
+    modal.style.right = 'auto';
+    modal.style.bottom = 'auto';
+    modal.style.left = rect.left + 'px';
+    modal.style.top = rect.top + 'px';
+    
+    initialLeft = rect.left;
+    initialTop = rect.top;
+    
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+
+  function onMouseMove(e) {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    modal.style.left = (initialLeft + dx) + 'px';
+    modal.style.top = (initialTop + dy) + 'px';
+  }
+
+  function onMouseUp() {
+    isDragging = false;
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  // دعم السحب باللمس للأجهزة اللوحية والهواتف
+  header.addEventListener('touchstart', (e) => {
+    if (e.target.tagName === 'BUTTON' || e.target.classList.contains('modal-ctrl-icon')) return;
+    const touch = e.touches[0];
+    isDragging = true;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    
+    const rect = modal.getBoundingClientRect();
+    modal.style.right = 'auto';
+    modal.style.bottom = 'auto';
+    modal.style.left = rect.left + 'px';
+    modal.style.top = rect.top + 'px';
+    
+    initialLeft = rect.left;
+    initialTop = rect.top;
+    
+    document.addEventListener('touchmove', onTouchMove, {passive: false});
+    document.addEventListener('touchend', onTouchEnd);
+  });
+
+  function onTouchMove(e) {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    modal.style.left = (initialLeft + dx) + 'px';
+    modal.style.top = (initialTop + dy) + 'px';
+  }
+
+  function onTouchEnd() {
+    isDragging = false;
+    document.removeEventListener('touchmove', onTouchMove);
+    document.removeEventListener('touchend', onTouchEnd);
+  }
+}
+
+function resetModalSize(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.left = '';
+  modal.style.top = '';
+  modal.style.width = modalId === 'aiModal' ? '360px' : '340px';
+  modal.style.height = '420px';
+  if (modalId === 'aiModal') {
+    modal.style.right = '25px';
+    modal.style.bottom = '95px';
+  } else {
+    modal.style.left = '25px';
+    modal.style.bottom = '95px';
+  }
+  if (modalId === 'wbModal') setTimeout(resizeWb, 50);
+}
+
+// تفعيل ميزة السحب للنافذتين
+makeDraggable('aiModal', 'aiHeader');
+makeDraggable('wbModal', 'wbHeader');
 
 resolveStaticFiles();
 buildPdfBoxes();
