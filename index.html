@@ -1085,9 +1085,10 @@ const btn = document.getElementById("ai-send");
 function addMsg(who, text) {
   const p = document.createElement("p");
   p.style.margin = "0 0 8px";
-  p.textContent = (who === "me" ? "أنت: " : "المساعد: ") + text;
+  p.innerHTML = (who === "me" ? "أنت: " : "المساعد: ") + text;
   log.appendChild(p);
   log.scrollTop = log.scrollHeight;
+  renderMath(); // تفسير المعادلات فور إضافة الرسالة
   return p;
 }
 
@@ -1105,7 +1106,8 @@ async function send() {
       body: JSON.stringify({ message }),
     });
     const data = await res.json();
-    wait.textContent = "المساعد: " + (data.reply || data.error || "خطأ غير معروف");
+    wait.innerHTML = "المساعد: " + (data.reply || data.error || "خطأ غير معروف");
+    renderMath(); // تفسير المعادلات بعد وصول الرد ورسمه
   } catch (err) {
     wait.textContent = "المساعد: تعذر الاتصال بالخدمة";
   } finally {
@@ -1211,4 +1213,3 @@ checkFiles();
 </script>
 </body>
 </html>
- 
