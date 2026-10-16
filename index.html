@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Update Timestamp: 2026-10-15 - Full Platform Code with Draggable/Resizable Controls for Whiteboard & AI Modal -->
+<!-- Update Timestamp: 2026-10-16 - Full Platform Code with Toggleable Explanation Cards for All Sections -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -78,6 +78,7 @@ button { font: inherit; cursor: pointer; }
 .pdf-page .pg-num { position: absolute; top: 6px; left: 6px; background: rgba(0,0,0,.55); color: #fff; font-size: 11px; padding: 1px 8px; border-radius: 10px; pointer-events: none; }
 
 .concepts-section-title { font-size: 1.3rem; font-weight: 800; color: var(--cyan); margin: 30px 0 15px; }
+.cards-wrap[hidden] { display: none; }
 .concept-cards-grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .concept-tab-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 14px; font-weight: 700; text-align: center; flex: 1 1 calc(22% - 12px); min-width: 200px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: all 0.25s; }
 .concept-tab-btn > span { font-size: 0.85rem; color: var(--cyan); display: block; font-weight: 600; direction: ltr; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; unicode-bidi: embed; }
@@ -284,20 +285,26 @@ button { font: inherit; cursor: pointer; }
       <!-- الحسابات الكيميائية -->
       <div class="pdf-download-bar">
         <div><h4>ملف الحسابات الكيميائية (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="chem" onclick="toggleCards('chem', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="chemical-calculations.pdf"></div>
-      <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
-      <div class="concept-cards-grid" id="chemGrid"></div>
-      <div class="concept-display-box" id="chemDisplay"></div>
+      <div class="cards-wrap" id="chemWrap" hidden>
+        <div class="concepts-section-title">📌 بطاقات الحسابات الكيميائية:</div>
+        <div class="concept-cards-grid" id="chemGrid"></div>
+        <div class="concept-display-box" id="chemDisplay"></div>
+      </div>
 
       <!-- ميكانيكا البكرات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف ميكانيكا البكرات (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="pulley" onclick="toggleCards('pulley', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="pulley-mechanics.pdf"></div>
-      <div class="concepts-section-title">📌 بطاقات وقوانين ميكانيكا البكرات الشاملة:</div>
-      <div class="concept-cards-grid" id="pulleyGrid"></div>
-      <div class="concept-display-box" id="pulleyDisplay"></div>
+      <div class="cards-wrap" id="pulleyWrap" hidden>
+        <div class="concepts-section-title">📌 بطاقات وقوانين ميكانيكا البكرات الشاملة:</div>
+        <div class="concept-cards-grid" id="pulleyGrid"></div>
+        <div class="concept-display-box" id="pulleyDisplay"></div>
+      </div>
 
       <!-- اختبار مسائل ملف البكرات -->
       <div style="margin-top: 40px;">
@@ -310,20 +317,26 @@ button { font: inherit; cursor: pointer; }
       <!-- ميكانيكا المقذوفات -->
       <div class="pdf-download-bar" style="margin-top: 50px;">
         <div><h4>ملف ميكانيكا المقذوفات (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="proj" onclick="toggleCards('proj', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="Projectile_mechanics.pdf"></div>
-      <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا المقذوفات:</div>
-      <div class="concept-cards-grid" id="projGrid"></div>
-      <div class="concept-display-box" id="projDisplay"></div>
+      <div class="cards-wrap" id="projWrap" hidden>
+        <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا المقذوفات:</div>
+        <div class="concept-cards-grid" id="projGrid"></div>
+        <div class="concept-display-box" id="projDisplay"></div>
+      </div>
 
       <!-- ميكانيكا الحركة الدائرية -->
       <div class="pdf-download-bar" style="margin-top: 50px;">
         <div><h4>ملف ميكانيكا الحركة الدائرية (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="circ" onclick="toggleCards('circ', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="Circular_motion_mechanics.pdf"></div>
-      <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا الحركة الدائرية:</div>
-      <div class="concept-cards-grid" id="circGrid"></div>
-      <div class="concept-display-box" id="circDisplay"></div>
+      <div class="cards-wrap" id="circWrap" hidden>
+        <div class="concepts-section-title">📌 بطاقات قوانين ميكانيكا الحركة الدائرية:</div>
+        <div class="concept-cards-grid" id="circGrid"></div>
+        <div class="concept-display-box" id="circDisplay"></div>
+      </div>
     </div>
   </section>
 
@@ -350,11 +363,14 @@ button { font: inherit; cursor: pointer; }
       <!-- التبرير والبرهان (رياضيات أول ثانوي) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف التبرير والبرهان - رياضيات أول ثانوي (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="math1" onclick="toggleCards('math1', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="Justification&proof.pdf"></div>
-      <div class="concepts-section-title">📌 ملخص رياضيات أول ثانوي:</div>
-      <div class="concept-cards-grid" id="math1Grid"></div>
-      <div class="concept-display-box" id="math1Display"></div>
+      <div class="cards-wrap" id="math1Wrap" hidden>
+        <div class="concepts-section-title">📌 ملخص رياضيات أول ثانوي:</div>
+        <div class="concept-cards-grid" id="math1Grid"></div>
+        <div class="concept-display-box" id="math1Display"></div>
+      </div>
 
       <!-- ملخص أحياء (صور أحمد الحوت) -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
@@ -377,20 +393,26 @@ button { font: inherit; cursor: pointer; }
       <!-- الأسماء الشائعة -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف الأسماء الشائعة (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="names" onclick="toggleCards('names', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="common-names.pdf"></div>
-      <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
-      <div class="concept-cards-grid" id="namesGrid"></div>
-      <div class="concept-display-box" id="namesDisplay"></div>
+      <div class="cards-wrap" id="namesWrap" hidden>
+        <div class="concepts-section-title">📌 قائمة الأسماء الشائعة الكاملة:</div>
+        <div class="concept-cards-grid" id="namesGrid"></div>
+        <div class="concept-display-box" id="namesDisplay"></div>
+      </div>
 
       <!-- مشتقات الهيدروكربونات -->
       <div class="pdf-download-bar" style="margin-top: 40px;">
         <div><h4>ملف مشتقات الهايدروكربونات الشامل (PDF)</h4></div>
+        <button class="pdf-btn" data-cards-btn="hydro" onclick="toggleCards('hydro', this)">🗂️ عرض بطاقات الشرح</button>
       </div>
       <div class="pdf-box" data-pdf="hydrocarbon-derivatives.pdf"></div>
-      <div class="concepts-section-title">📌 قائمة مشتقات الهيدروكربونات الكاملة:</div>
-      <div class="concept-cards-grid" id="hydroGrid"></div>
-      <div class="concept-display-box" id="hydroDisplay"></div>
+      <div class="cards-wrap" id="hydroWrap" hidden>
+        <div class="concepts-section-title">📌 قائمة مشتقات الهيدروكربونات الكاملة:</div>
+        <div class="concept-cards-grid" id="hydroGrid"></div>
+        <div class="concept-display-box" id="hydroDisplay"></div>
+      </div>
     </div>
   </section>
 
@@ -431,6 +453,13 @@ button { font: inherit; cursor: pointer; }
 
       <div class="grid-cards" id="curriculumGrid" style="text-align: right;"></div>
       <div id="curriculumViewer"></div>
+
+      <!-- بطاقات شرح ملف "أهم ما في كتاب الرياضيات" (مخفية افتراضياً، تظهر بزر بجانب اسم الملف) -->
+      <div id="impCardsWrap" hidden>
+        <div class="concepts-section-title">📌 بطاقات شرح أهم ما في كتاب الرياضيات:</div>
+        <div class="concept-cards-grid" id="impGrid"></div>
+        <div class="concept-display-box" id="impDisplay"></div>
+      </div>
     </div>
   </section>
 </main>
@@ -831,6 +860,38 @@ const math1Data = [
   {t: "28. معادلة الدائرة", s: String.raw`(x-h)^2 + (y-k)^2 = r^2`, d: "• مركزها $(h, k)$ ونصف قطرها $r$.<br>• إذا كان المركز نقطة الأصل: $x^2 + y^2 = r^2$.", m: String.raw`(x - h)^2 + (y - k)^2 = r^2`}
 ];
 
+/* ============================================================
+   بطاقات شرح ملف "أهم ما في كتاب الرياضيات للمبكر"
+   (تظهر فقط عند الضغط على زر "عرض بطاقات الشرح")
+   ============================================================ */
+const impData = [
+  {t: "1. الحالة المبهمة", st: "الحالة المبهمة", d: "• <b>الحالة المبهمة:</b> الحالة التي يكون للمثلث فيها <b>حلان</b> تُسمّى الحالة المبهمة.", m: String.raw`\text{مثلث له حلان} \Rightarrow \text{الحالة المبهمة}`},
+  {t: "2. رموز الدوال العكسية المثلثية", s: String.raw`y = \text{Arcsin}\,x`, d: "• يُرمز للدوال العكسية أحياناً بـ: <b>Arcsin</b> للجيب العكسية، و<b>Arccos</b> لجيب التمام العكسية، و<b>Arctan</b> للظل العكسية.<br>• $\\sin^{-1}$ دالة عكسية تُستخدم لإيجاد <b>الزاوية</b> إذا عُلمت قيمة الجيب، بينما $\\csc$ هي <b>مقلوب</b> الجيب العادية.", m: String.raw`y=\text{Arcsin}\,x \;|\; y=\text{Arccos}\,x \;|\; y=\text{Arctan}\,x \quad ; \quad \sin^{-1}(0.5)=30^\circ \quad ; \quad \csc x = \frac{1}{\sin x}`},
+  {t: "3. الدالة الأسية", s: String.raw`f(x) = b^x`, d: "• <b>الدالة الأسية:</b> $f(x) = b^x$ حيث $b > 0$ و $b \\neq 1$.<br>• متصلة ومتباينة، <b>مجالها</b> مجموعة الأعداد الحقيقية، و<b>مداها</b> الأعداد الحقيقية الموجبة.<br>• لها خط تقارب أفقي هو المحور $x$، ويمر منحناها دائماً بالنقطة $(0,1)$.", m: String.raw`f(x) = b^x \;,\; b>0,\; b\neq 1 \quad | \quad \text{مجال: } \mathbb{R} \;,\; \text{مدى: } (0,\infty) \quad | \quad (0,1)`},
+  {t: "4. المجموع الجزئي للمتسلسلة الحسابية", s: String.raw`S_n = \frac{n}{2}(a_1 + a_n)`, d: "• <b>الصيغة العامة:</b> تعتمد على تعريف المتتابعة الحسابية وحدودها.<br>• <b>الصيغة البديلة:</b> تُشتق من الصيغة العامة ويمكن استعمالها بدلاً عنها.", m: String.raw`S_n = \frac{n}{2}(a_1 + a_n) \quad | \quad S_n = \frac{n}{2}\left[2a_1 + (n-1)d\right]`},
+  {t: "5. الدالة العكسية", s: String.raw`[f \circ g](x) = x`, d: "• تأكد أن التركيبين $[f \\circ g](x)$ و $[g \\circ f](x)$ يساوي كل منهما <b>الدالة المحايدة</b> $I(x) = x$؛ وذلك لتكون كل من الدالتين دالة عكسية للأخرى.", m: String.raw`[f \circ g](x) = [g \circ f](x) = I(x) = x`},
+  {t: "6. التحليل: فرق ومجموع مكعبين", s: String.raw`a^3 - b^3`, d: "• يمكن اعتبار كثيرة الحدود فرقاً بين <b>مربعين</b> أو فرقاً/مجموعاً بين <b>مكعبين</b>. وفي مثل $x^6 - y^6$ يجب اعتبارها أولاً <b>فرقاً بين مربعين</b> قبل التحليل تسهيلاً له.<br>• عند وجود 6 حدود: حلّل أولاً <b>بتجميع الحدود</b>.", m: String.raw`a^3 - b^3 = (a-b)(a^2+ab+b^2) \quad | \quad a^3 + b^3 = (a+b)(a^2-ab+b^2) \quad | \quad x^6 - y^6 = (x^3+y^3)(x^3-y^3)`},
+  {t: "7. حل معادلات كثيرات الحدود بالتحليل", s: String.raw`x^3 - 1000 = 0`, d: "• تطبّق طرق حل المعادلات التربيعية في حل معادلات كثيرات الحدود ذات الدرجات الأعلى.<br>• مثال (هندسة): حجم الجزء المتبقي بين المكعبين $(2x)^3 - x^3 = 7000$ فيكون $x = 10$، وبُعدا المكعبين $10\\text{cm}$ و $20\\text{cm}$.", m: String.raw`(2x)^3 - x^3 = 7000 \Rightarrow x^3 = 1000 \Rightarrow x = 10`},
+  {t: "8. قسمة دالتين", st: "قسمة دالتين", d: "• يُكتفى عند إيجاد ناتج قسمة دالتين بكتابتهما في صورة <b>دالة نسبية</b>، وتحديد <b>مجالها</b> من دون إجراء عملية القسمة.", m: String.raw`\frac{f(x)}{g(x)} \;,\; g(x) \neq 0`},
+  {t: "9. العبارة والمعادلة والدالة النسبية", st: "نسبية: عبارة / معادلة / دالة", d: "• <b>العبارة النسبية:</b> نسبة بين كثيرتي حدود (لا توجد علامة مساواة).<br>• <b>المعادلة النسبية:</b> معادلة تحتوي على عبارة نسبية أو أكثر (لإيجاد قيمة المجهول).<br>• <b>الدالة النسبية:</b> دالة بصيغة $f(x)$ نسبية (للتمثيل البياني ودراسة السلوك).<br>• <b>المركب</b> متغيرين في البسط، و<b>المشترك</b> متغيرين في المقام.", m: String.raw`\text{عبارة} = \frac{P(x)}{Q(x)} \quad | \quad \text{معادلة: } \frac{P}{Q} = \frac{R}{S} \quad | \quad \text{دالة: } f(x)=\frac{P(x)}{Q(x)}`},
+  {t: "10. المعادلات النسبية في مسائل الحركة", s: String.raw`d = rt`, d: "• المعادلة التي تربط المسافة $d$ والسرعة $r$ والزمن $t$: $d = rt$، ولها شكلان آخران: $r = \\frac{d}{t}$ و $t = \\frac{d}{r}$.<br>• في مسائل التيار أو الريح: السرعة مع الاتجاه $x + c$ وعكسه $x - c$، والزمن الكلي = زمن الذهاب + زمن العودة.", m: String.raw`d = rt \quad | \quad r = \frac{d}{t} \quad | \quad t = \frac{d}{r}`},
+  {t: "11. الأسس النسبية والجذور", s: String.raw`P = c(1+r)^n`, d: "• يمكن استعمال الصيغة $P = c(1+r)^n$ لتقدير الثمن المستقبلي لسلعة اعتماداً على التضخم المالي: $P$ الثمن المستقبلي، $c$ الثمن الحالي، $r$ معدل التضخم السنوي، $n$ عدد السنوات.<br>• تبسيط العبارات الجذرية يتم باستعمال خواص العمليات على الجذور. ومثال القوانين الفيزيائية: $T = 2\\pi\\sqrt{\\frac{L}{g}}$ حيث $g = 32$ قدماً لكل ثانية مربعة.", m: String.raw`P = c(1+r)^n \quad | \quad P = c(1+r)^{\frac{1}{2}} \quad | \quad T = 2\pi\sqrt{\frac{L}{g}}`},
+  {t: "12. سعة الدالة المثلثية", s: String.raw`A = \frac{\max - \min}{2}`, d: "• سعة منحنى دالة الجيب أو منحنى دالة جيب التمام تساوي <b>نصف الفرق</b> بين القيمة العظمى والقيمة الصغرى للدالة.", m: String.raw`\text{السعة} = \frac{\text{القيمة العظمى} - \text{القيمة الصغرى}}{2}`},
+  {t: "13. معادلة الدائرة", s: String.raw`(x-h)^2 + (y-k)^2 = r^2`, d: "• جميع نقاط الدائرة تبعد مسافات متساوية عن مركزها، فتُشتق معادلتها من <b>صيغة المسافة بين نقطتين</b>.<br>• مركزها نقطة الأصل: $x^2 + y^2 = r^2$، ومركزها $(h,k)$: $(x-h)^2+(y-k)^2=r^2$.<br>• <b>مسلّمة إقليدس:</b> يمكن رسم دائرة وحيدة بنصف قطر معلوم باختيار أي نقطة لتكون مركزاً لها.", m: String.raw`d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2} \quad | \quad r^2 = (x-h)^2 + (y-k)^2`},
+  {t: "14. معادلة الدائرة بدلالة ثلاث نقاط", st: "دائرة تمر بثلاث نقاط", d: "• مثّل المثلث $ABC$ بيانياً، ثم أنشئ <b>عمودين منصفين</b> لضلعين من أضلاعه لتعيين <b>مركز الدائرة</b> (العمود المنصف لوتر في الدائرة هو قطر لها).<br>• أوجد نصف القطر ثم اكتب المعادلة.<br>• مثال: المركز $(-4,3)$ ونصف القطر $4$ فتكون المعادلة $(x+4)^2 + (y-3)^2 = 16$.", m: String.raw`(x+4)^2 + (y-3)^2 = 16`},
+  {t: "15. طول القوس", s: String.raw`\ell = \frac{x}{360} \cdot 2\pi r`, d: "• <b>طول القوس:</b> المسافة على الدائرة بين نقطتين، ويُقاس بوحدات الطول، بينما قياس القوس يُعطى بالدرجات.<br>• نسبة طول القوس إلى محيط الدائرة = نسبة قياس القوس بالدرجات إلى $360^\\circ$.", m: String.raw`\frac{\ell}{2\pi r} = \frac{x^\circ}{360^\circ} \quad \Rightarrow \quad \ell = \frac{x}{360} \cdot 2\pi r`},
+  {t: "16. المماسات والمضلعات المحيطة بدائرة", st: "المماس المشترك والمضلع المحيط", d: "• <b>تحديد المماسات:</b> لا تفترض أن القطع المستقيمة مماسات لمجرد أنها تبدو كذلك، إلا إذا طُلب ذلك أو وُجد رمز الزاوية القائمة أو أكدت الأطوال ذلك.<br>• <b>المماس المشترك:</b> مستقيم أو نصف مستقيم أو قطعة مستقيمة تمس الدائرتين في المستوى نفسه.<br>• <b>المضلع المحيط بدائرة:</b> كل ضلع من أضلاعه مماس للدائرة. وإذا مسّت الدائرة بعض الأضلاع ولم تمسّها جميعها فلا يُعدّ محيطاً بها.", m: String.raw`\text{مضلع محيط بدائرة} \Leftrightarrow \text{كل ضلع مماس للدائرة}`},
+  {t: "17. التماثل في الأشكال الثلاثية الأبعاد", st: "تماثل حول مستوى / محور", d: "• <b>تماثل حول مستوى:</b> إذا أمكن تقسيم الشكل بمستوى إلى شكلين متطابقين (مستوى التماثل: يقسم الشكل إلى نصفين متطابقين بحيث يكون كل منهما صورة للآخر).<br>• <b>تماثل حول محور:</b> إذا أمكن تدوير الشكل حول المحور بزاوية بين $0^\\circ$ و $360^\\circ$ ليصبح كما كان في وضعه الأصلي.<br>• <b>المنشور:</b> مجسم متعدد السطوح له قاعدتان متطابقتان.", m: String.raw`\text{مستوى التماثل} \to \text{نصفان متطابقان} \quad | \quad \text{محور التماثل} \to \text{تدوير بين } 0^\circ \text{ و } 360^\circ`},
+  {t: "18. أنواع التبرير", st: "استنتاجي / استقرائي", d: "• <b>التبرير الاستنتاجي:</b> يعتمد على <b>حقيقة أو قانون</b> (مثال: غاب سعد 15 حصة فسيُحرم من الاختبار).<br>• <b>التبرير الاستقرائي:</b> يعتمد على <b>الملاحظة</b> (مثال: لاحظ الطبيب أن خالد يأتي دائماً في موعده فسوف يأتي في الموعد القادم).<br>• <b>قانون الاستدلال المنطقي:</b> إذا كان $JK = KL$ فإن $K$ منتصف $\\overline{JL}$ <b>غير صحيحة أحياناً</b>؛ لأن $K$ قد تكون على شكل رأس مثلث إذا لم يمر $\\overline{JL}$ بالنقطة $K$.", m: String.raw`\text{استنتاجي} \to \text{حقيقة / قانون} \quad | \quad \text{استقرائي} \to \text{ملاحظة}`},
+  {t: "19. البرهان غير المباشر", st: "برهان بالتناقض", d: "• <b>البرهان غير المباشر</b> هو برهان بالتناقض: تفترض فيه أن المطلوب <b>غير صحيح</b>، ثم تصل إلى نتيجة تناقض المعطيات أو حقيقة مثبتة من قبل أو مسلّمة أو تعريفاً.", m: String.raw`\text{افترض أن المطلوب خاطئ} \Rightarrow \text{تناقض} \Rightarrow \text{المطلوب صحيح}`},
+  {t: "20. الزوايا والمستقيمات المتوازية", s: String.raw`a \parallel b`, d: "• إذا قطع قاطع مستقيمين متوازيين فإن:<br>• الزوايا <b>المتناظرة</b> متطابقة ← <b>مسلّمة</b>.<br>• الزوايا <b>المتبادلة داخلياً</b> متطابقة ← نظرية.<br>• الزوايا <b>المتبادلة خارجياً</b> متطابقة ← نظرية.<br>• الزوايا <b>المتحالفة</b> متكاملة ← نظرية.<br>• زاويتا الارتفاع والانخفاض للحالة الواحدة متطابقتان لأنهما زاويتان داخليتان متبادلتان لخطين متوازيين.", m: String.raw`\text{متناظرة} = \text{متبادلة} = \text{متطابقة} \quad | \quad \text{متحالفة} = 180^\circ`},
+  {t: "21. علاقات التوازي والتخالف في المكعب", st: "3 متوازية - 4 متقاطعة - 4 متخالفة", d: "• لكل ضلع (حرف) في المكعب:<br>• <b>3</b> أضلاع موازية له.<br>• <b>4</b> أضلاع تقاطعه.<br>• <b>4</b> أضلاع تخالفه.<br>• من الممكن أن يكون هناك <b>خط مستقيم يقع في مستويين</b> (خط تقاطع مستويين).", m: String.raw`3 \;\text{موازية} \quad | \quad 4 \;\text{متقاطعة} \quad | \quad 4 \;\text{متخالفة}`},
+  {t: "22. البعد بين نقطة ومستقيم", s: String.raw`d = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}`, d: "• البعد بين المستقيم $Ax + By + C = 0$ والنقطة $(x_0, y_0)$.<br>• إذا كان المستقيم $\\ell$ بصورة $y = mx + b$: (1) أوجد $m$ إن لزم، (2) حوّل $\\ell$ إلى صيغة الميل ونقطة، (3) حوّله إلى $Ax+By+C=0$ (حيث $A$ و $B$ معاملات)، (4) عوّض بالقانون.", m: String.raw`d = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}`},
+  {t: "23. البعد بين مستقيمين متوازيين", s: String.raw`d = \frac{|b_2 - b_1|}{\sqrt{m^2 + 1}}`, d: "• المستقيمان $y = mx + b$ أو $y = $ عدد: إن كان بصورة $y = mx + b$ نعوّض بالقانون، وإن كان بصورة $y = $ عدد نعوّض عن $b$ بالعدد وعن $m$ بصفر.<br>• <b>مراكز الدائرة في مثلث:</b> الداخلية دائماً داخل المثلث (منصفات الزوايا)، والخارجية قد تكون: داخل المثلث أو خارجه أو على أحد أضلاع المثلث (منصفات الأضلاع).", m: String.raw`d = \frac{|b_2 - b_1|}{\sqrt{m^2 + 1}}`},
+  {t: "24. التغير المشترك والمركب", st: "تغير مشترك / مركب", d: "• <b>التغير المشترك:</b> يحدث عندما تتغير كمية ما طردياً مع حاصل ضرب كميتين أخريين أو أكثر.<br>• <b>التغير المركب:</b> يحدث عندما تتغير كمية ما طردياً أو عكسياً أو كليهما معاً مع كميتين أخريين أو أكثر.", m: String.raw`y = kxz \;\text{(مشترك)} \quad | \quad y = \frac{kx}{z} \;\text{(مركب)}`},
+  {t: "25. تطبيقات الدوال الجذرية والخطية", s: String.raw`v = -7t + 30`, d: "• معادلة المستقيم من نقطتين: أوجد الميل $m = \\frac{y_2 - y_1}{x_2 - x_1}$ ثم استعمل صيغة الميل ونقطة $y - y_1 = m(x - x_1)$.<br>• مثال (فيزياء): مركبة تسير بسرعة $30\\,m/s$ وبعد ثانيتين أصبحت $16\\,m/s$ فيكون $m = -7$ وتكون المعادلة $v = -7t + 30$.<br>• مساحة المثلث بصيغة هيرون: $A = \\sqrt{s(s-a)(s-b)(s-c)}$ حيث $s = \\frac{1}{2}(a+b+c)$.", m: String.raw`v - 30 = -7(t - 0) \Rightarrow v = -7t + 30 \quad | \quad A = \sqrt{s(s-a)(s-b)(s-c)}`}
+];
+
 const CARD_SETS = {
   math1:  {grid: 'math1Grid',  box: 'math1Display',  items: math1Data},
   chem:   {grid: 'chemGrid',   box: 'chemDisplay',   items: chemData},
@@ -838,7 +899,8 @@ const CARD_SETS = {
   proj:   {grid: 'projGrid',   box: 'projDisplay',   items: projData},
   circ:   {grid: 'circGrid',   box: 'circDisplay',   items: circData},
   names:  {grid: 'namesGrid',  box: 'namesDisplay',  items: namesData},
-  hydro:  {grid: 'hydroGrid',  box: 'hydroDisplay',  items: hydroData}
+  hydro:  {grid: 'hydroGrid',  box: 'hydroDisplay',  items: hydroData},
+  imp:    {grid: 'impGrid',    box: 'impDisplay',    items: impData}
 };
 
 function showCard(type, index) {
@@ -865,12 +927,24 @@ function buildCards() {
   });
 }
 
+/* ============================================================
+   زر إظهار / إخفاء بطاقات الشرح (لكل الأقسام)
+   ============================================================ */
+function toggleCards(type, btn) {
+  const wrap = document.getElementById(type + 'Wrap');
+  if (!wrap) return;
+  wrap.hidden = !wrap.hidden;
+  if (btn) btn.textContent = wrap.hidden ? '🗂️ عرض بطاقات الشرح' : '✖ إخفاء بطاقات الشرح';
+  if (!wrap.hidden) renderMath();
+}
+
 const curriculumBooks = [
   {name: "الأحياء", icon: "🧬", file: "Biology_bookQs_compressed.pdf", pages: 260},
   {name: "الفيزياء", icon: "⚛️", file: "Physics_bookQs_compressed.pdf", pages: 208},
   {name: "الكيمياء", icon: "🧪", file: "Chemistry_bookQs_compressed.pdf", pages: 189},
   {name: "الرياضيات - أول ثانوي", icon: "📐", file: "Math_1st_secondary_bookQs_compressed_under25MB.pdf", pages: 283},
-  {name: "الرياضيات - ثاني ثانوي", icon: "📏", file: "Math_2nd_secondary_bookQs_compressed.pdf", pages: 243}
+  {name: "الرياضيات - ثاني ثانوي", icon: "📏", file: "Math_2nd_secondary_bookQs_compressed.pdf", pages: 243},
+  {name: "الرياضيات - أهم ما في الكتاب (للمبكر)", icon: "⭐", file: "Important_mathbook.pdf", desc: "أهم ما في كتاب الرياضيات: إرشادات ومسائل وشروحات (ما هو محدد بالأحمر فائق الأهمية).", cards: true}
 ];
 
 function buildCurriculum() {
@@ -878,7 +952,7 @@ function buildCurriculum() {
     <div class="card-item">
       <div class="card-icon-box">${b.icon}</div>
       <h3>${b.name}</h3>
-      <p>كتاب الأسئلة (${b.pages} صفحة).</p>
+      <p>${b.desc ? b.desc : 'كتاب الأسئلة (' + b.pages + ' صفحة).'}</p>
       <span class="card-action-link" onclick="viewBook(${i})">📖 عرض الكتاب هنا ←</span><br>
       <a class="card-action-link" href="${fileUrl(b.file)}" download="${b.file}">⬇️ تحميل الكتاب</a><br>
       <a class="card-action-link" href="${fileUrl(b.file)}" target="_blank" rel="noopener">↗ فتح في نافذة مستقلة</a>
@@ -888,15 +962,27 @@ function buildCurriculum() {
 function viewBook(i) {
   const b = curriculumBooks[i];
   const host = document.getElementById('curriculumViewer');
+  const impWrap = document.getElementById('impCardsWrap');
+  if (impWrap) impWrap.hidden = true; // إخفاء بطاقات الشرح عند فتح أي كتاب
   host.innerHTML = `
     <div class="pdf-download-bar" style="margin-top: 30px;">
       <div><h4>${b.icon} كتاب ${b.name}</h4></div>
+      ${b.cards ? '<button class="pdf-btn" id="impToggleBtn" onclick="toggleImpCards()">🗂️ عرض بطاقات الشرح</button>' : ''}
     </div>
     <div class="pdf-box" id="curBookBox"></div>`;
   const box = document.getElementById('curBookBox');
   initPdfBox(box, b.file);
   box.querySelector('[data-act="view"]').click();
   window.scrollTo({ top: host.offsetTop - 100, behavior: 'smooth' });
+}
+
+function toggleImpCards() {
+  const wrap = document.getElementById('impCardsWrap');
+  const btn = document.getElementById('impToggleBtn');
+  if (!wrap) return;
+  wrap.hidden = !wrap.hidden;
+  if (btn) btn.textContent = wrap.hidden ? '🗂️ عرض بطاقات الشرح' : '✖ إخفاء بطاقات الشرح';
+  if (!wrap.hidden) renderMath();
 }
 
 const pulleyQuests = [
